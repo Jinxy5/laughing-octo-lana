@@ -46,7 +46,10 @@ $(window).load(function() {
   });
 
   $('#slider-2').flexslider({
-  	animation: 'slide'
+  	animation: 'slide',
+  	directionNav: false,
+  	animationLoop: true,
+  	slideshowSpeed: 10000
   });
 
 });

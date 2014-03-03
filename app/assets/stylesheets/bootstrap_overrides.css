@@ -86,3 +86,12 @@
   	background-color: red;
   	height: 200px;
   }
+
+  .flex-control-paging li a {
+  	height: 7px !important;
+  	width: 7px !important;
+  }
+  .flex-control-paging li a {
+  	height: 2px;
+  	background-color: red;
+  }
