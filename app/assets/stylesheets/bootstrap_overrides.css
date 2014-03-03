@@ -1,0 +1,56 @@
+ header {
+ 	background-color: purple;
+ }
+ 
+ .color-strip, .green, .white, .red, .black {
+ 	background-color: black;
+ 	height: 8px;
+ }
+
+ .color-strip, .green {
+ 	background-color: green;
+ }
+
+ .color-strip, .white {
+ 	background-color: white;
+ }
+
+ .color-strip, .red {
+ 	background-color: red;
+ }
+
+ .color-strip, .black {
+ 	background-color: black;
+ }
+
+ .logo {
+ 	background-color: teal;
+ 	height: 92px;
+ 	margin: 42px 0 0 0;
+ }
+
+ .mobile-menu {
+ 	margin: 40px 0;
+ }
+
+ .header-extras {
+ 	padding: 0 !important;
+ }
+
+ .header-extras .btn{
+ 	font-size: 1.25em;
+ 	padding: 11px 0;
+ 	/*height: 42px; */
+  }
+
+  .social-networks {
+  	background-color: pink;
+  	height: 32px;
+  	margin: 42px 0;
+  }
+
+   .indentify {
+  	background-color: tan;
+  	height: 32px;
+  	margin-bottom: 42px;
+  }
