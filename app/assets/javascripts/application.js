@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap.min
+
+//= require jquery.flexslider
+// require jquery.flexslider-min
+
+// Can also be used with $(document).ready()
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
+  });
+});
