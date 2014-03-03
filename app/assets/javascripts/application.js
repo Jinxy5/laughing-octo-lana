@@ -21,7 +21,30 @@
 
 // Can also be used with $(document).ready()
 $(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide"
+  // The slider being synced must be initialized first
+
+  // CONTROLS
+  $('#carousel').flexslider({
+    animation: "slide",
+    allow_resize: true,
+    controlNav: false,
+    animationLoop: true,
+    slideshow: false,
+    itemWidth: 210,
+    itemMargin: 5,
+    asNavFor: '#slider'
+  });
+   
+
+   // MAIN
+  $('#slider').flexslider({
+    animation: "fade",
+    controlNav: false,
+    directionNav: false,
+    animationLoop: true,
+    slideshow: true,
+    slideshowSpeed: 3500,
+
+    sync: "#carousel"
   });
 });

@@ -54,3 +54,35 @@
   	height: 32px;
   	margin-bottom: 42px;
   }
+
+  /* header end */
+
+  /* slider */
+  .flexslider {
+  	overflow: hidden;
+  	height: 200px;
+  	display: block;
+  	border: none !important;
+  }
+
+  .flexslider .slides img {
+  }
+
+  .image-one {
+  	background-image: url('one.jpg');
+  }
+
+  .slide-info {
+  	color: #fff;
+  	background-color: red;
+  	position: absolute;
+  	z-index: 1000;
+  	bottom: 40px;
+  	left: 20px;
+  }
+
+  .hot-panel {
+  	color: pink;
+  	background-color: red;
+  	height: 200px;
+  }
