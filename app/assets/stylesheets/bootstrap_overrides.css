@@ -103,6 +103,33 @@
   	background-color: red;
   }
 
+  footer {
+    background-color: green;
+  }
+
+  .face-wedge {
+    text-align: center;
+    background-color: teal;
+  }
+
+  .cropper {
+    width: 104px;
+    height: 75px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cropper img {
+    position: absolute;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+  }
+
   @font-face {
   font-family: 'Glyphicons Halflings' !important;
   src: url('/assets/glyphicons-halflings-regular.eot') !important;
