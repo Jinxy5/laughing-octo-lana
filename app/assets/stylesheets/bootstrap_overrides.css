@@ -58,11 +58,16 @@
   /* header end */
 
   /* slider */
+  .flexslider {
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -o-box-shadow: none !important;
+  }
   .flexslider.hero {
   	overflow: hidden;
   	height: 200px;
   	display: block;
-  	border: none !important;
   }
 
   .flexslider .slides img {
@@ -85,6 +90,10 @@
   	color: pink;
   	background-color: red;
   	height: 200px;
+  }
+
+  .hot-panel-info {
+    background-color: yellow;
   }
 
   .flex-control-paging li a {

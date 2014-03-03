@@ -52,4 +52,11 @@ $(window).load(function() {
   	slideshowSpeed: 10000
   });
 
+  $('.hot-panel-1 .left-nav').on('click', function(){
+  	$('#slider-2').flexslider('prev');
+  });
+
+  $('.hot-panel-1 .right-nav').on('click', function(){
+  	$('#slider-2').flexslider('next');
+  });
 });
