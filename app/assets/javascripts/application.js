@@ -45,7 +45,7 @@ $(window).load(function() {
     sync: "#carousel"
   });
 
-  $('#slider-2').flexslider({
+  $('#slider-2, #slider-3').flexslider({
   	animation: 'slide',
   	directionNav: false,
   	animationLoop: true,

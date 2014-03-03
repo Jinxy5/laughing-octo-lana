@@ -64,6 +64,7 @@
     -moz-box-shadow: none !important;
     -o-box-shadow: none !important;
   }
+
   .flexslider.hero {
   	overflow: hidden;
   	height: 200px;
@@ -72,7 +73,6 @@
 
   .flexslider .slides img {
   }
-
   .image-one {
   	background-image: url('one.jpg');
   }
@@ -80,18 +80,16 @@
   .slide-info {
   	color: #fff;
   	background-color: red;
-  	position: absolute;
+  	 position: absolute; 
   	z-index: 1000;
   	bottom: 40px;
   	left: 20px;
   }
-
   .hot-panel {
   	color: pink;
   	background-color: red;
-  	height: 200px;
+    margin: 20px 0;
   }
-
   .hot-panel-info {
     background-color: yellow;
   }
