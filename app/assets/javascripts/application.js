@@ -34,8 +34,6 @@ $(window).load(function() {
     itemMargin: 5,
     asNavFor: '#slider'
   });
-   
-
    // MAIN
   $('#slider').flexslider({
     animation: "fade",
@@ -44,7 +42,11 @@ $(window).load(function() {
     animationLoop: true,
     slideshow: true,
     slideshowSpeed: 3500,
-
     sync: "#carousel"
   });
+
+  $('#slider-2').flexslider({
+  	animation: 'slide'
+  });
+
 });

@@ -58,7 +58,7 @@
   /* header end */
 
   /* slider */
-  .flexslider {
+  .flexslider.hero {
   	overflow: hidden;
   	height: 200px;
   	display: block;
