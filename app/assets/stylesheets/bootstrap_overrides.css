@@ -210,10 +210,15 @@
 
   .hot-panel-info {
     padding: 0 20px 0 20px;
+    border-left: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2;
+
   }
   .hot-panel-info p {
     font-size: 0.8em;
+    margin: 0 !important;
     font-weight: 400;
+    padding-bottom: 20px;
   }
 
   .donation-info {
@@ -228,7 +233,8 @@
 
   }
   h3 {
-    padding: 0 !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
     margin: 0 !important;
   }
 

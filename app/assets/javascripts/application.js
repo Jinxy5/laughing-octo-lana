@@ -54,10 +54,14 @@ $(window).load(function() {
   });
 
   $('.hot-panel-1 .left-nav').on('click', function(){
-  	$('#slider-2').flexslider('prev');
+  	var slider = $(this).parent().find('.flexslider')
+ 	slider.flexslider('prev');
   });
 
   $('.hot-panel-1 .right-nav').on('click', function(){
-  	$('#slider-2').flexslider('next');
+  	var slider = $(this).parent().find('.flexslider')
+ 	slider.flexslider('next');
   });
+
+
 });
