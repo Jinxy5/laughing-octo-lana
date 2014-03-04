@@ -8,6 +8,8 @@
  
  .color-strip, .green, .white, .red, .black {
  	background-color: black;
+  padding: 0 !important;
+  margin: 0 !important;
  	height: 3px;
  }
 
@@ -77,6 +79,34 @@
   border-top: none  !important; 
   box-shadow: none !important
 }
+  .header-extra {
+    text-transform: uppercase;
+  }
+
+  .mobile-links {
+
+    text-transform: uppercase;
+    margin-top: 34px;
+    color: green;
+    background-color: #333e49;
+    border: none;
+
+
+    border-radius: 3px;
+    bottom: 0;
+    color: #e5e7e8;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15px;
+    left: 0;
+    line-height: 47px;
+    padding: 0 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: left;
+  }
+
 
  .mobile-menu {
  	margin: 40px 0;
