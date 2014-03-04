@@ -1,5 +1,10 @@
  body {
-  font-family: 'Open Sans' !important
+  font-family: 'Open Sans' !important;
+  color: #84898c !important
+ }
+
+ a {
+  color: none !important;
  }
 
  .no-gutter {
@@ -84,8 +89,8 @@
 
 .navbar-collapse {
   max-height: 340px;
-  padding-right: none !important;
-  padding-left: none !important; 
+  padding-right: 0 !important;
+  padding-left: 0 !important; 
   overflow-x: visible;
   -webkit-overflow-scrolling: touch;
   border-top: none  !important; 
@@ -192,20 +197,63 @@
   .slide-info {
   	color: #fff;
   	background-color: red;
-  	 position: absolute; 
+  	position: absolute; 
   	z-index: 1000;
   	bottom: 40px;
   	left: 20px;
   }
   .hot-panel {
     font-family: 'Droid Sans';
-  	color: pink;
-  	background-color: red;
+  /*	background-color: red; */
     margin: 20px 0;
   }
 
   .hot-panel-info {
-    background-color: yellow;
+    padding: 0 20px 0 20px;
+  }
+  .hot-panel-info p {
+    font-size: 0.8em;
+    font-weight: 400;
+  }
+
+  .donation-info {
+    padding: 0 20px 0 20px;
+    font-style: italic;
+    background-color: #1f2d38;
+    color: #fff;
+  }
+
+  .donation-info a {
+    font-size: 0.7em;
+
+  }
+  h3 {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .align-left {
+    text-align: left;
+  }
+
+  .yellow {
+    font-style: normal;
+    color: #ebddaa;
+  }
+
+
+
+  .align-right {
+    text-align: right;
+  }
+  
+
+  .hot-panel-info h3 {
+
+    font-size: 1.1em;
+    color: #565d63;
+    font-weight: 500;
+    font-family: 'Open Sans'
   }
 
   .flex-control-paging li a {

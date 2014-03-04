@@ -47,6 +47,7 @@ $(window).load(function() {
 
   $('#slider-2, #slider-3').flexslider({
   	animation: 'slide',
+  	controlNav: false,
   	directionNav: false,
   	animationLoop: true,
   	slideshowSpeed: 10000
