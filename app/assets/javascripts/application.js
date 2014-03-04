@@ -53,12 +53,12 @@ $(window).load(function() {
   	slideshowSpeed: 10000
   });
 
-  $('.hot-panel-1 .left-nav').on('click', function(){
+  $('.left-nav').on('click', function(){
   	var slider = $(this).parent().find('.flexslider')
  	slider.flexslider('prev');
   });
 
-  $('.hot-panel-1 .right-nav').on('click', function(){
+  $('.right-nav').on('click', function(){
   	var slider = $(this).parent().find('.flexslider')
  	slider.flexslider('next');
   });

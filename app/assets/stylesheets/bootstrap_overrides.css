@@ -5,6 +5,13 @@
 
  a {
   color: none !important;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+  font-weight: 400 !important;
+ }
+
+ .section-title {
+  margin-bottom: 20px;
  }
 
  .no-gutter {
