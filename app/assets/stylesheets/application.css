@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require bootstrap.css
+ *= require theme.css
  *= require bootstrap_overrides.css
  *= require flexslider.css
  */
