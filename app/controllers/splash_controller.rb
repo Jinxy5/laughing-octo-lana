@@ -4,4 +4,10 @@ class SplashController < ApplicationController
 
 	def donate
 	end
+
+	def events
+	end
+
+	def new
+	end
 end

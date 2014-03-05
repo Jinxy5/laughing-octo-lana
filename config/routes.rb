@@ -4,7 +4,12 @@ Bloodbikeswales::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'splash#index'
+
+   get '/home', to: 'splash#index'
    get '/donate', to: 'splash#donate'
+   get '/news', to: 'splash#news'
+   get '/events', to: 'splash#events'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
