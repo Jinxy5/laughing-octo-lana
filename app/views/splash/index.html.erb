@@ -16,13 +16,17 @@
 
 
 	<div class = 'container'>
-
+<!--
+		<div class = 'grips'>
+			
+		</div>
+-->
 		<div class = 'navbar'>
 			
 
-			<img src="<%= image_path('logo.png') %>" alt="..." class="img-responsive center-block" style = 'margin-top: 20px; margin-bottom: 20px'  />
+			<img src="<%= image_path('logo.png') %>" alt="..." class="img-responsive center-block"  />
 
-
+			<!-- mobile menu -->
 			<div class = 'visible-xs'>
 				<button type = 'button' class = 'col-xs-12 mobile-links' data-toggle = 'collapse' data-target = '#collapse-1'>
 					go to...
@@ -32,24 +36,40 @@
 				<div class = 'collapse navbar-collapse col-xs-12' id = 'collapse-1'>
 					<ul class = 'nav navbar-nav'>
 						<li> <a href = '#'> Home </a></li>
-						asd
 					</ul>
 				</div>
 			</div>
+			<!-- mobile menu end -->
 
-			<div class = 'header-extra'>
-				<a href = '#' class = 'btn btn-success col-xs-12'> make a donation <span class = 'glyphicon glyphicon-leaf'></span> </a>
+			<!-- large menu -->
+			<ul class = 'hidden-xs nav navbar-pills col-sm-5'>
+				<li> <a href = '#'> Home </a></li>				
+				<li> <a href = '#'> Home </a></li>
+				<li> <a href = '#'> Home </a></li>
+				<li> <a href = '#'> Home </a></li>
+				<li> <a href = '#'> Home </a></li>
+				<li> <a href = '#'> Home </a></li>
+				<li> <a href = '#'> Home </a></li>
+			</ul>
+			<!-- large menu end -->
+			
+			<div class = 'header-extra col-xs-12 col-sm-12'>
 				<div>
-				<a href = '#' class = 'btn btn-warning dropdown-toggle col-xs-12' data-toggle = 'dropdown'> change language <span class = 'glyphicon glyphicon-globe'></span> </a>
-				<ul class = 'dropdown-menu col-xs-12' role = 'menu'> 
-					<li> <a href = '#'> English </a> </li>
-					<li> <a href = '#'> Welsh </a> </li>
-				</ul>
+					<a href = '#' class = 'btn btn-success col-xs-12 col-sm-3'> make a donation <span class = 'glyphicon glyphicon-leaf'></span> </a>
+					<div>
+					<a href = '#' class = 'btn btn-warning dropdown-toggle col-xs-12 col-sm-3' data-toggle = 'dropdown'> change language <span class = 'glyphicon glyphicon-globe'></span> </a>
+					<ul class = 'dropdown-menu col-xs-12' role = 'menu'> 
+						<li> <a href = '#'> English </a> </li>
+						<li> <a href = '#'> Welsh </a> </li>
+					</ul>
+					</div>
+
+					<a href = '#' class = 'btn btn-danger dropdown-toggle col-xs-12 col-sm-3' data-toggle = 'dropdown'> shopping cart <span class = 'glyphicon glyphicon-shopping-cart'></span> </a>
 				</div>
+	
+				<div class = 'clearfix'></div>
 
-				<a href = '#' class = 'btn btn-danger dropdown-toggle col-xs-12' data-toggle = 'dropdown'> shopping cart <span class = 'glyphicon glyphicon-shopping-cart'></span> </a>
-
-				<div class = 'social'>
+				<div class = 'social col-sm-3 no-gutter no-margins'>
 					<a class = 'fa fa-facebook fa-lg'></a>
 					<a class = 'fa fa-twitter fa-lg'></a>
 					<a class = 'fa fa-google-plus fa-lg'></a>

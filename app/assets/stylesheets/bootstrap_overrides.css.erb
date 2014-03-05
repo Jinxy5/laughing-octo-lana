@@ -127,7 +127,7 @@ table {
 
 .social {
   color: #84889c;
-  padding-top: 205px;
+  padding-top: 30px;
   text-align: center;
   font-size: 0.72em;
   margin: 0 4%;
@@ -135,7 +135,7 @@ table {
 
 .social a {
   display: inline-block;
-  margin: 0 7%;
+  margin: 0 6.4%;
 }
 
 .social a.fa-instagram {
@@ -223,6 +223,12 @@ table {
   border-top: none  !important; 
   box-shadow: none !important
 }
+
+.navbar img {
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
   .header-extra {
     color: #fff;
     display: block;
@@ -513,23 +519,59 @@ table {
 
 }
 
+.no-margins {
+  margin: 0 !important;
+}
+
+.grips {
+  height: 100px;
+  width: 200px;
+  background-color: red;
+}
+
+
+
+.navbar-pills {
+  background-color: red;
+
+  width: 100%;
+}
 @media (min-width: 768px) {
+  .grips {
+    background-color: yellow;
+  }
+
+  .navbar img {
+    float: left;
+  }
+
+  .social a {
+    margin: 0 4%;
+  }
+
+  .header-extra {
+    float: left;
+  }
+
+  .authentication {
+    float: left;
+  }
+
+  .social {
+    float: left;
+  }
 
 }
 
 @media (min-width: 992px) {
-  
+  .grips {
+    background-color: green;
+  }  
+
 }
 
 @media (min-width: 1200px) {
-  
+  .grips {
+    background-color: purple;
+  }  
 }
-
-/*
-@media (min-width: @screen-sm-min) { ... }
-
-@media (min-width: @screen-md-min) { ... }
-
-@media (min-width: @screen-lg-min) { ... }
-
-*/
