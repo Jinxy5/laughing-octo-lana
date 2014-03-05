@@ -1,3 +1,54 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
  body {
   font-family: 'Open Sans' !important;
   color: #84898c !important
@@ -11,16 +62,45 @@
   color: #ebddaa;
   text-decoration: uppercase;
   display: inline-block;
-  margin-top: 12px;
-  padding-bottom: 12px;
+  margin: 28px 0;
+  font-size: 0.8em;
+  font-weight: 700;
  }
 
- .authentication {
- }
 
  .authentication .divide {
+  font-family: 'Open Sans';
+  color: #84889c;
+  margin: 0 10px;
+ }
+
+ .hot-panel .top-buttons {
+  margin: 27px 0;
+ }
+
+ .hot-panel .top-buttons .btn {
+  color: #fff !important;
+  padding: 5px 7px;
+  margin-right: 7px;
+ }
+
+ .hot-panel .top-buttons .controls {
+  font-size: 1.4em;
+  font-weight: 900;
+  float: right;
 
  }
+
+ .hot-panel .top-buttons .controls a {
+  margin-left: 10px;
+  padding: 5px;
+ }
+
+ .authentication .glyphicon {
+    font-size: 0.8em;
+    margin-right: 9px
+  }
+
  a {
   color: inherit !important;
   font-family: 'Oswald';
@@ -39,6 +119,22 @@
  .container {
   width: 90%;
  }
+
+.social {
+  color: #84889c;
+  padding-top: 205px;
+  text-align: center;
+  font-size: 0.72em;
+  margin: 0 4%;
+}
+
+.social a {
+  display: inline-block;
+  margin: 0 7%;
+}
+
+.social a.fa-instagram {
+}
 
  header {
  	background-color: #1f2d38;
@@ -112,18 +208,7 @@
  */
  }
 
-.social {
-  font-size: 0.79em;
-}
 
-.social a {
-  margin: 12px 4%;
-}
-
-.social a.fa-instagram {
-  font-size: 2.1em; 
-  margin: 12px 4%;
-}
 .navbar-collapse {
   max-height: 340px;
   padding-right: 0 !important;
@@ -134,8 +219,9 @@
   box-shadow: none !important
 }
   .header-extra {
+    color: #fff;
+    display: block;
     text-align: center;
-
     text-transform: uppercase;
   }
 
@@ -163,7 +249,8 @@
     text-align: left;
   }
 
-
+  .left-nav {
+  }
  .mobile-menu {
  	margin: 40px 0;
  }
@@ -199,11 +286,7 @@
  	/*height: 42px; */
   }
 
-  .social-networks {
-  	background-color: pink;
-  	height: 32px;
-  	margin: 0 0;
-  }
+ 
 
    .indentify {
   	background-color: tan;
@@ -268,6 +351,10 @@
     margin: 20px 0;
   }
 
+  .hot-panel li {
+    border-radius: 0 !important;
+  }
+
   .hot-panel-info {
     padding: 0 20px 0 20px;
     border-left: 1px solid #e2e2e2;
@@ -275,10 +362,18 @@
 
   }
   .hot-panel-info p {
-    font-size: 0.8em;
+    font-size: 1.1em;
     margin: 0 !important;
     font-weight: 400;
     padding-bottom: 20px;
+  }
+
+  .hot-panel-info h3 {
+    line-height: 1.6em;
+    font-size: 1.5em;
+    color: #565d63;
+    font-weight: 500;
+    font-family: 'Open Sans'
   }
 
   .donation-info {
@@ -286,6 +381,22 @@
     font-style: italic;
     background-color: #1f2d38;
     color: #fff;
+  }
+
+  .donation-info .statistic-integers {
+    padding-top: 15px;
+    margin-bottom: 12px;
+  }
+
+  .donation-info .progress {
+    border-radius: 0;
+    height: 7px;
+    background-image: -webkit-linear-gradient(top, #162128 0%, #162128 100%) !important;
+  }
+
+  .donation-info .actions {
+    margin-top: 30px;
+    padding-bottom: 30px;
   }
 
   .donation-info a {
@@ -314,13 +425,6 @@
   }
   
 
-  .hot-panel-info h3 {
-
-    font-size: 1.1em;
-    color: #565d63;
-    font-weight: 500;
-    font-family: 'Open Sans'
-  }
 
   .flex-control-paging li a {
   	height: 7px !important;
