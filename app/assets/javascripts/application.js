@@ -50,7 +50,9 @@ $(window).load(function() {
   	controlNav: false,
   	directionNav: false,
   	animationLoop: true,
-  	slideshowSpeed: 10000
+  	slideshowSpeed: 10000,
+    minItems: 4,
+    maxItems: 6
   });
 
   $('.left-nav').on('click', function(){
