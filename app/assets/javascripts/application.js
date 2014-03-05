@@ -20,7 +20,7 @@
 // require jquery.flexslider-min
 
 // Can also be used with $(document).ready()
-$(window).load(function() {
+$(document).ready(function() {
   // The slider being synced must be initialized first
 
   // CONTROLS

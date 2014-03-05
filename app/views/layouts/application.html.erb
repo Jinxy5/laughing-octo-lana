@@ -53,7 +53,9 @@
 				<!-- brand in here? -->
 				<div class = 'collapse navbar-collapse col-xs-12' id = 'collapse-1'>
 					<ul class = 'nav navbar-nav'>
-						<li> <a href = '#'> Home </a></li>
+						<li> <a href = 'home'> <span class= 'fa fa-home'></span> Home </a></li>				
+						<li> <a href = 'donate'> <span class= 'fa fa-gift'></span> Donate </a></li>
+						<li> <a href = 'news'> <span class= 'fa fa-thumb-tack'></span> News </a></li>
 					</ul>
 				</div>
 			</div>
@@ -84,26 +86,28 @@
 			
 			<div class = 'header-extra col-xs-12 col-sm-12'>
 				<div>
-					<a href = '#' class = 'btn btn-success col-xs-12 col-sm-3'> make a donation <span class = 'glyphicon glyphicon-leaf'></span> </a>
+					<a href = 'donate' class = 'btn btn-success col-xs-12 col-sm-3'> make a donation <span class= 'fa fa-gift'></span> </a>
 					<div>
-					<a href = '#' class = 'btn btn-warning dropdown-toggle col-xs-12 col-sm-3' data-toggle = 'dropdown'> change language <span class = 'glyphicon glyphicon-globe'></span> </a>
+					<a href = '#' class = 'btn btn-warning dropdown-toggle col-xs-12 col-sm-3' data-toggle = 'dropdown'> change language <span class = 'fa fa-globe'></span> </a>
 					<ul class = 'dropdown-menu col-xs-12' role = 'menu'> 
 						<li> <a href = '#'> English </a> </li>
 						<li> <a href = '#'> Welsh </a> </li>
 					</ul>
 					</div>
 
-					<a href = '#' class = 'btn btn-danger dropdown-toggle col-xs-12 col-sm-3' data-toggle = 'dropdown'> shopping cart <span class = 'glyphicon glyphicon-shopping-cart'></span> </a>
+					<a href = '#' class = 'btn btn-danger dropdown-toggle col-xs-12 col-sm-3' data-toggle = 'dropdown'> shopping cart <span class = 'fa fa-shopping-cart'></span> </a>
 				</div>
 	
 				<div class = 'clearfix'></div>
 
 				<div class = 'social col-sm-3 no-gutter no-margins'>
-					<a class = 'fa fa-facebook fa-lg'></a>
-					<a class = 'fa fa-twitter fa-lg'></a>
-					<a class = 'fa fa-google-plus fa-lg'></a>
+					<a href = 'https://www.facebook.com/bloodbikeswales' class = 'fa fa-facebook fa-lg'></a>
+					<a href = 'https://twitter.com/BloodBikesWales' class = 'fa fa-twitter fa-lg'></a>
+					<a href = 'https://plus.google.com/113703601234360916691/posts' class = 'fa fa-google-plus fa-lg'></a>
+					<!--
 					<a class = 'fa fa-instagram fa-lg'></a>
 					<a class = 'fa fa-search fa-lg'></a>
+					-->
 				</div>
 
 				<div class = 'authentication'>
@@ -116,10 +120,10 @@
 		</div>
 	</div>
 </div>
-	<div class = 'main container'>
+<div class = 'main container'>
 
 <%= yield %>
-
+</div>
 	<div class = 'clearfix'></div>
 	<footer class = 'row'>
 
