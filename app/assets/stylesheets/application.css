@@ -12,6 +12,7 @@
  *= require_tree .
  *= require bootstrap.css
  *= require theme.css
+ *= require font-awesome
  *= require bootstrap_overrides.css
  *= require flexslider.css
  */

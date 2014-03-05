@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'flexslider'
-
+gem 'font-awesome-rails'
 gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
