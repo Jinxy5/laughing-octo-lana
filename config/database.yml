@@ -38,6 +38,9 @@ test:
 
 production:
   adapter: postgresql
-#  database: db/production.sqlite3
-#  pool: 5
-#  timeout: 5000
+  pool: 5
+  encoding: UTF-8
+  database: bbw_production
+  host: localhost
+  username: postgres
+  password: postgres
