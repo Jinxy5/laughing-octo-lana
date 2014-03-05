@@ -8,6 +8,12 @@ class SplashController < ApplicationController
 	def events
 	end
 
+# events:
+	
+	def new_site
+		
+	end
+
 	def new
 	end
 end
