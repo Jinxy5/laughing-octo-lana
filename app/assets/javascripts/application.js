@@ -32,7 +32,8 @@ $(document).ready(function() {
     slideshow: false,
     itemWidth: 210,
     itemMargin: 5,
-    asNavFor: '#slider'
+    asNavFor: '#slider',
+    useCSS: false
   });
    // MAIN
   $('#slider').flexslider({
@@ -42,7 +43,9 @@ $(document).ready(function() {
     animationLoop: true,
     slideshow: true,
     slideshowSpeed: 3500,
-    sync: "#carousel"
+    sync: "#carousel",
+    useCSS: false
+
   });
 
   $('#slider-2, #slider-3').flexslider({
@@ -52,7 +55,8 @@ $(document).ready(function() {
   	animationLoop: true,
   	slideshowSpeed: 10000,
     minItems: 4,
-    maxItems: 6
+    maxItems: 6,
+    useCSS: false
   });
 
   $('.left-nav').on('click', function(){
