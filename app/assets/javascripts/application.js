@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require after_resize
 //= require_tree .
 //= require bootstrap.min
 //= require responsive
@@ -23,12 +24,30 @@
 $(document).ready(function() {
 
 
+
+
+
     $('#slider-2').flexslider({
       animation: "slide",
       animationLoop: false,
       itemWidth: 210
     });
  
+
+    $('#slider-2').flexslider({
+      animation: 'slide',
+      animationLoop: false,
+      itemWidth: $('#slider-2').width() / 4,
+      minItems: 4,
+      maxItems: 4,
+    })
+
+    $(window).resize(function(){
+      waitForFinalEvent( function(){
+        console.log('run');
+      }, 1, 'unique');
+    });
+
 
   // The slider being synced must be initialized first
   // CONTROLS
@@ -70,7 +89,6 @@ $(document).ready(function() {
     maxItems: 6,
     useCSS: false
   });
-*/
   $('#slider-2').flexslider({
     animation: 'fade',
     controlNav: false,
@@ -81,7 +99,6 @@ $(document).ready(function() {
     maxItems: 2,
     useCSS: false
   });
-
   $(window).resize(function(){
     $('#slider-2').data('flexslider').setOpts({        animationLoop: false
 
@@ -125,5 +142,5 @@ $(document).ready(function() {
     }
   });
 
-
+*/
 });
