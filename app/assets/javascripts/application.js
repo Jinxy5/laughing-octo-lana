@@ -44,7 +44,7 @@ $(document).ready(function() {
   function applyclass(num){
  //   $('#slider-2 .flex-viewport ul li:nth-child(' + num +')').addClass('no-margin');
  
- //   find_slide(num).addClass('no-margin');
+ // yay   find_slide(num).addClass('no-margin');
   }
 
 
