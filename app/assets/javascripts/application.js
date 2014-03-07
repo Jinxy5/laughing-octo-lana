@@ -21,6 +21,15 @@
 
 // Can also be used with $(document).ready()
 $(document).ready(function() {
+
+
+    $('#slider-2').flexslider({
+      animation: "slide",
+      animationLoop: false,
+      itemWidth: 210
+    });
+ 
+
   // The slider being synced must be initialized first
   // CONTROLS
 /*
