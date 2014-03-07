@@ -86,6 +86,7 @@ $(document).ready(function() {
     itemWidth: $('#slider-2').width() / 4,
     minItems: 4,
     maxItems: 4, 
+    move: 1,
     start: function(){
 
       $('#slider-2').resize();
