@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require after_resize
 //= require_tree .
 //= require bootstrap.min
@@ -29,7 +29,7 @@ $(document).ready(function() {
   });
 
   function set_slide_number(selector, integer){
-    selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer, move: 1, itemWidth: $('#slider-2').width() / 4 });
+    selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer });
     selector.flexslider(1);
   }
 
@@ -52,7 +52,13 @@ $(document).ready(function() {
   function breakpoints(){
       if ( Response.band(0, 768) )
       {
-        set_slide_number( $('#slider-2'), 1 )
+//        selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer, move: 1, itemWidth: $('#slider-2').width() / 4 });
+        
+        $('#slider-2').data('flexslider').setOpts({ minItems: 1, maxItems: 1 });
+        
+
+//        set_slide_number( $('#slider-2'), 1 )
+
       }
       else if ( Response.band(768, 992) )
       {
