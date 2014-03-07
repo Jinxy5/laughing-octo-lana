@@ -29,7 +29,8 @@ $(document).ready(function() {
   });
 
   function set_slide_number(selector, integer){
-    selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer });
+    selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer, move: 1, itemWidth: $('#slider-2').width() / 4 });
+    selector.flexslider(1);
   }
 
   function find_slide(num){
@@ -51,17 +52,14 @@ $(document).ready(function() {
   function breakpoints(){
       if ( Response.band(0, 768) )
       {
-        console.log('xs')
         set_slide_number( $('#slider-2'), 1 )
       }
       else if ( Response.band(768, 992) )
       {
-        console.log('sm')
         set_slide_number( $('#slider-2'), 4 )
       }
       else if ( Response.band(992, 1200) )
       {
-        console.log('md')
         set_slide_number( $('#slider-2'), 4 )
       }
       else if ( Response.band(1200) )
@@ -82,7 +80,6 @@ $(document).ready(function() {
     itemWidth: $('#slider-2').width() / 4,
     minItems: 4,
     maxItems: 4, 
-    move: 1,
     start: function(){
 
       $('#slider-2').resize();
@@ -121,10 +118,11 @@ $(document).ready(function() {
   $(window).resize(function(){
     clearTimeout(timer);
     timer = setTimeout( function(){
-      console.log('resize');
-      $('#slider-2').resize();
+//      console.log('resize');
+
       Response.resize( breakpoints() );
 
+      $('#slider-2').resize();
 
 
     }, 500)
