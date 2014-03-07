@@ -93,7 +93,7 @@ $(document).ready(function() {
       var last_slide,
           prev_last_slide = $('#slider-2').data('flexslider').minItems
       
-
+      breakpoints()
       applyclass(last_slide);
     },
     before: function(){
@@ -118,7 +118,8 @@ $(document).ready(function() {
     }
   })
 
-  Response.ready( breakpoints() ); 
+  Response.ready(  ); 
+
 
   var timer;
   $(window).resize(function(){
