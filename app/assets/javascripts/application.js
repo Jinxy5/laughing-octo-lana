@@ -22,7 +22,6 @@
 // Can also be used with $(document).ready()
 $(document).ready(function() {
   // The slider being synced must be initialized first
-
   // CONTROLS
   $('#carousel').flexslider({
     animation: "slide",
@@ -76,6 +75,8 @@ $(document).ready(function() {
 
 // 1200
 
+
+
   Response.resize(function() {
  
     if ( Response.band(0, 768) )
@@ -94,7 +95,7 @@ $(document).ready(function() {
     {
       console.log('large')
     }
-});
+  });
 
 
 });
