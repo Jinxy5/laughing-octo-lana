@@ -16,13 +16,14 @@
 //= require_tree .
 //= require bootstrap.min
 //= require responsive
-//= require jquery.flexslider
-// require jquery.flexslider-min
+//= require my_flex
+//
 
 // Can also be used with $(document).ready()
 $(document).ready(function() {
   // The slider being synced must be initialized first
   // CONTROLS
+/*
   $('#carousel').flexslider({
     animation: "slide",
     allow_resize: true,
@@ -34,7 +35,10 @@ $(document).ready(function() {
     asNavFor: '#slider',
     useCSS: false
   });
+
+*/
    // MAIN
+/*
   $('#slider').flexslider({
     animation: "fade",
     controlNav: false,
@@ -48,15 +52,37 @@ $(document).ready(function() {
   });
 
   $('#slider-2, #slider-3').flexslider({
-  	animation: 'slide',
+  	animation: 'fade',
   	controlNav: false,
   	directionNav: false,
   	animationLoop: true,
-  	slideshowSpeed: 10000,
+  	slideshowSpeed: 600,
     minItems: 4,
     maxItems: 6,
     useCSS: false
   });
+*/
+  $('#slider-2').flexslider({
+    animation: 'fade',
+    controlNav: false,
+    directionNav: false,
+    animationLoop: true,
+    slideshowSpeed: 1000,
+    minItems: 2,
+    maxItems: 2,
+    useCSS: false
+  });
+
+  $(window).resize(function(){
+    $('#slider-2').data('flexslider').setOpts({        animationLoop: false
+
+});
+
+//    console.log( $('#slider-2').data('flexslider').getOpts() );
+    $('#slider-2').flexslider();
+
+  });
+
 
   $('.left-nav').on('click', function(){
   	var slider = $(this).parent().find('.flexslider')
@@ -67,13 +93,6 @@ $(document).ready(function() {
   	var slider = $(this).parent().find('.flexslider')
  	slider.flexslider('next');
   });
-
-// < 768
-// 768
-
-// 992 
-
-// 1200
 
 
 
