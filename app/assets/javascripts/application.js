@@ -28,9 +28,46 @@ $(document).ready(function() {
     return window.getComputedStyle(document.body, ':before').content.replace(/",'/g, '') 
   }
 
+  function xsBreakpoint(){
+    console.log( 'switched to xs' );
+  }
+
+  function smBreakpoint(){
+    console.log( 'switched to sm' );
+
+  }
+
+  function mdBreakpoint(){
+    console.log( 'switched to md' );
+    
+  }
+
+  function lgBreakpoint(){
+    console.log( 'switched to lg' );
+  }
+
+  function launchBreakpoint(breakpoint){
+    switch( breakpoint ){
+      case 'xs':
+        xsBreakpoint();
+      break;
+      case 'sm':
+        smBreakpoint();
+      break;
+      case 'md':
+        mdBreakpoint();
+      break;
+      case 'lg':
+        lgBreakpoint();
+      break;
+    }
+  }
+
   // get the current breakpoint
   var currentBreakpoint = getBreakpoint();
-  var NewBreakpoint = ''
+
+  launchBreakpoint(currentBreakpoint);
+
   // after resize
   var timer;
   $(window).resize(function(){
@@ -44,21 +81,9 @@ $(document).ready(function() {
 
 
         if(newBreakpoint != currentBreakpoint){
-        
-          switch( newBreakpoint ){
-            case 'xs':
-              console.log( 'switched to xs' );
-            break;
-            case 'sm':
-              console.log( 'switched to sm' );
-            break;
-            case 'md':
-              console.log( 'switched to md' );
-            break;
-            case 'lg':
-              console.log( 'switched to lg' );
-            break;
-          }
+          
+          launchBreakpoint( newBreakpoint );
+
 
           currentBreakpoint = newBreakpoint
 
