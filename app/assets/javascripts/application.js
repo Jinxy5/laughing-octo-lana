@@ -23,7 +23,7 @@
 // Can also be used with $(document).ready()
 $(document).ready(function() {
   
-  find_slide_number();
+  Response.ready( breakpoints() ); 
 
   $('#slider-2').on('resize', function(event){
     event.stopPropagation();
@@ -47,32 +47,33 @@ $(document).ready(function() {
  //   find_slide(num).addClass('no-margin');
   }
 
-  function find_break_point(){
-    
-  }
 
-  function find_slide_number(){
-    Response.resize(function() {
-      console.log('FIRAH')
 
+  function breakpoints(){
       if ( Response.band(0, 768) )
       {
-        set_slide_number( $('#slider-2'), 1 )
+        console.log('xs')
+     //   set_slide_number( $('#slider-2'), 1 )
       }
       else if ( Response.band(768, 992) )
       {
-        set_slide_number( $('#slider-2'), 2 )
+        console.log('sm')
+   //     set_slide_number( $('#slider-2'), 2 )
       }
       else if ( Response.band(992, 1200) )
       {
-        set_slide_number( $('#slider-2'), 3 )
+        console.log('md')
+ //       set_slide_number( $('#slider-2'), 3 )
       }
       else if ( Response.band(1200) )
       {
-        set_slide_number( $('#slider-2'), 4 )
+        console.log('lg')
+ //       set_slide_number( $('#slider-2'), 4 )
       }
-    });
   }
+
+
+
 
   var all_sliders = []
 
@@ -83,7 +84,7 @@ $(document).ready(function() {
     minItems: 4,
     maxItems: 4, 
     start: function(){
-      find_slide_number();
+
       $('#slider-2').resize();
 
       var last_slide,
@@ -109,22 +110,23 @@ $(document).ready(function() {
        }
 
        deapplyclass(prev_last_slide);
-       applyclass(last_slide);
+       applyclass('last_slide');
 
     }
   })
-
 
 
   var timer;
   $(window).resize(function(){
     clearTimeout(timer);
     timer = setTimeout( function(){
-      console.log('resize');
-      $('#slider-2').resize();
+    //  console.log('resize');
+    //    break_points();
+      Response.resize( breakpoints() );
 
 
-    }, 500)
+
+    }, 1)
   });
 
 
