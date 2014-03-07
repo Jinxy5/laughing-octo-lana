@@ -30,6 +30,36 @@ $(document).ready(function() {
 
   function xsBreakpoint(){
     console.log( 'switched to xs' );
+
+    slidersTypeA.map(function( slider ){
+
+      if(initial == false ){
+        var sliderHtml = slider.html();
+        var sliderId = slider.attr('id');
+        var sliderParent = slider.parent();
+
+        slider.remove();
+        
+//        sliderParent.find('.slider-2').append('huzzzzzah'); 
+
+        sliderParent.append('<div id = "' + sliderId + '"></div>');
+
+        sliderParent.find('#slider-2').append('huzzzzzah'); 
+      }
+
+      slider.flexslider({
+        animation: 'slide',
+        animationLoop: false,
+        minItems: 1,
+        maxItems: 1,
+        move: 1,
+        controlNav: false
+      });
+
+    });
+    
+   
+
   }
 
   function smBreakpoint(){
@@ -49,6 +79,8 @@ $(document).ready(function() {
   function launchBreakpoint(breakpoint){
     switch( breakpoint ){
       case 'xs':
+
+
         xsBreakpoint();
       break;
       case 'sm':
@@ -61,12 +93,19 @@ $(document).ready(function() {
         lgBreakpoint();
       break;
     }
+
+    initial = false
   }
 
   // get the current breakpoint
   var currentBreakpoint = getBreakpoint();
+  var initial = true
+
+  var slidersTypeA = [$('#slider-2'), $('#slider-2')]
 
   launchBreakpoint(currentBreakpoint);
+
+
 
   // after resize
   var timer;
@@ -82,6 +121,7 @@ $(document).ready(function() {
 
         if(newBreakpoint != currentBreakpoint){
           
+
           launchBreakpoint( newBreakpoint );
 
 
@@ -92,7 +132,7 @@ $(document).ready(function() {
       //
     }, 10)
   });
-
+/*
   $('#slider-2').on('resize', function(event){
     event.stopPropagation();
   });
