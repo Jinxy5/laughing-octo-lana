@@ -23,7 +23,6 @@
 // Can also be used with $(document).ready()
 $(document).ready(function() {
   
-  Response.ready( breakpoints() ); 
 
   $('#slider-2').on('resize', function(event){
     event.stopPropagation();
@@ -53,22 +52,22 @@ $(document).ready(function() {
       if ( Response.band(0, 768) )
       {
         console.log('xs')
-     //   set_slide_number( $('#slider-2'), 1 )
+        set_slide_number( $('#slider-2'), 1 )
       }
       else if ( Response.band(768, 992) )
       {
         console.log('sm')
-   //     set_slide_number( $('#slider-2'), 2 )
+        set_slide_number( $('#slider-2'), 4 )
       }
       else if ( Response.band(992, 1200) )
       {
         console.log('md')
- //       set_slide_number( $('#slider-2'), 3 )
+        set_slide_number( $('#slider-2'), 4 )
       }
       else if ( Response.band(1200) )
       {
         console.log('lg')
- //       set_slide_number( $('#slider-2'), 4 )
+        set_slide_number( $('#slider-2'), 4 )
       }
   }
 
@@ -83,6 +82,7 @@ $(document).ready(function() {
     itemWidth: $('#slider-2').width() / 4,
     minItems: 4,
     maxItems: 4, 
+    move: 1,
     start: function(){
 
       $('#slider-2').resize();
@@ -100,13 +100,13 @@ $(document).ready(function() {
             prev_last_slide = $('#slider-2').data('flexslider').minItems
 
         var move = $('#slider-2').data('flexslider').move
+        
+        var prev_last_slide = last_slide
 
        if (direction == 'next') {
-           prev_last_slide = last_slide
            last_slide = last_slide + move 
        } else if ( direction == 'prev') {
-           prev_last_slide = prev_last_slide + move
-           last_slide = last_slide - move 
+          last_slide = last_slide - move 
        }
 
        deapplyclass(prev_last_slide);
@@ -115,18 +115,19 @@ $(document).ready(function() {
     }
   })
 
+  Response.ready( breakpoints() ); 
 
   var timer;
   $(window).resize(function(){
     clearTimeout(timer);
     timer = setTimeout( function(){
-    //  console.log('resize');
-    //    break_points();
+      console.log('resize');
+      $('#slider-2').resize();
       Response.resize( breakpoints() );
 
 
 
-    }, 1)
+    }, 500)
   });
 
 
