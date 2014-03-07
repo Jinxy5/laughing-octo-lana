@@ -645,6 +645,7 @@
         slider.vars[opt] = opts[opt];
       }
       slider.setup();
+      slider.flexslider();
 
     }
 

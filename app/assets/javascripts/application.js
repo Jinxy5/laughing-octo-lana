@@ -22,7 +22,51 @@
 
 // Can also be used with $(document).ready()
 $(document).ready(function() {
-  
+
+  function getBreakpoint(){
+    // also cleans the breakpoint (some browsers add inverted commas)
+    return window.getComputedStyle(document.body, ':before').content.replace(/",'/g, '') 
+  }
+
+  // get the current breakpoint
+  var currentBreakpoint = getBreakpoint();
+  var NewBreakpoint = ''
+  // after resize
+  var timer;
+  $(window).resize(function(){
+    clearTimeout(timer);
+    timer = setTimeout( function(){
+      // 1/4 second after resize prevents crashing the browser
+        var newBreakpoint = getBreakpoint(); 
+        
+          console.log( 'new: ' + newBreakpoint );
+          console.log( 'current: ' + currentBreakpoint );
+
+
+        if(newBreakpoint != currentBreakpoint){
+        
+          switch( newBreakpoint ){
+            case 'xs':
+              console.log( 'switched to xs' );
+            break;
+            case 'sm':
+              console.log( 'switched to sm' );
+            break;
+            case 'md':
+              console.log( 'switched to md' );
+            break;
+            case 'lg':
+              console.log( 'switched to lg' );
+            break;
+          }
+
+          currentBreakpoint = newBreakpoint
+
+
+        }
+      //
+    }, 10)
+  });
 
   $('#slider-2').on('resize', function(event){
     event.stopPropagation();
@@ -30,7 +74,7 @@ $(document).ready(function() {
 
   function set_slide_number(selector, integer){
     selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer });
-    
+    $('#slider-2').flexslider(1);
   }
 
   function find_slide(num){
@@ -56,9 +100,8 @@ $(document).ready(function() {
         
         $('#slider-2').data('flexslider').setOpts({ minItems: 1, maxItems: 1 });
 
-        console.log( $('#slider-2').getOpts )
 
-        $('#slider-2').flexslider();
+        $('#slider-2').flexslider(1);
 
 //        set_slide_number( $('#slider-2'), 1 )
 
@@ -91,7 +134,7 @@ $(document).ready(function() {
     minItems: 4,
     maxItems: 4, 
     itemMargin: 20,
-//    move: 1,
+    move: 1,
     start: function(){
 
       $('#slider-2').resize();
@@ -128,19 +171,9 @@ $(document).ready(function() {
   Response.ready(  ); 
 
 
-  var timer;
-  $(window).resize(function(){
-    clearTimeout(timer);
-    timer = setTimeout( function(){
-//      console.log('resize');
-
-      Response.resize( breakpoints() );
-
-      $('#slider-2').resize();
 
 
-    }, 500)
-  });
+ 
 
 
 /*

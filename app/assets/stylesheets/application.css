@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require breakpoints.css.scss
  *= require bootstrap.css
  *= require theme.css
  *= require font-awesome

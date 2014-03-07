@@ -1,0 +1,49 @@
+/* xs */
+body:before {  content: 'xs' }
+
+/* sm */
+@media all and (min-width: 768px){
+	body:before {  content: 'sm' }
+
+	.hot-panel li {
+    	margin-right: 20px;
+  	}
+
+	  .grips {
+	    background-color: yellow;
+	  }
+
+	  .last_slide {
+	    border: 5px solid red;
+	  }
+
+	  .navbar img {
+	    float: left;
+	  }
+
+	  .social a {
+	    margin: 0 4%;
+	  }
+
+	  .header-extra {
+	    float: left;
+	  }
+
+	  .authentication {
+	    float: left;
+	  }
+
+	  .social {
+	    float: left;
+	  }
+}
+
+/* md */
+@media all and (min-width: 992px){
+	body:before { content: 'md' }
+}
+
+/* lg */
+@media all and (min-width: 1200px){
+	body:before { content: 'lg' }
+}
