@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap.min
-
+//= require responsive
 //= require jquery.flexslider
 // require jquery.flexslider-min
 
@@ -68,6 +68,33 @@ $(document).ready(function() {
   	var slider = $(this).parent().find('.flexslider')
  	slider.flexslider('next');
   });
+
+// < 768
+// 768
+
+// 992 
+
+// 1200
+
+  Response.resize(function() {
+ 
+    if ( Response.band(0, 768) )
+    {
+       console.log('extra-small')
+    }
+    else if ( Response.band(768, 992) )
+    {
+      console.log('small')
+    }
+    else if ( Response.band(992, 1200) )
+    {
+       console.log('medium')
+    }
+    else if ( Response.band(1200) )
+    {
+      console.log('large')
+    }
+});
 
 
 });
