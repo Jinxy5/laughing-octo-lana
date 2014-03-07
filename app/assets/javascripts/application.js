@@ -70,7 +70,7 @@ $(document).ready(function() {
       }
       else if ( Response.band(1200) )
       {
-        console.log('lg')
+//        console.log('lg')
         set_slide_number( $('#slider-2'), 4 )
       }
   }
