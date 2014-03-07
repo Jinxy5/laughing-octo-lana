@@ -640,12 +640,13 @@
 
     // public methods
    // my mod
- //   vars = []
     slider.setOpts = function(opts) {
       for (var opt in opts) {
         slider.vars[opt] = opts[opt];
       }
       slider.setup();
+
+      slider.flexslider();
     }
 
     slider.getOpts = function() {

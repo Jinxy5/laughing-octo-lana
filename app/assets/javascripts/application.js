@@ -22,31 +22,174 @@
 
 // Can also be used with $(document).ready()
 $(document).ready(function() {
+  
+  find_slide_number();
 
+  $('#slider-2').on('resize', function(event){
+    event.stopPropagation();
+  });
 
+  function set_slide_number(selector, integer){
+    selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer });
+  }
 
+  function find_slide(num){
+//    return $('#slider-2 ul li:nth-child(' + num +')')
+  }
 
-
-    $('#slider-2').flexslider({
-      animation: "slide",
-      animationLoop: false,
-      itemWidth: 210
-    });
+  function deapplyclass(num){
+  //  $('#slider-2 .flex-viewport ul li:nth-child(' + num +')').removeClass('no-margin');
+  }
+  
+  function applyclass(num){
+ //   $('#slider-2 .flex-viewport ul li:nth-child(' + num +')').addClass('no-margin');
  
+ //   find_slide(num).addClass('no-margin');
+  }
 
-    $('#slider-2').flexslider({
-      animation: 'slide',
-      animationLoop: false,
-      itemWidth: $('#slider-2').width() / 4,
-      minItems: 4,
-      maxItems: 4,
-    })
+  function find_break_point(){
+    
+  }
 
+  function find_slide_number(){
+    Response.resize(function() {
+      console.log('FIRAH')
+
+      if ( Response.band(0, 768) )
+      {
+        set_slide_number( $('#slider-2'), 1 )
+      }
+      else if ( Response.band(768, 992) )
+      {
+        set_slide_number( $('#slider-2'), 2 )
+      }
+      else if ( Response.band(992, 1200) )
+      {
+        set_slide_number( $('#slider-2'), 3 )
+      }
+      else if ( Response.band(1200) )
+      {
+        set_slide_number( $('#slider-2'), 4 )
+      }
+    });
+  }
+
+  var all_sliders = []
+
+  $('#slider-2').flexslider({
+    animation: 'slide',
+    animationLoop: false,
+    itemWidth: $('#slider-2').width() / 4,
+    minItems: 4,
+    maxItems: 4, 
+    start: function(){
+      find_slide_number();
+      $('#slider-2').resize();
+
+      var last_slide,
+          prev_last_slide = $('#slider-2').data('flexslider').minItems
+      
+
+      applyclass(last_slide);
+    },
+    before: function(){
+        var direction = $('#slider-2').data('flexslider').direction
+
+        var last_slide,
+            prev_last_slide = $('#slider-2').data('flexslider').minItems
+
+        var move = $('#slider-2').data('flexslider').move
+
+       if (direction == 'next') {
+           prev_last_slide = last_slide
+           last_slide = last_slide + move 
+       } else if ( direction == 'prev') {
+           prev_last_slide = prev_last_slide + move
+           last_slide = last_slide - move 
+       }
+
+       deapplyclass(prev_last_slide);
+       applyclass(last_slide);
+
+    }
+  })
+
+
+
+  var timer;
+  $(window).resize(function(){
+    clearTimeout(timer);
+    timer = setTimeout( function(){
+      console.log('resize');
+      $('#slider-2').resize();
+
+
+    }, 500)
+  });
+
+
+/*
+    last_slide = 3 // min items
+    prev_last_slide = 3 // ;ast
+    move = 1 // move
+    
+    function deapplyclass(num){
+       $('.flexslider .slides li:nth-child(' + num +')').removeClass('no-margin');
+    }
+    
+    function applyclass(num){   
+      $('.flexslider .slides li:nth-child(' + num +')').addClass('no-margin');
+      
+  
+    }
+    
+    $('.flexslider').flexslider({
+        animation: "slide",
+        animationLoop: false,
+        itemWidth: 300,
+        itemMargin: 15,
+        minItems: 3,
+        move: 1,
+        controlNav: false,
+        start: function(){
+            applyclass(last_slide);
+        },
+        before: function (){
+      
+
+           direction = $('.flexslider').data('flexslider').direction
+
+           if (direction == 'next') {
+               prev_last_slide = last_slide
+               last_slide = last_slide + move 
+           } else if ( direction == 'prev') {
+               prev_last_slide = prev_last_slide + move
+               last_slide = last_slide - move 
+           }
+
+           deapplyclass(prev_last_slide);
+           applyclass(last_slide);
+
+        },
+        end: function () {
+        }
+*/
+
+/*
     $(window).resize(function(){
       waitForFinalEvent( function(){
-        console.log('run');
-      }, 1, 'unique');
+        console.log('run:' + $(window).width() );
+    /*  $('#slider-2').resize(); 
+      }, 1000, 'unique');
     });
+
+
+$(window).resize(function () {
+  waitForFinalEvent(function(){
+    console.log('whut?')
+    $('#slider-2').resize();
+  }, 1000, 'some unique string');
+});
 
 
   // The slider being synced must be initialized first
@@ -122,25 +265,7 @@ $(document).ready(function() {
 
 
 
-  Response.resize(function() {
- 
-    if ( Response.band(0, 768) )
-    {
-       console.log('extra-small')
-    }
-    else if ( Response.band(768, 992) )
-    {
-      console.log('small')
-    }
-    else if ( Response.band(992, 1200) )
-    {
-       console.log('medium')
-    }
-    else if ( Response.band(1200) )
-    {
-      console.log('large')
-    }
-  });
+
 
 */
 });
