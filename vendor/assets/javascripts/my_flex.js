@@ -646,7 +646,6 @@
       }
       slider.setup();
 
-      slider.flexslider();
     }
 
     slider.getOpts = function() {

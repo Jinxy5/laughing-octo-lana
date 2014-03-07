@@ -30,7 +30,7 @@ $(document).ready(function() {
 
   function set_slide_number(selector, integer){
     selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer });
-    selector.flexslider(1);
+    
   }
 
   function find_slide(num){
@@ -55,7 +55,10 @@ $(document).ready(function() {
 //        selector.data('flexslider').setOpts({ minItems: integer, maxItems: integer, move: 1, itemWidth: $('#slider-2').width() / 4 });
         
         $('#slider-2').data('flexslider').setOpts({ minItems: 1, maxItems: 1 });
-        
+
+        console.log( $('#slider-2').getOpts )
+
+        $('#slider-2').flexslider();
 
 //        set_slide_number( $('#slider-2'), 1 )
 
@@ -81,12 +84,14 @@ $(document).ready(function() {
   var all_sliders = []
 
   $('#slider-2').flexslider({
+    slideshow: false,
     animation: 'slide',
     animationLoop: false,
     itemWidth: $('#slider-2').width() / 4,
     minItems: 4,
     maxItems: 4, 
-    move: 1,
+    itemMargin: 20,
+//    move: 1,
     start: function(){
 
       $('#slider-2').resize();
@@ -94,6 +99,7 @@ $(document).ready(function() {
       var last_slide,
           prev_last_slide = $('#slider-2').data('flexslider').minItems
       
+
       breakpoints()
       applyclass(last_slide);
     },
