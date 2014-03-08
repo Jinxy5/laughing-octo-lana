@@ -62,6 +62,7 @@ $(document).ready(function() {
         }
 
         $(document).find( '#' + sliderId ).flexslider({
+          useCSS: false,
           slideshow: true,
           animation: 'slide',
           slideshowSpeed: 1000,
@@ -95,6 +96,7 @@ $(document).ready(function() {
         console.log( $(document).find( '#' + sliderId ).find() );
 
          $(document).find( '#' + sliderId ).flexslider({
+          useCSS: false,
           slideshow: true,
           animation: 'slide',
           slideshowSpeed: 1000,
@@ -128,6 +130,7 @@ $(document).ready(function() {
         console.log( $(document).find( '#' + sliderId ).find() );
 
          $(document).find( '#' + sliderId ).flexslider({
+          useCSS: false,
           slideshow: true,
           animation: 'slide',
           slideshowSpeed: 1000,
@@ -161,6 +164,7 @@ $(document).ready(function() {
         console.log( $(document).find( '#' + sliderId ).find() );
 
          $(document).find( '#' + sliderId ).flexslider({
+          useCSS: false,
           slideshow: true,
           animation: 'slide',
           slideshowSpeed: 1000,
