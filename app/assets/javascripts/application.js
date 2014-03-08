@@ -63,12 +63,13 @@ $(document).ready(function() {
 
         $(document).find( '#' + sliderId ).flexslider({
           useCSS: false,
-          slideshow: true,
+          slideshow: false,
           animation: 'slide',
           slideshowSpeed: 1000,
           animationLoop: true,
           itemMargin: 0,
           controlNav: false,
+          directionNav: false,
           move: 1,
           itemWidth: $(document).find( '#' + sliderId ).width() / 1,
           minItems: 1,
@@ -95,14 +96,16 @@ $(document).ready(function() {
 
         console.log( $(document).find( '#' + sliderId ).find() );
 
+         
          $(document).find( '#' + sliderId ).flexslider({
           useCSS: false,
-          slideshow: true,
+          slideshow: false,
           animation: 'slide',
           slideshowSpeed: 1000,
           animationLoop: true,
           itemMargin: 10,
           controlNav: false,
+          directionNav: false,
           move: 1,
           itemWidth: $(document).find( '#' + sliderId ).width() / 2,
           minItems: 4,
@@ -131,11 +134,12 @@ $(document).ready(function() {
 
          $(document).find( '#' + sliderId ).flexslider({
           useCSS: false,
-          slideshow: true,
+          slideshow: false,
           animation: 'slide',
           slideshowSpeed: 1000,
           animationLoop: true,
           itemMargin: 10,
+          directionNav: false,
           controlNav: false,
           move: 1,
           itemWidth: $(document).find( '#' + sliderId ).width() / 2,
@@ -154,8 +158,6 @@ $(document).ready(function() {
         var slider = $(document).find( '#' + typaASliderId )
         var sliderId = $(slider).attr('id');
 
-
-
         if(initial == false){
           console.log('resetting for lg');
           reappendSlider(sliderId)
@@ -165,10 +167,11 @@ $(document).ready(function() {
 
          $(document).find( '#' + sliderId ).flexslider({
           useCSS: false,
-          slideshow: true,
+          slideshow: false,
           animation: 'slide',
           slideshowSpeed: 1000,
           animationLoop: true,
+          directionNav: false,
           itemMargin: 10,
           controlNav: false,
           move: 1,
@@ -218,6 +221,26 @@ $(document).ready(function() {
 
   launchBreakpoint(currentBreakpoint);
 
+
+  typeASlidersIds.map( function( typaASliderId ){
+
+    var slider = $(document).find( '#' + typaASliderId ),
+        sliderParent = slider.parent().parent(),
+        sliderLeftNav = sliderParent.find( '.left-nav'),
+        sliderRightNav = sliderParent.find( '.right-nav')
+
+      sliderLeftNav.click(function(){
+        $(document).find( '#' + typaASliderId ).flexslider('prev');
+      });
+
+
+      sliderRightNav.click(function(){
+        $(document).find( '#' + typaASliderId ).flexslider('next');
+      });  
+
+  });
+
+       
 
 
   // after resize
@@ -442,7 +465,7 @@ $(window).resize(function () {
     controlNav: false,
     directionNav: false,
     animationLoop: true,
-    slideshow: true,
+    slideshow: false,
     slideshowSpeed: 3500,
     sync: "#carousel",
     useCSS: false
