@@ -56,7 +56,7 @@ $(document).ready(function() {
 
 
         if(initial == false){
-          console.log('reseting for xs');
+          console.log('resetting for xs');
 
           reappendSlider(sliderId)
         }
@@ -67,6 +67,7 @@ $(document).ready(function() {
           slideshowSpeed: 1000,
           animationLoop: true,
           itemMargin: 0,
+          controlNav: false,
           move: 1,
           itemWidth: $(document).find( '#' + sliderId ).width() / 1,
           minItems: 1,
@@ -87,7 +88,7 @@ $(document).ready(function() {
 
 
         if(initial == false){
-          console.log('reseting for sm');
+          console.log('resetting for sm');
           reappendSlider(sliderId)
         }
 
@@ -99,6 +100,7 @@ $(document).ready(function() {
           slideshowSpeed: 1000,
           animationLoop: true,
           itemMargin: 10,
+          controlNav: false,
           move: 1,
           itemWidth: $(document).find( '#' + sliderId ).width() / 2,
           minItems: 4,
@@ -109,11 +111,69 @@ $(document).ready(function() {
   }
 
   function mdBreakpoint(){
-    
+         typeASlidersIds.map( function( typaASliderId ){
+        
+
+
+        var slider = $(document).find( '#' + typaASliderId )
+        var sliderId = $(slider).attr('id');
+
+
+
+        if(initial == false){
+          console.log('resetting for md');
+          reappendSlider(sliderId)
+        }
+
+        console.log( $(document).find( '#' + sliderId ).find() );
+
+         $(document).find( '#' + sliderId ).flexslider({
+          slideshow: true,
+          animation: 'slide',
+          slideshowSpeed: 1000,
+          animationLoop: true,
+          itemMargin: 10,
+          controlNav: false,
+          move: 1,
+          itemWidth: $(document).find( '#' + sliderId ).width() / 2,
+          minItems: 4,
+          maxItems: 4, 
+        });      
+
+    });
   }
 
   function lgBreakpoint(){
+     typeASlidersIds.map( function( typaASliderId ){
+        
 
+
+        var slider = $(document).find( '#' + typaASliderId )
+        var sliderId = $(slider).attr('id');
+
+
+
+        if(initial == false){
+          console.log('resetting for lg');
+          reappendSlider(sliderId)
+        }
+
+        console.log( $(document).find( '#' + sliderId ).find() );
+
+         $(document).find( '#' + sliderId ).flexslider({
+          slideshow: true,
+          animation: 'slide',
+          slideshowSpeed: 1000,
+          animationLoop: true,
+          itemMargin: 10,
+          controlNav: false,
+          move: 1,
+          itemWidth: $(document).find( '#' + sliderId ).width() / 2,
+          minItems: 4,
+          maxItems: 4, 
+        });      
+
+    });
   }
 
   function launchBreakpoint(breakpoint){
@@ -174,7 +234,7 @@ $(document).ready(function() {
 
           launchBreakpoint( newBreakpoint );
 
-          lastBreakpoint = currentBreakpoint
+        //  lastBreakpoint = currentBreakpoint
           currentBreakpoint = newBreakpoint
 
 
