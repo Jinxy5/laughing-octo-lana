@@ -64,12 +64,13 @@ $(document).ready(function() {
         $(document).find( '#' + sliderId ).flexslider({
           slideshow: true,
           animation: 'slide',
+          slideshowSpeed: 1000,
           animationLoop: true,
-          itemWidth: $('#slider-2').width() / 2,
-          minItems: 3,
-          maxItems: 3, 
-          itemMargin: 20,
-          move: 1
+          itemMargin: 0,
+          move: 1,
+          itemWidth: $(document).find( '#' + sliderId ).width() / 1,
+          minItems: 1,
+          maxItems: 1, 
         });      
     });
   }
@@ -78,7 +79,6 @@ $(document).ready(function() {
 
       typeASlidersIds.map( function( typaASliderId ){
         
-        $(document).find( '#' + typaASliderId ).resize();
 
 
         var slider = $(document).find( '#' + typaASliderId )
@@ -91,17 +91,18 @@ $(document).ready(function() {
           reappendSlider(sliderId)
         }
 
-        console.log( $(document).find( '#' + sliderId ) );
+        console.log( $(document).find( '#' + sliderId ).find() );
 
          $(document).find( '#' + sliderId ).flexslider({
-          slideshow: false,
+          slideshow: true,
           animation: 'slide',
           slideshowSpeed: 1000,
           animationLoop: true,
           itemMargin: 10,
+          move: 1,
           itemWidth: $(document).find( '#' + sliderId ).width() / 2,
-          minItems: 2,
-          maxItems: 2, 
+          minItems: 4,
+          maxItems: 4, 
         });      
 
     });
@@ -163,6 +164,9 @@ $(document).ready(function() {
       // 1/4 second after resize prevents crashing the browser
         var newBreakpoint = getBreakpoint(); 
  
+        typeASlidersIds.map( function( typaASliderId ){
+          $(document).find( '#' + typaASliderId ).resize();
+        });  
 
 
         if(newBreakpoint != currentBreakpoint){
