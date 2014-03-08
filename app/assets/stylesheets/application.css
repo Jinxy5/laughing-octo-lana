@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require my_flexslider_override.css
  *= require_tree .
  *= require focal-point.scss
  *= require breakpoints.css.scss
@@ -16,7 +17,7 @@
  *= require theme.css
  *= require font-awesome
  *= require bootstrap_overrides.css
- *= require flexslider.css
+ *= require my-flexslider.css
  */
 
 .no-margin {
