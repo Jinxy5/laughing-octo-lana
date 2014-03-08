@@ -28,44 +28,37 @@ $(document).ready(function() {
     return window.getComputedStyle(document.body, ':before').content.replace(/",'/g, '') 
   }
 
-  function reappendSlider(slider){
-    var sliderHtml = slider.html();
-    
-    console.log(slider)
-    $('#slider-2').remove();   
+  function reappendSlider(sliderId){
+
+    var slider =  $(document).find( '#' + sliderId )
+    var sliderParent = $(document).find( '#' + slider.parent().attr('id') );
+    var sliderHtml = $(slider).html(); 
+      
 
 
-    sliderParent.append('<div id = "' + sliderId + '"></div>');
-    sliderParent.find('#' + sliderId ).append( sliderHtml ); 
+    slider.remove();   
 
+    sliderParent.append('<div id = "' +  sliderId + '"></div>');
+    $(document).find( '#' + sliderId ).append( sliderHtml );
 
   }
 
+
+
   function xsBreakpoint(){
 
-      slidersTypeA.map( function( DomSliderTypeA ){
+      typeASlidersIds.map( function( typaASliderId ){
             
 
-        var slider = $(document).find( '#' + DomSliderTypeA )
+        var slider = $(document).find( '#' + typaASliderId )
         var sliderId = slider.attr('id');
-        var sliderParent = slider.parent();
 
 
 
         if(initial == false){
-
           console.log('reseting for xs');
 
-
-          var sliderHtml = $(slider).html(); 
-
-
-         $(document).find( '#' + sliderId ).remove();   
-
-
-
-          sliderParent.append('<div id = "' +  sliderId + '"></div>');
-          $(document).find( '#' + sliderId ).append( sliderHtml );
+          reappendSlider(sliderId)
         }
 
         $(document).find( '#' + sliderId ).flexslider({
@@ -73,8 +66,8 @@ $(document).ready(function() {
           animation: 'slide',
           animationLoop: true,
           itemWidth: $('#slider-2').width() / 2,
-          minItems: 2,
-          maxItems: 2, 
+          minItems: 3,
+          maxItems: 3, 
           itemMargin: 20,
           move: 1
         });      
@@ -83,42 +76,34 @@ $(document).ready(function() {
 
   function smBreakpoint(){
 
-      slidersTypeA.map( function( DomSliderTypeA ){
-            
+      typeASlidersIds.map( function( typaASliderId ){
+        
+        $(document).find( '#' + typaASliderId ).resize();
 
-        var slider = $(document).find( '#' + DomSliderTypeA )
+
+        var slider = $(document).find( '#' + typaASliderId )
         var sliderId = $(slider).attr('id');
-        var sliderParent = $(slider).parent();
 
 
 
         if(initial == false){
-
           console.log('reseting for sm');
-          var sliderHtml = $(slider).html(); 
-
-
-          $(document).find( '#' + sliderId ).remove();   
-
-
-
-
-          sliderParent.append('<div id = "' +  sliderId + '"></div>');
-          $(document).find( '#' + sliderId ).append( sliderHtml );
-
+          reappendSlider(sliderId)
         }
 
+        console.log( $(document).find( '#' + sliderId ) );
+
          $(document).find( '#' + sliderId ).flexslider({
-          slideshow: true,
+          slideshow: false,
           animation: 'slide',
-          slideshowSpeed: 100,
+          slideshowSpeed: 1000,
           animationLoop: true,
-          itemWidth: $('#slider-2').width() / 2,
+          itemMargin: 10,
+          itemWidth: $(document).find( '#' + sliderId ).width() / 2,
           minItems: 2,
           maxItems: 2, 
-          itemMargin: 20,
-          move: 1
         });      
+
     });
   }
 
@@ -131,8 +116,9 @@ $(document).ready(function() {
   }
 
   function launchBreakpoint(breakpoint){
-    
+
   
+
 
     switch( breakpoint ){
       case 'xs':
@@ -152,24 +138,18 @@ $(document).ready(function() {
     initial = false
   }
 
-  var slidersTypeA = []
+  var typeASlidersIds = []
 
-  $('.sliderTypeA').each(function( key, sliderTypeA ){
-    slidersTypeA.push( $(sliderTypeA).attr('id') );
+  $('.sliderTypeA').each(function( key, sliderTypeAId ){
+    typeASlidersIds.push( $(sliderTypeAId).attr('id') );
   });
-
-  console.log( '*-*-*-')
-  console.log( slidersTypeA );
 
   // get the current breakpoint
   var currentBreakpoint = getBreakpoint();
   var initial = true
 
-
-
-  
- // slidersTypeA.push( $('.sliderTypeA') )
-
+ 
+  // typeASlidersIds.push( $('.sliderTypeA') )
 
   launchBreakpoint(currentBreakpoint);
 
@@ -196,7 +176,7 @@ $(document).ready(function() {
 
         }
       //
-    }, 10)
+    }, 250)
   });
 /*
   $('#slider-2').on('resize', function(event){

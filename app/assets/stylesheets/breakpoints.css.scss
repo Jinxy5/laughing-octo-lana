@@ -1,5 +1,7 @@
 /* xs */
 body:before {  content: 'xs' }
+.hot-panel li {
+}
 
 /* sm */
 @media all and (min-width: 768px){
@@ -24,6 +26,11 @@ body:before {  content: 'xs' }
 	.social {
     	float: left;
   	}
+
+
+  .hot-panel li {
+  	margin-right: 10px;
+  }
 }
 
 /* md */
