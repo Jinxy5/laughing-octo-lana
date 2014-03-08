@@ -56,7 +56,7 @@ $(document).ready(function() {
 
 
         if(initial == false){
-          console.log('resetting for xs');
+         // console.log('resetting for xs');
 
           reappendSlider(sliderId)
         }
@@ -90,11 +90,11 @@ $(document).ready(function() {
 
 
         if(initial == false){
-          console.log('resetting for sm');
+         // console.log('resetting for sm');
           reappendSlider(sliderId)
         }
 
-        console.log( $(document).find( '#' + sliderId ).find() );
+       // console.log( $(document).find( '#' + sliderId ).find() );
 
          
          $(document).find( '#' + sliderId ).flexslider({
@@ -126,11 +126,11 @@ $(document).ready(function() {
 
 
         if(initial == false){
-          console.log('resetting for md');
+         // console.log('resetting for md');
           reappendSlider(sliderId)
         }
 
-        console.log( $(document).find( '#' + sliderId ).find() );
+       // console.log( $(document).find( '#' + sliderId ).find() );
 
          $(document).find( '#' + sliderId ).flexslider({
           useCSS: false,
@@ -159,11 +159,11 @@ $(document).ready(function() {
         var sliderId = $(slider).attr('id');
 
         if(initial == false){
-          console.log('resetting for lg');
+         // console.log('resetting for lg');
           reappendSlider(sliderId)
         }
 
-        console.log( $(document).find( '#' + sliderId ).find() );
+       // console.log( $(document).find( '#' + sliderId ).find() );
 
          $(document).find( '#' + sliderId ).flexslider({
           useCSS: false,
@@ -257,7 +257,7 @@ $(document).ready(function() {
 
 
         if(newBreakpoint != currentBreakpoint){
-          console.log('*');
+         // console.log('*');
 
           launchBreakpoint( newBreakpoint );
 
@@ -318,7 +318,7 @@ $(document).ready(function() {
       }
       else if ( Response.band(1200) )
       {
-//        console.log('lg')
+//       // console.log('lg')
         set_slide_number( $('#slider-2'), 4 )
       }
   }
@@ -428,7 +428,7 @@ $(document).ready(function() {
 /*
     $(window).resize(function(){
       waitForFinalEvent( function(){
-        console.log('run:' + $(window).width() );
+       // console.log('run:' + $(window).width() );
     /*  $('#slider-2').resize(); 
       }, 1000, 'unique');
     });
@@ -436,7 +436,7 @@ $(document).ready(function() {
 
 $(window).resize(function () {
   waitForFinalEvent(function(){
-    console.log('whut?')
+   // console.log('whut?')
     $('#slider-2').resize();
   }, 1000, 'some unique string');
 });
@@ -497,7 +497,7 @@ $(window).resize(function () {
 
 });
 
-//    console.log( $('#slider-2').data('flexslider').getOpts() );
+//   // console.log( $('#slider-2').data('flexslider').getOpts() );
     $('#slider-2').flexslider();
 
   });
