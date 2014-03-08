@@ -28,59 +28,113 @@ $(document).ready(function() {
     return window.getComputedStyle(document.body, ':before').content.replace(/",'/g, '') 
   }
 
+  function reappendSlider(slider){
+    var sliderHtml = slider.html();
+    
+    console.log(slider)
+    $('#slider-2').remove();   
+
+
+    sliderParent.append('<div id = "' + sliderId + '"></div>');
+    sliderParent.find('#' + sliderId ).append( sliderHtml ); 
+
+
+  }
+
   function xsBreakpoint(){
-    console.log( 'switched to xs' );
 
-    slidersTypeA.map(function( slider ){
+      slidersTypeA.map( function( DomSliderTypeA ){
+            
 
-      if(initial == false ){
-        var sliderHtml = slider.html();
+        var slider = $(document).find( '#' + DomSliderTypeA )
         var sliderId = slider.attr('id');
         var sliderParent = slider.parent();
 
-        slider.remove();
-        
-//        sliderParent.find('.slider-2').append('huzzzzzah'); 
 
-        sliderParent.append('<div id = "' + sliderId + '"></div>');
 
-        sliderParent.find('#slider-2').append('huzzzzzah'); 
-      }
+        if(initial == false){
 
-      slider.flexslider({
-        animation: 'slide',
-        animationLoop: false,
-        minItems: 1,
-        maxItems: 1,
-        move: 1,
-        controlNav: false
-      });
+          console.log('reseting for xs');
 
+
+          var sliderHtml = $(slider).html(); 
+
+
+         $(slider).remove();   
+
+
+
+          sliderParent.append('<div id = "' +  sliderId + '"></div>');
+          $(document).find( '#' + sliderId ).append( sliderHtml );
+        }
+
+        $(document).find( '#' + sliderId ).flexslider({
+          slideshow: true,
+          animation: 'fade',
+          animationLoop: true,
+          itemWidth: $('#slider-2').width() / 2,
+          minItems: 2,
+          maxItems: 2, 
+          itemMargin: 20,
+          move: 1
+        });      
     });
-    
-   
-
   }
 
   function smBreakpoint(){
-    console.log( 'switched to sm' );
 
+      slidersTypeA.map( function( DomSliderTypeA ){
+            
+
+        var slider = $(document).find( '#' + DomSliderTypeA )
+        var sliderId = $(slider).attr('id');
+        var sliderParent = $(slider).parent();
+
+
+
+        if(initial == false){
+
+          console.log('reseting for sm');
+          var sliderHtml = $(slider).html(); 
+
+
+          $(slider).remove();   
+
+
+
+
+          sliderParent.append('<div id = "' +  sliderId + '"></div>');
+          $(document).find( '#' + sliderId ).append( sliderHtml );
+
+        }
+
+         $(document).find( '#' + sliderId ).flexslider({
+          slideshow: true,
+          animation: 'slide',
+          animationLoop: true,
+          itemWidth: $('#slider-2').width() / 2,
+          minItems: 2,
+          maxItems: 2, 
+          itemMargin: 20,
+          move: 1
+        });      
+    });
   }
 
   function mdBreakpoint(){
-    console.log( 'switched to md' );
     
   }
 
   function lgBreakpoint(){
-    console.log( 'switched to lg' );
+
   }
 
   function launchBreakpoint(breakpoint){
+    
+  
+
     switch( breakpoint ){
       case 'xs':
-
-
         xsBreakpoint();
       break;
       case 'sm':
@@ -97,11 +151,24 @@ $(document).ready(function() {
     initial = false
   }
 
+  var slidersTypeA = []
+
+  $('.sliderTypeA').each(function( key, sliderTypeA ){
+    slidersTypeA.push( $(sliderTypeA).attr('id') );
+  });
+
+  console.log( '*-*-*-')
+  console.log( slidersTypeA );
+
   // get the current breakpoint
   var currentBreakpoint = getBreakpoint();
   var initial = true
 
-  var slidersTypeA = [$('#slider-2'), $('#slider-2')]
+
+
+  
+ // slidersTypeA.push( $('.sliderTypeA') )
+
 
   launchBreakpoint(currentBreakpoint);
 
@@ -114,17 +181,15 @@ $(document).ready(function() {
     timer = setTimeout( function(){
       // 1/4 second after resize prevents crashing the browser
         var newBreakpoint = getBreakpoint(); 
-        
-          console.log( 'new: ' + newBreakpoint );
-          console.log( 'current: ' + currentBreakpoint );
+ 
 
 
         if(newBreakpoint != currentBreakpoint){
-          
+          console.log('*');
 
           launchBreakpoint( newBreakpoint );
 
-
+          lastBreakpoint = currentBreakpoint
           currentBreakpoint = newBreakpoint
 
 

@@ -5,37 +5,25 @@ body:before {  content: 'xs' }
 @media all and (min-width: 768px){
 	body:before {  content: 'sm' }
 
-	.hot-panel li {
-    	margin-right: 20px;
+  	.navbar img {
+    	float: left;
   	}
 
-	  .grips {
-	    background-color: yellow;
-	  }
+  	.social a {
+    	margin: 0 4%;
+  	}
 
-	  .last_slide {
-	    border: 5px solid red;
-	  }
+  	.header-extra {
+    	float: left;
+  	}
 
-	  .navbar img {
-	    float: left;
-	  }
+  	.authentication {
+    	float: left;
+  	}
 
-	  .social a {
-	    margin: 0 4%;
-	  }
-
-	  .header-extra {
-	    float: left;
-	  }
-
-	  .authentication {
-	    float: left;
-	  }
-
-	  .social {
-	    float: left;
-	  }
+	.social {
+    	float: left;
+  	}
 }
 
 /* md */
