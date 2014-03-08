@@ -25,7 +25,7 @@ $(document).ready(function() {
 
   function getBreakpoint(){
     // also cleans the breakpoint (some browsers add inverted commas)
-    return window.getComputedStyle(document.body, ':before').content.replace(/'/g, '') .replace(/"/g, '')
+    return window.getComputedStyle(document.body, ':before').content.replace(/.*(xs|sm|md|lg).*/g, '$1');
   }
 
   function reappendSlider(sliderId){
