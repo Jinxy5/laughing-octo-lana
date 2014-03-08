@@ -60,7 +60,7 @@ $(document).ready(function() {
           var sliderHtml = $(slider).html(); 
 
 
-         $(slider).remove();   
+         $(document).find( '#' + sliderId ).remove();   
 
 
 
@@ -70,7 +70,7 @@ $(document).ready(function() {
 
         $(document).find( '#' + sliderId ).flexslider({
           slideshow: true,
-          animation: 'fade',
+          animation: 'slide',
           animationLoop: true,
           itemWidth: $('#slider-2').width() / 2,
           minItems: 2,
@@ -98,7 +98,7 @@ $(document).ready(function() {
           var sliderHtml = $(slider).html(); 
 
 
-          $(slider).remove();   
+          $(document).find( '#' + sliderId ).remove();   
 
 
 
@@ -111,6 +111,7 @@ $(document).ready(function() {
          $(document).find( '#' + sliderId ).flexslider({
           slideshow: true,
           animation: 'slide',
+          slideshowSpeed: 100,
           animationLoop: true,
           itemWidth: $('#slider-2').width() / 2,
           minItems: 2,
