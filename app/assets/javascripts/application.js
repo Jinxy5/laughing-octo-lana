@@ -51,7 +51,7 @@ $(document).ready(function() {
 
   function xsBreakpoint(){
 
-      typeASlidersIds.map( function( typaASliderId ){
+      $.map( typeASlidersIds, function( typaASliderId ){
             
 
         var slider = $(document).find( '#' + typaASliderId )
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   function smBreakpoint(){
 
-      typeASlidersIds.map( function( typaASliderId ){
+      $.map( typeASlidersIds, function( typaASliderId ){
         
 
 
@@ -120,7 +120,7 @@ $(document).ready(function() {
   }
 
   function mdBreakpoint(){
-         typeASlidersIds.map( function( typaASliderId ){
+         $.map( typeASlidersIds, function( typaASliderId ){
         
 
 
@@ -155,7 +155,7 @@ $(document).ready(function() {
   }
 
   function lgBreakpoint(){
-     typeASlidersIds.map( function( typaASliderId ){
+     $.map( typeASlidersIds, function( typaASliderId ){
         
 
 
@@ -226,7 +226,7 @@ $(document).ready(function() {
   launchBreakpoint(currentBreakpoint);
 
 
-  typeASlidersIds.map( function( typaASliderId ){
+  $.map( typeASlidersIds, function( typaASliderId ){
 
     var slider = $(document).find( '#' + typaASliderId ),
         sliderParent = slider.parent().parent(),
@@ -255,7 +255,7 @@ $(document).ready(function() {
       // 1/4 second after resize prevents crashing the browser
         var newBreakpoint = getBreakpoint(); 
  
-        typeASlidersIds.map( function( typaASliderId ){
+        $.map( typeASlidersIds, function( typaASliderId ){
           $(document).find( '#' + typaASliderId ).resize();
         });  
 
