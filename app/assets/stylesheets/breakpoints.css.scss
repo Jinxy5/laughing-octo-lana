@@ -1,11 +1,13 @@
 /* xs */
-body:before {  content: 'xs' }
+#viewport {  font-size: 1px }
+
+
 .hot-panel li {
 }
 
 /* sm */
 @media all and (min-width: 768px){
-	body:before {  content: 'sm' }
+  #viewport {  font-size: 2px }
 
   	.navbar img {
     	float: left;
@@ -35,10 +37,10 @@ body:before {  content: 'xs' }
 
 /* md */
 @media all and (min-width: 992px){
-	body:before { content: 'md' }
+  #viewport {  font-size: 3px }
 }
 
 /* lg */
 @media all and (min-width: 1200px){
-	body:before { content: 'lg' }
+  #viewport {  font-size: 4px }
 }

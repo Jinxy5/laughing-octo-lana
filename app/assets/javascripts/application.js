@@ -23,10 +23,15 @@
 // Can also be used with $(document).ready()
 $(document).ready(function() {
 
+  console.log('------:');
+  console.log( getBreakpoint() );
+
   function getBreakpoint(){
     // also cleans the breakpoint (some browsers add inverted commas)
-    return window.getComputedStyle(document.body, ':before').content.toString().replace(/.*(xs|sm|md|lg).*/g, '$1');
+    return $('#viewport').css('font-size').replace(/.*(1|2|3|4).*/g, '$1');
   }
+
+
 
   function reappendSlider(sliderId){
 
@@ -189,16 +194,16 @@ $(document).ready(function() {
 
 
     switch( breakpoint ){
-      case 'xs':
+      case '1':
         xsBreakpoint();
       break;
-      case 'sm':
+      case '2':
         smBreakpoint();
       break;
-      case 'md':
+      case '3':
         mdBreakpoint();
       break;
-      case 'lg':
+      case '4':
         lgBreakpoint();
       break;
     }
