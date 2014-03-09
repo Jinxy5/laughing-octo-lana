@@ -51,7 +51,7 @@ $(document).ready(function() {
 
   function xsBreakpoint(){
 
-      $.map( typeASlidersIds, function( typaASliderId ){
+      jQuery.map( typeASlidersIds, function( typaASliderId ){
             
 
         var slider = $(document).find( '#' + typaASliderId )
