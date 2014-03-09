@@ -7,9 +7,17 @@ Bloodbikeswales::Application.routes.draw do
 
    get '/home', to: 'splash#index'
    get '/donate', to: 'splash#donate'
+
+   #events news
    get '/news', to: 'splash#news'
    get '/events', to: 'splash#events'
-   get '/new-site', to: 'splash#new_site'
+
+   # events
+   get '/event_1', to: 'splash#event_1'
+
+   #news
+   get '/news_1', to: 'splash#news_1'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

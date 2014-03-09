@@ -1,6 +1,9 @@
 /* xs */
 #viewport {  font-size: 1px }
 
+.donate-well .donate {
+  font-size: 1.2em !important; 
+}
 
 .hot-panel li {
 }
@@ -8,6 +11,8 @@
 /* sm */
 @media all and (min-width: 768px){
   #viewport {  font-size: 2px }
+
+
 
   	.navbar img {
     	float: left;
