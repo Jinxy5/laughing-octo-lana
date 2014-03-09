@@ -23,8 +23,7 @@
 // Can also be used with $(document).ready()
 $(document).ready(function() {
 
-  console.log('------:');
-  console.log( getBreakpoint() );
+
 
   function getBreakpoint(){
     // also cleans the breakpoint (some browsers add inverted commas)
