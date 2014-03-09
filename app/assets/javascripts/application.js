@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= 
+//= require jquery1.11
 // require turbolinks
 //= require after_resize
 //= require_tree .
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
   function xsBreakpoint(){
 
-      jQuery.map( typeASlidersIds, function( typaASliderId ){
+      $.map( typeASlidersIds, function( typaASliderId ){
             
 
         var slider = $(document).find( '#' + typaASliderId )
