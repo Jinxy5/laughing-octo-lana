@@ -16,7 +16,6 @@
 //= require after_resize
 //= require_tree .
 //= require bootstrap.min
-//= require responsive
 //= require my_flex
 //
 
