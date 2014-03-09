@@ -249,7 +249,7 @@ $(document).ready(function() {
   $(window).resize(function(){
     clearTimeout(timer);
     timer = setTimeout( function(){
-      // below is run every 1/4 or a second!
+      // below is run every 1/4 of a second!
         var newBreakpoint = getBreakpoint(); 
  
         $.map( typeASlidersIds, function( typaASliderId ){
@@ -258,14 +258,13 @@ $(document).ready(function() {
 
 
         if(newBreakpoint != currentBreakpoint){
-         // console.log('*');
 
           launchBreakpoint( newBreakpoint );
 
         //  lastBreakpoint = currentBreakpoint
           currentBreakpoint = newBreakpoint
         }
-      // above is run every 1/4 or a second! 
+      // above is run every 1/4 of a second! 
     }, 250)
   });
 });
