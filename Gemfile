@@ -6,7 +6,10 @@ gem 'font-awesome-rails'
 gem 'rails_12factor', group: :production
 
 gem 'faker'
-
+gem 'nokogiri'
+gem 'capybara'
+gem 'selenium-webdriver'
+#gem 'open-uri'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 

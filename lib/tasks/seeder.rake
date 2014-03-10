@@ -1,5 +1,4 @@
-namespace :db do 
-
+namespace :scraper do 
 	namespace :demo_seed do
 		desc 'seed all tables'
 		task all: ['cause', 'recital', 'event']
@@ -37,5 +36,8 @@ namespace :db do
 				end
 			end
 		end
+	end
+
+	namespace :true_seed do
 	end
 end
