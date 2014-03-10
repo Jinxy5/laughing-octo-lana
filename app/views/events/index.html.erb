@@ -1,0 +1,46 @@
+<style>
+.inner {
+   background-color: red;
+}
+</style>
+
+<% @events.in_groups_of(3, false).each do |group| %>
+  
+  <div class = 'row'>
+
+    <% group.each do |event| %>
+
+      <div class = 'col-sm-4'>
+        <div class = 'inner'>
+
+          <div class="cropper-container">
+              <div class="image-container" style='background-image: url(<%= image_path('6.jpg') %>)'></div>
+          </div>
+          
+      
+
+         <div class = 'panel-info'>
+            <div class = 'hot-panel-info'>
+              <a class = 'date'> <span class = 'fa fa-calendar-o'></span> <%= event.startdate.strftime('%b %y %y') %> </a>
+              <h3> <%= event.title %> </h3>
+              <p> <%= truncate(event.content, length: 120) %> </p>
+            </div>
+
+            <div class = 'donation-info'>
+              <div class = 'actions'>
+                <%= link_to 'More Details', event, class: 'btn btn-danger btn-xs' %> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+
+    
+
+
+
+<% end %>
