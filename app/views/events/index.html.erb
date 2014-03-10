@@ -1,12 +1,8 @@
-<style>
-.inner {
-   background-color: red;
-}
-</style>
+
 
 <% @events.in_groups_of(3, false).each do |group| %>
   
-  <div class = 'row'>
+  <div class = 'index-row row'>
 
     <% group.each do |event| %>
 
@@ -21,8 +17,8 @@
 
          <div class = 'panel-info'>
             <div class = 'hot-panel-info'>
-              <a class = 'date'> <span class = 'fa fa-calendar-o'></span> <%= event.startdate.strftime('%b %y %y') %> </a>
-              <h3> <%= event.title %> </h3>
+              <a class = 'date'> <span class = 'fa fa-calendar-o'></span> <%= event.startdate.strftime('%b %m %y') %> </a>
+              <h3> <%= truncate(event.title, length: 80) %> </h3>
               <p> <%= truncate(event.content, length: 120) %> </p>
             </div>
 

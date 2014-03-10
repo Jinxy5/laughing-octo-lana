@@ -1,7 +1,7 @@
 
 <% @recitals.in_groups_of(3, false).each do |group| %>
   
-  <div class = 'row'>
+  <div class = 'index-row row'>
 
     <% group.each do |recital| %>
 
@@ -14,8 +14,8 @@
                                         
                       <div class = 'panel-info'>
                       <div class = 'hot-panel-info'>
-                        <h3> <%= recital.title %> </h3>
-                        <p> <%=  truncate(recital.content, length: 150) %></p>
+                        <h3> <%= truncate(recital.title, length: 40) %> </h3>
+                        <p> <%=  truncate(recital.content, length: 80) %></p>
                       </div>
 
                       <div class = 'donation-info'>

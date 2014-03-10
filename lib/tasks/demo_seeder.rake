@@ -10,7 +10,7 @@ namespace :db do
 			Cause.delete_all
 
 			10.times do |count|
-				if Cause.create(title: Faker::Lorem.sentence(word_count = 5), content: Faker::Lorem.sentence(sentence_count = 500),image_path: (rand(1..10).to_s + '.jpg'), amount_requested: amount_requested = rand(1..5000) , amount_donated: rand(2..amount_requested))
+				if Cause.create(title: Faker::Lorem.sentence(word_count = 20), content: Faker::Lorem.sentence(characters = 500),image_path: (rand(1..10).to_s + '.jpg'), amount_requested: amount_requested = rand(1..5000) , amount_donated: rand(2..amount_requested))
 					puts 'success'
 				end
 			end
@@ -21,7 +21,7 @@ namespace :db do
 			Recital.delete_all
 
 			10.times do |count|
-				if Recital.create(title: Faker::Lorem.sentence(word_count = 5), content: Faker::Lorem.sentence(sentence_count = 500),image_path: (rand(1..10).to_s + '.jpg'))
+				if Recital.create(title: Faker::Lorem.sentence(word_count = 20), content: Faker::Lorem.sentence(characters = 500),image_path: (rand(1..10).to_s + '.jpg'))
 					puts 'success'
 				end
 			end
@@ -32,7 +32,7 @@ namespace :db do
 			Event.delete_all
 
 			10.times do |count|
-				if Event.create(startdate: DateTime.now, enddate: DateTime.now, title: Faker::Lorem.sentence(word_count = 5), content: Faker::Lorem.sentence(sentence_count = 500),image_path: (rand(1..10).to_s + '.jpg'))
+				if Event.create(startdate: DateTime.now, enddate: DateTime.now, title: Faker::Lorem.sentence(characters = 20), content: Faker::Lorem.sentence(sentence_count = 500),image_path: (rand(1..10).to_s + '.jpg'))
 					puts 'success'
 				end
 			end
