@@ -1,5 +1,7 @@
 class SplashController < ApplicationController
 	def index
+		@causes = Cause.recent
+		@events = Event.recent
 	end
 
 	def donate

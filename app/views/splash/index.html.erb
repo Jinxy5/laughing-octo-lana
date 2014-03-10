@@ -77,7 +77,6 @@
 
 <!-- Place somewhere in the <body> of your page -->
 
-		
 
 			<!-- cause hot panel -->
 			<div class = 'hot-panel hot-panel-1 col-xs-12'>
@@ -98,251 +97,43 @@
 				<div id = 'slider-2-container'>
 					<div id="slider-2" class="sliderTypeA flexslider">
 						  	<ul class="slides">
-							    <li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('1.jpg') %>)'></div>
-									</div>	
-								      
-								    	<div class = 'panel-info'>
-											<div class = 'hot-panel-info'>
-												<h3> 1 This is will get us a new bike! </h3>
-												<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-											</div>
 
-											<div class = 'donation-info'>
-												<div class = 'statistic-integers'>
-													<span class = 'align-left'> <span class = 'yellow'> &#163;500 </span> Donated </span>
-													<span class = 'pull-right'> <span class = 'yellow'> 67&#37; </span> Funded </span>
+						  		<%= @causes.each do |cause| %>
+						  			<li>
+										<div class="cropper-container">
+	   										<div class="image-container" style='background-image: url(<%= image_path(cause.image_path) %>)'></div>
+										</div>	
+									      
+									    	<div class = 'panel-info'>
+												<div class = 'hot-panel-info'>
+													<h3> <%= truncate(cause.title, length: 40) %> </h3>
+													<p> <%= truncate(cause.content, length: 80) %> </p>
 												</div>
 
-												<div class = 'progress'>
-													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-						   								<span class="sr-only">60% Complete (warning)</span>
-					 							</div>
-											</div>
+												<div class = 'donation-info'>
+													<div class = 'statistic-integers'>
+														<span class = 'align-left'> <span class = 'yellow'> &#163;<%= cause.amount_requested %> </span> Donated </span>
+															<% percentage = number_to_percentage((cause.amount_donated.to_f / cause.amount_requested.to_f) * 100) %>
 
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
-											</div>
-										</div>
-						      		</div>
-					    		</li>
-								<li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('2.jpg') %>)'></div>
-									</div>	
-								      						      
-								    	<div class = 'panel-info'>
-											<div class = 'hot-panel-info'>
-												<h3> This is will get us a new bike! </h3>
-												<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-											</div>
 
-											<div class = 'donation-info'>
-												<div class = 'statistic-integers'>
-													<span class = 'align-left'> <span class = 'yellow'> &#163;500 </span> Donated </span>
-													<span class = 'pull-right'> <span class = 'yellow'> 67&#37; </span> Funded </span>
+														<span class = 'pull-right'> <span class = 'yellow'> 												<%= percentage %></span> Funded </span>
+													</div>
+
+													<div class = 'progress'>
+														<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%= percentage %>">
+							   								<span class="sr-only"><%= percentage %> Complete (warning)</span>
+						 							</div>
 												</div>
 
-												<div class = 'progress'>
-													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-						   								<span class="sr-only">60% Complete (warning)</span>
-					 							</div>
-											</div>
-
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
-											</div>
-										</div>
-						      		</div>
-					    		</li>
-
-	 							<li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('3.jpg') %>)'></div>
-									</div>	
-								      
-								    	<div class = 'panel-info'>
-											<div class = 'hot-panel-info'>
-												<h3> This is will get us a new bike! </h3>
-												<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-											</div>
-
-											<div class = 'donation-info'>
-												<div class = 'statistic-integers'>
-													<span class = 'align-left'> <span class = 'yellow'> &#163;500 </span> Donated </span>
-													<span class = 'pull-right'> <span class = 'yellow'> 67&#37; </span> Funded </span>
+												<div class = 'actions'>
+													<%= link_to 'More Details', cause, class: 'btn btn-danger btn-xs' %>
+													<span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
 												</div>
-
-												<div class = 'progress'>
-													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-						   								<span class="sr-only">60% Complete (warning)</span>
-					 							</div>
 											</div>
+							      		</div>
+					    			</li>
+						  		<% end %>
 
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
-											</div>
-										</div>
-						      		</div>
-					    		</li>
-
-							    <li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('4.jpg') %>)'></div>
-									</div>	
-								      						      
-								    	<div class = 'panel-info'>
-											<div class = 'hot-panel-info'>
-
-												<h3> This is will get us a new bike! </h3>
-
-												<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-								
-											</div>
-
-											<div class = 'donation-info'>
-												<div class = 'statistic-integers'>
-													<span class = 'align-left'> <span class = 'yellow'> &#163;500 </span> Donated </span>
-													<span class = 'pull-right'> <span class = 'yellow'> 67&#37; </span> Funded </span>
-												</div>
-
-												<div class = 'progress'>
-													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-						   								<span class="sr-only">60% Complete (warning)</span>
-					 							</div>
-											</div>
-
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
-											</div>
-										</div>
-						      		</div>
-					    		</li>
-					    		    <li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('5.jpg') %>)'></div>
-									</div>	
-								      							      
-								    	<div class = 'panel-info'>
-											<div class = 'hot-panel-info'>
-												<h3> This is will get us a new bike! </h3>
-												<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-											</div>
-
-											<div class = 'donation-info'>
-												<div class = 'statistic-integers'>
-													<span class = 'align-left'> <span class = 'yellow'> &#163;500 </span> Donated </span>
-													<span class = 'pull-right'> <span class = 'yellow'> 67&#37; </span> Funded </span>
-												</div>
-
-												<div class = 'progress'>
-													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-						   								<span class="sr-only">60% Complete (warning)</span>
-					 							</div>
-											</div>
-
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
-											</div>
-										</div>
-						      		</div>
-					    		</li>
-								<li>
-
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('6.jpg') %>)'></div>
-									</div>	
-								      						      
-								    	<div class = 'panel-info'>
-											<div class = 'hot-panel-info'>
-												<h3> This is will get us a new bike! </h3>
-												<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-											</div>
-
-											<div class = 'donation-info'>
-												<div class = 'statistic-integers'>
-													<span class = 'align-left'> <span class = 'yellow'> &#163;500 </span> Donated </span>
-													<span class = 'pull-right'> <span class = 'yellow'> 67&#37; </span> Funded </span>
-												</div>
-
-												<div class = 'progress'>
-													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-						   								<span class="sr-only">60% Complete (warning)</span>
-					 							</div>
-											</div>
-
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
-											</div>
-										</div>
-						      		</div>
-					    		</li>
-
-	 							<li>
-	
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('7.jpg') %>)'></div>
-									</div>	
-								      						      
-								    	<div class = 'panel-info'>
-											<div class = 'hot-panel-info'>
-												<h3> This is will get us a new bike! </h3>
-												<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-											</div>
-
-											<div class = 'donation-info'>
-												<div class = 'statistic-integers'>
-													<span class = 'align-left'> <span class = 'yellow'> &#163;500 </span> Donated </span>
-													<span class = 'pull-right'> <span class = 'yellow'> 67&#37; </span> Funded </span>
-												</div>
-
-												<div class = 'progress'>
-													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-						   								<span class="sr-only">60% Complete (warning)</span>
-					 							</div>
-											</div>
-
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
-											</div>
-										</div>
-						      		</div>
-					    		</li>
-
-							    <li>
-									
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('8.jpg') %>)'></div>
-									</div>	
-								      						      
-								    	<div class = 'panel-info'>
-											<div class = 'hot-panel-info'>
-
-												<h3> This is will get us a new bike! </h3>
-
-												<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-								
-											</div>
-
-											<div class = 'donation-info'>
-												<div class = 'statistic-integers'>
-													<span class = 'align-left'> <span class = 'yellow'> &#163;500 </span> Donated </span>
-													<span class = 'pull-right'> <span class = 'yellow'> 67&#37; </span> Funded </span>
-												</div>
-
-												<div class = 'progress'>
-													<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
-						   								<span class="sr-only">60% Complete (warning)</span>
-					 							</div>
-											</div>
-
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = '/donate' class = 'btn btn-success btn-xs'> Make a Donation </a>
-											</div>
-										</div>
-						      		</div>
-					    		</li>
 			  				</ul>
 						</div>
 					</div>
@@ -372,191 +163,33 @@
 				<div id = 'slider-3-container'>
 					<div id="slider-3" class="sliderTypeA flexslider">
 						  	<ul class="slides">
-							    <li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('8.jpg') %>)'></div>
-									</div>
-								      
-								  	 <div class = 'panel-info'>
-										<div class = 'hot-panel-info'>
-											<a class = 'date'> <span class = 'fa fa-calendar-o'></span> January 23, 2014 </a>
-											<h3> Something in Newton Green </h3>
-											<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
+						  		<% @events.each do |event| %>
+							  		<li>
+										<div class="cropper-container">
+	   										<div class="image-container" style='background-image: url(<%= image_path(event.image_path) %>)'></div>
 										</div>
-
-										<div class = 'donation-info'>
-									
-
-											
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
+									      
+									  	 <div class = 'panel-info'>
+											<div class = 'hot-panel-info'>
+												<a class = 'date'> <span class = 'fa fa-calendar-o'></span>  <%= event.startdate.strftime('%b %m %Y') %> </a>
+												<h3> <%= truncate(event.title, length: 40) %> </h3>
+												<p> <%= truncate(event.content, length: 80) %> </p>
 											</div>
-										</div>
-					      			</div>
-					    		</li>
-								<li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('6.jpg') %>)'></div>
-									</div>
-								      
-								  	 <div class = 'panel-info'>
-										<div class = 'hot-panel-info'>
-											<a class = 'date'> <span class = 'fa fa-calendar-o'></span> January 23, 2014 </a>
-											<h3> Something in Newton Green </h3>
-											<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-										</div>
 
-										<div class = 'donation-info'>
-									
+											<div class = 'donation-info'>
+										
 
-											
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
+												
+												<div class = 'actions'>
+													<%= link_to 'More Details', event, class: 'btn btn-danger btn-xs'%>
+													 <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
+												</div>
 											</div>
-										</div>
-					      			</div>
-					    		</li>
+						      			</div>
+						    		</li>
+						  		<% end %>
 
-	 							<li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('9.jpg') %>)'></div>
-									</div>
-								      
-								  	 <div class = 'panel-info'>
-										<div class = 'hot-panel-info'>
-											<a class = 'date'> <span class = 'fa fa-calendar-o'></span> January 23, 2014 </a>
-											<h3> Something in Newton Green </h3>
-											<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-										</div>
-
-										<div class = 'donation-info'>
-									
-
-											
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
-											</div>
-										</div>
-					      			</div>
-					    		</li>
-
-							    <li>
-									
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('10.jpg') %>)'></div>
-									</div>
-								      
-								  	 <div class = 'panel-info'>
-										<div class = 'hot-panel-info'>
-											<a class = 'date'> <span class = 'fa fa-calendar-o'></span> January 23, 2014 </a>
-											<h3> Something in Newton Green </h3>
-											<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-										</div>
-
-										<div class = 'donation-info'>
-									
-
-											
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
-											</div>
-										</div>
-					      			</div>
-					    		</li>
-					    		    <li>
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('8.jpg') %>)'></div>
-									</div>
-								      
-								  	 <div class = 'panel-info'>
-										<div class = 'hot-panel-info'>
-											<a class = 'date'> <span class = 'fa fa-calendar-o'></span> January 23, 2014 </a>
-											<h3> Something in Newton Green </h3>
-											<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-										</div>
-
-										<div class = 'donation-info'>
-									
-
-											
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
-											</div>
-										</div>
-					      			</div>
-					    		</li>
-								<li>
-
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('4.jpg') %>)'></div>
-									</div>
-								      
-								  	 <div class = 'panel-info'>
-										<div class = 'hot-panel-info'>
-											<a class = 'date'> <span class = 'fa fa-calendar-o'></span> January 23, 2014 </a>
-											<h3> Something in Newton Green </h3>
-											<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-										</div>
-
-										<div class = 'donation-info'>
-									
-
-											
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
-											</div>
-										</div>
-					      			</div>
-					    		</li>
-
-	 							<li>
-	
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('3.jpg') %>)'></div>
-									</div>
-								      
-								  	 <div class = 'panel-info'>
-										<div class = 'hot-panel-info'>
-											<a class = 'date'> <span class = 'fa fa-calendar-o'></span> January 23, 2014 </a>
-											<h3> Something in Newton Green </h3>
-											<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-										</div>
-
-										<div class = 'donation-info'>
-									
-
-											
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
-											</div>
-										</div>
-					      			</div>
-					    		</li>
-
-							    <li>
-									
-								
-									<div class="cropper-container">
-   										<div class="image-container" style='background-image: url(<%= image_path('10.jpg') %>)'></div>
-									</div>
-								      
-								  	 <div class = 'panel-info'>
-										<div class = 'hot-panel-info'>
-											<a class = 'date'> <span class = 'fa fa-calendar-o'></span> January 23, 2014 </a>
-											<h3> Something in Newton Green </h3>
-											<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... </p>
-										</div>
-
-										<div class = 'donation-info'>
-									
-
-											
-											<div class = 'actions'>
-												<a href = '/news_1' class = 'btn btn-danger btn-xs'> More Details </a> <span>or</span> <a href = 'https://www.facebook.com/bloodbikeswales' class = 'btn btn-info btn-xs'> Visit Facebook Page </a>
-											</div>
-										</div>
-					      			</div>
-					    		</li>
+							    
 			  				</ul>
 						</div>
 					</div>
