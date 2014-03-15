@@ -11,7 +11,28 @@ namespace :scraper do
 		Capybara.current_driver = :selenium
 		Capybara.app_host = 'http://stackoverflow.com/'
 
-		def is_image?
+		def is_image?(extension)
+			if ['jpeg',
+				 'jfif',
+				 'jpm',  
+				 'mj2',  
+				 'tif',  
+				 'raw',  
+				 'gif',  			   
+				 'bmp',  			   
+				 'png',  			   
+				 'jxr',  			   
+				 'webp', 			   			   
+				 'pam',  			   
+				 'pbm',  			   
+				 'pgm', 			   
+				 'ppm',  			   
+				 'pnm'].include? extension
+				true
+			else
+				raise 'not an image'
+				false
+			end
 		end
 
 		def generate_file_name(url)
@@ -28,24 +49,10 @@ namespace :scraper do
 			content_type = opended_image.meta['content-type']
 			image_extension = content_type.match(/[\w]+$/).to_s;
 
-			if image_extension == 'jpeg' ||
-			   image_extension == 'jfif' ||
-			   image_extension == 'jpm'  ||
-			   image_extension == 'mj2'  ||
-			   image_extension == 'tif'  ||
-			   image_extension == 'raw'  ||
-			   image_extension == 'gif'  ||			   
-			   image_extension == 'bmp'  ||			   
-			   image_extension == 'png'  ||			   
-			   image_extension == 'jxr'  ||			   
-			   image_extension == 'webp' ||			   			   
-			   image_extension == 'pam'  ||			   
-			   image_extension == 'pbm'  ||			   
-			   image_extension == 'pgm'  ||			   
-			   image_extension == 'ppm'  ||			   
-			   image_extension == 'pnm'  			   
 
-     			image_name = generate_file_name(image_url)
+			begin
+				is_image?(image_extension)
+	 			image_name = generate_file_name(image_url)
 				image_content = opended_image.read.to_s
 
 				file_name = image_name + '.' + image_extension
@@ -56,16 +63,19 @@ namespace :scraper do
 					
 				puts '\'' + file_name + '\'' + 'saved successfully!'	
 
-			else
+			rescue
 				puts 'ERROR: ' + image_url +' does not link to an image! (content-type: ' + content_type + ')'
 			end
+
+
+			
 
 
 
 		end
 
 
-		save_image('http://i1276.photobucket.com/albums/y462/staffpicks/tumblr_mw4og9rPUL1r01eeeo4_1280.jpg')
+		save_image('http://www.thesmallthingsblog.com/')
 
 
 =begin
