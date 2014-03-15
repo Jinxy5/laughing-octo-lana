@@ -6,10 +6,13 @@ namespace :scraper do
 		require 'open-uri'
 		require 'capybara'
 		require 'capybara/dsl'
+		require 'anemone'
 
 		include Capybara::DSL
 		Capybara.current_driver = :selenium
 		Capybara.app_host = 'http://stackoverflow.com/'
+
+
 
 		def is_image?(extension)
 			if ['jpeg',
@@ -31,7 +34,6 @@ namespace :scraper do
 				true
 			else
 				raise 'not an image'
-				false
 			end
 		end
 
@@ -52,6 +54,7 @@ namespace :scraper do
 
 			begin
 				is_image?(image_extension)
+
 	 			image_name = generate_file_name(image_url)
 				image_content = opended_image.read.to_s
 
@@ -66,75 +69,20 @@ namespace :scraper do
 			rescue
 				puts 'ERROR: ' + image_url +' does not link to an image! (content-type: ' + content_type + ')'
 			end
-
-
-			
-
-
-
 		end
 
+#		save_image('http://www.thesmallthingsblog.com/')
+#    name = doc.at_css("#top h2").text unless doc.at_css("#top h2").nil?	
+		Anemone.crawl do |anemone|
+			anemone.on_every_page do |page|
+				puts page.url
+			end 
 
-		save_image('http://www.thesmallthingsblog.com/')
-
-
-=begin
-
-
-File.open('pie.png', 'wb') do |fo|
-  fo.write open("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwfwKLjejh1MZKTEy9QtJsS3f0-ZK3URhGnwsaUTXAGbC31oKL").read 
-end
-
-image_data = open("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwfwKLjejh1MZKTEy9QtJsS3f0-ZK3URhGnwsaUTXAGbC31oKL").read 
-
-puts '*-*-*-*-*-*-*-*-*-*-*-*-*-*-'
-puts image_data.inspect
-puts '*-*-*-*-*-*-*-*-*-*-*-*-*-*-'
-		File.open( path + 'pulled_image.jpg', 'a') do |fa|
-			fa.write(open(image['src']).read)
+			anemone.on_pages_like() do |page|
+				puts page.url
+			end
 		end
-=end
 
-#		out_file = File.new('app/assets/images/pulled_image.jpg', 'a')
-#		out_file.puts image['src']
-#		out_file.close
-
-#		File.open('file.jpg', 'a') { |file| file.write(image['src']) }
-
-	#	open(image['src']).read
-		#puts image
-
-#		sleep 33433
-#		input = find_field('gbqfq')
-#
-
-
-
-
-#		click_link 'Images'
-#		puts '*******'
-
-#		image = first('img.rg_i')	
-#		puts image['src']
-		
-#		variable = first(:xpath, "//img[@class='rg_i']")
-		
-#		puts variable['src']
-
-#		file << open(variable['src']).read
-		
-#		variable['src'].should == "url"
-#		variable['alt'].should == "text"
-
-
-#		image = 
-#		file << open('http://example.com/image.png').read
-
-#		sleep 232
-
-#		url = 'http://www.walmart.com/ip/George-R.-R.-Martin-s-a-Game-of-Thrones-5-Book-Boxed-Set-Song-of-Ice-and-Fire-Series-A-Game-of-Thrones-a-Clash-of-Kings-a-Storm-of-Swords-a-Feas/20664829'
-#		doc = Nokogiri::HTML(open(url))
-#		doc.at_css('title').text
 	end
 end
 
