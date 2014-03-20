@@ -27,10 +27,9 @@ $(document).ready(function() {
   }
 
   function reappendSlider(sliderId){
-    console.log( 'reappended' );
-    var slider =  $(document).find( '#' + sliderId )
-    var sliderParent = $(document).find( '#' + slider.parent().attr('id') );
-    var sliderHtml = $(slider).html();     
+    slider =  $(document).find( '#' + sliderId )
+    sliderParent = $(document).find( '#' + slider.parent().attr('id') );
+    sliderHtml = $(slider).html();     
 
     slider.remove();   
 
@@ -146,14 +145,13 @@ $(document).ready(function() {
   function loopSliders(maxItems, itemWidth){
     $.map( typeASlidersIds, function( typaASliderId ){    
 
-
-      var slider = $(document).find( '#' + typaASliderId ),
-          sliderParent = slider.parent().parent(),
-          sliderLeftNav = sliderParent.find( '.left-nav'),
-          sliderRightNav = sliderParent.find( '.right-nav')
+      slider = $(document).find( '#' + typaASliderId )
+      sliderParent = slider.parent().parent()
+      sliderLeftNav = sliderParent.find( '.left-nav')
+      sliderRightNav = sliderParent.find( '.right-nav')
 
       if(initial == false){
-        reappendSlider(sliderId)
+        reappendSlider(typaASliderId)
       }
 
       sliderLeftNav.click(function(){
@@ -187,9 +185,6 @@ $(document).ready(function() {
 
   function launchBreakpoint(breakpoint){
     
-    $('.sliderTypeA').each(function( key, sliderTypeAId ){
-      typeASlidersIds.push( $(sliderTypeAId).attr('id') );
-    });
 
     switch( breakpoint ){
       case '1':
@@ -210,10 +205,14 @@ $(document).ready(function() {
   }
 
   /* begin */
-  var typeASlidersIds = [],
-      currentBreakpoint = getBreakpoint(),
-      initial = true,
-      timer
+  typeASlidersIds = []
+  currentBreakpoint = getBreakpoint()
+  initial = true
+  timer = 0
+
+  $('.sliderTypeA').each(function( key, sliderTypeAId ){
+    typeASlidersIds.push( $(sliderTypeAId).attr('id') );
+  });
 
   /* start now */
   launchBreakpoint(currentBreakpoint);
