@@ -147,8 +147,8 @@ $(document).ready(function() {
 
       slider = $(document).find( '#' + typaASliderId )
       sliderParent = slider.parent().parent()
-      sliderLeftNav = sliderParent.find( '.left-nav')
-      sliderRightNav = sliderParent.find( '.right-nav')
+      sliderLeftNav = sliderParent.find('.left-nav')
+      sliderRightNav = sliderParent.find('.right-nav')
 
       if(initial == false){
         reappendSlider(typaASliderId)
@@ -210,7 +210,7 @@ $(document).ready(function() {
   initial = true
   timer = 0
 
-  $('.sliderTypeA').each(function( key, sliderTypeAId ){
+  $('.sliderElm').each(function( key, sliderTypeAId ){
     typeASlidersIds.push( $(sliderTypeAId).attr('id') );
   });
 
