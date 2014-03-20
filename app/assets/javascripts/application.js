@@ -89,12 +89,12 @@ $(document).ready(function() {
       'minItems' : 0,
       'maxItems' : 0,
       'move' : 1,
-      'start' : {},
-      'before' : {},
-      'after' : {},
-      'end' : {},
-      'added' : {},
-      'removed' : {}
+      'start' : function(){},
+      'before' : function(){},
+      'after' : function(){},
+      'end' : function(){},
+      'added' : function(){},
+      'removed' : function(){}
     }
 
     $.extend(o, o, a);
@@ -171,7 +171,7 @@ $(document).ready(function() {
         slider = $(document).find( '#' + typaASliderId )
         sliderId = slider.attr('id');
 
-        launchSlider();
+        launchSlider(sliderId, {'minItems' : 1, 'maxItems' : 1});
 
       
     });
@@ -208,7 +208,7 @@ $(document).ready(function() {
           move: 1,
           itemWidth: $(document).find( '#' + sliderId ).width() / 2,
           minItems: 4,
-          maxItems: 4, 
+          maxItems: 4
         });      
 
     });
@@ -307,11 +307,6 @@ $(document).ready(function() {
     initial = false
   }
 
-  var hash = {'red': 'stop','yellow': 'get ready','green':'gogogo' }
-
-//  console.log( hash['red'] )
-
-
   var typeASlidersIds = []
 
   $('.sliderTypeA').each(function( key, sliderTypeAId ){
@@ -363,7 +358,6 @@ $(document).ready(function() {
 
           launchBreakpoint( newBreakpoint );
 
-        //  lastBreakpoint = currentBreakpoint
           currentBreakpoint = newBreakpoint
         }
       // above is run every 1/4 of a second! 
