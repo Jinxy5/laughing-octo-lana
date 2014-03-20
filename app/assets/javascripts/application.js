@@ -48,44 +48,125 @@ $(document).ready(function() {
 
 //console.log('yea')
 
-launchSlider('jimmy',{'a' : '1', 'b' : '2'})
 
-  function launchSlider(jimmy, opts){
-    
+launchSlider();
+
+  function launchSlider(sliderId, a){
     o = {
-      'a' : 'not this',
-      'b' : 'c'
+      'namespace' : 'flex-',
+      'selector' : '.slides > li',
+      'animation' : 'slide',
+      'easing' : 'swing',
+      'direction' : 'horizontal', 
+      'reverse' : false,
+      'animationLoop' : true, 
+      'smoothHeight' : false,
+      'startAt' : 0,
+      'slideshowSpeed' : 7000,
+      'animationSpeed' : 600,
+      'initDelay' : 0,
+      'randomize' : false,
+      'pauseOnAction' : true,
+      'pauseOnHover' : false,
+      'useCSS' : true,
+      'touch' : false,
+      'video' : false,
+      'controlNav' : false,
+      'directionNav' : false,
+      'prevText' : 'Previous',
+      'nextText' : 'Next',
+      'keyboard' : false,
+      'multipleKeyboard' : false,
+      'mousewheel' : false,
+      'pausePlay' : false,
+      'pauseText' : 'Pause',
+      'playText' : 'Play',
+      'controlsContainer' : '',
+      'manualControls' : '',
+      'sync' : '',
+      'asNavFor' : '',
+      'itemWidth' : '',
+      'itemMargin' : '',
+      'minItems' : 0,
+      'maxItems' : 0,
+      'move' : 1,
+      'start' : {},
+      'before' : {},
+      'after' : {},
+      'end' : {},
+      'added' : {},
+      'removed' : {}
     }
 
-    console.log($.extend(o, o, opts));
+    $.extend(o, o, a);
 
- 
-        if(initial == false){
-         // console.log('resetting for xs');
-
-          reappendSlider(sliderId)
-        }
+    if(initial == false){
+     // console.log('resetting for xs');
+      reappendSlider(sliderId)
+    }
 
 
 
-        $(document).find( '#' + sliderId ).flexslider({
-          useCSS: false,
-          slideshow: false,
-          animation: 'slide',
-          slideshowSpeed: 1000,
-          animationLoop: true,
-          itemMargin: 0,
-          controlNav: false,
-          directionNav: false,
-          move: 1,
-          itemWidth: $(document).find( '#' + sliderId ).width() / 1,
-          minItems: 1,
-          maxItems: 1
-    
-    });    
+  $(document).find( '#' + sliderId ).flexslider({
+    namespace : o['namespace'],
+    selector : o['selector'],
+    animation : o['animation'],,
+    easing : o['easing'],,
+    direction : o['direction'], 
+    reverse : o['reverse'],
+    animationLoop : o['animationLoop'], 
+    smoothHeight : o['smoothHeight'],
+    startAt : o['startAt'],
+    slideshowSpeed : o['slideshowSpeed'],
+    animationSpeed : o['animationSpeed'],,
+    initDelay : o['initDelay'],
+    randomize : o['randomize'],
+    pauseOnAction : o['pauseOnAction'],
+    pauseOnHover : o['pauseOnHover'],
+    useCSS : o['useCSS'],
+    touch : o['touch'],
+    video : o['video'],
+    controlNav : o['controlNav'],
+    directionNav : o['directionNav'],
+    prevText : o['prevText'],
+    nextText : o['nextText'],
+    keyboard : o['keyboard'],
+    multipleKeyboard : o['multipleKeyboard'],
+    mousewheel : o['mousewheel'],
+    pausePlay : o['pausePlay'],
+    pauseText : o['pauseText'],
+    playText : o['playText'],
+    controlsContainer : o['controlsContainer'],
+    manualControls : o['manualControls'],
+    sync : o['sync'],
+    asNavFor : o['asNavFor'],
+    itemWidth : o['itemWidth'],
+    itemMargin : o['itemMargin'],
+    minItems : o['minItems'],
+    maxItems : o['maxItems'],
+    move : o['move'],
+    start : o['start'],
+    before : o['before'],
+    after : o['after'],
+    end : o['end'],
+    added : o['added'],
+    removed : o['removed'],        
+    useCSS:  o['useCSS'],
+    slideshow: o['slideshow'],
+    animation:  o['animation'],
+    slideshowSpeed:  o['slideshowSpeed'],
+    animationLoop:  o['animationLoop'],
+    itemMargin: o['itemMargin'],
+    controlNav: o['controlNav'],
+    directionNav: o['directionNav'],
+    move: o['move'],
+    itemWidth: o['itemWidth'],
+    minItems: o['minItems'],
+    maxItems: o['maxItems']
+  });    
 
   }
-
+//$(document).find( '#' + sliderId ).width() / 1
   function xsBreakpoint(){
 
       $.map( typeASlidersIds, function( typaASliderId ){
