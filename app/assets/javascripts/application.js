@@ -19,25 +19,18 @@
 //= require my_flex
 //
 
-// Can also be used with $(document).ready()
 $(document).ready(function() {
-
-
 
   function getBreakpoint(){
     // also cleans the breakpoint (some browsers add inverted commas)
     return $('#viewport').css('font-size').replace(/.*(1|2|3|4).*/g, '$1');
   }
 
-
-
   function reappendSlider(sliderId){
-
+    console.log( 'reappended' );
     var slider =  $(document).find( '#' + sliderId )
     var sliderParent = $(document).find( '#' + slider.parent().attr('id') );
-    var sliderHtml = $(slider).html(); 
-      
-
+    var sliderHtml = $(slider).html();     
 
     slider.remove();   
 
@@ -45,10 +38,6 @@ $(document).ready(function() {
     $(document).find( '#' + sliderId ).append( sliderHtml );
 
   }
-
-//console.log('yea')
-
-
 
   function launchSlider(sliderId, a){
     console.log('launched!')
@@ -101,9 +90,9 @@ $(document).ready(function() {
 
     $.extend(o, o, a);
 
-    if(initial == false){
-      reappendSlider(sliderId)
-    }
+ //   if(initial == false){
+ //     reappendSlider(sliderId)
+ //   }
 
     o['minItems'] = o['maxItems']
     o['itemWidth'] = $(document).find( '#' + sliderId ).width() / o['maxItems']
@@ -156,27 +145,30 @@ $(document).ready(function() {
 
   }
 
-  function loopSliders(maxItems){
+  function loopSliders(maxItems, itemWidth){
     $.map( typeASlidersIds, function( typaASliderId ){    
-      if(initial == false){
-        reappendSlider(sliderId)
-      }
+
 
       slider = $(document).find( '#' + typaASliderId )
       sliderId = slider.attr('id');
 
-      launchSlider(sliderId, {'maxItems' : maxItems});
+
+      if(initial == false){
+        reappendSlider(sliderId)
+      }
+
+      launchSlider(sliderId, {'maxItems' : maxItems, 'itemMargin' : itemWidth });
       
     });
   }
 
 //$(document).find( '#' + sliderId ).width() / 1
   function xsBreakpoint(){
-    loopSliders(1)
+    loopSliders(1, 0);
   }
 
   function smBreakpoint(){
-    loopSliders(4)
+    loopSliders(4, 10);
   }
 
   function mdBreakpoint(){
@@ -184,7 +176,7 @@ $(document).ready(function() {
   }
 
   function lgBreakpoint(){
-    smBreakpoint();
+    mdBreakpoint();
   }
 
   function launchBreakpoint(breakpoint){
