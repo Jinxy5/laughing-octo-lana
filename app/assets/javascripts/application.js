@@ -90,12 +90,10 @@ $(document).ready(function() {
 
     $.extend(o, o, a);
 
- //   if(initial == false){
- //     reappendSlider(sliderId)
- //   }
-
     o['minItems'] = o['maxItems']
     o['itemWidth'] = $(document).find( '#' + sliderId ).width() / o['maxItems']
+
+    console.log( o['move'] )
 
     $(document).find( '#' + sliderId ).flexslider({
       namespace : o['namespace'],
@@ -149,20 +147,28 @@ $(document).ready(function() {
     $.map( typeASlidersIds, function( typaASliderId ){    
 
 
-      slider = $(document).find( '#' + typaASliderId )
-      sliderId = slider.attr('id');
-
+      var slider = $(document).find( '#' + typaASliderId ),
+          sliderParent = slider.parent().parent(),
+          sliderLeftNav = sliderParent.find( '.left-nav'),
+          sliderRightNav = sliderParent.find( '.right-nav')
 
       if(initial == false){
         reappendSlider(sliderId)
       }
 
-      launchSlider(sliderId, {'maxItems' : maxItems, 'itemMargin' : itemWidth });
+      sliderLeftNav.click(function(){
+        $(document).find( '#' + typaASliderId ).flexslider('prev');
+      });
+
+      sliderRightNav.click(function(){
+        $(document).find( '#' + typaASliderId ).flexslider('next');
+      }); 
+
+      launchSlider(typaASliderId, {'maxItems' : maxItems, 'itemMargin' : itemWidth });
       
     });
   }
 
-//$(document).find( '#' + sliderId ).width() / 1
   function xsBreakpoint(){
     loopSliders(1, 0);
   }
@@ -172,14 +178,19 @@ $(document).ready(function() {
   }
 
   function mdBreakpoint(){
-    smBreakpoint();
+    loopSliders(5, 10);
   }
 
   function lgBreakpoint(){
-    mdBreakpoint();
+    loopSliders(5, 10);
   }
 
   function launchBreakpoint(breakpoint){
+    
+    $('.sliderTypeA').each(function( key, sliderTypeAId ){
+      typeASlidersIds.push( $(sliderTypeAId).attr('id') );
+    });
+
     switch( breakpoint ){
       case '1':
         xsBreakpoint();
@@ -198,60 +209,34 @@ $(document).ready(function() {
     initial = false
   }
 
-  var typeASlidersIds = []
+  /* begin */
+  var typeASlidersIds = [],
+      currentBreakpoint = getBreakpoint(),
+      initial = true,
+      timer
 
-  $('.sliderTypeA').each(function( key, sliderTypeAId ){
-    typeASlidersIds.push( $(sliderTypeAId).attr('id') );
-  });
-
-  // get the current breakpoint
-  var currentBreakpoint = getBreakpoint();
-  var initial = true
-
+  /* start now */
   launchBreakpoint(currentBreakpoint);
 
-
-  $.map( typeASlidersIds, function( typaASliderId ){
-
-    var slider = $(document).find( '#' + typaASliderId ),
-        sliderParent = slider.parent().parent(),
-        sliderLeftNav = sliderParent.find( '.left-nav'),
-        sliderRightNav = sliderParent.find( '.right-nav')
-
-      sliderLeftNav.click(function(){
-        $(document).find( '#' + typaASliderId ).flexslider('prev');
-      });
-
-
-      sliderRightNav.click(function(){
-        $(document).find( '#' + typaASliderId ).flexslider('next');
-      });  
-
-  });
-
-       
-
-
-  // after resize
-  var timer;
+  /* start after reszie */
   $(window).resize(function(){
-    clearTimeout(timer);
-    timer = setTimeout( function(){
-      // below is run every 1/4 of a second!
-        var newBreakpoint = getBreakpoint(); 
- 
-        $.map( typeASlidersIds, function( typaASliderId ){
-          $(document).find( '#' + typaASliderId ).resize();
-        });  
+      clearTimeout(timer);
+      timer = setTimeout( function(){
+        // below is run every 1/4 of a second!
+          var newBreakpoint = getBreakpoint(); 
+   
+          $.map( typeASlidersIds, function( typaASliderId ){
+            $(document).find( '#' + typaASliderId ).resize();
+          });  
 
+          if(newBreakpoint != currentBreakpoint){
 
-        if(newBreakpoint != currentBreakpoint){
+            launchBreakpoint( newBreakpoint );
 
-          launchBreakpoint( newBreakpoint );
-
-          currentBreakpoint = newBreakpoint
-        }
-      // above is run every 1/4 of a second! 
-    }, 250)
-  });
+            currentBreakpoint = newBreakpoint
+          }
+        // above is run every 1/4 of a second! 
+      }, 250)
+    });
+  
 });
