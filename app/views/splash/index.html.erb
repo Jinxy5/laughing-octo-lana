@@ -98,7 +98,7 @@
 					<div id="slider-2" class="sliderTypeA flexslider">
 						  	<ul class="slides">
 
-						  		<%= @causes.each do |cause| %>
+						  		<% @causes.each do |cause| %>
 						  			<li>
 										<div class="cropper-container">
 	   										<div class="image-container" style='background-image: url(<%= image_path(cause.image_path) %>)'></div>
@@ -106,8 +106,8 @@
 									      
 									    	<div class = 'panel-info'>
 												<div class = 'hot-panel-info'>
-													<h3> <%= truncate(cause.title, length: 40) %> </h3>
-													<p> <%= truncate(cause.content, length: 80) %> </p>
+													<h3> <%= truncate(cause.title, length: 10) %> </h3>
+													<p> <%= truncate(cause.content, length: 27, seperator: ' ', omission: '' ) %> </p>
 												</div>
 
 												<div class = 'donation-info'>

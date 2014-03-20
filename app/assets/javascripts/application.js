@@ -46,23 +46,27 @@ $(document).ready(function() {
 
   }
 
+//console.log('yea')
 
+launchSlider('jimmy',{'a' : '1', 'b' : '2'})
 
-  function xsBreakpoint(){
+  function launchSlider(jimmy, opts){
+    
+    o = {
+      'a' : 'not this',
+      'b' : 'c'
+    }
 
-      $.map( typeASlidersIds, function( typaASliderId ){
-            
+    console.log($.extend(o, o, opts));
 
-        var slider = $(document).find( '#' + typaASliderId )
-        var sliderId = slider.attr('id');
-
-
-
+ 
         if(initial == false){
          // console.log('resetting for xs');
 
           reappendSlider(sliderId)
         }
+
+
 
         $(document).find( '#' + sliderId ).flexslider({
           useCSS: false,
@@ -76,8 +80,23 @@ $(document).ready(function() {
           move: 1,
           itemWidth: $(document).find( '#' + sliderId ).width() / 1,
           minItems: 1,
-          maxItems: 1, 
-        });      
+          maxItems: 1
+    
+    });    
+
+  }
+
+  function xsBreakpoint(){
+
+      $.map( typeASlidersIds, function( typaASliderId ){
+            
+
+        slider = $(document).find( '#' + typaASliderId )
+        sliderId = slider.attr('id');
+
+        launchSlider();
+
+      
     });
   }
 
@@ -153,6 +172,8 @@ $(document).ready(function() {
     });
   }
 
+
+
   function lgBreakpoint(){
      $.map( typeASlidersIds, function( typaASliderId ){
         
@@ -208,6 +229,11 @@ $(document).ready(function() {
 
     initial = false
   }
+
+  var hash = {'red': 'stop','yellow': 'get ready','green':'gogogo' }
+
+//  console.log( hash['red'] )
+
 
   var typeASlidersIds = []
 
