@@ -49,7 +49,6 @@ $(document).ready(function() {
 //console.log('yea')
 
 
-launchSlider();
 
   function launchSlider(sliderId, a){
     o = {
@@ -101,69 +100,66 @@ launchSlider();
     $.extend(o, o, a);
 
     if(initial == false){
-     // console.log('resetting for xs');
       reappendSlider(sliderId)
     }
 
-
-
-  $(document).find( '#' + sliderId ).flexslider({
-    namespace : o['namespace'],
-    selector : o['selector'],
-    animation : o['animation'],,
-    easing : o['easing'],,
-    direction : o['direction'], 
-    reverse : o['reverse'],
-    animationLoop : o['animationLoop'], 
-    smoothHeight : o['smoothHeight'],
-    startAt : o['startAt'],
-    slideshowSpeed : o['slideshowSpeed'],
-    animationSpeed : o['animationSpeed'],,
-    initDelay : o['initDelay'],
-    randomize : o['randomize'],
-    pauseOnAction : o['pauseOnAction'],
-    pauseOnHover : o['pauseOnHover'],
-    useCSS : o['useCSS'],
-    touch : o['touch'],
-    video : o['video'],
-    controlNav : o['controlNav'],
-    directionNav : o['directionNav'],
-    prevText : o['prevText'],
-    nextText : o['nextText'],
-    keyboard : o['keyboard'],
-    multipleKeyboard : o['multipleKeyboard'],
-    mousewheel : o['mousewheel'],
-    pausePlay : o['pausePlay'],
-    pauseText : o['pauseText'],
-    playText : o['playText'],
-    controlsContainer : o['controlsContainer'],
-    manualControls : o['manualControls'],
-    sync : o['sync'],
-    asNavFor : o['asNavFor'],
-    itemWidth : o['itemWidth'],
-    itemMargin : o['itemMargin'],
-    minItems : o['minItems'],
-    maxItems : o['maxItems'],
-    move : o['move'],
-    start : o['start'],
-    before : o['before'],
-    after : o['after'],
-    end : o['end'],
-    added : o['added'],
-    removed : o['removed'],        
-    useCSS:  o['useCSS'],
-    slideshow: o['slideshow'],
-    animation:  o['animation'],
-    slideshowSpeed:  o['slideshowSpeed'],
-    animationLoop:  o['animationLoop'],
-    itemMargin: o['itemMargin'],
-    controlNav: o['controlNav'],
-    directionNav: o['directionNav'],
-    move: o['move'],
-    itemWidth: o['itemWidth'],
-    minItems: o['minItems'],
-    maxItems: o['maxItems']
-  });    
+    $(document).find( '#' + sliderId ).flexslider({
+      namespace : o['namespace'],
+      selector : o['selector'],
+      animation : o['animation'],
+      easing : o['easing'],
+      direction : o['direction'], 
+      reverse : o['reverse'],
+      animationLoop : o['animationLoop'], 
+      smoothHeight : o['smoothHeight'],
+      startAt : o['startAt'],
+      slideshowSpeed : o['slideshowSpeed'],
+      animationSpeed : o['animationSpeed'],
+      initDelay : o['initDelay'],
+      randomize : o['randomize'],
+      pauseOnAction : o['pauseOnAction'],
+      pauseOnHover : o['pauseOnHover'],
+      useCSS : o['useCSS'],
+      touch : o['touch'],
+      video : o['video'],
+      controlNav : o['controlNav'],
+      directionNav : o['directionNav'],
+      prevText : o['prevText'],
+      nextText : o['nextText'],
+      keyboard : o['keyboard'],
+      multipleKeyboard : o['multipleKeyboard'],
+      mousewheel : o['mousewheel'],
+      pausePlay : o['pausePlay'],
+      pauseText : o['pauseText'],
+      playText : o['playText'],
+      controlsContainer : o['controlsContainer'],
+      manualControls : o['manualControls'],
+      sync : o['sync'],
+      asNavFor : o['asNavFor'],
+      itemWidth : o['itemWidth'],
+      itemMargin : o['itemMargin'],
+      minItems : o['minItems'],
+      maxItems : o['maxItems'],
+      move : o['move'],
+      start : o['start'],
+      before : o['before'],
+      after : o['after'],
+      end : o['end'],
+      added : o['added'],
+      removed : o['removed'],        
+      useCSS:  o['useCSS'],
+      slideshow: o['slideshow'],
+      animation:  o['animation'],
+      slideshowSpeed:  o['slideshowSpeed'],
+      animationLoop:  o['animationLoop'],
+      itemMargin: o['itemMargin'],
+      controlNav: o['controlNav'],
+      directionNav: o['directionNav'],
+      move: o['move'],
+      itemWidth: o['itemWidth'],
+      minItems: o['minItems'],
+      maxItems: o['maxItems']
+    });    
 
   }
 //$(document).find( '#' + sliderId ).width() / 1
