@@ -51,7 +51,9 @@ $(document).ready(function() {
 
 
   function launchSlider(sliderId, a){
-    o = {
+    console.log('launched!')
+
+    var o = {
       'namespace' : 'flex-',
       'selector' : '.slides > li',
       'animation' : 'slide',
@@ -103,6 +105,9 @@ $(document).ready(function() {
       reappendSlider(sliderId)
     }
 
+    o['minItems'] = o['maxItems']
+    o['itemWidth'] = $(document).find( '#' + sliderId ).width() / o['maxItems']
+
     $(document).find( '#' + sliderId ).flexslider({
       namespace : o['namespace'],
       selector : o['selector'],
@@ -146,149 +151,43 @@ $(document).ready(function() {
       after : o['after'],
       end : o['end'],
       added : o['added'],
-      removed : o['removed'],        
-      useCSS:  o['useCSS'],
-      slideshow: o['slideshow'],
-      animation:  o['animation'],
-      slideshowSpeed:  o['slideshowSpeed'],
-      animationLoop:  o['animationLoop'],
-      itemMargin: o['itemMargin'],
-      controlNav: o['controlNav'],
-      directionNav: o['directionNav'],
-      move: o['move'],
-      itemWidth: o['itemWidth'],
-      minItems: o['minItems'],
-      maxItems: o['maxItems']
+      removed : o['removed']
     });    
 
   }
-//$(document).find( '#' + sliderId ).width() / 1
-  function xsBreakpoint(){
 
-      $.map( typeASlidersIds, function( typaASliderId ){
-            
+  function loopSliders(maxItems){
+    $.map( typeASlidersIds, function( typaASliderId ){    
+      if(initial == false){
+        reappendSlider(sliderId)
+      }
 
-        slider = $(document).find( '#' + typaASliderId )
-        sliderId = slider.attr('id');
+      slider = $(document).find( '#' + typaASliderId )
+      sliderId = slider.attr('id');
 
-        launchSlider(sliderId, {'minItems' : 1, 'maxItems' : 1});
-
+      launchSlider(sliderId, {'maxItems' : maxItems});
       
     });
   }
 
+//$(document).find( '#' + sliderId ).width() / 1
+  function xsBreakpoint(){
+    loopSliders(1)
+  }
+
   function smBreakpoint(){
-
-      $.map( typeASlidersIds, function( typaASliderId ){
-        
-
-
-        var slider = $(document).find( '#' + typaASliderId )
-        var sliderId = $(slider).attr('id');
-
-
-
-        if(initial == false){
-         // console.log('resetting for sm');
-          reappendSlider(sliderId)
-        }
-
-       // console.log( $(document).find( '#' + sliderId ).find() );
-
-         
-         $(document).find( '#' + sliderId ).flexslider({
-          useCSS: false,
-          slideshow: false,
-          animation: 'slide',
-          slideshowSpeed: 1000,
-          animationLoop: true,
-          itemMargin: 10,
-          controlNav: false,
-          directionNav: false,
-          move: 1,
-          itemWidth: $(document).find( '#' + sliderId ).width() / 2,
-          minItems: 4,
-          maxItems: 4
-        });      
-
-    });
+    loopSliders(4)
   }
 
   function mdBreakpoint(){
-         $.map( typeASlidersIds, function( typaASliderId ){
-        
-
-
-        var slider = $(document).find( '#' + typaASliderId )
-        var sliderId = $(slider).attr('id');
-
-
-
-        if(initial == false){
-         // console.log('resetting for md');
-          reappendSlider(sliderId)
-        }
-
-       // console.log( $(document).find( '#' + sliderId ).find() );
-
-         $(document).find( '#' + sliderId ).flexslider({
-          useCSS: false,
-          slideshow: false,
-          animation: 'slide',
-          slideshowSpeed: 1000,
-          animationLoop: true,
-          itemMargin: 10,
-          directionNav: false,
-          controlNav: false,
-          move: 1,
-          itemWidth: $(document).find( '#' + sliderId ).width() / 2,
-          minItems: 4,
-          maxItems: 4, 
-        });      
-
-    });
+    smBreakpoint();
   }
 
-
-
   function lgBreakpoint(){
-     $.map( typeASlidersIds, function( typaASliderId ){
-        
-
-
-        var slider = $(document).find( '#' + typaASliderId )
-        var sliderId = $(slider).attr('id');
-
-        if(initial == false){
-         // console.log('resetting for lg');
-          reappendSlider(sliderId)
-        }
-
-       // console.log( $(document).find( '#' + sliderId ).find() );
-
-         $(document).find( '#' + sliderId ).flexslider({
-          useCSS: false,
-          slideshow: false,
-          animation: 'slide',
-          slideshowSpeed: 1000,
-          animationLoop: true,
-          directionNav: false,
-          itemMargin: 10,
-          controlNav: false,
-          move: 1,
-          itemWidth: $(document).find( '#' + sliderId ).width() / 2,
-          minItems: 4,
-          maxItems: 4, 
-        });      
-
-    });
+    smBreakpoint();
   }
 
   function launchBreakpoint(breakpoint){
-
-  
-
-
     switch( breakpoint ){
       case '1':
         xsBreakpoint();
