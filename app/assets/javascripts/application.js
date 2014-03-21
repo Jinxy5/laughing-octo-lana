@@ -44,8 +44,6 @@ $(document).ready(function() {
     sliderLeftNav = sliderParent.find('.left-nav')
     sliderRightNav = sliderParent.find('.right-nav')
 
-
-
     sliderLeftNav.click(function(){
       findSlider( id ).flexslider('prev');
     });
@@ -164,10 +162,10 @@ $(document).ready(function() {
       reappendSlider(id)
     }
 
-    var slider = findSlider(id),
-        sliderParent = slider.parent().parent(),
-        sliderLeftNav = sliderParent.find('.left-nav'),
-        sliderRightNav = sliderParent.find('.right-nav')
+    slider = findSlider(id)
+    sliderParent = slider.parent().parent()
+    sliderLeftNav = sliderParent.find('.left-nav')
+    sliderRightNav = sliderParent.find('.right-nav')
 
 
 
@@ -209,19 +207,19 @@ $(document).ready(function() {
 
                 case 'sm':
                   
-                  launchTypeA(value, 2, 10)
+                  launchTypeA(value, 3, 10)
                   
                 break;
                 
                 case 'md':
     
-                  launchTypeA(value, 3, 10)
+                  launchTypeA(value, 4, 10)
                   
                 break;
 
                 case 'lg':
     
-                  launchTypeA(value, 4, 10)
+                  launchTypeA(value, 5, 10)
                   
                 break;
               }
