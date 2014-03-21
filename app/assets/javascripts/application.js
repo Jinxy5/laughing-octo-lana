@@ -91,6 +91,7 @@ $(document).ready(function() {
     o['minItems'] = o['maxItems']
     o['itemWidth'] = $(document).find( '#' + sliderId ).width() / o['maxItems']
 
+    console.log( o['move'] );
 
     $(document).find( '#' + sliderId ).flexslider({
       namespace : o['namespace'],
@@ -129,7 +130,7 @@ $(document).ready(function() {
       itemMargin : o['itemMargin'],
       minItems : o['minItems'],
       maxItems : o['maxItems'],
-      move : o['move'],
+      move : 1,
       start : o['start'],
       before : o['before'],
       after : o['after'],
@@ -140,11 +141,32 @@ $(document).ready(function() {
 
   }
 
+  function launchTypeA(id, maxItems, itemMargin){
+    slider = findSlider(id)
+    sliderParent = slider.parent().parent()
+    sliderLeftNav = sliderParent.find('.left-nav')
+    sliderRightNav = sliderParent.find('.right-nav')
+
+    if(initial == false){
+      reappendSlider(id)
+    }
+
+    sliderLeftNav.click(function(){
+      findSlider( id ).flexslider('prev');
+    });
+
+    sliderRightNav.click(function(){
+      findSlider( id ).flexslider('next');
+    }); 
+
+    launchSlider(id, {'maxItems' : maxItems, 'itemMargin' : itemMargin });
+  }
+
   function findSlider(id){
     return $(document).find( '#' + id )
   }
 
-  function loopSliders(maxItems, itemWidth){
+  function loopSliders(){
 
  
     $.map( typeASlidersIds, function( value, type ){    
@@ -156,24 +178,33 @@ $(document).ready(function() {
           switch(type){
             case 'sliderTypeA':
 
-              slider = findSlider(value)
-              sliderParent = slider.parent().parent()
-              sliderLeftNav = sliderParent.find('.left-nav')
-              sliderRightNav = sliderParent.find('.right-nav')
+              switch(breakpoint){
+                case 'xs':
+                    
+                  launchTypeA(value, 1,0);
 
-              if(initial == false){
-                reappendSlider(value)
+                break;
+
+                case 'sm':
+                  
+                  launchTypeA(value, 4,10);
+                  
+                break;
+                
+                case 'md':
+    
+                  launchTypeA(value, 5,10);
+                  
+                break;
+
+                case 'lg':
+    
+                  launchTypeA(value, 5,10);
+                  
+                break;
               }
 
-              sliderLeftNav.click(function(){
-                findSlider( value ).flexslider('prev');
-              });
 
-              sliderRightNav.click(function(){
-                findSlider( value ).flexslider('next');
-              }); 
-
-              launchSlider(value, {'maxItems' : maxItems, 'itemMargin' : itemWidth });
 
             break; 
 
@@ -188,19 +219,23 @@ $(document).ready(function() {
   }
 
   function xsBreakpoint(){
-    loopSliders(1, 0);
+    breakpoint = 'xs'
+    loopSliders();
   }
 
   function smBreakpoint(){
-    loopSliders(4, 10);
+    breakpoint = 'sm'
+    loopSliders();
   }
 
   function mdBreakpoint(){
-    loopSliders(5, 10);
+    breakpoint = 'md'
+    loopSliders();
   }
 
   function lgBreakpoint(){
-    loopSliders(5, 10);
+    breakpoint = 'lg'
+    loopSliders();
   }
 
   function launchBreakpoint(breakpoint){
