@@ -38,8 +38,24 @@ $(document).ready(function() {
     sliderParent.append('<div id = "' +  sliderId + '"></div>');
     findSlider(sliderId).append( sliderHtml );
 
+
+    slider = findSlider(sliderId)
+    sliderParent = slider.parent().parent()
+    sliderLeftNav = sliderParent.find('.left-nav')
+    sliderRightNav = sliderParent.find('.right-nav')
+
+
+
+    sliderLeftNav.click(function(){
+      findSlider( id ).flexslider('prev');
+    });
+
+    sliderRightNav.click(function(){
+      findSlider( id ).flexslider('next');
+    }); 
+
   }
-/*
+
   function launchSlider(sliderId, a){
 
     o = {
@@ -141,18 +157,19 @@ $(document).ready(function() {
     });    
 
   }
-*/
-  function launchTypeA(id, maxItems, itemMargin){
 
+  function launchTypeA(id, maxItems, itemMargin){
+   
+    if(initial == false){
+      reappendSlider(id)
+    }
 
     var slider = findSlider(id),
         sliderParent = slider.parent().parent(),
         sliderLeftNav = sliderParent.find('.left-nav'),
         sliderRightNav = sliderParent.find('.right-nav')
 
-    if(initial == false){
-      reappendSlider(id)
-    }
+
 
     sliderLeftNav.click(function(){
       findSlider( id ).flexslider('prev');
@@ -162,9 +179,9 @@ $(document).ready(function() {
       findSlider( id ).flexslider('next');
     }); 
 
-    $(document).find( '#' + id ).flexslider({ 'move' : 1, animation: 'slide' })
+  //  $(document).find( '#' + id ).flexslider({ 'move' : 1, animation: 'slide' })
     
-   // launchSlider(id, {'maxItems' : maxItems, 'itemMargin' : itemMargin, 'move' : 1});
+    launchSlider(id, {'maxItems' : maxItems, 'itemMargin' : itemMargin, 'move' : 1});
   }
 
   function findSlider(id){
@@ -186,25 +203,25 @@ $(document).ready(function() {
               switch(breakpoint){
                 case 'xs':
                     
-                  $(document).find( '#' + value ).flexslider({ 'move' : 1, animation: 'slide' })
+                  launchTypeA(value, 1, 0)
 
                 break;
 
                 case 'sm':
                   
-                  $(document).find( '#' + value ).flexslider({ 'move' : 1, animation: 'slide' })
+                  launchTypeA(value, 2, 10)
                   
                 break;
                 
                 case 'md':
     
-                  $(document).find( '#' + value ).flexslider({ 'move' : 1, animation: 'slide' })
+                  launchTypeA(value, 3, 10)
                   
                 break;
 
                 case 'lg':
     
-                  $(document).find( '#' + value ).flexslider({ 'move' : 1, animation: 'slide' })
+                  launchTypeA(value, 4, 10)
                   
                 break;
               }
