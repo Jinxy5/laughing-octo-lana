@@ -31,7 +31,6 @@ $(document).ready(function() {
     sliderParent = $(document).find( '#' + slider.parent().attr('id') );
     sliderHtml = $(slider).html();
 
-    slider.unbind();
 
     slider.detach();
     slider.remove();
@@ -40,13 +39,13 @@ $(document).ready(function() {
     sliderParent.append('<div id = "' +  sliderId + '"></div>');
     findSlider(sliderId).append( sliderHtml );
 
-
+/*
     slider = findSlider(sliderId)
     sliderParent = slider.parent().parent()
     sliderLeftNav = sliderParent.find('.left-nav')
     sliderRightNav = sliderParent.find('.right-nav')
 
-/*    sliderLeftNav.unbind();
+    sliderLeftNav.unbind();
     sliderRightNav.unbind();
 *//*
     sliderLeftNav.click(function(){
