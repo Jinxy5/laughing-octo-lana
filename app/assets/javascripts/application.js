@@ -29,10 +29,12 @@ $(document).ready(function() {
   function reappendSlider(sliderId){
     slider =  findSlider(sliderId)
     sliderParent = $(document).find( '#' + slider.parent().attr('id') );
-    sliderHtml = $(slider).html();     
+    sliderHtml = $(slider).html();
+
+    slider.unbind();
 
     slider.detach();
-    slider.remove();   
+    slider.remove();
 
 
     sliderParent.append('<div id = "' +  sliderId + '"></div>');
@@ -44,6 +46,9 @@ $(document).ready(function() {
     sliderLeftNav = sliderParent.find('.left-nav')
     sliderRightNav = sliderParent.find('.right-nav')
 
+/*    sliderLeftNav.unbind();
+    sliderRightNav.unbind();
+*//*
     sliderLeftNav.click(function(){
       findSlider( id ).flexslider('prev');
     });
@@ -51,7 +56,7 @@ $(document).ready(function() {
     sliderRightNav.click(function(){
       findSlider( id ).flexslider('next');
     }); 
-
+*/
   }
 
   function launchSlider(sliderId, a){
@@ -93,7 +98,7 @@ $(document).ready(function() {
       'itemMargin' : '',
       'minItems' : 0,
       'maxItems' : 0,
-      'move' : 0,
+      'move' : 1,
       'start' : function(){},
       'before' : function(){},
       'after' : function(){},
@@ -159,25 +164,27 @@ $(document).ready(function() {
   function launchTypeA(id, maxItems, itemMargin){
    
     if(initial == false){
+    
       reappendSlider(id)
+    
+    } else {
+
+      slider = findSlider(id)
+      sliderParent = slider.parent().parent()
+      sliderLeftNav = sliderParent.find('.left-nav')
+      sliderRightNav = sliderParent.find('.right-nav')
+
+
+
+      sliderLeftNav.click(function(){
+        findSlider( id ).flexslider('prev');
+      });
+
+      sliderRightNav.click(function(){
+        findSlider( id ).flexslider('next');
+      }); 
+
     }
-
-    slider = findSlider(id)
-    sliderParent = slider.parent().parent()
-    sliderLeftNav = sliderParent.find('.left-nav')
-    sliderRightNav = sliderParent.find('.right-nav')
-
-
-
-    sliderLeftNav.click(function(){
-      findSlider( id ).flexslider('prev');
-    });
-
-    sliderRightNav.click(function(){
-      findSlider( id ).flexslider('next');
-    }); 
-
-  //  $(document).find( '#' + id ).flexslider({ 'move' : 1, animation: 'slide' })
     
     launchSlider(id, {'maxItems' : maxItems, 'itemMargin' : itemMargin, 'move' : 1});
   }
