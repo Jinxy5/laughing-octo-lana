@@ -27,20 +27,22 @@ $(document).ready(function() {
   }
 
   function reappendSlider(sliderId){
-    slider =  $(document).find( '#' + sliderId )
+    slider =  findSlider(sliderId)
     sliderParent = $(document).find( '#' + slider.parent().attr('id') );
     sliderHtml = $(slider).html();     
 
+    slider.detach();
     slider.remove();   
 
+
     sliderParent.append('<div id = "' +  sliderId + '"></div>');
-    $(document).find( '#' + sliderId ).append( sliderHtml );
+    findSlider(sliderId).append( sliderHtml );
 
   }
-
+/*
   function launchSlider(sliderId, a){
 
-    var o = {
+    o = {
       'namespace' : 'flex-',
       'selector' : '.slides > li',
       'animation' : 'slide',
@@ -77,7 +79,7 @@ $(document).ready(function() {
       'itemMargin' : '',
       'minItems' : 0,
       'maxItems' : 0,
-      'move' : 1,
+      'move' : 0,
       'start' : function(){},
       'before' : function(){},
       'after' : function(){},
@@ -86,10 +88,10 @@ $(document).ready(function() {
       'removed' : function(){}
     }
 
-    $.extend(o, o, a);
+    $.extend(o, a);
 
     o['minItems'] = o['maxItems']
-    o['itemWidth'] = $(document).find( '#' + sliderId ).width() / o['maxItems']
+    o['itemWidth'] = findSlider(sliderId).width() / o['maxItems']
 
 
     $(document).find( '#' + sliderId ).flexslider({
@@ -129,7 +131,7 @@ $(document).ready(function() {
       itemMargin : o['itemMargin'],
       minItems : o['minItems'],
       maxItems : o['maxItems'],
-      move : 1,
+      move : o['move'],
       start : o['start'],
       before : o['before'],
       after : o['after'],
@@ -139,12 +141,14 @@ $(document).ready(function() {
     });    
 
   }
-
+*/
   function launchTypeA(id, maxItems, itemMargin){
-    slider = findSlider(id)
-    sliderParent = slider.parent().parent()
-    sliderLeftNav = sliderParent.find('.left-nav')
-    sliderRightNav = sliderParent.find('.right-nav')
+
+
+    var slider = findSlider(id),
+        sliderParent = slider.parent().parent(),
+        sliderLeftNav = sliderParent.find('.left-nav'),
+        sliderRightNav = sliderParent.find('.right-nav')
 
     if(initial == false){
       reappendSlider(id)
@@ -158,7 +162,9 @@ $(document).ready(function() {
       findSlider( id ).flexslider('next');
     }); 
 
-    launchSlider(id, {'maxItems' : maxItems, 'itemMargin' : itemMargin });
+    $(document).find( '#' + id ).flexslider({ 'move' : 1, animation: 'slide' })
+    
+   // launchSlider(id, {'maxItems' : maxItems, 'itemMargin' : itemMargin, 'move' : 1});
   }
 
   function findSlider(id){
@@ -180,25 +186,25 @@ $(document).ready(function() {
               switch(breakpoint){
                 case 'xs':
                     
-                  launchTypeA(value, 1,0);
+                  $(document).find( '#' + value ).flexslider({ 'move' : 1, animation: 'slide' })
 
                 break;
 
                 case 'sm':
                   
-                  launchTypeA(value, 4,10);
+                  $(document).find( '#' + value ).flexslider({ 'move' : 1, animation: 'slide' })
                   
                 break;
                 
                 case 'md':
     
-                  launchTypeA(value, 5,10);
+                  $(document).find( '#' + value ).flexslider({ 'move' : 1, animation: 'slide' })
                   
                 break;
 
                 case 'lg':
     
-                  launchTypeA(value, 5,10);
+                  $(document).find( '#' + value ).flexslider({ 'move' : 1, animation: 'slide' })
                   
                 break;
               }
@@ -208,6 +214,28 @@ $(document).ready(function() {
             break; 
 
             case 'sliderTypeB':
+
+              switch(breakpoint){
+                case 'xs':
+                    
+                
+                break;
+
+                case 'sm':
+                  
+                  
+                break;
+                
+                case 'md':
+    
+                  
+                break;
+
+                case 'lg':
+    
+                  
+                break;
+              }
 
             break;
           }
@@ -219,22 +247,18 @@ $(document).ready(function() {
 
   function xsBreakpoint(){
     breakpoint = 'xs'
-    loopSliders();
   }
 
   function smBreakpoint(){
     breakpoint = 'sm'
-    loopSliders();
   }
 
   function mdBreakpoint(){
     breakpoint = 'md'
-    loopSliders();
   }
 
   function lgBreakpoint(){
     breakpoint = 'lg'
-    loopSliders();
   }
 
   function launchBreakpoint(breakpoint){
@@ -255,14 +279,15 @@ $(document).ready(function() {
       break;
     }
 
+    loopSliders();
     initial = false
   }
 
   /* begin */
-  typeASlidersIds = {}
-  currentBreakpoint = getBreakpoint()
-  initial = true
-  timer = 0
+  var typeASlidersIds = {},
+      currentBreakpoint = getBreakpoint(),
+      initial = true,
+      timer
 
 
   $('.sliderElm').each(function( key, slider ){
