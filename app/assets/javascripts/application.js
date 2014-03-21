@@ -54,7 +54,7 @@ $(document).ready(function() {
       'animationSpeed' : 600,
       'initDelay' : 0,
       'randomize' : false,
-      'pauseOnAction' : true,
+      'pauseOnAction' : false,
       'pauseOnHover' : false,
       'useCSS' : true,
       'touch' : false,
@@ -91,7 +91,6 @@ $(document).ready(function() {
     o['minItems'] = o['maxItems']
     o['itemWidth'] = $(document).find( '#' + sliderId ).width() / o['maxItems']
 
-    console.log( o['move'] );
 
     $(document).find( '#' + sliderId ).flexslider({
       namespace : o['namespace'],
