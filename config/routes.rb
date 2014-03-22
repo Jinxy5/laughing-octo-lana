@@ -1,4 +1,6 @@
 Bloodbikeswales::Application.routes.draw do
+  resources :users
+
   resources :causes
 
   resources :recitals
