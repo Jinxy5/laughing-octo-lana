@@ -38,6 +38,13 @@ describe User do
 	it { should be_valid }
 
 	it { should respond_to :authenticate }
+
+#  specify( user.save ) { should be_true }
+    
+    it 'should save' do
+      user.save
+      User.find_by(user_name: user.user_name).should eq user
+    end
   end
 
   describe 'when password is not present' do

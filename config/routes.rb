@@ -26,9 +26,14 @@ Bloodbikeswales::Application.routes.draw do
    #news
    get '/news_1', to: 'splash#news_1'
 
-   get 'signup', to: 'users#new', as: 'sign_up'
-   get 'signin', to: 'sessions#new', as: 'sign_in'
 
+   get 'culminate/:register_key', to: 'users#culminate', as: :culminate
+
+   get 'signup', to: 'users#new', as: 'sign_up'
+
+   get 'signin', to: 'sessions#new', as: 'sign_in' # sign_in
+   post 'sessions', to: 'sessions#create', as: 'sessions' #machine_link
+   delete 'signout', to: 'sessions#destroy', as: 'sign_out' # sign_out
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

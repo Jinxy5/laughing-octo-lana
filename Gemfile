@@ -23,7 +23,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
-gem 'lazy_columns'
+#gem 'lazy_columns'
+
 group :doc do
   gem 'sdoc', require: false
 end

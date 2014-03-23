@@ -21,6 +21,50 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def culminate
+    register_key = params[:register_key]
+
+    @user = User.find_by(register_key: params[:register_key])    
+    raise ActiveRecord::RecordNotFound if !@user 
+    
+#   if user == current_user
+#
+# could be a lot simpler:
+#
+# if not current user, redirect to root. 
+# if current user, and they are not culminated, culimate them. 
+# if not current user, and they are culminated already, redirect to root
+#
+#
+      if @user.culminated == false
+
+        if register_key == @user.register_key
+          @user.culminate
+          redirect_to root_url, notice: 'User was successfully culminated!'
+        
+        else          
+          redirect_to root_url, notice: 'Invalid: Key not the same!'
+        end
+
+      elsif @user.culminated
+        
+        redirect_to root_url, notice: 'Invalid: You\'ve already registered!' 
+      
+      end    
+      
+#    else
+#      redirect_to root_url, error: 'Invalid key! (it\'s another users key!)'
+#    end    
+
+
+
+ 
+    
+
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url, notice: 'Invalid: You\'ve already registered!' 
+  end
+
   # POST /users
   # POST /users.json
   def create

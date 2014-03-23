@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
-	before_save { self.user_name = 'User' + User.count.to_s if !self.user_name  }
+
+	before_create { self.user_name = 'User' + User.count.to_s if !self.user_name  }
+	before_create { self.register_key = SecureRandom.hex }
+	before_create { self.culminated = 0 } #setting to false results in strange error where it can't be saved
 
 	VALID_EMAIL_REGEX = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9\-.]/
 
@@ -13,4 +16,8 @@ class User < ActiveRecord::Base
 	validates :password, length: { maximum: 100 }
 
 	has_secure_password
+
+	def culminate
+		update_attribute(:culminated, 1)
+	end
 end
