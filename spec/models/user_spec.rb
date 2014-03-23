@@ -35,17 +35,33 @@ describe User do
 	it { should respond_to :password_confirmation }
 
 	it { should respond_to :password_digest } 
+
+  it { should respond_to :remember_token }
 	it { should be_valid }
 
 	it { should respond_to :authenticate }
 
-#  specify( user.save ) { should be_true }
+
+  describe 'remember token' do
+    before { user.save }
     
-    it 'should save' do
-      user.save
-      User.find_by(user_name: user.user_name).should eq user
-    end
+    its(:remember_token){ should_not be_blank }
   end
+
+  describe 'register key' do
+    before { user.save }
+
+    its(:register_key){ should_not be_blank }    
+  end
+
+=begin
+  describe 'should save' do
+    before { user.save }
+
+    User.find_by(user_name: user.user_name).should eq user
+  end
+=end
+end
 
   describe 'when password is not present' do
   	let(:user){ FactoryGirl.build(:user, password: '')}

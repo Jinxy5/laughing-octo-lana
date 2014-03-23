@@ -23,6 +23,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+gem 'launchy'
+gem 'poltergeist'
 #gem 'lazy_columns'
 
 group :doc do

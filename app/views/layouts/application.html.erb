@@ -155,6 +155,9 @@
 					<span class = 'fa fa-user'></span> sign up
 				<% end %>
 
+				<%# if signed_in? %>
+					<%= debug @current_user %>
+				<%# end %>
 				<!--
 					<a class = 'sign-in'> <span class = 'fa fa-unlock'></span> sign in </a> <span class = 'divide'> | </span> <a class = 'sign-in'> <span class = 'fa fa-user'></span> register </a> 
 					-->

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	before_create { self.user_name = 'User' + User.count.to_s if !self.user_name  }
 	before_create { self.register_key = SecureRandom.hex }
 	before_create { self.culminated = 0 } #setting to false results in strange error where it can't be saved
+	before_create :create_remember_token
 
 	VALID_EMAIL_REGEX = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9\-.]/
 
@@ -17,7 +18,29 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
-	def culminate
-		update_attribute(:culminated, 1)
+	def new_remember_token
+		SecureRandom.urlsafe_base64
 	end
-end
+
+	def hash(token)
+		Digest::SHA1.hexdigest(token.to_s)
+	end
+
+	private 
+
+		def create_remember_token
+			self.remember_token = hash(32)
+	#		update_attribute(:remember_token, 'hiya boyz')
+		end
+
+=begin
+		Do this in future. Make the register key more secure with a hash
+		def create_register_key
+
+		end
+=end
+
+		def culminate
+			update_attribute(:culminated, 1)
+		end
+	end
