@@ -8,6 +8,19 @@ Bloodbikeswales::Application.configure do
   
   # hm
   # config.serve_static_assets = true
+=begin
+IP Address
+Shared
+SMTP Hostname
+smtp.mailgun.org
+Default SMTP Login
+postmaster@sandbox4610.mailgun.org [manage SMTP credentials]
+Default Password
+4vbufr0vt9g2 [change password]
+SMTP Tips
+Mailgun SMTP servers listen on ports 25, 587 and 465 (TLS)
+=end
+  
 
 
   # Do not eager load code on boot.
@@ -17,8 +30,18 @@ Bloodbikeswales::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "sandbox4610.mailgun.org",
+    :user_name => "postmaster@sandbox4610.mailgun.org",
+    :password => "4vbufr0vt9g2"
+  }
+
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -26,6 +26,9 @@ Bloodbikeswales::Application.routes.draw do
    #news
    get '/news_1', to: 'splash#news_1'
 
+   get 'signup', to: 'users#new', as: 'sign_up'
+   get 'signin', to: 'sessions#new', as: 'sign_in'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

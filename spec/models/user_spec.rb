@@ -86,9 +86,9 @@ describe User do
   end
 
   describe 'when valid email is in capitals' do
-  	email = Faker::Internet.email.upcase
+  	let(:uppercase_email){ Faker::Internet.email.upcase }
 
-    let(:user){ FactoryGirl.create(:user, email: email ) }
+    let(:user){ FactoryGirl.create(:user, email: uppercase_email ) }
 
   	subject { user }
 
@@ -96,7 +96,7 @@ describe User do
 
   	subject { user.reload }
 
-  	its(:email) { should eq email.downcase }
+  	its(:email) { should eq uppercase_email.downcase }
   end
 
 
