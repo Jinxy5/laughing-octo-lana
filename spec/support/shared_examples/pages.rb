@@ -16,7 +16,10 @@ shared_examples 'user profile page' do
 	its(:body){ should include 'Your private details' }
 end
 
-
+shared_examples 'forum index page' do
+	its(:title){ should eq base_title + 'Forums'}
+	its(:body){ should include 'Listing forums'}
+end
 
 
 ####

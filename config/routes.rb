@@ -3,7 +3,9 @@ Bloodbikeswales::Application.routes.draw do
 
   resources :discussions
 
-  resources :forums
+  resources :forums do
+    resources :users
+  end
 
   resources :users
 
@@ -20,7 +22,7 @@ Bloodbikeswales::Application.routes.draw do
   root 'splash#index'
 
 
-  get 'forum/:forum_id/discussion/:discusssion_id', to: 'discussions#show', as: :show_discussion
+  get 'forums/:forum_id/discussion/:discusssion_id', to: 'discussions#show', as: :show_discussion
 
 
 

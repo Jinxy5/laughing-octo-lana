@@ -1,37 +1,54 @@
+<% page_title 'Forums' %>
 <h1>Listing forums</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <table class="table table-striped table-bordered">
+  <thead class="topiclist">
+  <tr>
+  <th width="50%"><a href="./viewforum.php?f=1&amp;sid=85be37d21d76f2494db17c8ff750b177">Your first category</a></th>
+  <th class="topics"> Discussions </th>
+  <th class="posts"> Posts </th>
+  <th class="lastpost"><span>Last post</span></th>
+  </tr>
   </thead>
 
-  <tbody>
-    <% @forums.each do |forum| %>
+<% @forums.each do |forum| %>
 
 
-       <h3> <%= forum.name %> </h3> <br>
---------- </br>
-        <u> Discussions: </u> <br>
 
-        <% forum.discussions.each do |discussion| %>
-          <%= link_to discussion.name, show_discussion_path(forum, discussion) %> </br>
-        <% end %>
+  <tbody class="topiclist forums">
+  <tr>
+  <td width="50%" title="No unread posts">
+  <i class="pcon" style="background-image:url(http://cegtechforum.com/forum/styles/proBoot/imageset/forum_read.gif.pagespeed.ce.8QITyQPG-8.gif);background-repeat:no-repeat"></i>
+  <!-- <a class="feed-icon-forum" title="Feed - Your first forum" href="http://cegtechforum.com/forum/feed.php?f=2"><img src="./styles/proBoot/theme/images/feed.gif" alt="Feed - Your first forum" /></a> -->
+  <%= link_to forum.name, forum_path(forum) %> <br>
+  Description of your first forum.
+  </td>
+  <td ><center><span class="badge"> <%= forum.discussions.count %> </span></center></td>
+  <td ><center><span class="badge"> <%= forum.posts.count %> </span></center></td>
+  <td class="lastpost"><span>
 
---------- </br>
+  <% if forum.posts.last %>
+  
+    <dfn>Last post</dfn> by <%= link_to forum.last_post.user.user_name, user_path(forum.last_post.user)  %> <%= link_to do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
 
-       <%#= link_to 'Show', forum %>
-       <%#= link_to 'Edit', edit_forum_path(forum) %>
-       <%#= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </tr>
-    <% end %>
+    <% last_post_time = forum.last_post.created_at %>
+    <%= last_post_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words(  last_post_time ) %> ago ) 
+  <% else %>
+
+    Nobody has posted in the forum yet! has posted yet! <%= link_to 'Be the first to start a discussion...' %>
+  <% end %>
+  
+  </td>
+  </tr>
   </tbody>
+
+<% end %>
+
 </table>
 
-<br>
 
-<%= link_to 'New Forum', new_forum_path %>
+
+
+
+
+<%#= link_to 'New Forum', new_forum_path %>
