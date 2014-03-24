@@ -15,3 +15,12 @@ shared_examples 'user profile page' do
 	its(:title){ should eq base_title + in_example_user }
 	its(:body){ should include 'Your private details' }
 end
+
+
+
+
+####
+shared_examples 'signed in' do
+	it { should have_link('Sign Out')}
+ # more here
+end

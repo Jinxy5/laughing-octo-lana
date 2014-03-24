@@ -36,6 +36,8 @@ describe 'authentication pages', js: true do
 			let(:in_example_user ) { User.find_by(email: user.email).user_name }
 			it_should_behave_like 'user profile page'
 
+			it_should_behave_like 'signed in'
+
 		end
 
 		describe 'after saving the user' do

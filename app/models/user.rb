@@ -18,18 +18,18 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
-	def new_remember_token
+	def User.new_remember_token
 		SecureRandom.urlsafe_base64
 	end
 
-	def hash(token)
+	def User.hash(token)
 		Digest::SHA1.hexdigest(token.to_s)
 	end
 
 	private 
 
 		def create_remember_token
-			self.remember_token = hash(32)
+			self.remember_token = User.hash(User.new_remember_token)
 	#		update_attribute(:remember_token, 'hiya boyz')
 		end
 
