@@ -37,10 +37,26 @@
 <body>
 <div id = 'viewport'></div>
 
-    <%= debug(params) if Rails.env.development? %>
+    <%#= debug(params) if Rails.env.development? %>
+
+    <% if signed_in? %>
+		<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container">
+		  	<div class = 'control_links'>
+			    Welcome, <%= link_to current_user.user_name, user_path(current_user) %>
+					
+					<%= link_to sign_out_path, method: :delete, class: 'pull-right' do %>
+						<span class = 'fa fa-lock'></span> sign out
+					<% end %>
+			</div>
+		  </div>
+		</nav>    
+
+    <% end %>
 
 
-<div class = 'main-navigation row' role = 'navigation'>
+
+<div class = 'main-navigation row' role = 'navigation' <% if signed_in? %> style = 'margin-top: 50px' <% end %> >
 		<div class = 'color-strip row-fluid'>
 			<div class = 'col-xs-1 green'></div>
 			<div class = 'col-xs-1 white'></div>
@@ -68,7 +84,6 @@
 
 			<a href = '/'> <img src="<%= image_path('logo.png') %>" alt="..." class="img-responsive center-block"  /> </a>
 
-			<%= flash %>
 
 			<% if flash %>
 				<% flash.each do |key, value| %>
@@ -104,7 +119,7 @@
 
 				<ul class = 'nav navbar-pills col-sm-2 no-gutter'>
 					<li> <a href = '/events'> <span class= 'fa fa-calendar'></span>  Events </a></li>				
-
+					<li> <a href = '/forums'> <span class = 'fa fa-laptop'></span> Forum </a></li>
 				</ul>
 <!--
 
@@ -147,12 +162,7 @@
 
 				<div class = 'authentication'>
 				
-				<% if signed_in? %>
-
-					<%= link_to sign_out_path, method: :delete do %>
-						<span class = 'fa fa-lock'></span> sign out
-					<% end %>
-				<% else %>
+				<% if !signed_in? %>
 					<%= link_to sign_in_path do %>
 						<span class = 'fa fa-unlock'></span> sign in
 					<% end %>

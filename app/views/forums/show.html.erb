@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @forum.name %>
+</p>
+	
+	Discussions: <br>
+
+ <% @forum.discussions.each do |discussion| %>
+
+ 	<%= link_to discussion.name, show_discussion_path(@forum, discussion) %><br>
+ <% end %>
+
+<%= link_to 'Edit', edit_forum_path(@forum) %> |
+<%= link_to 'Back', forums_path %>

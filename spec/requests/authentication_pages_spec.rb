@@ -16,6 +16,23 @@ describe 'authentication pages', js: true do
 		end
 	end	
 
+	describe 'sign out' do
+		let(:user){ FactoryGirl.create(:user) }
+	
+		before do
+			visit root_path		
+			find(:linkhref, '/signin').click
+
+			fill_in 'session_email', with: user.email
+			fill_in 'session_password', with: user.password
+			click_button 'Sign In'
+
+			find(:linkhref, '/signout').click# '/signout'
+		end
+
+		it_should_behave_like 'signed out'
+	end
+
 
 	describe 'sign up page' do
 		describe 'with valid information' do

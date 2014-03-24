@@ -24,3 +24,13 @@ shared_examples 'signed in' do
 	it { should have_link('Sign Out')}
  # more here
 end
+
+
+shared_examples 'signed out' do
+	its(:body){ should include 'Sign in' }
+
+#	its(:body){ should include 'SIGN IN'}
+#	its(:body){ should include 'SIGN UP'}
+#	it { should have_link('SIGN IN')}
+#	it { should have_link('SIGN UP')}
+end

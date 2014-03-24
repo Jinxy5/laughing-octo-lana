@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :posts
+
 	before_save { self.email = email.downcase }
 
 	before_create { self.user_name = 'User' + User.count.to_s if !self.user_name  }

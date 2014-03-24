@@ -1,4 +1,10 @@
 Bloodbikeswales::Application.routes.draw do
+  resources :posts
+
+  resources :discussions
+
+  resources :forums
+
   resources :users
 
   resources :causes
@@ -11,7 +17,16 @@ Bloodbikeswales::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'splash#index'
+  root 'splash#index'
+
+
+  get 'forum/:forum_id/discussion/:discusssion_id', to: 'discussions#show', as: :show_discussion
+
+
+
+
+
+
 
    get '/home', to: 'splash#index'
    get '/donate', to: 'splash#donate'

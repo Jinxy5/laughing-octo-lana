@@ -158,7 +158,8 @@ $(document).ready(function() {
       added : o['added'],
       removed : o['removed']
     });    
-
+    
+    console.log();
   }
 
   function launchTypeA(id, maxItems, itemMargin){
@@ -208,25 +209,33 @@ $(document).ready(function() {
               switch(breakpoint){
                 case 'xs':
                     
+                //                  console.log('xs');
+
                   launchTypeA(value, 1, 0)
 
                 break;
 
                 case 'sm':
                   
+                              //    console.log('sm');
+
                   launchTypeA(value, 3, 10)
                   
                 break;
                 
                 case 'md':
     
+                //                  console.log('md');
+
                   launchTypeA(value, 4, 10)
                   
                 break;
 
                 case 'lg':
     
-                  launchTypeA(value, 5, 10)
+                //  console.log('lg');
+
+                 launchTypeA(value, 5, 10)
                   
                 break;
               }
@@ -285,6 +294,8 @@ $(document).ready(function() {
 
   function launchBreakpoint(breakpoint){
     
+    console.log( 'here:' )
+    console.log( breakpoint )
 
     switch( breakpoint ){
       case '1':
