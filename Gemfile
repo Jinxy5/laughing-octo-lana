@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'launchy'
 gem 'poltergeist'
+gem 'jquery-rails'
 #gem 'lazy_columns'
 
 group :doc do
