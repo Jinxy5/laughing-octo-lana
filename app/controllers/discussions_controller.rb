@@ -1,6 +1,9 @@
 class DiscussionsController < ApplicationController
   before_action :set_discussion, only: [:show, :edit, :update, :destroy]
+  before_action :set_forum, only: [:show, :edit, :update, :create, :destroy, :new]
+
   before_action :log_impression, only: [:show]
+
   # GET /discussions
   # GET /discussions.json
   def index
@@ -29,9 +32,15 @@ class DiscussionsController < ApplicationController
   def create
     @discussion = Discussion.new(discussion_params)
 
+    #set the forum
+    @discussion.forum_id = @forum.id
+
+    #set the user
+    @discussion.user_id = current_user.id
+
     respond_to do |format|
       if @discussion.save
-        format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
+        format.html { redirect_to [@forum, @discussion], notice: 'Discussion was successfully created.' }
         format.json { render action: 'show', status: :created, location: @discussion }
       else
         format.html { render action: 'new' }
@@ -82,12 +91,17 @@ class DiscussionsController < ApplicationController
     end
     
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_forum
+      @forum = Forum.find(params[:forum_id])
+    end
+
     def set_discussion
       @discussion = Discussion.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discussion_params
-      params.require(:discussion).permit(:name, :forum_id)
+      params.require(:discussion).permit(:name, :body)
     end
 end

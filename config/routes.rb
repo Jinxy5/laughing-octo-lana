@@ -1,8 +1,7 @@
 Bloodbikeswales::Application.routes.draw do
-  resources :posts
+  
 
-
-    resources :users
+  resources :users
 
 
   resources :forums do
@@ -10,10 +9,6 @@ Bloodbikeswales::Application.routes.draw do
       resources :posts
     end
   end
-
-  resources :users
-
-  resources :causes
 
   resources :recitals
 
@@ -28,26 +23,6 @@ Bloodbikeswales::Application.routes.draw do
 
   get 'forums/:forum_id/discussion/:discusssion_id', to: 'discussions#show', as: :show_discussion
 
-
-
-
-
-
-
-   get '/home', to: 'splash#index'
-   get '/donate', to: 'splash#donate'
-
-   #events news
-   get '/news', to: 'splash#news'
-   get '/events', to: 'splash#events'
-
-   # events
-   get '/event_1', to: 'splash#event_1'
-
-   #news
-   get '/news_1', to: 'splash#news_1'
-
-
    get 'culminate/:register_key', to: 'users#culminate', as: :culminate
 
    get 'signup', to: 'users#new', as: 'sign_up'
@@ -55,6 +30,8 @@ Bloodbikeswales::Application.routes.draw do
    get 'signin', to: 'sessions#new', as: 'sign_in' # sign_in
    post 'sessions', to: 'sessions#create', as: 'sessions' #machine_link
    delete 'signout', to: 'sessions#destroy', as: 'sign_out' # sign_out
+
+   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

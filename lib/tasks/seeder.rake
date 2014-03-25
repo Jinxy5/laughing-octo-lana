@@ -1,4 +1,30 @@
-namespace :seeder do 
+namespace :seeder do
+
+	namespace :initial_seed do
+
+		task roles: :environment do
+
+#			Role.connection.execute('ALTER SEQUENCE roles_id_seq RESART WITH 1') if !Role.exists? 
+			Role.delete_all
+
+			roles = ['potential', 'admin', 'rider', 'organiser']
+
+			puts '==================================='
+
+			puts 'Created: '
+
+			roles.each_with_index do |role, index|
+
+				Role.create(id: index, role: role)
+
+				puts '	' + index.to_s + ' ' + role
+
+			end
+
+			puts '==================================='
+		end
+	end
+
 	namespace :demo_seed do
 		desc 'create users' 
 		task user: :environment do
@@ -26,8 +52,6 @@ namespace :seeder do
 
 		desc 'seed all tables'
 		task all: ['cause', 'recital', 'event']
-		
-
 		desc 'create causes'
 		task cause: :environment do
 			Cause.delete_all

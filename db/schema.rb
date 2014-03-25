@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325152402) do
+ActiveRecord::Schema.define(version: 20140325211011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,11 +83,13 @@ ActiveRecord::Schema.define(version: 20140325152402) do
   end
 
   create_table "roles", force: true do |t|
-    t.string  "role"
-    t.integer "user_id"
+    t.string "role"
   end
 
-  add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
+  create_table "user_roles", force: true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "user_name"
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 20140325152402) do
     t.boolean  "culminated"
     t.string   "remember_token"
     t.datetime "register_token_created_at"
+    t.integer  "role"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
