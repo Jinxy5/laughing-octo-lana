@@ -1,5 +1,6 @@
 class DiscussionsController < ApplicationController
   before_action :set_discussion, only: [:show, :edit, :update, :destroy]
+  before_action :log_impression, only: [:show]
   # GET /discussions
   # GET /discussions.json
   def index
@@ -10,7 +11,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1.json
   def show
 
-    Discussion.increment_counter :view, @discussion
+   # Discussion.increment_counter :view, @discussion
    #   @discussion.iterate_view
   end
 
@@ -64,6 +65,22 @@ class DiscussionsController < ApplicationController
   end
 
   private
+    def log_impression
+      ip = request.remote_ip
+      seen_by_network = Impression.exists?(ip_address: ip)
+      seen_by_user = Impression.exists?(user_id: current_user)
+      
+      if !Impression.exists?(discussion_id: @discussion, ip_address: ip)
+
+        @discussion.iterate_impression(ip)
+
+     # elsif seen_by_network && !seen_by_user 
+        
+     #   @discussion.iterate_impression
+
+      end
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_discussion
       @discussion = Discussion.find(params[:id])

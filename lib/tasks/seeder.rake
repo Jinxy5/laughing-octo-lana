@@ -17,7 +17,7 @@ namespace :seeder do
 			Discussion.delete_all
 			Discussion.connection.execute('ALTER SEQUENCE discussions_id_seq RESTART WITH 1')
 
-			1.times do |count|
+			20.times do |count|
 				if Discussion.create(name: Faker::Lorem.sentence(word_count = 20), forum_id: rand(0..3), user_id: rand(0..99), body: Faker::Lorem.sentence(characters = 200) )
 					puts 'Successfully created '
 				end

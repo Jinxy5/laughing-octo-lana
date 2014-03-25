@@ -30,7 +30,7 @@
 	by <%= link_to discussion.user.user_name %> &#187; <%= discussion.created_at.strftime('%a, %b %d, %Y %I:%M %P ') %>
 	</td>
 	<td class="posts success-color"><center><span class="badge"> <%= discussion.posts.count %></span></center></td>
-	<td class="views success-color"><center><span class="badge"> <%= discussion.view %> </span></center></td>
+	<td class="views success-color"><center><span class="badge"> <%= discussion.impression_count%> </span></center></td>
 	<td class="lastpost success-color"><span>
 
 
