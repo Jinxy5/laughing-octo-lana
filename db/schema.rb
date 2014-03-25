@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324142931) do
+ActiveRecord::Schema.define(version: 20140325032606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,12 @@ ActiveRecord::Schema.define(version: 20140324142931) do
     t.integer  "forum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "view"
+    t.integer  "user_id"
+    t.text     "body"
   end
+
+  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id", using: :btree
 
   create_table "events", force: true do |t|
     t.datetime "startdate"
@@ -56,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140324142931) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
+    t.integer  "replied_post_id"
   end
 
   create_table "recitals", force: true do |t|
@@ -66,6 +72,13 @@ ActiveRecord::Schema.define(version: 20140324142931) do
     t.datetime "updated_at"
   end
 
+  create_table "roles", force: true do |t|
+    t.string  "role"
+    t.integer "user_id"
+  end
+
+  add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "user_name"
     t.string   "email"
@@ -75,6 +88,7 @@ ActiveRecord::Schema.define(version: 20140324142931) do
     t.string   "register_key"
     t.boolean  "culminated"
     t.string   "remember_token"
+    t.datetime "register_token_created_at"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree

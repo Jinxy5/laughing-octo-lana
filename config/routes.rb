@@ -1,10 +1,14 @@
 Bloodbikeswales::Application.routes.draw do
   resources :posts
 
-  resources :discussions
+
+    resources :users
+
 
   resources :forums do
-    resources :users
+    resources :discussions do
+      resources :posts
+    end
   end
 
   resources :users

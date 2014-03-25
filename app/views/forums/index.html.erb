@@ -21,7 +21,7 @@
   <i class="pcon" style="background-image:url(http://cegtechforum.com/forum/styles/proBoot/imageset/forum_read.gif.pagespeed.ce.8QITyQPG-8.gif);background-repeat:no-repeat"></i>
   <!-- <a class="feed-icon-forum" title="Feed - Your first forum" href="http://cegtechforum.com/forum/feed.php?f=2"><img src="./styles/proBoot/theme/images/feed.gif" alt="Feed - Your first forum" /></a> -->
   <%= link_to forum.name, forum_path(forum) %> <br>
-  Description of your first forum.
+  <%= forum.description %>
   </td>
   <td ><center><span class="badge"> <%= forum.discussions.count %> </span></center></td>
   <td ><center><span class="badge"> <%= forum.posts.count %> </span></center></td>
@@ -32,10 +32,10 @@
     <dfn>Last post</dfn> by <%= link_to forum.last_post.user.user_name, user_path(forum.last_post.user)  %> <%= link_to do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
 
     <% last_post_time = forum.last_post.created_at %>
-    <%= last_post_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words(  last_post_time ) %> ago ) 
+    <%= last_post_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words( last_post_time ) %> ago ) 
   <% else %>
 
-    Nobody has posted in the forum yet! has posted yet! <%= link_to 'Be the first to start a discussion...' %>
+    Nobody has posted in this forum yet! <%= link_to 'Be the first to start a discussion...' %>
   <% end %>
   
   </td>

@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
 	has_many :posts
-	
+	has_many :discussions
+	has_many :roles
 
 	before_save { self.email = email.downcase }
 
 	before_create { self.user_name = 'User' + User.count.to_s if !self.user_name  }
-	before_create { self.register_key = SecureRandom.hex }
+	before_create :create_register_token
 	before_create { self.culminated = 0 } #setting to false results in strange error where it can't be saved
 	before_create :create_remember_token
 
@@ -31,6 +32,11 @@ class User < ActiveRecord::Base
 
 	private 
 
+		def create_register_token
+			self.register_token = User.hash(User.new_remember_token)
+			self.register_token_created_at = Time.now
+		end
+
 		def create_remember_token
 			self.remember_token = User.hash(User.new_remember_token)
 	#		update_attribute(:remember_token, 'hiya boyz')
@@ -46,4 +52,4 @@ class User < ActiveRecord::Base
 		def culminate
 			update_attribute(:culminated, 1)
 		end
-	end
+end
