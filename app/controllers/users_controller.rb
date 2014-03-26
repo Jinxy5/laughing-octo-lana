@@ -19,6 +19,14 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    roles = Role.all
+    
+    @role_names = []
+
+    roles.each do |role|
+      @role_names << role.role
+    end
+
   end
 
   def culminate
@@ -72,7 +80,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        sign_in @user
+        format.html { redirect_to @user, notice: 'Welcome to ' + request.host_with_port + ', ' + @user.user_name + '!' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

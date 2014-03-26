@@ -5,9 +5,8 @@ namespace :seeder do
 		task roles: :environment do
 
 #			Role.connection.execute('ALTER SEQUENCE roles_id_seq RESART WITH 1') if !Role.exists? 
-			Role.delete_all
 
-			roles = ['potential', 'admin', 'rider', 'organiser']
+			roles = ['potential', 'admin', 'blood', 'milk', 'organiser']
 
 			puts '==================================='
 
@@ -15,7 +14,7 @@ namespace :seeder do
 
 			roles.each_with_index do |role, index|
 
-				Role.create(id: index, role: role)
+				User.create(user_name: Faker::Name.first_name, email: Faker::Internet.email, password: 'awesomepassword', password_confirmation: 'awesomepassword' )
 
 				puts '	' + index.to_s + ' ' + role
 
@@ -23,6 +22,69 @@ namespace :seeder do
 
 			puts '==================================='
 		end
+
+		task create_forums: :environment do
+
+			Role.delete_all
+
+			roles = ['potential', 'admin', 'blood', 'milk', 'organiser']
+
+			roles.each do |role|
+				Role.create( role: role )
+
+				puts 'created ' + role
+			end
+
+			puts '-----'
+
+			Forum.delete_all	
+
+			forums = [{name: 'blood', description: 'talk about blood', role: 'blood' }, 
+					  {name: 'milk', description: 'talk about milk', role: 'milk' },  
+					  {name: 'admin', description: 'talk about being an admin', role: 'admin' }, 
+					  {name: 'organiser', description: 'talk about being an organiser', role: 'organiser' }]
+
+			forums.each do |forum|
+
+				Forum.create( name: forum[:name], description: forum[:description] )
+
+				puts 'created ' + forum[:name]
+				
+				forum_instance = Forum.find_by(name: forum[:name])
+
+				forum_instance.allow_role( forum[:name] )
+				#forum.
+
+			end
+		end
+	end
+
+	namespace :development do
+
+		task user_roles: :environment do
+			
+			roles = ['potential', 'rider', 'organiser']
+
+			puts '==================================='
+
+			puts 'Created: '
+
+			roles.each_with_index do |role, index|
+
+				3.times do
+
+					user = User.create(user_name: Faker::Name.first_name, email: Faker::Internet.email, password: 'awesomepassword', password_confirmation: 'awesomepassword' )
+
+					user.update_attributes(role_id: Role.find_by(role: role).id)
+				
+				end
+			end
+
+			puts '==================================='
+
+		end
+		
+	
 	end
 
 	namespace :demo_seed do

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	before_create :create_register_token
 	before_create { self.culminated = 0 } #setting to false results in strange error where it can't be saved
 	before_create :create_remember_token
-	before_create { self.user_roles.build(role_id: Role.find_by(role: 'potential').id ) }
+	before_create { self.user_roles.build(role_id: Role.find_by(role: 'potential').id ) } # user the add_role method here
 
 	VALID_EMAIL_REGEX = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9\-.]/
 
@@ -24,6 +24,19 @@ class User < ActiveRecord::Base
 	validates :password, length: { maximum: 100 }
 
 	has_secure_password
+
+
+	def add_role(role)
+		self.user_roles.create(role_id: Role.find_by(role: role).id )
+	end
+
+	def remove_role(role)
+		self.roles.delete( id: Role.find_by(role: role).id )
+	end
+
+	def list_roles
+		self.roles.pluck(:role).to_sentence
+	end
 
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64

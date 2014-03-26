@@ -11,7 +11,6 @@
  *= require_self
  *= require my_flexslider_override.css
  *= require bootstrap_overrides.css
-
  *= require_tree .
  *= require focal-point.scss
  *= require breakpoints.css.scss

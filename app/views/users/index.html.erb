@@ -7,9 +7,9 @@
     <tr>
       <th>User name</th>
       <th>Email</th>
-      <th>Password digest</th>
-      <th>Nick name</th>
-      <th></th>
+
+
+      <th> Roles </th>
       <th></th>
       <th></th>
     </tr>
@@ -20,7 +20,20 @@
       <tr>
         <td><%= user.user_name %></td>
         <td><%= user.email %></td>
-        <td><%= user.password_digest %></td>
+
+          <td>
+
+            <% user.roles.each do |role| %>
+              <%= role.role %>
+            <% end %>
+
+          </td>
+
+        <td></td>
+        <td></td>
+
+        <td> <% %> </td>
+
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

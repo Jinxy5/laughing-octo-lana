@@ -1,5 +1,6 @@
 class ForumsController < ApplicationController
   before_action :set_forum, only: [:show, :edit, :update, :destroy]
+  before_action :check_role, except: [:index]
 
   # GET /forums
   # GET /forums.json
@@ -62,6 +63,17 @@ class ForumsController < ApplicationController
   end
 
   private
+    def check_role
+      
+      # find a better way to create an array
+
+      if !@forum.user_allowed?(current_user)
+        redirect_to forums_path, notice: 'Sorry! You cannot enter this forum! This forum is for users with a type of: ' + @forum.list_roles + ' and your roles are: ' + current_user.list_roles
+      end
+     # ap current_user.roles.any? { |role| role[:role] == 'potentialzzz' || 'potential'}
+
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_forum
       @forum = Forum.find(params[:id])
