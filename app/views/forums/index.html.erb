@@ -38,7 +38,7 @@
     <%= last_discussion_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words( last_discussion_time ) %> ago ) 
   <% else %>
 
-    Nobody has created a discussion in this forum yet! <%= link_to 'Be the first to start a discussion...' %>
+    Nobody has created a discussion in this forum yet! <%= link_to 'Be the first to start a discussion...', new_forum_discussion_path(forum) %>
   <% end %>
   
   </td>

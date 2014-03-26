@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_forum, only: [:show, :edit, :update, :create, :destroy, :new]
+  before_action :set_discussion, only: [:show, :edit, :update, :create, :destroy, :new]
+
   # GET /posts
   # GET /posts.json
   def index
@@ -25,9 +29,17 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+    #set the forum
+#    @post.forum_id = @forum.id
+
+    #set the discussion 
+    @post.discussion_id = @discussion.id
+    #set the user
+    @post.user_id = current_user.id
+
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to [@forum, @discussion, @post], notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
@@ -61,6 +73,14 @@ class PostsController < ApplicationController
   end
 
   private
+    def set_discussion
+      @discussion = Discussion.find(params[:discussion_id])
+    end
+
+    def set_forum
+      @forum = Forum.find(params[:forum_id])
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
