@@ -9,15 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require my_flexslider_override.css
- *= require bootstrap_overrides.css
- *= require_tree .
- *= require focal-point.scss
- *= require breakpoints.css.scss
  *= require bootstrap.css
- *= require theme.css
  *= require font-awesome
  *= require my-flexslider.css
+ *= override_overrides.css.erb
+ *= require site_specific.css.erb
  */
 
 .no-margin {
@@ -25,3 +21,6 @@
 	margin-right: 0 !important;
 }
 
+a { 
+	color: red important;
+}
