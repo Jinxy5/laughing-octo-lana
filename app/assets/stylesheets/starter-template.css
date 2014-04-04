@@ -348,3 +348,46 @@ rightarrow{
 .orange {
 	background-color: orange;
 }
+
+
+.navbar-brand, .navbar-nav > li > a {
+	text-shadow: none;
+	background-color: #1D2B35;
+	color: white;
+}
+
+
+.navbar-default .navbar-nav > .active > a {
+	background-color: #1D2B35;
+	color: red;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: #EC1C2F;
+	border-color: #1A2730;
+}
+
+.fleft {
+	float: left
+}
+
+.profile-img {
+	height: 100%;
+}
+
+#headerband {
+	text-shadow: none;
+}
+
+#headerband ul.list-inline a {
+	text-transform: uppercase;
+	font-family: "ProximaNova-Light" Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	color: #cec9c9;
+}
+
+#headerband ul.list-inline a:hover {
+	text-decoration: none;
+	color: #fff;
+}
