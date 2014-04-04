@@ -23,7 +23,7 @@
 
 
 
-
+<link href="http://fnt.webink.com/wfs/webink.css/?project=FA61E485-DDEF-449C-9AF0-309FF0ED3370&fonts=58DEFEBD-4A55-477B-3C13-525C6AEBDD7A:f=ProximaNova-Regular,C88A28DF-0112-63D9-25D2-A4EA08DAF75B:f=ProximaNova-Light,D8F30418-0E92-EBB4-6408-D220574EF53E:f=ProximaNova-Extrabld,382B4521-6228-4C38-41BC-3DE66C7C910A:f=ProximaNova-Bold" rel="stylesheet" type="text/css"/>
 
 
   <%= csrf_meta_tags %>
@@ -39,145 +39,196 @@
 <body>
 <div id = 'viewport'></div>
 
-    <%#= debug(params) if Rails.env.development? %>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
-    <nav class="navbar navbar-default loginbar no-border-radius" role="navigation">
-	  <div class="container">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle no-border-radius" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar no-border-radius"></span>
-	        <span class="icon-bar no-border-radius"></span>
-	        <span class="icon-bar no-border-radius"></span>
-	      </button>
 
-	     <div class = 'loginlinks'>
-		      <a class="navbar-brand" href="#"> Hi Andy: </a>
-			  <a class="navbar-brand" href="#"> <i class="fa fa-sign-out"></i> logout </a>
-		</div>
-		      
-	    </div>
 
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">     
-	        <li><a href="#">Link 2 </a></li>
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+<div id="headerband">
+    <div class="container">
 
-<div class = 'subbar col-xs-12'>
+      <div id="logodiv">
+	 <div class="row">
 
-<div class = 'container'>
+	 
+	 <div class="col-xs-3 col-sm-2">
+      <img src="images/Blood-Bikes-Wales-logo.png"  alt="blood bikes wales logo" />
+		</div>	
+		
+		<div class="col-xs-9 col-sm-7">	
+			<h1>BLOOD BIKES WALES<br>
+			BEICIAU GWAED CYMRU</h1>
+        <h2>RIDING TO SAVE LIVES</h2>
+	   </div>
+	   
+	   <div class="col-xs-12 col-sm-3">
+	   		<p>
+  <button type="button" class="btn btn-primary btn-xs">Join Today</button>
+
+  <button type="button" class="btn btn-primary btn-xs">Log In</button>
+
+  <button type="button" class="btn btn-primary btn-xs">Donate via PayPal</button>
+</p>
+	   </div>
+	   
+	   
+	   
+	 </div>  
+      </div>
+<div class = 'clearfix'></div>
+</div>
+</div>
+<!--end container-->
+<div class="fullwidthcontainer">
 	
-		<div class = 'col-xs-12 col-sm-9 aqua hero'>
-			
-			<div class = 'col-xs-3 green'>
-				<%= image_tag 'logo2.png', class: 'img-responsive' %>	
+
+  <div class="container">
+<p>&nbsp;</p>
+
+<div class="row">
+<div class="col-md-12">
+		
+
+				<h2>Welcome to Blood Bikes Wales!</h2>
+				
+				<P>Welcome to Blood Bikes Wales' new website and thanks must go to Jonathan Hurley Design for doing such a great job. Thanks also to our volunteers that have worked alongside to help create this site. I'm sure you'll find it's easier to navigate and that there's a lot more information at your fingertips. It's easier to communicate through our contact buttons as well, ensuring you get the answers you need from the best person to help you. We're continually seeking ways to improve our organisation, be it the service we provide, the way to fund-raise or how we look after our members. Any suggestions you may have are always welcomed.</p>
+				<P> The last year has seen significant growth in our workload, with two health boards being serviced by us and a third health board looking to go live by the end of March. We are providing a first class service to these health boards and when we meet the various healthcare professionals they are all so very appreciative of the work we do and always sing our praises.</p>
+				<P> Our aim by the end of the year is to provide our service to all the health boards in Wales. A tall order some may say but between us and our sister group in North Wales I believe we can achieve it. We provide such a valuable and high quality service that we have a moral obligation to serve all our health boards with equal commitment.</p>
+				<P> For us to provide and maintain this service we need you. Whatever you do for a living, whatever your talents are, whether you ride a bike or not, you are welcome to join us and be part of something really special. So click on the link and email us, take a look at our calendar and come see us, follow us on Facebook and Twitter, keep an eye out for us on the road. Join us.</p>
+				<P> Andy Walters, Chairman</p>
+				<P>&nbsp;</p>
+</div>
+
+
+</div>
+<div class="row">
+
+<div class="col-md-4">
+	<div class="fb-like-box" data-href="https://www.facebook.com/bloodbikeswales" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
+
+<a class="twitter-timeline"  href="https://twitter.com/BloodBikesWales"  data-widget-id="449299926703304704">Tweets by @BloodBikesWales</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+</div>
+
+
+
+<div class="col-md-8">
+<div class="flex-slider">
+		<div class="titlebox">
+				<h2><span class="left">Latest News</span> 
+				<span class="right"><leftarrow><i class="fa fa-chevron-left"></i></leftarrow> <rightarrow><i class="fa fa-chevron-right"></i></rightarrow></span></h2></div>
+		
+						<div class="ghostedbox">
+		<h4>Title of news story to go here</h4>
+		<p>to cost the NHS. This is where Blood Bikes Wales comes in. Our volunteers provide the NHS with out-of-hours transport ...</p>
+		<a href="index.html">Read more ></a>
+		</div>
+		</div>
+<div class="row">
+		<div class="col-md-6">
+			<div class="calendar">
+<p>CALENDAR
+COMING SOON</p>
 			</div>
-		
-			<div class = 'col-xs-9 orange'>
-				<div class = 'col-xs-12'> Blood Bikes Wales </div>	
-				<div class = 'col-xs-12'> The Same in Welsh </div>
-				<div class = 'col-xs-12'> Riding to save Lives </div>
-			</div>			
-	.	
-		</div>
-
-		<div class = 'col-sm-3 red hidden-xs'>
-			
-
-			<button type = 'button' class = 'btn btn-success no-border-radius col-xs-12'> First buttton  </button>
-			<button type = 'button' class = 'btn btn-warning no-border-radius col-xs-6'> Second buttton  </button>
-			<button type = 'button' class = 'btn btn-danger no-border-radius col-xs-6'> Third buttton </button>
-
 		</div>
 		
-		<div class = 'action'>
-		
-
-			<button type = 'button' class = 'btn btn-success no-border-radius col-xs-12'> First buttton  </button>
-			<button type = 'button' class = 'btn btn-warning no-border-radius col-xs-12'> Second buttton  </button>
-			<button type = 'button' class = 'btn btn-danger no-border-radius col-xs-12'> Third buttton </button>
-
+		<div class="col-md-6">
+			<div class="events">
+<p>EVENTS
+COMING SOON</p>
+			</div>
 		</div>
-
-		<div class = 'col-xs-2 hidden-sm hidden-md hidden-lg pink center'>
-			<div class = 'col-xs-6 red'>  . </div>
-			<div class = 'col-xs-6 aqua'> . </div>
-			<div class = 'clearfix'></div>		
-		</div>
-
-		<div class = 'sm-menu col-xs-8 hidden-xs'>
-			<ul class = 'list-inline'>
-				<li> Home </li>
-				<li> Something Else </li>
-				<li> Another </li>
-				<li> Yet Another </li>
-				<li> A penultimate </li>
-				<li> The Final </li>
-			</ul>
-		</div>
-
-		<div class = 'col-xs-4 hidden-xs pink'>
-			<div class = 'col-xs-6 red'> . </div>
-			<div class = 'col-xs-6 aqua'> . </div>
-			<div class = 'clearfix'></div>		
-		</div>
-</div>
-
-		<div class = 'clearfix'></div>
-
-
-</div>
-
-
-<!--
-
-	<div class = 'col-xs-3 col-md-2 edge logo'>
-		<div class = 'logo'>
-			<%#= image_tag 'logo2.png', height: 140, width: 140 %>
-		</div>
-	</div>
-
-	<div class = 'col-xs-9 col-md-6 green'>
-		<div class = 'col-xs-12 title'> Blood Bikes Wales </div>
-		<div class = 'col-xs-12 title'> Llanfa irpwllgw yngy </div>
-	</div>
-
-	<div class = 'col-md-2 aqua hidden-sm'>
-		asd
-	</div>
-
 	
-	
-	<button type="button" class="btn btn-primary dropdown-toggle col-xs-12 no-border-radius" data-toggle="dropdown">Primary <span class="caret"></span></button>
-	<button type="button" class="btn btn-primary dropdown-toggle col-xs-12 no-border-radius" data-toggle="dropdown">Primary <span class="caret"></span></button>
-	<button type="button" class="btn btn-primary dropdown-toggle col-xs-12 no-border-radius">Primary <span class="caret"></span></button>
+		</div>
+		
+		<div class="causebox">
+		<div class="titlebox">
+				<h2><span class="left">Current Cause</span> 
+				<span class="right"><leftarrow><i class="fa fa-chevron-left"></i></leftarrow> <rightarrow><i class="fa fa-chevron-right"></i></rightarrow></span></h2></div>
+		
+						<div class="ghostedbox">
+		<h4>Title of news story to go here</h4>
+		<p>to cost the NHS. This is where Blood Bikes Wales comes in. Our volunteers provide the NHS with out-of-hours transport ...</p>
+		<a href="index.html">Read more ></a>
+		</div>
+		</div>
 
-	<div class = 'social centered'>
-
-		<button type="button" class="btn social btn-primary no-border-radius">
-			<i class = 'fa fa-facebook'></i>
-		</button>
-
-
-		<button type="button" class="btn social btn-primary no-border-radius">
-			<i class = 'fa fa-twitter'></i>
-		</button>
-		 
-	</div>
-
-</div>
--->
-
-<div class = 'main container'>
-
-	<%= yield %>
-
+		
+		
+		</div>
 </div>
 
 </div>
+
+
+
+
+<!--end row-->
+
+</div><!--end container-->
+<div id="footer">
+<div class="container">
+		<p>Our Sponsors </p>
+		<div class="row">
+		<div class="col-md-3"><a href="http://www.poundstretcher.co.uk/"><img src="images/pondstretcher.jpg" width="136" height="67" alt=""/></a></div>
+		<div class="col-md-3"><a href="http://www.santander.co.uk/"><img src="images/sandtander_09.jpg" width="218" height="67" alt=""/></a></div>
+		<div class="col-md-3"><a href="http://www.thunderroad.co.uk/"><img src="images/thunderroad_11.jpg" width="212" height="67" alt=""/></a></div>
+		<div class="col-md-3"><a href="http://www.mountmotorcycles.co.uk/"><img src="images/mounts_13.jpg" width="173" height="67" alt=""/></a></div>
+		</div>
+		<p>© 2014 Blood Bikes Wales. Registered with the UK Charity Commission, Charity Number 1143352. </p>
+		                    <p> Design: <a href="www.jhurleydesign.com">JHurleyDesign.com</a></p>
+</div>
+</div>
+
+
+
+</div><!--end container-->
+  
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+  <script src="js/jquery-1.10.2.min.js"></script>
+    
+  <script src="js/bootstrap.js"></script>
+   
+</body>
+</html>
+
+
+
+</body>

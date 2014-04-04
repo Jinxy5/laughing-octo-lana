@@ -8,19 +8,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require bootstrap.css
+ *= require theme.css
  *= require font-awesome
+ * require bootstrap_overrides.css
  *= require my-flexslider.css
- *= override_overrides.css.erb
- *= require site_specific.css.erb
+ *= require starter-template.css
  */
-
-.no-margin {
-	margin-left: 0 !important;
-	margin-right: 0 !important;
-}
-
-a { 
-	color: red important;
-}

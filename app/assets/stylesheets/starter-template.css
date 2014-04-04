@@ -1,0 +1,350 @@
+body {
+	padding-top: 50px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	font-family: "ProximaNova-Regular" , Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	line-height: 24px;
+	color: #333333;
+	background-color: #F0F1EC;
+	text-shadow: 0px 1px #FFFFFF;
+}
+
+#logodiv {
+  padding: 20px 0px;
+  text-align: center;
+}
+
+#logodiv h1 {
+	font-family: "ProximaNova-Extrabld" Gotham, "Helvetica Neue", Helvetica, Arial, 	     sans-serif;
+	font-size: 20px;
+	line-height: 20px;
+	color: #EC1C2F;
+	margin-bottom: 2px;
+	margin-top: 10px;
+	text-align: left;
+	text-shadow: 0px 0px;
+}
+
+#logodiv h2 {
+	font-family: "ProximaNova-Light" Gotham, "Helvetica Neue", Helvetica, Arial, 	     sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	color: #FFFFFF;
+	margin-top: 2px;
+	text-align: left;
+	text-shadow: 0px 0px;
+}
+
+/* NAVBAR */
+
+.navbar-inverse {
+	background-color: #000;
+	border-color: #BE1622;
+}
+
+
+
+.navbar .btn-navbar .navbar-inverse .navbar-inner {
+	background-color: #000000;
+	background-image: none;
+	background-repeat: no-repeat;
+	filter: none;
+}
+
+.fullwidthcontainer {
+}
+
+.redsquares {
+	background-image: url(../images/sm-redcheq.png);
+	background-repeat: repeat-x;
+	height: 20px;
+}
+
+img {
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "ProximaNova-Bold" Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #EC1C2F;
+}
+
+h1,
+.h1 {
+  font-size: 36px;
+}
+
+h2,
+.h2 {
+	font-size: 28px;
+}
+
+h3,
+.h3 {
+  font-size: 24px;
+}
+
+h4,
+.h4 {
+	font-size: 16px;
+	line-height: normal;
+	color: #000000
+}
+
+h5,
+.h5 {
+  font-size: 14px;
+}
+
+h6,
+.h6 {
+  font-size: 12px;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+
+.btn {
+ 
+  border-radius: 5px;
+  
+}
+
+#logodiv img {
+	height: 80px;
+	width: 80px;
+}
+
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #FAD5D7;
+}
+.titlebox h2 {
+	margin-top: 0px;
+	padding-top: 9px;
+}
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 768px)  { 
+    #logodiv h1 {
+        font-size:30px; 
+        line-height: 30px;
+    } 
+    #logodiv h2 {
+        font-size:20px; 
+        line-height: 20px;
+    } 
+    
+    
+    
+    
+       
+}
+
+
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {    
+	#logodiv h1 {
+		font-size:40px; 
+		line-height: 40px;
+	} 
+	#logodiv h2 {
+		font-size:30px; 
+		line-height: 30px;
+	} 
+	body {
+	background-color: #F0F1EC;
+	}
+	#logodiv img {
+		height: 114px;
+		width: 114px;
+}
+}
+
+/* Large devices (large desktops, 1200px and up) 
+@media (min-width: @screen-lg-min) { #logodiv h1 {font-size:200%; line-height: 100%;} }
+
+*/
+	
+	
+.flex-slider{
+	background-color: #fff;
+	border: 1px solid #CCCCCC;
+	padding: 0px;
+	background-image: url(../images/RSCN0524.jpg);
+	height: 500px;
+	margin-bottom: 20px;
+}
+.ghostedbox {
+	padding-left: 20px;
+	padding-right: 0px;
+	position: relative;
+	top: 339px;
+	padding-top: 14px;
+	padding-bottom: 16px;
+	background-image: url(../images/80%25white.png);
+}
+
+.flex-slider h4 {
+	color: #000;
+	line-height:normal;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.flex-slider p {
+	line-height: normal;
+	margin-bottom: 0px;
+} 
+
+.titlebox {
+	background-color: #FFFFFF;
+	padding-top: 0px;
+	padding-right: 15px;
+	padding-left: 15px;
+	height: 49px;
+}
+
+.causebox{
+	background-color: #fff;
+	border: 1px solid #CCCCCC;
+	padding: 0px;
+	background-image: url(../images/cause.jpg);
+	height: 500px;
+	margin-bottom: 20px;
+}
+
+.causebox h4 {
+	color: #000;
+	line-height:normal;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.causebox p {
+	line-height: normal;
+	margin-bottom: 0px;
+}
+
+
+
+#twitter-widget-0{
+   width: 100% !important;  
+}
+
+.fb-like-box {
+	   width: 100% !important;  
+
+	}
+	
+	/* --- THIS TO MAKE FB PLUGIN FLUID -- */
+.fb-comments, .fb-comments iframe[style], .fb-like-box, .fb-like-box iframe[style] {
+	width: 100% !important;
+	background-color: #FFFFFF;
+	margin-bottom: 20px;
+	}
+.fb-comments span, .fb-comments iframe span[style], .fb-like-box span, .fb-like-box iframe span[style] {
+	width: 100% !important;
+	}
+
+
+.right { float:right }
+.left { float:left }
+
+leftarrow{
+	font-size: 16px;
+	}
+rightarrow{
+	font-size: 16px;
+	color: #B6AFAF;
+	}
+
+.calendar{
+	background-color: #fff;
+	border: 1px solid #CCCCCC;
+	padding: 0px;
+	height: 350px;
+	margin-bottom: 20px;
+	}
+	
+.events{
+	background-color: #fff;
+	border: 1px solid #CCCCCC;
+	padding: 0px;
+	height: 350px;
+	margin-bottom: 20px;
+	}
+	
+#footer{
+	background-color: #C8C8C8;
+	padding-top: 27px;
+	padding-bottom: 26px;
+	}
+	
+.sponsor-logo {
+	width: 90px;
+	height: 90px;
+	background-color: red
+}
+
+.sponsor-logo:hover {
+	background-color: yellow
+}
+
+#headerband{
+	background-color: #324857;
+}
+
+/* FORUM STUFF */
+	
+.mugshot {
+	border: 1px solid #C6C6C6;
+	display: block;
+	float: left;
+	margin-right: 15px;
+	}
+	
+	.btn {
+ 
+  border-radius: 5px;
+}
+
+.postdivider {
+	background-color: #C8C8C8;
+	}
+
+.commentbox {
+	border-bottom-color: #C7C7C7;
+	border-bottom: 1px solid;
+	margin-bottom: 30px;
+	}
+
+
+
+
+.green {
+	background-color: green;
+}
+
+
+.orange {
+	background-color: orange;
+}
