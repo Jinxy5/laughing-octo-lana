@@ -16,7 +16,6 @@ require 'rubygems'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
-  #require 'factory_girl_rails'
   require 'ap'
   require 'capybara/poltergeist'
   require 'capybara/rspec'
@@ -68,6 +67,9 @@ require 'rubygems'
     config.before(:each) do
       DatabaseCleaner.start
       DatabaseCleaner.clean
+
+
+      FactoryGirl.create(:potential)
     end
 
     config.after(:each) do

@@ -1,6 +1,53 @@
 <% page_title('Sign up') %>
-<h1>New user</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', users_path %>
+<div class="row">
+<div class="col-md-12">
+		
+
+				<h2>Register</h2>
+							<p>We are always looking for volunteers. All you have to do is fill in the contact form below and we'll contact you as soon as we can.</p>
+							<p>Remember - how much, or how little, you do for Blood Bikes Wales is up to you, but you can be sure that whatever you do, you will be benefitting the health and wellbeing of patients and relatives  as well as releasing funds back to the NHS for use in other areas.</p>
+							<h5>Remember: You don't need to be a biker to join	Blood Bikes Wales.	All Volunteers Are Welcome</h5>
+
+				
+				
+
+<%= form_for(@user, html: { multipart: true }) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %><br>
+    <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %><br>
+    
+    <%= f.text_field :user_name, class: 'form-control', placeholder: 'Username' %><br>
+
+    <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %><br>
+    <%= f.password_field :password, class: 'form-control', placeholder: 'Create Password (must contain at least 8 characters)' %><br>
+    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password' %><br>
+    <%= f.text_field :nearest_town, class: 'form-control', placeholder: 'Nearest Town' %><br>
+
+
+
+    <%= f.submit 'Create my Account', class: 'btn btn-success', method: 'get' %>
+
+<% end %>
+<br>
+
+<%= link_to root_path do %>
+ <i class="fa fa-long-arrow-left"></i> Back to Blood Bikes Wales
+<% end %>
+
+
+</div>
+</div>

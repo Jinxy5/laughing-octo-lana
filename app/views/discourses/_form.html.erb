@@ -1,11 +1,11 @@
-<%= form_for( [@forum, @discussion] ) do |f| %>
+<%= form_for( [@forum, @discourse] ) do |f| %>
 
-  <% if @discussion.errors.any? %>
+  <% if @discourse.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
+      <h2><%= pluralize(@discourse.errors.count, "error") %> prohibited this discourse from being saved:</h2>
 
       <ul>
-      <% @discussion.errors.full_messages.each do |msg| %>
+      <% @discourse.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -17,7 +17,7 @@
 
 
     <%= f.label :title %><br>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :title %><br>
   
 
     <%= f.label :body %><br>

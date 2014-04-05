@@ -1,15 +1,51 @@
-<% page_title(@user.user_name) %>
 
 
-<p id="notice"><%= notice %></p>
 
-<h3>Your private details (no one can see this except for admins):</h3><br>
 
-Email: <%= @user.email %> <br>
+<div class="row">
+<div class="col-md-12">
+		
 
-<h3>Your public details (everyone can see these):</h3><br>
+	<h2>Your Public Profile</h2>
+				<p>&nbsp;</p>
 
-User name: <%= @user.user_name %> <br>
+	
+	
+	
+	<p><strong>First Name:</strong> <%= @user.first_name %> </p>
+	<p><strong>Last Name:</strong>  <%= @user.last_name %></p>
+	<p><strong>Email:</strong> <%= @user.email %> </p>
+	<p><strong> <%= 'Role'.pluralize(@user.roles.count) %>:</strong>  <%= @user.list_roles %> </p>
+	<p><strong>Tel:</strong>  01656 782956</p>
+	<p><strong>Nearest Town:</strong>  <%= @user.nearest_town %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+	<p>&nbsp;</p>
+
+<%= button_to 'Edit Your Details', edit_user_path, class: 'btn btn-success', method: :get %>
+
+	<p>&nbsp;</p>
+
+</div>
+<div class="col-md-12">			
+<img class="mugshot" img="" src="images/bloke.jpg" width="200" alt="">
+  <div class="clearfix"></div>
+</div>
+<div class="col-md-12">
+
+<%= link_to 'upload a different profile image' %>
+
+<p>&nbsp;</p>
+
+
+
+
+  
+
+
+<%= link_to root_path do %>
+	<i class="fa fa-long-arrow-left"></i> Back to Blood Bikes Wales
+<% end %>
+
+		
+</div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404232713) do
+ActiveRecord::Schema.define(version: 20140405190120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20140404232713) do
 
   create_table "discourses", force: true do |t|
     t.integer  "user_id"
-    t.integer  "sub_discourse_id"
     t.string   "title"
     t.string   "body"
     t.boolean  "deleted"
     t.datetime "delete_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "forum_id"
   end
 
   create_table "discussions", force: true do |t|
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20140404232713) do
     t.integer  "current_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "extension"
     t.integer  "user_id"
     t.string   "original_extension"
     t.text     "current_filename"
@@ -146,6 +147,14 @@ ActiveRecord::Schema.define(version: 20140404232713) do
     t.datetime "updated_at"
   end
 
+  create_table "reply_retorts", force: true do |t|
+    t.integer  "reply_id"
+    t.integer  "retort_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "discourse_id"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "role"
     t.datetime "created_at"
@@ -169,6 +178,9 @@ ActiveRecord::Schema.define(version: 20140404232713) do
     t.datetime "register_token_created_at"
     t.binary   "profile_image"
     t.binary   "licence_image"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nearest_town"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree

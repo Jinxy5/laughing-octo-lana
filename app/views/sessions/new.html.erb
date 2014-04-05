@@ -1,3 +1,31 @@
 <% page_title('Sign in') %>
-Sign in here <br>
-<%= render 'form' %>
+<div class="row">
+<div class="col-md-12">
+		
+
+	<h2>Log in</h2>
+
+					
+	<%= form_for(:session, url: sessions_path) do |f| %>
+		<%= f.label 'Email address' %><br>
+		<%= f.text_field :email, class: 'form-control', placeholder: 'Enter email' %><br>
+
+		<%= f.label 'Password' %><br>
+		<%= f.text_field :password, class: 'form-control', placeholder: 'Enter password' %><br>
+
+
+		<%= f.submit 'Sign In', class: 'btn btn-default' %>
+	<% end %>
+
+
+
+<br> 
+
+
+<%= link_to root_path do %>
+ <i class="fa fa-long-arrow-left"></i> Back to Blood Bikes Wales
+<% end %>
+
+		
+</div>
+</div>

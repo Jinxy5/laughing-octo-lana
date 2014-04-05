@@ -22,10 +22,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-
+gem 'shoulda-matchers'
 gem 'launchy'
 gem 'poltergeist'
 gem 'jquery-rails'
+
+gem 'rmagick'
+gem 'carrierwave'
 #gem 'lazy_columns'
 
 group :doc do

@@ -1,6 +1,10 @@
 class Forum < ActiveRecord::Base
-	has_many :discussions
 	has_many :discourses
+	has_many :replies, through: :discourses
+
+
+	has_many :discussions
+
 
 	has_many :posts, through: :discussions
 
@@ -51,12 +55,12 @@ class Forum < ActiveRecord::Base
 	end
 
 
-	def last_discussion
-		self.discussions.last
+	def last_discourse
+		self.discourses.last
 	end
 
-	def last_post
-		self.posts.last
+	def last_reply
+		self.replies.last
 	end
 
 	private

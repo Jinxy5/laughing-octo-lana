@@ -7,7 +7,7 @@ Bloodbikeswales::Application.routes.draw do
 
 
   resources :forums do
-    resources :discussions do
+    resources :discourses do
       resources :posts
     end
   end

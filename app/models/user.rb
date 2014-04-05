@@ -2,12 +2,15 @@ class User < ActiveRecord::Base
 	has_many :posts
 	has_many :discussions
 
+	has_many :replies
+	has_many :retorts
+	has_many :discourses
+
 	has_many :user_roles
 	has_many :roles, through: :user_roles
 
 	before_save { self.email = email.downcase }
 
-	before_create { self.user_name = 'User' + User.count.to_s if !self.user_name  }
 	before_create :create_register_token
 	before_create { self.culminated = 0 } #setting to false results in strange error where it can't be saved
 	before_create :create_remember_token
@@ -15,7 +18,10 @@ class User < ActiveRecord::Base
 
 	VALID_EMAIL_REGEX = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9\-.]/
 
-#	validates :user_name, presence: true
+#	validates :firstname, presence: true
+#	validates :lastname, presence: true
+#	validates :username, presence: true
+
 	validates :email, presence: true, 
 					  uniqueness: { case_sensitive: false },
 					  format: { with: VALID_EMAIL_REGEX } 

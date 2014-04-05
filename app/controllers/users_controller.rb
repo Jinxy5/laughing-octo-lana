@@ -78,10 +78,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    ap @user
+
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to @user, notice: 'Welcome to ' + request.host_with_port + ', ' + @user.user_name + '!' }
+        format.html { redirect_to @user , notice: 'Welcome to ' + request.host_with_port + ', ' + @user.user_name + '!' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -122,6 +124,9 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      # "first_name", "last_name", "nearest_town"]
+      # ["id", "user_name", "email", "password_digest", "created_at", "updated_at", "register_key", "culminated", "remember_token", "register_token_created_at", "profile_image", "licence_image", "first_name", "last_name", "nearest_town"] 
+
+      params.require(:user).permit(:user_name, :email, :first_name, :last_name, :nearest_town, :user_name, :password, :password_confirmation)
     end
 end

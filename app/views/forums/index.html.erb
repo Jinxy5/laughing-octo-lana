@@ -55,6 +55,8 @@
   </div>
 </a>
 
+
+
 <% @forums.each do |forum| %>
 
 
@@ -71,24 +73,24 @@
           </div>
     
           <div class="col-xs-3">
-          <p> <%= forum.discussions.count %> </p>
+          <p> <%= forum.discourses.count %> </p>
           </div>
           
           <div class="col-xs-3">
-          <p> <%= forum.posts.count %> </p>
+          <p> <%= forum.replies.count %> </p>
           </div>
         
           <div class="col-xs-3">
           <p>
-              <% if forum.last_discussion %>
+              <% if forum.last_discourse %>
     
-                <dfn>Last Discussion</dfn> by <%= link_to forum.last_discussion.user.user_name, user_path(forum.last_discussion.user)  %> <%= link_to forum_discussion_path(forum, forum.last_discussion) do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
+                <dfn>Last Discussion</dfn> by <%= link_to forum.last_discourse.user.user_name, user_path(forum.last_discourse.user)  %> <%= link_to forum_discussion_path(forum, forum.last_discourse) do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
 
-                <% last_discussion_time = forum.last_discussion.created_at %>
+                <% last_discussion_time = forum.last_discourse.created_at %>
                 <%= last_discussion_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words( last_discussion_time ) %> ago ) 
               <% else %>
 
-                No discussions in this forum. <%= link_to 'Be the first to start a discussion...', new_forum_discussion_path(forum) %>
+                No discussions in this forum. <%= link_to 'Be the first to start a discussion...', new_forum_discourse_path(forum) %>
               <% end %>
 
           </p>
