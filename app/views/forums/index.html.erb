@@ -1,57 +1,103 @@
 <% page_title 'Forums' %>
-<h1>Listing forums</h1>
-
-  <table class="table table-striped table-bordered">
-  <thead class="topiclist">
-  <tr>
-  <th width="50%"><a href="./viewforum.php?f=1&amp;sid=85be37d21d76f2494db17c8ff750b177">Your first category</a></th>
-  <th class="topics"> Discussions </th>
-  <th class="posts"> Posts </th>
-  <th class="lastpost"><span>Last post</span></th>
-  </tr>
-  </thead>
 
 
+
+<!--
+
+<div class="fullwidthcontainer">
+  <div class="container">
+        <p>&nbsp;</p>
+        <h2><span class="left">Forums</span>
+        
+        <span class="right"><ul class="pagination pagination-sm">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+  </span></h2>      <p>&nbsp;</p>
+        
+
+  </div>
+</div>
+
+-->
+  <h1> Forum List </h1>
+</div>
+
+
+
+
+<a href='#'>
+  <div class="postdivider">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3">
+        <h4>name of forum</h4>
+        </div>
+  
+        <div class="col-xs-3">
+        <h4>topics</h4>
+        </div>
+        
+        <div class="col-xs-3">
+        <h4>replies</h4>
+        </div>
+      
+        <div class="col-xs-3">
+        <h4>last reply</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
 
 <% @forums.each do |forum| %>
 
 
+  <%= link_to forum_path(forum) do %>
+    <div class="listdivider">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3">
+          
+           <%= link_to forum.name, forum_path(forum) %> <br>
+           <%= forum.description %>
+          
+          </p>
+          </div>
+    
+          <div class="col-xs-3">
+          <p> <%= forum.discussions.count %> </p>
+          </div>
+          
+          <div class="col-xs-3">
+          <p> <%= forum.posts.count %> </p>
+          </div>
+        
+          <div class="col-xs-3">
+          <p>
+              <% if forum.last_discussion %>
+    
+                <dfn>Last Discussion</dfn> by <%= link_to forum.last_discussion.user.user_name, user_path(forum.last_discussion.user)  %> <%= link_to forum_discussion_path(forum, forum.last_discussion) do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
 
-  <tbody class="topiclist forums">
-  <tr>
-  <td width="50%" title="No unread posts">
-  <i class="pcon" style="background-image:url(http://cegtechforum.com/forum/styles/proBoot/imageset/forum_read.gif.pagespeed.ce.8QITyQPG-8.gif);background-repeat:no-repeat"></i>
-  <!-- <a class="feed-icon-forum" title="Feed - Your first forum" href="http://cegtechforum.com/forum/feed.php?f=2"><img src="./styles/proBoot/theme/images/feed.gif" alt="Feed - Your first forum" /></a> -->
-  <%= link_to forum.name, forum_path(forum) %> <br>
-  <%= forum.description %>
+                <% last_discussion_time = forum.last_discussion.created_at %>
+                <%= last_discussion_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words( last_discussion_time ) %> ago ) 
+              <% else %>
 
-  </td>
-  <td ><center><span class="badge"> <%= forum.discussions.count %> </span></center></td>
-  <td ><center><span class="badge"> <%= forum.posts.count %> </span></center></td>
-  <td class="lastpost"><span>
+                No discussions in this forum. <%= link_to 'Be the first to start a discussion...', new_forum_discussion_path(forum) %>
+              <% end %>
 
-  <% if forum.last_discussion %>
-  
-    <dfn>Last Discussion</dfn> by <%= link_to forum.last_discussion.user.user_name, user_path(forum.last_discussion.user)  %> <%= link_to forum_discussion_path(forum, forum.last_discussion) do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
-
-    <% last_discussion_time = forum.last_discussion.created_at %>
-    <%= last_discussion_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words( last_discussion_time ) %> ago ) 
-  <% else %>
-
-    Nobody has created a discussion in this forum yet! <%= link_to 'Be the first to start a discussion...', new_forum_discussion_path(forum) %>
+          </p>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-  
-  </td>
-  </tr>
-  </tbody>
 
 <% end %>
 
-</table>
-
-
-
-
-
-
-<%#= link_to 'New Forum', new_forum_path %>
+<br>

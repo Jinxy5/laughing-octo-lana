@@ -69,19 +69,8 @@
             <li><a href="#contact"> Control Panel </a></li>
             <li><a href="#contact"> Forum </a></li>
             <li><a href="#about"> Contact List </a></li>
+           </ul>
 
-       		<li class = 'hidden-sm'><a href="#about"> Home </a></li>
-       		<li class = 'hidden-sm'><a href="#about"> Donate </a></li>
-       		<li class = 'hidden-sm'><a href="#about"> News </a></li>
-       		<li class = 'hidden-sm'><a href="#about"> Events </a></li>
-       		<li class = 'hidden-sm'><a href="#about"> Who we are </a></li>
-       		<li class = 'hidden-sm'><a href="#about"> Donations </a></li>
-       		<li class = 'hidden-sm'><a href="#about"> Calendar </a></li>
-       		<li class = 'hidden-sm'><a href="#about"> Forum </a></li>
-       		<li class = 'hidden-sm'><a href="#about"> Contact </a></li>
-
-
-          </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="./"> <i class= 'fa fa-sign-out'></i> Logout </a> </li>
           </ul>
@@ -132,7 +121,7 @@
 	   		<li><a href='#'> who we are </a> </li>
 	   		<li><a href='#'> donations </a> </li>
 	   		<li><a href='#'> calendar </a> </li>
-	   		<li><a href='#'> forum </a> </li>
+	   		<li> <%= link_to 'forum', forums_path %> </li>
 	   		<li><a href='#'> contact </a> </li>
 
 	   </ul>
@@ -144,94 +133,13 @@
 <div class="fullwidthcontainer">
 	
 
-  <div class="container">
-<p>&nbsp;</p>
+<div class="container">
 
-<div class="row">
-<div class="col-md-12">
-		
-
-				<h2>Welcome to Blood Bikes Wales!</h2>
-				
-				<P>Welcome to Blood Bikes Wales' new website and thanks must go to Jonathan Hurley Design for doing such a great job. Thanks also to our volunteers that have worked alongside to help create this site. I'm sure you'll find it's easier to navigate and that there's a lot more information at your fingertips. It's easier to communicate through our contact buttons as well, ensuring you get the answers you need from the best person to help you. We're continually seeking ways to improve our organisation, be it the service we provide, the way to fund-raise or how we look after our members. Any suggestions you may have are always welcomed.</p>
-				<P> The last year has seen significant growth in our workload, with two health boards being serviced by us and a third health board looking to go live by the end of March. We are providing a first class service to these health boards and when we meet the various healthcare professionals they are all so very appreciative of the work we do and always sing our praises.</p>
-				<P> Our aim by the end of the year is to provide our service to all the health boards in Wales. A tall order some may say but between us and our sister group in North Wales I believe we can achieve it. We provide such a valuable and high quality service that we have a moral obligation to serve all our health boards with equal commitment.</p>
-				<P> For us to provide and maintain this service we need you. Whatever you do for a living, whatever your talents are, whether you ride a bike or not, you are welcome to join us and be part of something really special. So click on the link and email us, take a look at our calendar and come see us, follow us on Facebook and Twitter, keep an eye out for us on the road. Join us.</p>
-				<P> Andy Walters, Chairman</p>
-				<P>&nbsp;</p>
-</div>
-
-
-</div>
-<div class="row">
-
-<div class="col-md-4">
-	<div class="fb-like-box" data-href="https://www.facebook.com/bloodbikeswales" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
-
-<a class="twitter-timeline"  href="https://twitter.com/BloodBikesWales"  data-widget-id="449299926703304704">Tweets by @BloodBikesWales</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-</div>
-
-
-
-<div class="col-md-8">
-<div class="flex-slider">
-		<div class="titlebox">
-				<h2><span class="left">Latest News</span> 
-				<span class="right"><leftarrow><i class="fa fa-chevron-left"></i></leftarrow> <rightarrow><i class="fa fa-chevron-right"></i></rightarrow></span></h2></div>
-		
-						<div class="ghostedbox">
-		<h4>Title of news story to go here</h4>
-		<p>to cost the NHS. This is where Blood Bikes Wales comes in. Our volunteers provide the NHS with out-of-hours transport ...</p>
-		<a href="index.html">Read more ></a>
-		</div>
-		</div>
-<div class="row">
-		<div class="col-md-6">
-			<div class="calendar">
-<p>CALENDAR
-COMING SOON</p>
-			</div>
-		</div>
-		
-		<div class="col-md-6">
-			<div class="events">
-<p>EVENTS
-COMING SOON</p>
-			</div>
-		</div>
+	<%= yield %>
 	
-		</div>
-		
-		<div class="causebox">
-		<div class="titlebox">
-				<h2><span class="left">Current Cause</span> 
-				<span class="right"><leftarrow><i class="fa fa-chevron-left"></i></leftarrow> <rightarrow><i class="fa fa-chevron-right"></i></rightarrow></span></h2></div>
-		
-		<ul>
-			<li>
-				<div class="ghostedbox">
-					<h4>Title of news story to go here</h4>
-					<p>to cost the NHS. This is where Blood Bikes Wales comes in. Our volunteers provide the NHS with out-of-hours transport ...</p>
-					<a href="index.html">Read more ></a>
-					</div>
-				</div>
-			</li>
-		</ul>
-		
-		
-		</div>
-</div>
-
 </div>
 
 
-
-
-<!--end row-->
-
-</div><!--end container-->
 <div id="footer">
 <div class="container">
 		<p>Our Sponsors </p>

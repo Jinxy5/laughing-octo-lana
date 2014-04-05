@@ -1,5 +1,90 @@
 <p id="notice"><%= notice %></p>
 
+
+
+<div class="fullwidthcontainer">
+  
+
+  <div class="container">
+<p>&nbsp;</p>
+
+<div class="row">
+<div class="col-md-12">
+    
+<span class="right"><ul class="pagination pagination-sm">
+  <li><a href="#">«</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">»</a></li>
+</ul>
+  </span>
+  </div>
+  <div class="col-md-12">
+
+        <img class="mugshot" src="images/thumb_03.jpg" width="37" height="45" alt="">
+        
+      
+        <h4><%= @discussion.name %></h4>
+        <p><%= @discussion.user.user_name %> <%= @discussion.user.list_roles %></p>
+        <p><%= @discussion.body %></p>
+        
+        
+        <p><i class="fa fa-comment"></i> <%= time_ago_in_words(@discussion.created_at) %> ago </p>
+        <p>&nbsp;</p>
+
+
+
+<textarea class="form-control" placeholder="Leave a new comment ..." rows="5"></textarea>
+        <p>&nbsp;</p>
+
+     <a href = <%= new_forum_discussion_post_path(@forum, @discussion) %> class = 'btn btn-primary col-xs-12 col-sm-3'> Reply to this Post <span class= 'fa fa-gavel'></span> </a><br>
+
+<div class="postdivider">
+<div class="container"><h4>23 COMMENTS</h4></div>
+
+
+     <%= %>
+<!--
+<button type="submit" class="btn btn-success btn-md">POST</button>
+&nbsp;&nbsp;
+<button type="submit" class="btn btn-danger btn-md">CANCEL</button>
+<p>&nbsp;</p>
+    
+-->
+</div>
+</div>
+<p>&nbsp;</p>
+</div>
+
+
+
+
+
+
+
+--- comments: <br>
+
+  <%= render partial: "post", collection: @discussion.posts %>
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------
 <div class = 'well well-sm'><%= @discussion.name %></div>
 -----
 <%= @discussion.body %>

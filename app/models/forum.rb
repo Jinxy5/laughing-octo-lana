@@ -1,5 +1,7 @@
 class Forum < ActiveRecord::Base
 	has_many :discussions
+	has_many :discourses
+
 	has_many :posts, through: :discussions
 
 	has_many :allowed_roles

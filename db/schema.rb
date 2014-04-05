@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326005802) do
+ActiveRecord::Schema.define(version: 20140404232713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,39 @@ ActiveRecord::Schema.define(version: 20140326005802) do
     t.datetime "updated_at"
   end
 
+  create_table "cal_events", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "startdate"
+    t.datetime "enddate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "causes", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.string   "image_path"
     t.integer  "amount_requested"
     t.integer  "amount_donated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "discourse_replies", force: true do |t|
+    t.integer  "discourse_id"
+    t.integer  "reply_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "discourses", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "sub_discourse_id"
+    t.string   "title"
+    t.string   "body"
+    t.boolean  "deleted"
+    t.datetime "delete_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,6 +80,8 @@ ActiveRecord::Schema.define(version: 20140326005802) do
     t.string   "image_path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "description"
   end
 
   create_table "forums", force: true do |t|
@@ -60,6 +89,21 @@ ActiveRecord::Schema.define(version: 20140326005802) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+  end
+
+  create_table "images", force: true do |t|
+    t.string   "original_filename"
+    t.integer  "current_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "original_extension"
+    t.text     "current_filename"
+    t.text     "current_extension"
+    t.integer  "height"
+    t.integer  "width"
+    t.string   "alt"
+    t.boolean  "deleted"
   end
 
   create_table "impressions", force: true do |t|
@@ -81,6 +125,11 @@ ActiveRecord::Schema.define(version: 20140326005802) do
     t.datetime "delete_date"
   end
 
+  create_table "posts_sub_replies", force: true do |t|
+    t.integer "post_id"
+    t.integer "sub_reply_id"
+  end
+
   create_table "recitals", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -89,8 +138,18 @@ ActiveRecord::Schema.define(version: 20140326005802) do
     t.datetime "updated_at"
   end
 
+  create_table "records", force: true do |t|
+    t.integer  "user_id"
+    t.text     "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
-    t.string "role"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_roles", force: true do |t|
@@ -108,7 +167,8 @@ ActiveRecord::Schema.define(version: 20140326005802) do
     t.boolean  "culminated"
     t.string   "remember_token"
     t.datetime "register_token_created_at"
-    t.integer  "role"
+    t.binary   "profile_image"
+    t.binary   "licence_image"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree

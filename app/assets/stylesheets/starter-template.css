@@ -118,6 +118,24 @@ p {
   margin: 0 0 10px;
 }
 
+a {
+	color: #EC1C2F;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	color: #E96D78;
+	text-decoration: underline;
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+
 
 .btn {
  
@@ -189,10 +207,10 @@ p {
 	background-color: #fff;
 	border: 1px solid #CCCCCC;
 	padding: 0px;
-	background-image: url(../images/RSCN0524.jpg);
 	height: 500px;
 	margin-bottom: 20px;
 }
+
 .ghostedbox {
 	padding-left: 20px;
 	padding-right: 0px;
@@ -261,6 +279,7 @@ p {
 	background-color: #FFFFFF;
 	margin-bottom: 20px;
 	}
+
 .fb-comments span, .fb-comments iframe span[style], .fb-like-box span, .fb-like-box iframe span[style] {
 	width: 100% !important;
 	}
@@ -336,8 +355,29 @@ rightarrow{
 	border-bottom: 1px solid;
 	margin-bottom: 30px;
 	}
+	
+.listdivider{
+	border-bottom: 1px solid #C7C7C7;
+	padding-top: 11px;
+	}
+	
+a .listdivider{
+	color: #333;
+	text-decoration: none;
+}
 
+.listdivider:hover {
+	background-color: #FFFFFF;
+	color: #333;
+	text-decoration: underline;
+}
 
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+/**** MINE ****/
 
 
 .green {
@@ -390,4 +430,15 @@ rightarrow{
 #headerband ul.list-inline a:hover {
 	text-decoration: none;
 	color: #fff;
+}
+
+.navbar-nav {
+
+	border: none;
+	background-color: #1D2B35;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover {
+	background-color: #EC1C2F;
 }
