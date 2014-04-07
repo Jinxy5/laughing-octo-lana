@@ -6,7 +6,7 @@
         <%= image_tag reply.user.avatar.file_name, class: 'mugshot', width: 37, height: 45 %>
 
       
-	        <h4> <%= reply.title %> <i>- in reply to <%#= reply.reply if reply.reply %> <%#= reply.retort if reply.retort %> </i> </h4> 
+	        <h4> <%= reply.title %> <i>- in reply to  </i> </h4> 
 	        <p> <%= reply.user.user_name %> <%= @discourse.user.list_roles %> </p>
 	        <p> <%= reply.body %> </p>
 	        
@@ -20,7 +20,7 @@
        
           <%= f.text_field :body, placeholder: 'Enter the body for your reply here', class: 'form-control'%> <br>
           
-          <%= f.submit 'Reply to this Reply', class: 'btn btn-success' %> <br>
+          <%= f.submit "Reply to #{reply.user.user_name}\'s Reply", class: 'btn btn-success' %> <br>
             <br>
 
         <% end %>

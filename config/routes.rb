@@ -13,6 +13,11 @@ Bloodbikeswales::Application.routes.draw do
     end
   end
 
+  get 'panels/users', to: 'panels#users', as: :panel_show_users
+  
+  delete 'panels/user/:id', to: 'panels#user_delete', as: :delete_user
+
+
   # use a member route here
   post 'create', to: 'create_reply/:forum_id/:discourse_id', to: 'replies#create'
 

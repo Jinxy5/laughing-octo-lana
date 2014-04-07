@@ -442,3 +442,17 @@ a:focus {
 .navbar-default .navbar-nav > li > a:hover {
 	background-color: #EC1C2F;
 }
+
+.controlsidebar p a {
+	color: #B7B2B2;
+	text-shadow: 0px 0px 0px;
+	line-height: 30px;
+}
+
+.controlsidebar {
+
+	background-color: #000000;
+	padding-top: 40px;
+	padding-left: 40px;
+	height: 100%;
+}

@@ -43,6 +43,14 @@ class User < ActiveRecord::Base
 	
 	has_secure_password
 
+	def is_admin?
+		if self.roles.pluck(:role).include?('admin')
+			true 
+		else 
+			false
+		end
+	end
+
 	def make_admin!
 		add_role('admin')
 	end
