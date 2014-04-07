@@ -35,7 +35,7 @@ Bloodbikeswales::Application.configure do
 
   config.serve_static_assets = :false
   
-  config.log_level = :fatal
+  config.log_level = :info
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.

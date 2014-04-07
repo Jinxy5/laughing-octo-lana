@@ -4,4 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SessionsHelper
+
+
+	class Hash
+		def delete_blank
+			delete_if{ |k, v| v.empty? }
+		end
+	end
 end

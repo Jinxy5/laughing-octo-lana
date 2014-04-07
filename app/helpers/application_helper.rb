@@ -4,4 +4,6 @@ module ApplicationHelper
   		full_title.strip!
   		content_for :title, full_title
   	end
+
+	
 end

@@ -169,10 +169,12 @@
 <div class="container">
 		<p>Our Sponsors </p>
 		<div class="row">
-		<div class="col-md-3"><a href="http://www.poundstretcher.co.uk/"><img src="images/pondstretcher.jpg" width="136" height="67" alt=""/></a></div>
-		<div class="col-md-3"><a href="http://www.santander.co.uk/"><img src="images/sandtander_09.jpg" width="218" height="67" alt=""/></a></div>
-		<div class="col-md-3"><a href="http://www.thunderroad.co.uk/"><img src="images/thunderroad_11.jpg" width="212" height="67" alt=""/></a></div>
-		<div class="col-md-3"><a href="http://www.mountmotorcycles.co.uk/"><img src="images/mounts_13.jpg" width="173" height="67" alt=""/></a></div>
+
+      <%= link_to 'http://www.poundstretcher.co.uk/' do %> <%= image_tag 'psgrey.jpg', width: 136, height: 67, alt: 'pound stretcher logo' %> <% end %>
+      <%= link_to 'http://www.santander.co.uk/' do %> <%= image_tag 'sandtander_09.jpg', width: 218, height: 67, alt: 'pound stretcher logo' %> <% end %>
+      <%= link_to 'http://www.thunderroad.co.uk/' do %> <%= image_tag 'thunderroad_11.jpg', width: 212, height: 67, alt: 'pound stretcher logo' %> <% end %>
+      <%= link_to 'http://www.mountmotorcycles.co.uk/' do %> <%= image_tag 'mounts_13.jpg', width: 173, height: 67, alt: 'pound stretcher logo' %> <% end %>
+
 		</div>
 		<p>© 2014 Blood Bikes Wales. Registered with the UK Charity Commission, Charity Number 1143352. </p>
 		                    <p> Design: <a href="www.jhurleydesign.com">JHurleyDesign.com</a></p>
@@ -185,16 +187,6 @@
   
 
 
-
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
-  <script src="js/jquery-1.10.2.min.js"></script>
-    
-  <script src="js/bootstrap.js"></script>
    
 </body>
 </html>

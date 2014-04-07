@@ -78,7 +78,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    ap @user
+    ap 'create triggered'
 
     respond_to do |format|
       if @user.save
@@ -95,8 +95,18 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
+   # ap params
+
+   # user_params.delete_blanks!
+
+
+
+    @image = @user.create_avatar(file_name: user_params[:avatar][:file_name])
+ 
+
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update_attributes(user_params.delete avatar: [:file_name]) # this automatically deletes any avatar instances, as uploaded files are saved in a seperate model
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -127,6 +137,6 @@ class UsersController < ApplicationController
       # "first_name", "last_name", "nearest_town"]
       # ["id", "user_name", "email", "password_digest", "created_at", "updated_at", "register_key", "culminated", "remember_token", "register_token_created_at", "profile_image", "licence_image", "first_name", "last_name", "nearest_town"] 
 
-      params.require(:user).permit(:user_name, :email, :first_name, :last_name, :nearest_town, :user_name, :password, :password_confirmation)
+     params.require(:user).permit(:user_name, :email, :first_name, :last_name, :nearest_town, :user_name, :password, :password_confirmation, avatar: [:file_name])
     end
 end

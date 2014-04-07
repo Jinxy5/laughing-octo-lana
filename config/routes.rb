@@ -4,6 +4,7 @@ Bloodbikeswales::Application.routes.draw do
   resources :users
   resources :recitals
   resources :events
+  resources :images
 
 
   resources :forums do
@@ -13,22 +14,21 @@ Bloodbikeswales::Application.routes.draw do
   end
 
 
+  get 'uploads/:file_name.:extension', to: 'images#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'splash#index'
 
+#  get 'forums/:forum_id/discussion/:discusssion_id', to: 'discussions#show', as: :show_discussion
 
-  get 'forums/:forum_id/discussion/:discusssion_id', to: 'discussions#show', as: :show_discussion
-
-   get 'culminate/:register_key', to: 'users#culminate', as: :culminate
-
-   get 'signup', to: 'users#new', as: 'sign_up'
-
-   get 'signin', to: 'sessions#new', as: 'sign_in' # sign_in
-   post 'sessions', to: 'sessions#create', as: 'sessions' #machine_link
-   delete 'signout', to: 'sessions#destroy', as: 'sign_out' # sign_out
+  get 'culminate/:register_key', to: 'users#culminate', as: :culminate
+  get 'signup', to: 'users#new', as: 'sign_up'
+  get 'signin', to: 'sessions#new', as: 'sign_in' # sign_in
+  post 'sessions', to: 'sessions#create', as: 'sessions' #machine_link
+  delete 'signout', to: 'sessions#destroy', as: 'sign_out' # sign_out
 
    
   # Example of regular route:

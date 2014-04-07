@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 	has_many :posts
 	has_many :discussions
 
+	has_one :avatar, class_name: 'Image', foreign_key: :user_id
+
 	has_many :replies
 	has_many :retorts
 	has_many :discourses
@@ -18,17 +20,27 @@ class User < ActiveRecord::Base
 
 	VALID_EMAIL_REGEX = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9\-.]/
 
-#	validates :firstname, presence: true
-#	validates :lastname, presence: true
-#	validates :username, presence: true
+	validates :first_name,
+			  presence: true, 
+			  if: :first_name
+
+	validates :last_name,
+			  presence: true,
+			  if: :last_name
+
+	validates :user_name,
+			  presence: true,
+			  if: :user_name
 
 	validates :email, presence: true, 
 					  uniqueness: { case_sensitive: false },
-					  format: { with: VALID_EMAIL_REGEX } 
+					  format: { with: VALID_EMAIL_REGEX }, 
+					  if: :email 
 
-	validates :password, length: { minimum: 6 }
-	validates :password, length: { maximum: 100 }
-
+	validates :password,
+			  length: { minimum: 6, maximum: 10 },
+			  if: :password
+	
 	has_secure_password
 
 
