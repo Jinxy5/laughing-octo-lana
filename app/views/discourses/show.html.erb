@@ -1,169 +1,64 @@
 <p id="notice"><%= notice %></p>
 
-
-
 <div class="fullwidthcontainer">
   
 
   <div class="container">
-<p>&nbsp;</p>
 
 <div class="row">
 <div class="col-md-12">
     
-<span class="right"><ul class="pagination pagination-sm">
-  <li><a href="#">«</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">»</a></li>
-</ul>
-  </span>
-  </div>
-  <div class="col-md-12">
 
-        <img class="mugshot" src="images/thumb_03.jpg" width="37" height="45" alt="">
+        <h2>Rider Forum</h2>
+              <p>&nbsp;</p>
+
+        <%= image_tag @discourse.user.avatar.file_name, class: 'mugshot', width: 37, height: 45 %>
+
         
       
-        <h4><%= @discussion.name %></h4>
-        <p><%= @discussion.user.user_name %> <%= @discussion.user.list_roles %></p>
-        <p><%= @discussion.body %></p>
+        <h4> <%= @discourse.title %> </h4>
+        <p> <%= @discourse.user.user_name %> <%= @discourse.user.list_roles %> </p>
+        <p> <%= @discourse.body %> </p>
         
         
-        <p><i class="fa fa-comment"></i> <%= time_ago_in_words(@discussion.created_at) %> ago </p>
+        <p><i class="fa fa-comment"></i> <%= time_ago_in_words(@discourse.created_at) %> ago </p>
         <p>&nbsp;</p>
 
+        <%= form_for( @reply, url: "/forums/" + @forum.id.to_s + "/discourses/" + @discourse.id.to_s + "/replies" ) do |f| %>
+          
+          <%= f.text_field :title, placeholder: 'Enter the title for your reply here', class: 'form-control'%> <br>
+       
+          <%= f.text_field :body, placeholder: 'Enter the body for your reply here', class: 'form-control'%> <br>
+          
+          <%= f.submit 'Reply to this Discussion', class: 'btn btn-success' %> <br>
+            <br>
+        <% end %>
 
-
-<textarea class="form-control" placeholder="Leave a new comment ..." rows="5"></textarea>
-        <p>&nbsp;</p>
-
-     <a href = <%= new_forum_discussion_post_path(@forum, @discussion) %> class = 'btn btn-primary col-xs-12 col-sm-3'> Reply to this Post <span class= 'fa fa-gavel'></span> </a><br>
-
-<div class="postdivider">
-<div class="container"><h4>23 COMMENTS</h4></div>
-
-
-     <%= %>
-<!--
-<button type="submit" class="btn btn-success btn-md">POST</button>
-&nbsp;&nbsp;
-<button type="submit" class="btn btn-danger btn-md">CANCEL</button>
-<p>&nbsp;</p>
     
--->
+</div>
+</div>
+</div>
+<div class="postdivider">
+<div class="container"><h4> <%= pluralize @discourse.replies.count, 'reply' %> </h4></div>
+
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<p>&nbsp;</p>
+
+
+  <% if @discourse.replies %>
+    <%= render partial: "reply", collection: @discourse.replies %>
+  <% end %>
+
+
+
+
+
+
+</div>
 </div>
 </div>
 <p>&nbsp;</p>
 </div>
-
-
-
-
-
-
-
---- comments: <br>
-
-  <%= render partial: "post", collection: @discussion.posts %>
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----------------------
-<div class = 'well well-sm'><%= @discussion.name %></div>
------
-<%= @discussion.body %>
-
-
-<ul class="media-list">
-<!--
-      <li class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIj48L3JlY3Q+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" style="width: 64px; height: 64px;">
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading">Media heading</h4>
-          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-          <div class="media">
-            <a class="pull-left" href="#">
-              <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIj48L3JlY3Q+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" style="width: 64px; height: 64px;">
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading">Nested media heading</h4>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-              <div class="media">
-                <a class="pull-left" href="#">
-                  <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIj48L3JlY3Q+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" style="width: 64px; height: 64px;">
-                </a>
-                <div class="media-body">
-                  <h4 class="media-heading">Nested media heading</h4>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                </div>
-              </div>
-            </div>
-          </div>
--->
-	<% @discussion.posts.each do |post| %>
-
-
-		<li class="media">
-
-	        <a class="pull-left" href="#">
-	          <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIj48L3JlY3Q+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" style="width: 64px; height: 64px;">
-	        </a>
-
-	        <div class="media-body">
-	          <h4 class="media-heading"> <%= post.user.user_name %>  </h4>
-	          <p> <%= post.display_body %> </p>
-	       
-
-	        </div>
-
-
-			
-
-			
-
-        </li>
-	<% end %>
-
-
-	   <a href = <%= new_forum_discussion_post_path(@forum, @discussion) %> class = 'btn btn-primary col-xs-12 col-sm-3'> Reply to this Post <span class= 'fa fa-gavel'></span> </a>
-
-        
-
-</ul>
-
-
-
-<!--
-<li class="media">
-	<a class="pull-left" href="#">
-	  <img class="media-object" src="..." alt="...">
-	</a>
-	<div class="media-body">
-	  <h4 class="media-heading"> <%#= post.user.user_name %> </h4>
-	  	<%#= post.body %><br>
-	</div>
-	</li>
-
--->
-
-
-<%#= link_to 'Edit', edit_discussion_path(@discussion) %>
-<%#= link_to 'Back', discussions_path %>

@@ -1,4 +1,4 @@
 class Impression < ActiveRecord::Base
 
-	belongs_to :discussion
+	belongs_to :discourse
 end

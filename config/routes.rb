@@ -9,20 +9,16 @@ Bloodbikeswales::Application.routes.draw do
 
   resources :forums do
     resources :discourses do
-      resources :posts
+      resources :replies
     end
   end
 
+  # use a member route here
+  post 'create', to: 'create_reply/:forum_id/:discourse_id', to: 'replies#create'
 
   get 'uploads/:file_name.:extension', to: 'images#show'
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'splash#index'
-
-#  get 'forums/:forum_id/discussion/:discusssion_id', to: 'discussions#show', as: :show_discussion
 
   get 'culminate/:register_key', to: 'users#culminate', as: :culminate
   get 'signup', to: 'users#new', as: 'sign_up'
@@ -31,15 +27,6 @@ Bloodbikeswales::Application.routes.draw do
   delete 'signout', to: 'sessions#destroy', as: 'sign_out' # sign_out
 
    
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
   # Example resource route with options:
   #   resources :products do
   #     member do

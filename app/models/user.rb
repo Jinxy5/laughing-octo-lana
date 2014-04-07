@@ -43,6 +43,9 @@ class User < ActiveRecord::Base
 	
 	has_secure_password
 
+	def make_admin!
+		add_role('admin')
+	end
 
 	def add_role(role)
 		self.user_roles.create(role_id: Role.find_by(role: role).id )

@@ -1,25 +1,31 @@
 class DiscoursesController < ApplicationController
   before_action :set_discourse, only: [:show, :edit, :update, :destroy]
+  #before_action :create
   before_action :set_forum, only: [:show, :edit, :update, :create, :destroy, :new]
+  before_action :create_reply, only: [:show]
 
   before_action :log_impression, only: [:show]
 
   # GET /discources
   # GET /discources.json
   def index
-    @discources = discourse.find_by(forum_id: params[:id])
+    @discources = Discourse.find_by(forum_id: params[:id])
   end
 
   # GET /discources/1
   # GET /discources/1.json
   def show
+#    @discourse = Discourse.new
 
+    @reply = Discourse.new
+   # @reply = @discourse.reply.new
    # discourse.increment_counter :view, @discourse
    #   @discourse.iterate_view
   end
 
   # GET /discources/new
   def new
+
     @discourse = Discourse.new
   end
 
@@ -91,17 +97,19 @@ class DiscoursesController < ApplicationController
     end
     
     # Use callbacks to share common setup or constraints between actions.
+    def create_reply 
+    end
 
     def set_forum
       @forum = Forum.find(params[:forum_id])
     end
 
     def set_discourse
-      @discourse = discourse.find(params[:id])
+      @discourse = Discourse.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discourse_params
-      params.require(:discourse).permit(:name, :body)
+      params.require(:discourse).permit(:title, :body)
     end
 end

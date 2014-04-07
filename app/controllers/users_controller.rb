@@ -98,7 +98,8 @@ class UsersController < ApplicationController
 
    # ap params
 
-   # user_params.delete_blanks!
+    
+    user_params.delete_blanks!
 
 
 
