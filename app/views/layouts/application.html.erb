@@ -99,6 +99,11 @@
       <div id="logodiv">
 	 <div class="row">
 
+    <%= flash.each do |key, value| %> 
+      <%= key %>
+
+      Value: <%= value %>
+    <% end %>
 	 
 	 <div class="col-xs-3 col-sm-2">
 	 	<%= image_tag 'Blood-Bikes-Wales-logo.png' %>

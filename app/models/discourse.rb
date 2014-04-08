@@ -5,7 +5,7 @@ class Discourse < ActiveRecord::Base
 	has_many :impressions
 
 	has_many :discourse_replies
-	has_many :replies, through: :discourse_replies
+	has_many :replies, through: :discourse_replies#, source_type: 'Reply'
 
 	has_many :reply_retorts
 	has_many :retorts, through: :reply_retorts
@@ -24,8 +24,8 @@ class Discourse < ActiveRecord::Base
   #      ReplyRetort.where(retort_id: id).first.try(:reply)
    # end
 
-    alias_method :parent, :reply
-    alias_method :discourse, :reply
+ #   alias_method :parent, :reply
+  #  alias_method :discourse, :reply
 
 
 	def iterate_depth

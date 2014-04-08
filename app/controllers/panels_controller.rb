@@ -24,25 +24,12 @@ class PanelsController < ApplicationController
 
   def user_update
 
-    ap '^--^'
-    ap user_params
+    user_params.each do |p|
+      @user.add_role(p[0]) if p[1] == "1" && !@user.has_role?(p[0])_
+ #     @user.remove_role(p[0]) if p[1] == "0"
+    end 
 
-    user_params.delete_blanks!
-
-
-    @image = @user.create_avatar(file_name: user_params[:avatar][:file_name])
- 
-
-
-    respond_to do |format|
-      if @user.update_attributes(user_params.delete avatar: [:file_name]) # this automatically deletes any avatar instances, as uploaded files are saved in a seperate model
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+   redirect_to panel_show_users_url, notice: 'User was successfully updated.'
 
   end
 
@@ -66,6 +53,6 @@ class PanelsController < ApplicationController
 
     def user_params
 
-     params.require(:user)#.permit(:user_name, :email, :first_name, :last_name, :nearest_town, :user_name, :password, :password_confirmation, avatar: [:file_name])
+     params.require(:user).permit(:coordinator, :midweek, :rider)
     end
 end

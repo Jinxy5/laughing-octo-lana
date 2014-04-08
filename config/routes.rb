@@ -21,6 +21,8 @@ Bloodbikeswales::Application.routes.draw do
   # use a member route here
   post 'create', to: 'create_reply/:forum_id/:discourse_id', to: 'replies#create'
 
+  post 'create_retort/:forum_id/:discourse_id/:reply_id', to: 'retorts#create', as: :create_reply_retort
+
   get 'uploads/:file_name.:extension', to: 'images#show'
 
   root 'splash#index'

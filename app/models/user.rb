@@ -55,6 +55,10 @@ class User < ActiveRecord::Base
 		self.roles.pluck(:role)
 	end
 
+	def has_role?(role)
+		role_array.include?(role)
+	end
+
 	def is_admin?
 		role_array.include?('admin')
 	end
@@ -156,11 +160,17 @@ class User < ActiveRecord::Base
 
 
 	def add_role(role)
-		self.user_roles.create(role_id: Role.find_by(role: role).id )
+
+
+		self.user_roles.create(role_id: Role.find_by(role: role).id ) if !self.has_role?(role)
+
+
 	end
 
 	def remove_role(role)
-		self.roles.delete( id: Role.find_by(role: role).id )
+		ap 'removing ' + role
+
+		self.user_roles.delete( role_id: Role.find_by(role: role).id )
 	end
 
 	def list_roles

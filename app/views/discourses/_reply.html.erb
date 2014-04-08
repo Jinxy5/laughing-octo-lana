@@ -7,14 +7,22 @@
 
       
 	        <h4> <%= reply.title %> <i>- in reply to  </i> </h4> 
-	        <p> <%= reply.user.user_name %> <%= @discourse.user.list_roles %> </p>
+	         
+         d <%= reply.is_discourse? %> <br>
+         r <%= reply.is_reply? %> <br>
+         rt <%= reply.is_retort? %> <br>
+
+
+          <p> <%= reply.user.user_name %> <%= @discourse.user.list_roles %> </p>
 	        <p> <%= reply.body %> </p>
 	        
     
         <p><i class="fa fa-comment"></i> <%= time_ago_in_words(reply.created_at) %> ago </p>
          <p>&nbsp;</p>
 
-        <%= form_for( @reply, url: "/forums/" + @forum.id.to_s + "/discourses/" + @discourse.id.to_s + "/replies" ) do |f| %>
+         <%= %>
+
+        <%= form_for( @reply, url: "create_retort/#{@forum.id}/#{@discourse.id}/#{}" ) do |f| %>
           
           <%= f.text_field :title, placeholder: 'Enter the title for your reply here', class: 'form-control'%> <br>
        
