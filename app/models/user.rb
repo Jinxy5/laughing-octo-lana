@@ -17,6 +17,12 @@ class User < ActiveRecord::Base
 	before_create { self.culminated = 0 } #setting to false results in strange error where it can't be saved
 	before_create :create_remember_token
 	before_create { self.user_roles.build(role_id: Role.find_by(role: 'potential').id ) } # user the add_role method here
+	before_create :create_fallback_image
+
+
+	def create_fallback_image
+		self.create_avatar.create_fallback
+	end
 
 	VALID_EMAIL_REGEX = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9\-.]/
 
@@ -43,6 +49,102 @@ class User < ActiveRecord::Base
 	
 	has_secure_password
 
+
+
+	def role_array
+		self.roles.pluck(:role)
+	end
+
+	def is_admin?
+		role_array.include?('admin')
+	end
+
+	def is_coordinator?
+		role_array.include?('coodinator')
+	end
+
+	def is_midweek?
+		role_array.include?('midweek')
+	end
+
+	def is_rider?
+		role_array.include?('rider')
+	end
+
+	def is_only_potential?
+		if role_array === ['potential'] 
+			true
+		else
+			false
+		end
+	end
+
+
+	# virtual attributes
+	def admin
+		is_admin?
+	end
+
+	def coordinator
+		is_coordinator?
+	end
+
+	def midweek
+		is_midweek?
+	end
+
+	def rider
+		is_rider?
+	end
+	
+
+
+	def make_admin!
+		add_role('admin')
+	end
+
+	def make_coordinator!
+		add_role('coordinator')
+	end
+
+	def make_midweek!
+		add_role('midweek')
+	end
+
+	def make_rider!
+		add_role('rider')
+	end
+
+
+
+	def denounce_admin!
+		remove_role('admin')
+	end
+
+	def denounce_coordinator!
+		remove_role('coordinator')
+	end
+
+	def denounce_midweek!
+		remove_role('midweek')
+	end
+
+	def denounce_rider!
+		remove_role('rider')
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
 	def is_admin?
 		if self.roles.pluck(:role).include?('admin')
 			true 
@@ -51,9 +153,7 @@ class User < ActiveRecord::Base
 		end
 	end
 
-	def make_admin!
-		add_role('admin')
-	end
+
 
 	def add_role(role)
 		self.user_roles.create(role_id: Role.find_by(role: role).id )

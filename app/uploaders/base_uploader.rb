@@ -14,12 +14,5 @@ class BaseUploader < CarrierWave::Uploader::Base
     %w\jpg jpeg gif png\
   end
 
-  def filename
-    random_string + '.gif'
-  end
-  
-  def random_string
-    @random_string ||= User.new_remember_token
-  end
 
 end

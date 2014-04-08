@@ -19,8 +19,22 @@ class Discourse < ActiveRecord::Base
 		self.replies.last
 	end
 
+#    def reply
+ #       DiscourseReply.where(reply_id: id).first.try(:discourse) ||
+  #      ReplyRetort.where(retort_id: id).first.try(:reply)
+   # end
+
+    alias_method :parent, :reply
+    alias_method :discourse, :reply
+
+
 	def iterate_depth
-		#ap self.classs
+		
+		if is_reply?
+			self.depth = 1
+		elsif is_retort?
+			#self.depth = + 1 # is parent depth + 1
+		end
 	end
 	
 	def impression_count

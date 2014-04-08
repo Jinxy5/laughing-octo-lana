@@ -90,7 +90,7 @@
                 <%= last_discourse_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words( last_discourse_time ) %> ago ) 
               <% else %>
 
-                No discussions in this forum. <%= link_to 'Be the first to start a discussion...', new_forum_discourse_path(forum) %>
+                No discussions in this forum. <%= link_to 'Be the first to start a discussion...', forum_path(forum) %>
               <% end %>
 
           </p>

@@ -33,7 +33,15 @@
 
 
 			<% @users.each do |user| %>
-				<tr>
+				<tr class = <%= if user.is_admin? 
+								  	"success"
+								  elsif user.is_coordinator? || user.is_midweek? || user.is_rider? && !user.is_admin?
+								  	"warning"
+								  elsif user.is_only_potential?
+								  	"danger"
+								  end
+
+							%>>
 					<td> <%= link_to user.user_name, user_path(user) %> </td>
 					<td> <%= user.created_at.strftime('%a, %b %d, %Y %I:%M%P') %> </td>
 					<td>TBA</td>
@@ -42,19 +50,25 @@
 
 					<td>
 
-						<%= fields_for user do |f| %>
+						<%= form_for user, url: panel_update_user_path(user) do |f| %>
 
-							<%= f.check_box :user_name %>
+							<% if user.is_admin? %>
+								<i class = "fa fa-check-square"></i>
+							<% else %>
+								<i class = "fa fa-square"></i>
+							<% end %>
+							
+							<%= f.label :admin %>
+
+							<%= f.check_box :coordinator %>
+							<%= f.label :coordinator %>
+
+							<%= f.check_box :midweek %>
+							<%= f.label :midweek %>
+
+							<%= f.check_box :rider %>
 							<%= f.label :rider %>
 
-							<%= f.check_box :user_name %>
-							<%= f.label :rider %>
-
-							<%= f.check_box :user_name %>
-							<%= f.label :rider %>
-
-							<%= f.check_box :user_name %>
-							<%= f.label :rider %>
 
 
 
@@ -69,7 +83,7 @@
 						<td> 
 
 
-						<%= f.submit 'Approve', class: 'btn btn-success btn-xs' %>
+						<%= f.submit 'Approve', class: 'btn btn-success btn-xs', method: :patch %>
 
 
 					<% end %>

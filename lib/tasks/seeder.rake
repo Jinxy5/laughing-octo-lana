@@ -6,7 +6,7 @@ namespace :seeder do
 
 #			Role.connection.execute('ALTER SEQUENCE roles_id_seq RESART WITH 1') if !Role.exists? 
 
-			roles = ['potential', 'admin', 'blood', 'milk', 'organiser']
+			roles = ['potential', 'admin', 'rider', 'midweek', 'coordinator']
 
 			puts '==================================='
 
@@ -63,21 +63,18 @@ namespace :seeder do
 
 		task user_roles: :environment do
 			
-			roles = ['potential', 'rider', 'organiser']
+#			roles = ['potential', 'admin', 'rider', 'midweek', 'coordinator']
 
 			puts '==================================='
 
 			puts 'Created: '
 
-			roles.each_with_index do |role, index|
-
 				3.times do
 
 					user = User.create(user_name: Faker::Name.first_name, email: Faker::Internet.email, password: 'awesomepassword', password_confirmation: 'awesomepassword' )
 
-					user.update_attributes(role_id: Role.find_by(role: role).id)
+					user.make_coordinator!
 				
-				end
 			end
 
 			puts '==================================='
@@ -94,7 +91,10 @@ namespace :seeder do
 			User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 
 			100.times do |count|
-				if User.create(user_name: Faker::Name.first_name, email: Faker::Internet.email, password: 'awesomepassword', password_confirmation: 'awesomepassword' )
+				if user = User.create(user_name: Faker::Name.first_name, email: Faker::Internet.email, password: 'awesomepassword', password_confirmation: 'awesomepassword' )
+					
+					user.make_coordinator!
+
 					puts 'Successfully created '
 				end
 			end

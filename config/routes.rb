@@ -14,8 +14,8 @@ Bloodbikeswales::Application.routes.draw do
   end
 
   get 'panels/users', to: 'panels#users', as: :panel_show_users
-  
   delete 'panels/user/:id', to: 'panels#user_delete', as: :delete_user
+  patch 'panels/user/:id', to: 'panels#user_update', as: :panel_update_user
 
 
   # use a member route here
