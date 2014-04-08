@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
 	end
 
 	def is_coordinator?
-		role_array.include?('coodinator')
+		role_array.include?('coordinator')
 	end
 
 	def is_midweek?
@@ -161,6 +161,7 @@ class User < ActiveRecord::Base
 
 	def add_role(role)
 
+		ap 'Adding role ' + role
 
 		self.user_roles.create(role_id: Role.find_by(role: role).id ) if !self.has_role?(role)
 
@@ -168,9 +169,10 @@ class User < ActiveRecord::Base
 	end
 
 	def remove_role(role)
-		ap 'removing ' + role
 
-		self.user_roles.delete( role_id: Role.find_by(role: role).id )
+		ap 'Removing role ' + role
+
+		self.user_roles.find_by( role_id: Role.find_by(role: role).id ).destroy if self.has_role?(role)
 	end
 
 	def list_roles

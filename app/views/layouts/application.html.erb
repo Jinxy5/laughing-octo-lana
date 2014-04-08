@@ -99,10 +99,13 @@
       <div id="logodiv">
 	 <div class="row">
 
-    <%= flash.each do |key, value| %> 
-      <%= key %>
+    <% flash.each do |key, value| %> 
 
-      Value: <%= value %>
+
+      <div class = 'alert alert-success no-rounded-corners'>
+         <%= value %>  
+      </div>
+
     <% end %>
 	 
 	 <div class="col-xs-3 col-sm-2">

@@ -24,19 +24,43 @@ class PanelsController < ApplicationController
 
   def user_update
 
+    flash_message = 'User <b>' + @user.user_name + '</b> was successfully altered: </br>'
+
+    changed = false
+
     user_params.each do |p|
-      @user.add_role(p[0]) if p[1] == "1" && !@user.has_role?(p[0])_
- #     @user.remove_role(p[0]) if p[1] == "0"
+      
+      if p[1] == "1" && !@user.has_role?(p[0])
+        @user.add_role(p[0])
+
+        flash_message << p[0] + ' added </br>'
+        
+        changed = true
+      end
+
+      if p[1] == "0" && @user.has_role?(p[0])
+        @user.remove_role(p[0])  
+
+        flash_message << p[0] + ' removed <br>'
+        
+        changed = true
+      end
+
+
     end 
 
-   redirect_to panel_show_users_url, notice: 'User was successfully updated.'
+    flash_message = '' << '<b>' + @user.user_name + '\'s</b> roles have not been changed as your update doesn\'t change their already existing roles! </br>' unless changed
+
+    flash_message << '<b>' + @user.user_name + '\'s</b> roles are currently: ' + @user.list_roles 
+
+   redirect_to panel_show_users_url, notice: flash_message.html_safe
 
   end
 
   private
     
     def protect_admin
-      redirect_to(panel_show_users_url, notice: 'You lack the privaledges to alter an admin') if @user.is_admin? 
+      redirect_to(panel_show_users_url, notice: 'You lack the privileges needed to alter an admin') if @user.is_admin? 
     end
 
     def set_all_users
