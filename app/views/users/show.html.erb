@@ -46,7 +46,7 @@
 	<h3> Private Info: </h3> <h4> - Only <% if current_user == @user %>
 											yourself and select admins
 										 <% else %>
-										 	<%= @user.user_name %> and admins
+										 	<%= @user.user_name %> and other admins
 										 <% end %> can view this information </h4>
 	
 	<p><strong>First Name:</strong> <%= @user.first_name %> </p>
@@ -61,7 +61,13 @@
 
 	<p>&nbsp;</p>
 
-		<%= button_to 'Edit Your Details', edit_user_path, class: 'btn btn-success', method: :get %>
+		
+		<% if @user === current_user %>
+			<%= button_to 'Edit Your Details', edit_user_path, class: 'btn btn-success', method: :get %>
+		<% elsif %>
+			<%= button_to 'Edit ' + @user.user_name + '\'s Details', edit_user_path, class: 'btn btn-success', method: :get %>		
+		<% end %>
+
 	<% end %>
 
 

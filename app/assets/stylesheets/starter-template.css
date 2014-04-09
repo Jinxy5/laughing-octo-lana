@@ -1,5 +1,5 @@
 body {
-	/*padding-top: 50px; */
+	/*padding-top: 50px;*/
 	background-repeat: no-repeat;
 	background-size: 100%;
 	font-family: "ProximaNova-Regular" , Helvetica, Arial, sans-serif;
@@ -158,6 +158,8 @@ a:focus {
 }
 
 
+
+
 /* Small devices (tablets, 768px and up) */
 
 @media (min-width: 768px)  { 
@@ -207,10 +209,10 @@ a:focus {
 	background-color: #fff;
 	border: 1px solid #CCCCCC;
 	padding: 0px;
+	background-image: url(../images/RSCN0524.jpg);
 	height: 500px;
 	margin-bottom: 20px;
 }
-
 .ghostedbox {
 	padding-left: 20px;
 	padding-right: 0px;
@@ -279,7 +281,6 @@ a:focus {
 	background-color: #FFFFFF;
 	margin-bottom: 20px;
 	}
-
 .fb-comments span, .fb-comments iframe span[style], .fb-like-box span, .fb-like-box iframe span[style] {
 	width: 100% !important;
 	}
@@ -361,6 +362,11 @@ rightarrow{
 	padding-top: 11px;
 	}
 	
+b,
+strong {
+  	font-family: "ProximaNova-Bold" Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+	
 a .listdivider{
 	color: #333;
 	text-decoration: none;
@@ -377,48 +383,122 @@ a:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
+
+	/* --- CONTROL PANEL STUFF -- */
+.controlsidebar {
+	background-color: #000000;
+	padding-top: 40px;
+	padding-left: 40px;
+	height: auto;
+	}
+	
+.controlsidebar p a {
+	color: #B7B2B2;
+	text-shadow: 0px 0px 0px;
+	line-height: 30px;
+}
+
+.controlsidebar p a:hover {
+	color: #FFFFFF;
+	text-shadow: 0px 0px 0px;
+	line-height: 30px;
+	text-decoration: none;
+}
+.controlsidebarhidden {
+	background-color: #000000;
+	height: auto;
+	min-height: 500px;
+	}
+	
+.newsimage {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	border: 1px solid #C7C7C7;
+}
+.newsthumbimage {
+	margin-bottom: 20px;
+	margin-top: 0px;
+	border: 1px solid #C7C7C7;
+}
+
+.mainnav p a {
+	color: #B7B2B2;
+	text-shadow: 0px
+	}
+
+.fb, .tw {
+	background-repeat: no-repeat;
+	width: 26px;
+	display: block;
+	height: 28px;
+	float: right;
+	margin-left: 8px;
+}
+
+.fb {
+	background-image: url(../images/fb-button.gif);
+}
+
+.tw {
+	background-image: url(../images/twitter-button.gif);
+}
+	
+.fb:hover, .tw:hover {
+	opacity: 0.6;
+}
+
+button .full-width{
+  width:100%;
+}
+
+.btn-head{
+	margin-bottom: 9px;
+	margin-right: 37px;
+	}
+
+
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+}
+
+
 /**** MINE ****/
 
-
+body {
+}
 .green {
 	background-color: green;
 }
-
-
 .orange {
 	background-color: orange;
 }
-
-
 .navbar-brand, .navbar-nav > li > a {
 	text-shadow: none;
 	background-color: #1D2B35;
 	color: white;
 }
-
-
 .navbar-default .navbar-nav > .active > a {
 	background-color: #1D2B35;
 	color: red;
 }
-
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 	background-color: #EC1C2F;
 	border-color: #1A2730;
 }
-
 .fleft {
 	float: left
 }
-
 .profile-img {
 	height: 100%;
 }
-
 #headerband {
 	text-shadow: none;
 }
-
 #headerband ul.list-inline a {
 	text-transform: uppercase;
 	font-family: "ProximaNova-Light" Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -426,33 +506,26 @@ a:focus {
 	line-height: 16px;
 	color: #cec9c9;
 }
-
 #headerband ul.list-inline a:hover {
 	text-decoration: none;
 	color: #fff;
 }
-
 .navbar-nav {
-
 	border: none;
 	background-color: #1D2B35;
 }
-
-
 .navbar-default .navbar-nav > li > a:hover {
 	background-color: #EC1C2F;
 }
-
-.controlsidebar p a {
-	color: #B7B2B2;
-	text-shadow: 0px 0px 0px;
-	line-height: 30px;
+.navbar-default {
+	background-color: #1D2B35 !important;
 }
-
-.controlsidebar {
-
-	background-color: #000000;
-	padding-top: 40px;
-	padding-left: 40px;
-	height: 100%;
+.navbar-brand {
+	float: left;
+	padding: 0px 0px;
+	font-size: 14px;
+	line-height: 12px;
+}
+.navbar-brand img {
+	margin: 0
 }

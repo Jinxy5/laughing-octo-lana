@@ -148,7 +148,13 @@ class User < ActiveRecord::Base
 
 
 
-
+	def is_current_user?
+		if current_user === self
+			true
+		else
+			false
+		end
+	end
 
 	def is_admin?
 		if self.roles.pluck(:role).include?('admin')

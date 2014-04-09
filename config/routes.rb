@@ -34,6 +34,8 @@ Bloodbikeswales::Application.routes.draw do
 
   root 'splash#index'
 
+  get 'members_contact_list', to: 'contact_lists#show'
+
   get 'culminate/:register_key', to: 'users#culminate', as: :culminate
   get 'signup', to: 'users#new', as: 'sign_up'
   get 'signin', to: 'sessions#new', as: 'sign_in' # sign_in

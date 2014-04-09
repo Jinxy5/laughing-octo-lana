@@ -6,7 +6,7 @@ class DiscoursesController < ApplicationController
 
   before_action :log_impression, only: [:show]
 
-  before_action :secure
+ # before_action :secure
 
   # GET /discources
   # GET /discources.json
@@ -83,9 +83,10 @@ class DiscoursesController < ApplicationController
 
   private
 
-    def secure
-      redirect_to root_url unless current_user === @user || current_user.is_admin?
-    end
+#    def set_user
+ #     
+  #  end
+
 
     def log_impression
       ip = request.remote_ip
@@ -105,8 +106,9 @@ class DiscoursesController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def create_reply 
-      if !@forum.user_allowed?(current_user)
-        redirect_to forums_path, notice: 'Sorry! You cannot enter this forum! This forum is for users with a type of: ' + @forum.list_roles + ' and your roles are: ' + current_user.list_roles
+      if !@forum.user_allowed?(current_user) || current_user.is_admin?
+        
+        redirect_to root_url, success: 'Sorry! You cannot enter this forum! This forum is for users with a type of: ' + @forum.list_roles + ' and your roles are: ' + current_user.list_roles
       end
     end
 
