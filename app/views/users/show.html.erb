@@ -9,8 +9,26 @@
 	<h2> <%= contextual_user(@user) %> Profile</h2>
 
 
-	<%= show_uploaded_image(@user.avatar) %>
 	
+  <!-- make a partial -->
+  	<%= show_uploaded_image(@user.avatar, width: 200) %>
+
+ 	<% if current_user == @user || current_user.is_admin? %> 
+  		<h4> Upload new profile image: </h4>
+    
+		<%= form_for(@user, :html => { :multipart => true }, url: user_avatar_create_path(@user), method: :post ) do |f| %>
+		        <%= f.file_field :file_name %>
+		        <br>
+		        <%= f.submit 'Upload Image' %>
+		        <br>
+		        <p class="help-block">Please make sure your image is a jpeg and no bigger than 2MB</p>
+	    <% end %>    
+
+    <% end %>
+
+  <!-- partial end-->
+
+	<div class = 'clearfix'></div>
 	<%#= image_tag .file_name, class: 'mugshot', width: 200 %>
 
 	<h3> Public Info: </h3>
@@ -20,11 +38,16 @@
 
 	<p><strong>Number of Discussions:</strong>  <%= @user.discourses.count %></p>
 	<p><strong>Number of Posts:</strong>  <%= @user.posts.count %></p>
+	<p><strong> <%= 'Role'.pluralize(@user.roles.count) %>:</strong>  <%= @user.list_roles %> </p>
 
 	<div class = 'clearfix'></div>
 	<% if current_user == @user || current_user.is_admin? %> 
 
-	<h3> Private Info: </h3> <h4> - Only yourself and select admins can view this information </h4>
+	<h3> Private Info: </h3> <h4> - Only <% if current_user == @user %>
+											yourself and select admins
+										 <% else %>
+										 	<%= @user.user_name %> and admins
+										 <% end %> can view this information </h4>
 	
 	<p><strong>First Name:</strong> <%= @user.first_name %> </p>
 	<p><strong>Last Name:</strong>  <%= @user.last_name %></p>
@@ -34,24 +57,13 @@
 	<p><strong>Landline:</strong> <%= @user.landline %> </p>
 	<p><strong>Mobile:</strong> <%= @user.mobile %> </p>
 
-	
-	<p><strong> <%= 'Role'.pluralize(@user.roles.count) %>:</strong>  <%= @user.list_roles %> </p>
 	<p><strong>Nearest Town:</strong>  <%= @user.nearest_town %></p>
 
 	<p>&nbsp;</p>
 
 		<%= button_to 'Edit Your Details', edit_user_path, class: 'btn btn-success', method: :get %>
-	
-		<%= form_for(@user, :html => { :multipart => true }, url: user_avatar_create_path(@user), method: :post ) do |f| %>
-				<%= f.file_field :file_name %>
-				<%= f.submit 'Upload new Profile Image' %>
-		<% end %>
-
-
 	<% end %>
 
-
-	<p>&nbsp;</p>
 
 </div>
 <div class="col-md-12">			

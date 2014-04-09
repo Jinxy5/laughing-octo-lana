@@ -8,7 +8,7 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @discourse.save
-        format.html { redirect_to forum_discourse_path(@forum, @discourse), notice: 'reply was successfully created.' }
+        format.html { redirect_to forum_discourse_path(@forum, @discourse), notice: "A reply to the discussion #{@discourse.title} was successfully created." }
         format.json { render action: 'show', status: :created, location: @discourse }
       else
         format.html { redirect_to forum_discourse_path(@forum, @discourse), notice: 'Your reply must have both a title and content!' }

@@ -15,7 +15,11 @@
 				<td> Posts </td>
 				<td> Discussions Started </td>
 				<td> Email </td>
-				<td> Telephone </td>
+				<td> Landline </td>
+				<td> Mobile </td>
+				<td> Address </td>
+				<td> Postcode </td>
+
 			</tr>
 	</thead>
 		<tbody>
@@ -34,7 +38,11 @@
 							%>>
 					<td> <%= link_to user.user_name, user_path(user) %> </td>
 					<td> <%= user.created_at.strftime('%a, %b %d, %Y %I:%M%P') %> </td>
-					<td> TBA </td>
+					<td> <% if user.accepted_at %>
+							<%= user.accepted_at.strftime('%a, %b %d, %Y %I:%M%P') %>
+						  <% else %> 
+						  	TBA
+						  <% end %> </td>
 
 
 
@@ -71,7 +79,11 @@
 					<td> <%= user.email %></td>
 
 	
-					<td> 999 </td>
+					<td> <%= user.landline %> </td>
+					<td> <%= user.mobile %> </td>
+
+					<td> <%= user.address %> </td>
+					<td> <%= user.postcode %> </td>
 
 					<td> 
 
@@ -79,7 +91,7 @@
 
 					<% end %>
 
-						<%= button_to 'Delete', delete_user_path(user), class: 'btn btn-danger btn-xs', method: :delete, confirm: 'Are you sure you want to delete ' + user.user_name + '?' %>
+						<%= button_to 'Delete', delete_user_path(user), class: 'btn btn-danger btn-xs', method: :delete, confirm: 'Are you sure you want to delete ' + user.user_name + '? They currently have these roles: ' + user.list_roles %>
 
 
 

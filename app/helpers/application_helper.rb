@@ -6,11 +6,15 @@ module ApplicationHelper
   	end
 
 
-  	def show_uploaded_image(image)
+  	def show_uploaded_image(image, a ={})
+      o = {
+          height: 70,
+          width: 70
+        }.merge!(a)
   		if image.nil?
-  			image_tag 'fallbackmugshot.gif'
+  			image_tag 'fallbackmugshot.gif', class: 'mugshot', width: o[:width] 
   		else
-        image_tag image.file_name
+        image_tag image.file_name, class: 'mugshot', width: o[:width]
   		end
   	end
 	

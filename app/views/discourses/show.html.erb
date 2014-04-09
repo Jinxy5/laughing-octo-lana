@@ -12,9 +12,9 @@
         <h2>Rider Forum</h2>
               <p>&nbsp;</p>
 
-
-        <%= image_tag @discourse.user.avatar.file_name, class: 'mugshot', width: 37, height: 45 %>
-
+        <%= link_to @discourse.user do %>
+          <%= show_uploaded_image @discourse.user.avatar, class: 'mugshot', width: 50, height: 50 %>
+        <% end %>
         
       
         <h4> <%= @discourse.title %> </h4>

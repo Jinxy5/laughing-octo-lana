@@ -6,7 +6,7 @@ class DiscoursesController < ApplicationController
 
   before_action :log_impression, only: [:show]
 
-  before_action :secure, :all
+  before_action :secure
 
   # GET /discources
   # GET /discources.json
@@ -48,7 +48,7 @@ class DiscoursesController < ApplicationController
 
     respond_to do |format|
       if @discourse.save
-        format.html { redirect_to forum_url(@forum), notice: 'discourse was successfully created.' }
+        format.html { redirect_to forum_url(@forum), notice: "Discourse #{@discourse.title} was successfully created." }
         format.json { render action: 'show', status: :created, location: @discourse }
       else
         format.html { redirect_to forum_url(@forum), notice: 'A discussions must have both a title and content!' }

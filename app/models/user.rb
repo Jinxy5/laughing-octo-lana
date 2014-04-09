@@ -165,7 +165,7 @@ class User < ActiveRecord::Base
 
 		ap 'Adding role ' + role
 
-		self.update_attribute(accepted_at: Time.now) if self.is_only_potential?	
+		self.update_attributes(accepted_at: Time.now) if self.is_only_potential?	
 
 		self.user_roles.create(role_id: Role.find_by(role: role).id ) if !self.has_role?(role)
 
@@ -176,7 +176,7 @@ class User < ActiveRecord::Base
 
 		ap 'Removing role ' + role
 
-		self.update_attribute(revoked_at: Time.now) if self.is_only_potential?	
+#		self.update_attribute(revoked_at: Time.now) if self.is_only_potential?	
 
 		self.user_roles.find_by( role_id: Role.find_by(role: role).id ).destroy if self.has_role?(role)
 	end
