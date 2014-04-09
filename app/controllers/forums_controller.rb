@@ -67,7 +67,7 @@ class ForumsController < ApplicationController
       
       # find a better way to create an array
 
-      if !@forum.user_allowed?(current_user) || current_user.is_admin?
+      if !@forum.user_allowed?(current_user) || !current_user.is_admin?
         redirect_to forums_path, notice: 'Sorry! You cannot enter this forum! This forum is for users with a type of: ' + @forum.list_roles + ' and your roles are: ' + current_user.list_roles
       end
      # ap current_user.roles.any? { |role| role[:role] == 'potentialzzz' || 'potential'}

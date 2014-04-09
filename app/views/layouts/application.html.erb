@@ -125,6 +125,17 @@
                 </div>
             </div>
         </div>
+
+
+               <% flash.each do |key, value| %> 
+
+                  <div class = 'alert alert-success no-rounded-corners'>
+                     <%= value %>  
+                  </div>
+
+                <% end %>
+
+
         <div class="mainnav">
             <ul class="list-inline hidden-xs">
                 <li><a href="indexloggedin.php"> HOME </a> </li>
