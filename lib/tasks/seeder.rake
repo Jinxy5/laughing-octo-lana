@@ -39,10 +39,10 @@ namespace :seeder do
 
 			Forum.delete_all	
 
-			forums = [{name: 'blood', description: 'talk about blood', role: 'rider' }, 
-					  {name: 'milk', description: 'talk about milk', role: 'midweek' },  
+			forums = [{name: 'rider', description: 'talk about blood', role: 'rider' }, 
+					  {name: 'midweek', description: 'talk about milk', role: 'midweek' },  
 					  {name: 'admin', description: 'talk about being an admin', role: 'admin' }, 
-					  {name: 'organiser', description: 'talk about being an organiser', role: 'coordinator' }]
+					  {name: 'coordinator', description: 'talk about being an organiser', role: 'coordinator' }]
 
 			forums.each do |forum|
 
