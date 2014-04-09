@@ -93,7 +93,7 @@
 							<%= discourse.last_reply.created_at.strftime('%a, %b %d, %Y %I:%M %P ') %>
 						<% else %>
 
-							No posts yet, why not be the first?
+							No replies yet, why not be the first?
 						<% end %>
 
 
@@ -119,9 +119,14 @@
 	
 	<br>
 	
+
+
 	<% @discourse = Discourse.new %>
 
 	<%= form_for [@forum, @discourse] do |f| %>
+
+
+
 
 		<%= f.text_field :title, class: 'form-control', placeholder: 'Create a new title here...' %><br>
 		<%= f.text_area :body, class: 'form-control', placeholder: 'Expand on your title here...', rows: 5 %><br>

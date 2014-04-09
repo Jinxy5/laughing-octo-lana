@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :secure, only: [:edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -86,7 +87,11 @@ class UsersController < ApplicationController
         format.html { redirect_to @user , notice: 'Welcome to ' + request.host_with_port + ', ' + @user.user_name + '!' }
         format.json { render action: 'show', status: :created, location: @user }
       else
-        format.html { render action: 'new' }
+
+        ap @user
+
+
+        format.html { render action: 'new', notice: 'We could not create your account! Please try again.' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -96,18 +101,20 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
 
-   # ap params
+    ap params
 
     
-    user_params.delete_blanks!
+#    user_params.delete_blanks!
 
 
 
-    @image = @user.create_avatar(file_name: user_params[:avatar][:file_name])
+#    @image = @user.create_avatar(file_name: user_params[:avatar][:file_name])
  
 
     respond_to do |format|
-      if @user.update_attributes(user_params.delete avatar: [:file_name]) # this automatically deletes any avatar instances, as uploaded files are saved in a seperate model
+      #.delete avatar: [:file_name]
+
+      if @user.update_attributes(user_params) # this automatically deletes any avatar instances, as uploaded files are saved in a seperate model
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -128,6 +135,10 @@ class UsersController < ApplicationController
   end
 
   private
+    def secure
+      redirect_to root_url unless current_user === @user || current_user.is_admin?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -138,6 +149,18 @@ class UsersController < ApplicationController
       # "first_name", "last_name", "nearest_town"]
       # ["id", "user_name", "email", "password_digest", "created_at", "updated_at", "register_key", "culminated", "remember_token", "register_token_created_at", "profile_image", "licence_image", "first_name", "last_name", "nearest_town"] 
 
-     params.require(:user).permit(:user_name, :email, :first_name, :last_name, :nearest_town, :user_name, :password, :password_confirmation, avatar: [:file_name])
+      # avatar: [:file_name]
+     params.require(:user).permit(:user_name,
+                                  :email,
+                                  :first_name,
+                                  :last_name,
+                                  :nearest_town,
+                                  :user_name,
+                                  :password,
+                                  :password_confirmation,
+                                  :address,
+                                  :public_email,
+                                  :landline,
+                                  :mobile)
     end
 end

@@ -17,12 +17,12 @@ class User < ActiveRecord::Base
 	before_create { self.culminated = 0 } #setting to false results in strange error where it can't be saved
 	before_create :create_remember_token
 	before_create { self.user_roles.build(role_id: Role.find_by(role: 'potential').id ) } # user the add_role method here
-	before_create :create_fallback_image
+#	before_create :create_fallback_image
 
 
-	def create_fallback_image
-		self.create_avatar.create_fallback
-	end
+#	def create_fallback_image
+#		self.create_avatar
+#	end
 
 	VALID_EMAIL_REGEX = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9\-.]/
 
@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
 
 	validates :user_name,
 			  presence: true,
+			  uniqueness: true,
 			  if: :user_name
 
 	validates :email, presence: true, 
@@ -159,9 +160,12 @@ class User < ActiveRecord::Base
 
 
 
+
 	def add_role(role)
 
 		ap 'Adding role ' + role
+
+		self.update_attribute(accepted_at: Time.now) if self.is_only_potential?	
 
 		self.user_roles.create(role_id: Role.find_by(role: role).id ) if !self.has_role?(role)
 
@@ -171,6 +175,8 @@ class User < ActiveRecord::Base
 	def remove_role(role)
 
 		ap 'Removing role ' + role
+
+		self.update_attribute(revoked_at: Time.now) if self.is_only_potential?	
 
 		self.user_roles.find_by( role_id: Role.find_by(role: role).id ).destroy if self.has_role?(role)
 	end

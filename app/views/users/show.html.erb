@@ -6,40 +6,59 @@
 <div class="col-md-12">
 		
 
-	<h2>Your Public Profile</h2>
-				<p>&nbsp;</p>
+	<h2> <%= contextual_user(@user) %> Profile</h2>
 
+
+	<%= show_uploaded_image(@user.avatar) %>
 	
+	<%#= image_tag .file_name, class: 'mugshot', width: 200 %>
+
+	<h3> Public Info: </h3>
 	
+	<p><strong>User Name:</strong>  <%= @user.user_name %></p>
+	<p><strong>Public Email:</strong>  <%= @user.public_email %></p>
+
+	<p><strong>Number of Discussions:</strong>  <%= @user.discourses.count %></p>
+	<p><strong>Number of Posts:</strong>  <%= @user.posts.count %></p>
+
+	<div class = 'clearfix'></div>
+	<% if current_user == @user || current_user.is_admin? %> 
+
+	<h3> Private Info: </h3> <h4> - Only yourself and select admins can view this information </h4>
 	
 	<p><strong>First Name:</strong> <%= @user.first_name %> </p>
 	<p><strong>Last Name:</strong>  <%= @user.last_name %></p>
-	<p><strong>User Name:</strong>  <%= @user.user_name %></p>
 	<p><strong>Email:</strong> <%= @user.email %> </p>
+
+	<p><strong>Address:</strong> <%= @user.address %> </p>
+	<p><strong>Landline:</strong> <%= @user.landline %> </p>
+	<p><strong>Mobile:</strong> <%= @user.mobile %> </p>
+
+	
 	<p><strong> <%= 'Role'.pluralize(@user.roles.count) %>:</strong>  <%= @user.list_roles %> </p>
-	<p><strong>Tel:</strong>  01656 782956</p>
 	<p><strong>Nearest Town:</strong>  <%= @user.nearest_town %></p>
 
 	<p>&nbsp;</p>
 
-<%= button_to 'Edit Your Details', edit_user_path, class: 'btn btn-success', method: :get %>
+		<%= button_to 'Edit Your Details', edit_user_path, class: 'btn btn-success', method: :get %>
+	
+		<%= form_for(@user, :html => { :multipart => true }, url: user_avatar_create_path(@user), method: :post ) do |f| %>
+				<%= f.file_field :file_name %>
+				<%= f.submit 'Upload new Profile Image' %>
+		<% end %>
+
+
+	<% end %>
+
 
 	<p>&nbsp;</p>
 
 </div>
 <div class="col-md-12">			
-<%= image_tag @user.avatar.file_name, class: 'mugshot', width: 200 %>
   <div class="clearfix"></div>
 </div>
 <div class="col-md-12">
-asd
 
-<%= form_for(@user, :html => { :multipart => true }) do |f| %>
-	<%= f.fields_for :avatar do |f| %>
-		<%= f.file_field :file_name %>
-		<%= f.submit %>
-	<% end %> 
-<% end %>
 
 
 

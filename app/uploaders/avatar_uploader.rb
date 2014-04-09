@@ -9,10 +9,15 @@ class AvatarUploader < BaseUploader
   process resize_to_fit: [75, 75]
   process convert: 'gif'
      
-  def default_url
- 	"private/DxdOLKcaccFqC1wnv6RCfQ.gif"
-  end
- 
+
+#include Sprockets::Helpers::RailsHelper
+
+#include Sprockets::Helpers::IsolatedHelper
+
+
+
+
+
   def filename
     random_string + '.gif'
   end

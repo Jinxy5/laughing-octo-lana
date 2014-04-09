@@ -12,6 +12,8 @@ class Discourse < ActiveRecord::Base
 
 	before_save :iterate_depth
 
+	validates :title, length: { minimum: 1, maximum: 90 }
+	validates :body, length: { minimum: 1, maximum: 500 }
 
 
 

@@ -32,7 +32,7 @@
 		
 
 
-<h2>Edit Your  Profile</h2>
+<h2>Edit Your Profile</h2>
 
 				
 				
@@ -58,13 +58,26 @@
   <%= f.label 'Last Name' %><br>
   <%= f.text_field :last_name, class: 'form-control' %><br>
 
-  <%= f.label 'Email' %><br>
-  <%= f.email_field :email, class: 'form-control' %><br>
+  <%= f.label 'Public Email' %><br>
+  <%= f.email_field :public_email, class: 'form-control' %><br>
+
+  <%= f.label 'Address' %><br>
+  <%= f.text_field :address, class: 'form-control' %><br>
 
   <%= f.label 'Nearest Town' %><br>
   <%= f.text_field :nearest_town, class: 'form-control' %><br>
 
-  <%= f.submit 'Yeah', class: 'btn btn-success' %><br>
+  <%= f.label 'Landline' %><br>
+  <%= f.text_field :landline, class: 'form-control' %><br>
+
+  <%= f.label 'Mobile' %><br>
+  <%= f.text_field :mobile, class: 'form-control' %><br>
+
+
+  <%= f.label 'Postcode' %><br>
+  <%= f.text_field :postcode, class: 'form-control' %><br>
+
+  <%= f.submit 'Update', class: 'btn btn-success' %><br>
   
 <% end %>
 				

@@ -8,24 +8,14 @@
 <table class="table">
 	<thead>		
 			<tr>
-					<td><strong>User Name</strong></td>
-					<td><strong>Applied</strong></td>
-					<td><strong> Accepted</strong></td>
-					<td><strong>Roles&nbsp;&nbsp;&nbsp;</strong></td>
-					<td><strong>Posts</strong></td>
-					<td><strong>Discussions<br>
-							Started</strong></td>
-		<!--			<td><strong>Reported<br>
-							Posts</strong></td>
-					<td><strong>Correctly<br>
-							Reported<br>
-							Posts</strong></td>
-					<td><strong>Their<br>
-							Posts<br>
-							Reported</strong></td>
-					<td><strong>Their<br>
-							Posts<br>
-							Deleted</strong></td>  -->
+				<td> User Name</td>
+				<td> Applied </td>
+				<td> Accepted </td>
+				<td> Roles </td>
+				<td> Posts </td>
+				<td> Discussions Started </td>
+				<td> Email </td>
+				<td> Telephone </td>
 			</tr>
 	</thead>
 		<tbody>
@@ -36,7 +26,7 @@
 				<tr class = <%= if user.is_admin? 
 								  	"success"
 								  elsif user.is_coordinator? || user.is_midweek? || user.is_rider? && !user.is_admin?
-								  	"warning"
+								  	
 								  elsif user.is_only_potential?
 								  	"danger"
 								  end
@@ -44,7 +34,7 @@
 							%>>
 					<td> <%= link_to user.user_name, user_path(user) %> </td>
 					<td> <%= user.created_at.strftime('%a, %b %d, %Y %I:%M%P') %> </td>
-					<td>TBA</td>
+					<td> TBA </td>
 
 
 
@@ -58,33 +48,34 @@
 								<i class = "fa fa-square"></i>
 							<% end %>
 							
-							<%= f.label :admin %>
+							Admin
 
 							<%= f.check_box :coordinator %>
-							<%= f.label :coordinator %>
+							Coordinator 
 
 							<%= f.check_box :midweek %>
-							<%= f.label :midweek %>
+							Midweek
 
+							
 							<%= f.check_box :rider %>
-							<%= f.label :rider %>
+							Rider
+
 
 
 
 
 					</td>
 					
-						<td> <%= user.posts.count %> </td>
-						<td> <%= user.discourses.count %> </td>
-		<!--				<td>2</td>
-						<td>4</td>
-						<td>2</td>
-						<td>1</td> -->
-						<td> 
+					<td> <%= user.posts.count %> </td>
+					<td> <%= user.discourses.count %> </td>
+					<td> <%= user.email %></td>
 
+	
+					<td> 999 </td>
 
-						<%= f.submit 'Approve', class: 'btn btn-success btn-xs', method: :patch %>
+					<td> 
 
+						<%= f.submit 'Approve', class: 'btn btn-success btn-xs fleft', method: :patch %>
 
 					<% end %>
 

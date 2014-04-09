@@ -12,6 +12,7 @@
         <h2>Rider Forum</h2>
               <p>&nbsp;</p>
 
+
         <%= image_tag @discourse.user.avatar.file_name, class: 'mugshot', width: 37, height: 45 %>
 
         
@@ -26,9 +27,13 @@
 
         <%= form_for( @reply, url: "/forums/" + @forum.id.to_s + "/discourses/" + @discourse.id.to_s + "/replies" ) do |f| %>
           
+
+
+
+
           <%= f.text_field :title, placeholder: 'Enter the title for your reply here', class: 'form-control'%> <br>
        
-          <%= f.text_field :body, placeholder: 'Enter the body for your reply here', class: 'form-control'%> <br>
+          <%= f.text_area :body, placeholder: 'Enter the body for your reply here', class: 'form-control', rows: 5 %> <br>
           
           <%= f.submit "Reply to this #{@discourse.user.user_name}\'s Discussion", class: 'btn btn-success' %> <br>
             <br>

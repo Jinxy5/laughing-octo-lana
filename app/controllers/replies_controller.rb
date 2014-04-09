@@ -3,8 +3,6 @@ class RepliesController < ApplicationController
   before_action :set_discourse, only: [:create]
   
   def create
-    ap "*_____><_____*_*_*_*"
-    ap discourse_params
 
     @discourse.replies.build(discourse_params).user_id = current_user.id
 
@@ -13,7 +11,7 @@ class RepliesController < ApplicationController
         format.html { redirect_to forum_discourse_path(@forum, @discourse), notice: 'reply was successfully created.' }
         format.json { render action: 'show', status: :created, location: @discourse }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to forum_discourse_path(@forum, @discourse), notice: 'Your reply must have both a title and content!' }
         format.json { render json: @discourse.errors, status: :unprocessable_entity }
       end
     end

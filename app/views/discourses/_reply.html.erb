@@ -2,41 +2,35 @@
   
     <div class="commentbox">
 
+        <%= link_to reply.user do %>
+          <%= show_uploaded_image(reply.user.avatar) %>
 
-        <%= image_tag reply.user.avatar.file_name, class: 'mugshot', width: 37, height: 45 %>
-
+        <% end %>
       
-	        <h4> <%= reply.title %> <i>- in reply to  </i> </h4> 
+	        <h4> <%= reply.title %> <i> </i> </h4> 
 	         
-         d <%= reply.is_discourse? %> <br>
-         r <%= reply.is_reply? %> <br>
-         rt <%= reply.is_retort? %> <br>
-
-
-          <p> <%= reply.user.user_name %> <%= @discourse.user.list_roles %> </p>
+          <p> <%= link_to reply.user.user_name, reply.user %> <%= @discourse.user.list_roles %> </p>
 	        <p> <%= reply.body %> </p>
 	        
     
         <p><i class="fa fa-comment"></i> <%= time_ago_in_words(reply.created_at) %> ago </p>
          <p>&nbsp;</p>
 
-         <%= %>
 
-        <%= form_for( @reply, url: "create_retort/#{@forum.id}/#{@discourse.id}/#{}" ) do |f| %>
+        <%#= form_for( @reply, url: "create_retort/#{@forum.id}/#{@discourse.id}/#{}" ) do |f| %>
           
-          <%= f.text_field :title, placeholder: 'Enter the title for your reply here', class: 'form-control'%> <br>
+          <%#= f.text_field :title, placeholder: 'Enter the title for your reply here', class: 'form-control'%> 
        
-          <%= f.text_field :body, placeholder: 'Enter the body for your reply here', class: 'form-control'%> <br>
+          <%#= f.text_field :body, placeholder: 'Enter the body for your reply here', class: 'form-control'%> 
           
-          <%= f.submit "Reply to #{reply.user.user_name}\'s Reply", class: 'btn btn-success' %> <br>
-            <br>
-
-        <% end %>
+          <%#= f.submit "Reply to #{reply.user.user_name}\'s Reply", class: 'btn btn-success' %> 
+           
+        <%#S end %>
 
     </div>
 
 
 
-  <p><%= render partial: 'reply', collection: reply.retorts %></p>
+  <p><%#= render partial: 'reply', collection: reply.retorts %></p>
 
 </div>

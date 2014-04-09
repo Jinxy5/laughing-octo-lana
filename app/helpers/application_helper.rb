@@ -5,5 +5,13 @@ module ApplicationHelper
   		content_for :title, full_title
   	end
 
+
+  	def show_uploaded_image(image)
+  		if image.nil?
+  			image_tag 'fallbackmugshot.gif'
+  		else
+        image_tag image.file_name
+  		end
+  	end
 	
 end
