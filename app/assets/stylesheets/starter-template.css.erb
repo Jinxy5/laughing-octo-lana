@@ -209,7 +209,7 @@ a:focus {
 	background-color: #fff;
 	border: 1px solid #CCCCCC;
 	padding: 0px;
-	background-image: url(../images/RSCN0524.jpg);
+	background-image: url(<%= asset_path 'RSCN0524.jpg' %>);
 	height: 500px;
 	margin-bottom: 20px;
 }
@@ -220,7 +220,7 @@ a:focus {
 	top: 339px;
 	padding-top: 14px;
 	padding-bottom: 16px;
-	background-image: url(../images/80%25white.png);
+	background-image: url(<%= asset_path '80white.png' %>);
 }
 
 .flex-slider h4 {
@@ -247,7 +247,7 @@ a:focus {
 	background-color: #fff;
 	border: 1px solid #CCCCCC;
 	padding: 0px;
-	background-image: url(../images/cause.jpg);
+	background-image: url(<%= asset_path 'cause.jpg' %>);
 	height: 500px;
 	margin-bottom: 20px;
 }
@@ -436,11 +436,11 @@ a:focus {
 }
 
 .fb {
-	background-image: url(../images/fb-button.gif);
+	background-image: url( <%= asset_path('fb-button.gif') %>);
 }
 
 .tw {
-	background-image: url(../images/twitter-button.gif);
+	background-image: url(<%= asset_path('tw-button.gif') %>);
 }
 	
 .fb:hover, .tw:hover {
@@ -486,7 +486,7 @@ body {
 .navbar-brand, .navbar-nav > li > a {
 	text-shadow: none;
 	background-color: #1D2B35;
-	color: white;
+	color:80white;
 }
 .navbar-default .navbar-nav > .active > a {
 	background-color: #1D2B35;
