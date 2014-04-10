@@ -29,6 +29,8 @@ gem 'jquery-rails'
 
 gem 'rmagick'
 gem 'carrierwave'
+
+gem 'puma'
 #gem 'lazy_columns'
 
 group :doc do
@@ -38,6 +40,9 @@ end
 gem 'ruby'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
+
+
+gem 'therubyracer', platforms: :ruby 
 
 # Use unicorn as the app server
 # gem 'unicorn'
