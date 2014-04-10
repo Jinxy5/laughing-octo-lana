@@ -1,5 +1,12 @@
 Bloodbikeswales::Application.routes.draw do
   
+  # splash pages
+  get 'about', to: 'splash#about', as: :splash_about
+  get 'news', to: 'splash#news', as: :splash_news
+  get 'events', to: 'splash#events', as: :splash_events
+  get 'sponsors', to: 'splash#sponsors', as: :splash_sponsors
+  get 'contact_list', to: 'splash#contact', as: :splash_contact
+  get 'links', to: 'splash#links', as: :splash_links
 
 
   post 'user/:user_id/avatar', to: 'images#create', as: :user_avatar_create
@@ -27,10 +34,12 @@ Bloodbikeswales::Application.routes.draw do
 
   # use a member route here
   post 'create', to: 'create_reply/:forum_id/:discourse_id', to: 'replies#create'
-
   post 'create_retort/:forum_id/:discourse_id/:reply_id', to: 'retorts#create', as: :create_reply_retort
 
+
+
   get 'uploads/:file_name.:extension', to: 'images#show'
+
 
   root 'splash#index'
 

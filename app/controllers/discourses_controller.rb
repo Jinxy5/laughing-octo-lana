@@ -106,7 +106,7 @@ class DiscoursesController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def create_reply 
-      if !@forum.user_allowed?(current_user) || !current_user.is_admin?
+      unless @forum.user_allowed?(current_user) || current_user.is_admin?
         
         redirect_to root_url, success: 'Sorry! You cannot enter this forum! This forum is for users with a type of: ' + @forum.list_roles + ' and your roles are: ' + current_user.list_roles
       end

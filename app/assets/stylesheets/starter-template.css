@@ -471,6 +471,12 @@ button .full-width{
 
 body {
 }
+
+.btn, .no-rounded {
+	border-radius: 0;
+	border: 0;
+}
+
 .green {
 	background-color: green;
 }

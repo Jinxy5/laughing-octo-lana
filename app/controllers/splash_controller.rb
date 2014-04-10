@@ -4,24 +4,24 @@ class SplashController < ApplicationController
 		@events = Event.recent
 	end
 
-	def donate
+	def about
+	end
+
+	def news
 	end
 
 	def events
 	end
 
-# events:
-	def event_1
+	def sponsors
 	end
 
-#news:
-	def news_1
+	def splash
 	end
 
-	def new_site
-		
+	def links
 	end
 
-	def new
-	end
+
+
 end
