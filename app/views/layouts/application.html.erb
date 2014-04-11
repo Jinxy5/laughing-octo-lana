@@ -70,7 +70,7 @@
                     <li><a href="indexloggedin.php"><span class=
                     "visible-xs">Home</span></a></li>
 
-                    <li><a href="/users/%3C%=">Your Details</a></li>
+                    <li><a href="/users/<%= current_user.id %>">Your Details</a></li>
 
                     <li><a href="/forums">Forums</a></li>
 
@@ -160,7 +160,7 @@
             </div><% end %>
 
             <div class="mainnav">
-                <ul class="list-inline hidden-xs">
+                <ul class="list-inline hidden-xs navlist">
                     <li> <%= link_to 'HOME', root_path %> </li>
 
                     <li> <%= link_to 'ABOUT US', splash_about_path %> </a></li>
@@ -175,13 +175,27 @@
                     <li> <%#= link_to 'CONTACT', splash_contact_path %></li>
 -->
                     <li> <%= link_to 'Links', splash_links_path %></li>
+
                 </ul>
-            </div><a class="fb" href=
-            "https://www.facebook.com/bloodbikeswales"></a>&nbsp; <a class="tw"
-            href="https://twitter.com/bloodbikeswales"></a>
+            </div>
+
         </div>
 
         <div class="clearfix"></div>
+
+                
+
+
+
+            <div class="row">
+
+                    <div class = 'center-block social-box' style="width: 200px">            
+                        <a class="fb show-xs" href="https://www.facebook.com/bloodbikeswales"></a>&nbsp;
+                        <a class="tw show-xs" href="https://twitter.com/bloodbikeswales"></a>                       
+                    </div>
+            </div>        
+
+
     </div><!--end container-->
 
     <div class="fullwidthcontainer">
