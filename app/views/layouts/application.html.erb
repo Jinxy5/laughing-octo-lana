@@ -114,7 +114,7 @@
   
     <!-- home, donate, news, events, who we are, calendar, forum contact -->
 
-    <div id="headerband" style= 'margin-top: 50px'>
+    <div id="headerband"  <% if signed_in? %> style= 'margin-top: 50px' <% end %> >
         <div class="container">
             <div id="logodiv">
                 <div class="row">
@@ -129,26 +129,30 @@
                         <h2>RIDING TO SAVE LIVES</h2>
                     </div>
 
-                    <div class="col-xs-12 col-sm-4 col-md-3">
-                        <div class="btn-group btn-group-justified">
-                            <div class="btn-group">
-                                
-                                <%= button_to 'Join Today', sign_up_path, class: 'btn btn-success' , method: :get %>
+
+                    <% if !signed_in? %>
+
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="btn-group btn-group-justified">
+                                <div class="btn-group">
+                                    
+                                    <%= button_to 'Join Today', sign_up_path, class: 'btn btn-success' , method: :get %>
+
+                                </div>
+
+                                <div class="btn-group">
+
+                                      <%= button_to 'Members Log In', sign_in_path, class: 'btn btn-warning' , method: :get %>
+
+                                </div>
 
                             </div>
-
-                            <div class="btn-group">
-
-                                  <%= button_to 'Members Log In', sign_in_path, class: 'btn btn-warning' , method: :get %>
-
-                            </div>
-
                         </div>
+                    <% end %>
 
-                        <%= button_to 'Members Log In', '#', class: 'btn btn-danger col-xs-12' , method: :get %>
-
-                    </div>
                 </div>
+
+
             </div><% flash.each do |key, value| %>
 
             <div class='alert alert-success no-rounded-corners'>

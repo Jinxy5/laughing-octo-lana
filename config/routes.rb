@@ -11,10 +11,7 @@ Bloodbikeswales::Application.routes.draw do
 
   post 'user/:user_id/avatar', to: 'images#create', as: :user_avatar_create
 
-  resources :users do
-#   resources :avatar, to: 'images#create'
-   # resources :images, to: 'images#update'
-  end
+  resources :users, except: :index
 
   resources :recitals
   resources :events

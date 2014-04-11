@@ -22,5 +22,5 @@ production:
   encoding: UTF-8
   database: bbw_production
   host: localhost
-  username: postgres
-  password: postgres
+  username: katyprice
+  password: supersercret34
