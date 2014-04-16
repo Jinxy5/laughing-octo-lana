@@ -29,7 +29,7 @@ gem 'jquery-rails'
 
 gem 'rmagick'
 gem 'carrierwave'
-
+gem 'draper'
 gem 'puma'
 #gem 'lazy_columns'
 

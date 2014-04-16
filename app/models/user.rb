@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	include SoftDelete
+
 	has_many :posts
 	has_many :discussions
 
@@ -17,12 +19,17 @@ class User < ActiveRecord::Base
 	before_create { self.culminated = 0 } #setting to false results in strange error where it can't be saved
 	before_create :create_remember_token
 	before_create { self.user_roles.build(role_id: Role.find_by(role: 'potential').id ) } # user the add_role method here
-#	before_create :create_fallback_image
 
+	
+	#soft_delete
 
-#	def create_fallback_image
-#		self.create_avatar
-#	end
+	def soft_delete_message
+		'widget' + self.first_name
+	end
+
+	def return_deleted_at
+		self.soft_deleted_at
+	end
 
 	VALID_EMAIL_REGEX = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9\-.]/
 
@@ -30,24 +37,33 @@ class User < ActiveRecord::Base
 			  presence: true, 
 			  if: :first_name
 
+
 	validates :last_name,
 			  presence: true,
 			  if: :last_name
+
 
 	validates :user_name,
 			  presence: true,
 			  uniqueness: true,
 			  if: :user_name
 
+
 	validates :email, presence: true, 
 					  uniqueness: { case_sensitive: false },
 					  format: { with: VALID_EMAIL_REGEX }, 
 					  if: :email 
 
+
 	validates :password,
 			  length: { minimum: 6, maximum: 10 },
 			  if: :password
 	
+
+
+
+
+
 	has_secure_password
 
 
@@ -216,9 +232,10 @@ class User < ActiveRecord::Base
 		def create_register_key
 
 		end
-=end
+
 
 		def culminate
 			update_attribute(:culminated, 1)
 		end
+=end
 end
