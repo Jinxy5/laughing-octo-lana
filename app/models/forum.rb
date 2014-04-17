@@ -13,6 +13,9 @@ class Forum < ActiveRecord::Base
 
 
 
+	def most_popular_discourse 
+		self.discourses.maximum(:views)	
+	end
 
 
 	def allow_role(role)

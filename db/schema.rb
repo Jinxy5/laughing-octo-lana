@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414113323) do
+ActiveRecord::Schema.define(version: 20140417190126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140414113323) do
     t.string   "discourse_type"
     t.string   "retort_type"
     t.string   "reply_type"
+    t.integer  "views"
   end
 
   create_table "discussions", force: true do |t|

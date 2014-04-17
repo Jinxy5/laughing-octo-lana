@@ -22,32 +22,6 @@ module ApplicationHelper
   
 
 
-   def maintain_format(instring, outstring)
-#      outstring.titleize if instring.is_capitalized?
-      
-      instring_array = instring.split(//)
-      outstring_array = outstring.split(//)
-
-      both_arrays = instring_array.zip(outstring_array)
-      
-      both_arrays.each do |character|
-
-        if character[0] == nil || character[0].is_lowercase?
-          
-          character[1].downcase! if character[1]
-
-        elsif character[0].is_uppercase?
-
-          character[1].upcase! if character[1]
-
-        end
-      end
-      
-      outstring_array.join("")
-   end	 
-
-#   context_tax( user, 'Your')
-   # id is the content 
    def context_tag(model, string, args={})
     o = {
       attribute: :user_name

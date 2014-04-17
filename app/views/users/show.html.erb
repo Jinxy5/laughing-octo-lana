@@ -6,7 +6,7 @@
 <div class="col-md-12">
 		
 
-	<h2> <%= contextual_user(@user) %> Profile</h2>
+	<h2> <%= @user.contextual_owner('Your') %> Profile </h2>
 
 
 	
@@ -34,31 +34,28 @@
 
 	<h3> Public Info: </h3>
 	
-	<p><strong>User Name:</strong>  <%= @user.user_name %></p>
-	<p><strong>Public Email:</strong>  <%= @user.public_email %></p>
 
-	<p><strong>Number of Discussions:</strong>  <%= @user.discourses.count %></p>
-	<p><strong>Number of Posts:</strong>  <%= @user.posts.count %></p>
+	<p><strong>User Name:</strong>  <%= @user.decorate_user_name %></p>
+	<p><strong>Public Email:</strong>  <%=@user.decorate_public_email %></p>
+
+	<p><strong>Number of Discussions:</strong>  <%= @user.decorate_discussion_count %> </p>
+	<p><strong>Number of Replies:</strong> <%= @user.decorate_replies_count %>  </p>
 	<p><strong> <%= 'Role'.pluralize(@user.roles.count) %>:</strong>  <%= @user.list_roles %> </p>
 
 	<div class = 'clearfix'></div>
 	<% if current_user == @user || current_user.is_admin? %> 
 
-	<h3> Private Info: </h3> <h4> - Only <% if current_user == @user %>
-											yourself and select admins
-										 <% else %>
-										 	<%= @user.user_name %> and other admins
-										 <% end %> can view this information </h4>
+	<h3> Private Info: </h3> <h4> - Only <%= @user.is_owner? %> can view this information </h4>
 	
-	<p><strong>First Name:</strong> <%= @user.first_name%> </p>
-	<p><strong>Last Name:</strong>  <%= @user.last_name %></p>
-	<p><strong>Email:</strong> <%= @user.email %> </p>
+	<p><strong>First Name:</strong> <%= @user.decorate_first_name %> </p>
+	<p><strong>Last Name:</strong>  <%= @user.decorate_last_name %></p>
+	<p><strong>Email:</strong> <%= @user.decorate_email %> </p>
 
-	<p><strong>Address:</strong> <%= @user.address %> </p>
-	<p><strong>Landline:</strong> <%= @user.landline %> </p>
-	<p><strong>Mobile:</strong> <%= @user.mobile %> </p>
+	<p><strong>Address:</strong> <%= @user.decorate_address %> </p>
+	<p><strong>Landline:</strong> <%= @user.decorate_landline %> </p>
+	<p><strong>Mobile:</strong> <%= @user.decorate_mobile %> </p>
 
-	<p><strong>Nearest Town:</strong>  <%= @user.nearest_town %></p>
+	<p><strong>Nearest Town:</strong>  <%= @user.decorate_nearest_town %></p>
 
 	<p>&nbsp;</p>
 

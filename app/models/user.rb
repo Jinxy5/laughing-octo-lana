@@ -76,6 +76,16 @@ class User < ActiveRecord::Base
 		role_array.include?(role)
 	end
 
+	def allowed_forums
+		allowed = []
+
+		Forum.all.each do |forum|
+			allowed << forum if forum.user_allowed?(self)
+		end
+
+		allowed
+	end
+
 	def is_admin?
 		role_array.include?('admin')
 	end

@@ -15,7 +15,10 @@ class Discourse < ActiveRecord::Base
 	validates :title, length: { minimum: 1, maximum: 90 }
 	validates :body, length: { minimum: 1, maximum: 500 }
 
-
+	
+	def most_viewed
+		
+	end
 
 	def last_reply
 		self.replies.last
@@ -48,7 +51,7 @@ class Discourse < ActiveRecord::Base
 
 	def iterate_impression(ip)
 		self.impressions.create(ip_address: ip, user_id: '')
-
+		self.views =+ 1
 	#	self.impressions.create(ip_address: request.remote_ip, user_id: current_user)
 	end
 
