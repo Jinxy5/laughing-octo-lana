@@ -67,20 +67,7 @@
   <% if !@user.is_only_potential? %>
 
     <!-- make a partial -->
-    <h4> Upload new profile image: </h4>
-      <%= show_uploaded_image(@user.avatar, width: 200) %>
-
-      <div class = 'col-xs-6'>
-        <%= form_for(@user, :html => { :multipart => true }, url: user_avatar_create_path(@user), method: :post ) do |f| %>
-            <%= f.file_field :file_name %>
-            <br>
-            <%= f.submit 'Upload Image' %>
-            <br>
-            <p class="help-block">Please make sure your image is a jpeg and no bigger than 2MB</p>
-
-        <% end %>
-      </div>
-  <% end %>  
+    <%= render 'image_upload' %>
   <!-- partial end-->
 
   

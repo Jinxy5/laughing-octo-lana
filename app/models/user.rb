@@ -86,6 +86,33 @@ class User < ActiveRecord::Base
 		allowed
 	end
 
+	def most_popular_discussion
+
+
+
+
+		most_popular = allowed_forums.first.discourses.first
+
+
+		allowed_forums.each do |forum|
+
+
+
+			forum.discourses.each do |discourse|
+
+
+				most_popular = discourse if discourse.impression_count > most_popular.impression_count
+
+			end
+
+		end
+
+		most_popular
+
+
+
+	end
+
 	def is_admin?
 		role_array.include?('admin')
 	end

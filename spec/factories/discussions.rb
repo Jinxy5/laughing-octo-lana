@@ -2,7 +2,5 @@
 
 FactoryGirl.define do
   factory :discussion do
-    name "MyString"
-    forum_id 1
   end
 end

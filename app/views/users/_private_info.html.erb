@@ -1,0 +1,28 @@
+
+  <p><strong> <%= 'Role'.pluralize(@user.roles.count) %>:</strong>  <%= @user.list_roles %> </p>
+
+  <div class = 'clearfix'></div>
+  <% if current_user == @user || current_user.is_admin? %> 
+
+  <h3> Private Info: </h3> <h4> - Only <%= @user.contextual_owner('yourself') %> can view this information </h4>
+  
+  <p><strong>First Name:</strong> <%= @user.decorate_first_name %> </p>
+  <p><strong>Last Name:</strong>  <%= @user.decorate_last_name %></p>
+  <p><strong>Email:</strong> <%= @user.decorate_email %> </p>
+
+  <p><strong>Address:</strong> <%= @user.decorate_address %> </p>
+  <p><strong>Landline:</strong> <%= @user.decorate_landline %> </p>
+  <p><strong>Mobile:</strong> <%= @user.decorate_mobile %> </p>
+
+  <p><strong>Nearest Town:</strong>  <%= @user.decorate_nearest_town %></p>
+
+  <p>&nbsp;</p>
+
+    
+    <% if @user === current_user %>
+      <%= button_to 'Edit Your Details', edit_user_path, class: 'btn btn-success', method: :get %>
+    <% elsif %>
+      <%= button_to 'Edit ' + @user.user_name + '\'s Details', edit_user_path, class: 'btn btn-success', method: :get %>    
+    <% end %>
+
+  <% end %>

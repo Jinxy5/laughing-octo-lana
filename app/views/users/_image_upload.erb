@@ -1,0 +1,16 @@
+  <%= show_uploaded_image(@user.avatar, width: 200) %>
+
+  <% if !@user.is_only_potential? %>
+    <% if current_user == @user || current_user.is_admin? %> 
+        <h4> Upload new profile image: </h4>
+        
+        <%= form_for(@user, :html => { :multipart => true }, url: user_avatar_create_path(@user), method: :post ) do |f| %>
+                <%= f.file_field :file_name %>
+                <br>
+                <%= f.submit 'Upload Image' %>
+                <br>
+                <p class="help-block">Please make sure your image is a jpeg and no bigger than 2MB</p>
+          <% end %>    
+
+      <% end %>
+  <% end %>
