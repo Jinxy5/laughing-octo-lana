@@ -17,10 +17,14 @@ shared_examples 'user profile page' do
 end
 
 shared_examples 'forum index page' do
-	its(:title){ should eq base_title + 'Forums'}
-	its(:body){ should include 'Listing forums'}
+	its(:title){ should eq base_title + 'All Forums'}
+	its(:body){ should include 'Forum List'}
 end
 
+shared_examples 'forum show page' do |forum|
+	its(:title) { should eq "#{base_title}rider forum"}
+	its(:body) { should have_selector('h2', text: forum + ' forum')}
+end
 
 ####
 shared_examples 'signed in' do

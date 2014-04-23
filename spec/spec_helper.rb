@@ -26,11 +26,13 @@ require 'rubygems'
   Capybara.javascript_driver = :poltergeist
 #  Capybara.javascript_driver = :selenium_chrome
   
-  Capybara.register_driver :selenium_chrome do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
-  end
+ # Capybara.register_driver :selenium_chrome do |app|
+ #   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+ # end
 #   xpath { |href| ".//a[@href='" + href + "']"}    
+  
 
+  
   Capybara.add_selector(:linkhref) do
     xpath { |href| ".//a[@href='" + href + "']"}    
   end
@@ -44,6 +46,7 @@ require 'rubygems'
   # temprorary, get rid of this, it's just to get rid a message
   I18n.enforce_available_locales = true
 
+
   RSpec.configure do |config|
     #config.include ActionView::Helpers::DateHelper
     #config.include FactoryGirl::Syntax::Methods
@@ -56,20 +59,27 @@ require 'rubygems'
   # transactional fixtures must be set to false in order for databse cleaner to work. It must also 
   # be set BEFORE the rest of the configuration
 
+
     config.use_transactional_fixtures = false
 
     config.before(:suite) do
       DatabaseCleaner.strategy = :truncation
       DatabaseCleaner.start
       DatabaseCleaner.clean
+
+
     end
 
     config.before(:each) do
       DatabaseCleaner.start
       DatabaseCleaner.clean
 
+      #set up database here!
 
       FactoryGirl.create(:potential)
+      Role.create(role: 'rider')
+
+
     end
 
     config.after(:each) do

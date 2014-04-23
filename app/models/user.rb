@@ -222,7 +222,7 @@ class User < ActiveRecord::Base
 
 	def add_role(role)
 
-		ap 'Adding role ' + role
+#		ap 'Adding role ' + role
 
 		self.update_attributes(accepted_at: Time.now) if self.is_only_potential?	
 
@@ -233,7 +233,7 @@ class User < ActiveRecord::Base
 
 	def remove_role(role)
 
-		ap 'Removing role ' + role
+#		ap 'Removing role ' + role
 
 #		self.update_attribute(revoked_at: Time.now) if self.is_only_potential?	
 

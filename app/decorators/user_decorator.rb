@@ -17,11 +17,12 @@ class UserDecorator < ApplicationDecorator
   end
 
   def decorate_user_name
-    contextual_empty_message( read_attribute (:user_name) )
+    contextual_empty_message( read_attribute(:user_name) )
   end
 
   def decorate_public_email
-    contextual_empty_message( read_attribute (:public_email), visitor_empty_message: "@{model.user_name} has chosen not to share a public email." )
+    #ap model.email
+    contextual_empty_message( read_attribute(:user_name), visitor_empty_message: "@{model.user_name} has chosen not to share a public email." )
   end
 
   def decorate_discussion_count
@@ -34,7 +35,7 @@ class UserDecorator < ApplicationDecorator
   def decorate_replies_count
     contextual_empty_message( model.discourses.count, visitor_empty_message: 'None!',
                                                    admin_empty_message: 'None!',
-                                                   owner_empty_message: h.link_to("You haven't replied to any discussions! Why click here not reply to the most popular discussion relevent to your roles?", h.forum_discourse_path(model.most_popular_discussion.forum, model.most_popular_discussion) ),
+                                                   owner_empty_message: h.link_to("You haven't replied to any discussions! Why click here not reply to the most popular discussion relevent to your roles?", h.forum_discussion_path(model.most_popular_discussion.forum, model.most_popular_discussion) ),
                                                    considered_empty: 'baba' )  
   end
 
@@ -111,15 +112,10 @@ class UserDecorator < ApplicationDecorator
         considered_empty: nil 
       }.merge!(args)
 
-      return information unless information == o[:considered_empty]
-
-      case 
-      when is_owner?
-        o[:owner_empty_message]
-      when is_admin?
-        o[:admin_empty_message]  
-      when is_visitor?
-        o[:visitor_empty_message]   
+      if information == o[:considered_empty]
+        return information 
+      else
+        contextual_custom( o[:admin_empty_message], o[:owner_empty_message], o[:visitor_empty_message] )
       end
 
     end

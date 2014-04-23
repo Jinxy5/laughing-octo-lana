@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = UserDecorator.all
+    @users = User.all
   end
 
   # GET /users/1
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = UserDecorator.new
+    @user = User.new
   end
 
   # GET /users/1/edit
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def culminate
     register_key = params[:register_key]
 
-    @user = UserDecorator.find_by(register_key: params[:register_key])    
+    @user = User.find_by(register_key: params[:register_key])    
     raise ActiveRecord::RecordNotFound if !@user 
     
 #   if user == current_user
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
         if register_key == @user.register_key
           @user.culminate
-          redirect_to root_url, notice: 'UserDecorator was successfully culminated!'
+          redirect_to root_url, notice: 'User was successfully culminated!'
         
         else          
           redirect_to root_url, notice: 'Invalid: Key not the same!'
@@ -77,9 +77,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = UserDecorator.new(user_params)
-
-    ap 'create triggered'
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
@@ -115,7 +113,7 @@ class UsersController < ApplicationController
       #.delete avatar: [:file_name]
 
       if @user.update_attributes(user_params) # this automatically deletes any avatar instances, as uploaded files are saved in a seperate model
-        format.html { redirect_to @user, notice: 'UserDecorator was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

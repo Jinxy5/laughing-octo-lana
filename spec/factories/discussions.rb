@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :discussion do
+  	name Faker::Lorem.paragraph
+  	description Faker::Lorem.paragraph
   end
 end

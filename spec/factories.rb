@@ -26,7 +26,37 @@ FactoryGirl.define do
 		password { password }
 		password_confirmation { password }
 		nearest_town { Faker::Address.city }
+
+		callback(:admin_user) do |user|
+			user.make_admin!
+		end
+
+		factory :rider_user do
+			callback(:after_create) do |user|
+				user.make_rider!
+			end
+		end
 	end
+
+=begin
+	factory :user do
+		first_name = Faker::Name.first_name
+		last_name = Faker::Name.last_name
+		password = 'abcdefg12'
+
+		first_name { first_name }
+		last_name { last_name }
+		user_name { first_name + last_name.split(/[.]/).first + rand(0..9).to_s }
+		email { Faker::Internet.email(name = first_name) }
+		password { password }
+		password_confirmation { password }
+		nearest_town { Faker::Address.city }
+
+		callback(:after_create) do |forum|
+		
+		end
+	end
+=end
 
 #  => ["id", "user_id", "title", "body", "deleted", "delete_date", "created_at", "updated_at"] 
 

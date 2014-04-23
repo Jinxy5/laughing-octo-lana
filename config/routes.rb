@@ -19,7 +19,7 @@ Bloodbikeswales::Application.routes.draw do
 
 
   resources :forums do
-    resources :discourses do
+    resources :discussions do
       resources :replies
     end
   end

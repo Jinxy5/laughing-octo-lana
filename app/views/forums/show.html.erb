@@ -60,37 +60,37 @@
 
 
 
-<% @forum.discourses.each do |discourse| %>
+<% @discussions.each do |discussion| %>
 
 
 	<!-- START -->
 
-	<div class="listdivider" onclick=" location.href='<%= forum_discourse_path(@forum, discourse) %>'" style="cursor: pointer">
+	<div class="listdivider" onclick=" location.href='<%#= forum_discussion_path(@forum, discussion) %>'" style="cursor: pointer">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-3 col-sm-7">
-					<p> <%= discourse.title %> <br>
-					By <%= link_to discourse.user.user_name, user_path(discourse.user) %> &#187; <%= discourse.created_at.strftime('%a, %b %d, %Y %I:%M %P ')  %></p>
+					<p> <%= discussion.name %> <br>
+					By <%#= link_to discussion.user.user_name, user_path(discussion.user) %> &#187; <%#= discussion.created_at.strftime('%a, %b %d, %Y %I:%M %P ')  %></p>
 					</div>
 		
 					<div class="col-xs-3 col-sm-1">
-					<p> <%= discourse.replies.count %> </p>
+					<p> <%#= discussion.replies.count %> </p>
 					</div>
 					
 					<div class="col-xs-3 col-sm-1">
-					<p> <%= discourse.impression_count %> </p>
+					<p> <%#= discussion.views %> </p>
 					</div>
 				
 					<div class="col-xs-3 col-sm-3">
 					
-						<% if discourse.last_reply %>
+						<% if discussion.last_reply %>
 							<dfn>Last reply </dfn>by 
 
-							<%= link_to discourse.last_reply.user.user_name %>
+							<%#= link_to discussion.last_reply.user.user_name %>
 
 							<br>
 
-							<%= discourse.last_reply.created_at.strftime('%a, %b %d, %Y %I:%M %P ') %>
+							<%#= discussion.last_reply.created_at.strftime('%a, %b %d, %Y %I:%M %P ') %>
 						<% else %>
 
 							No replies yet, why not be the first?
@@ -121,15 +121,12 @@
 	
 
 
-	<% @discourse = Discourse.new %>
+	<%# @discussion = Discourse.new %>
 
-	<%= form_for [@forum, @discourse] do |f| %>
+	<%= form_for [@forum, @discussion] do |f| %>
 
-
-
-
-		<%= f.text_field :title, class: 'form-control', placeholder: 'Create a new title here...' %><br>
-		<%= f.text_area :body, class: 'form-control', placeholder: 'Expand on your title here...', rows: 5 %><br>
+		<%= f.text_field :name, class: 'form-control', placeholder: 'Create a new title here...' %><br>
+		<%= f.text_area :description, class: 'form-control', placeholder: 'Expand on your title here...', rows: 5 %><br>
 		
 		<%= f.submit 'Create Discussion', class: 'form-control btn btn-primary' %>
 

@@ -1,7 +1,13 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
+  
   factory :forum do
-    name "MyString"
+    name "rider"
+    description "a forum where you can talk all about being a rideroo!"
+
+    callback(:after_create) do |forum|
+    	forum.allow_role 'rider'
+    end
+
   end
+
 end

@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe "Forums" do
+
+end
+
+=begin
+describe "Forums" do
   describe "GET /forums" do
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
@@ -9,3 +14,5 @@ describe "Forums" do
     end
   end
 end
+
+=end
