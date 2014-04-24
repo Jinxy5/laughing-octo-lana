@@ -31,6 +31,8 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'draper'
 gem 'puma'
+gem 'state_machine'
+gem 'sidekiq'
 #gem 'lazy_columns'
 
 group :doc do

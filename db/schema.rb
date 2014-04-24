@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422234457) do
+ActiveRecord::Schema.define(version: 20140424011555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,14 @@ ActiveRecord::Schema.define(version: 20140422234457) do
     t.string   "description"
   end
 
+  create_table "followers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "discussion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "state"
+  end
+
   create_table "forums", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -143,11 +151,13 @@ ActiveRecord::Schema.define(version: 20140422234457) do
   end
 
   create_table "replies", force: true do |t|
-    t.integer "user_id"
-    t.integer "discussion_id"
-    t.boolean "deleted"
-    t.string  "description"
-    t.integer "views"
+    t.integer  "user_id"
+    t.integer  "discussion_id"
+    t.boolean  "deleted"
+    t.string   "description"
+    t.integer  "views"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reply_retorts", force: true do |t|

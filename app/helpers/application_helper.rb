@@ -21,7 +21,6 @@ module ApplicationHelper
   	end
   
 
-
    def context_tag(model, string, args={})
     o = {
       attribute: :user_name

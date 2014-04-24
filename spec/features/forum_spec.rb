@@ -55,13 +55,17 @@ describe 'forums', js: true do
 			login_user(rider_user, create: false)
 			click_link 'Forums'
 			click_link forum.name
-			fill_in 'discourse_title', with: discussion.name
-			fill_in 'discourse_body', with: discussion.description
+			fill_in 'discussion_name', with: discussion.name
+			fill_in 'discussion_description', with: discussion.description
 			click_button 'Create Discussion'
 		end
 
-		it '' do
-			sleep 8989
-		end
+		it_should_behave_like 'forum show page', 'rider'
+
+		it{ should have_selector('.alert', text: 'discussion successfully created!' ) }
+		
 	end
+
+
+#	describe 'a'
 end

@@ -1,8 +1,11 @@
 class DiscussionsController < ApplicationController
-  before_action :set_forum, only: :create
+  before_action :set_forum, only: [:create, :show]
+  before_action :create_reply, only: [:show]
 
-  def show
+  before_action :set_discussion, only: :show
   
+  def show
+    
   end
 
   def create  
@@ -10,6 +13,7 @@ class DiscussionsController < ApplicationController
     @discussion.user_id = current_user.id
      
     if @discussion.save
+    
       redirect_to forum_path(@forum), notice: 'discussion successfully created!'
     else
 
@@ -31,13 +35,17 @@ class DiscussionsController < ApplicationController
 
 
   private
+    
+    def create_reply
+      @reply = Reply.new  
+    end
 
     def set_forum
       @forum = Forum.find(params[:forum_id])
     end
 
-    def set_discourse
-      @discourse = Discourse.find(params[:id])
+    def set_discussion
+      @discussion = Discussion.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

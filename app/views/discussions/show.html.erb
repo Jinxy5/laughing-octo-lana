@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<div class="fullwidthcontainer">
+  
+
+  <div class="container">
+
+<div class="row">
+<div class="col-md-12">
+    
+
+        <h2><%= @forum.name %></h2>
+              <p>&nbsp;</p>
+
+        <%= link_to @discussion.user do %>
+          <%= show_uploaded_image @discussion.user.avatar, class: 'mugshot', width: 50, height: 50 %>
+        <% end %>
+        
+      
+        <h4> <%= @discussion.name %> </h4>
+        <p> <%= @discussion.user.user_name %> <%= @discussion.user.list_roles %> </p>
+        <p> <%= @discussion.description %> </p>
+        
+        
+        <p><i class="fa fa-comment"></i> <%= time_ago_in_words(@discussion.created_at) %> ago </p>
+        <p>&nbsp;</p>
+
+        <%= form_for( @reply, url: "/forums/" + @forum.id.to_s + "/discussions/" + @discussion.id.to_s + "/replies" ) do |f| %>        
+     
+          <%= f.text_area :description, placeholder: 'Enter your reply here', class: 'form-control', rows: 5 %> <br>
+          
+          <%= f.submit "Reply to #{@discussion.user.user_name}\'s Discussion", class: 'btn btn-success' %> <br>
+            <br>
+        <% end %>
+
+    
+</div>
+</div>
+</div>
+<div class="postdivider">
+<div class="container"><h4> <%= pluralize @discussion.replies.count, 'reply' %> </h4></div>
+
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<p>&nbsp;</p>
+
+
+  <% if @discussion.replies %>
+    <%= render partial: "reply", collection: @discussion.replies %>
+  <% end %>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+</div>

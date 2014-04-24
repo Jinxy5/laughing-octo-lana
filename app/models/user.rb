@@ -4,11 +4,13 @@ class User < ActiveRecord::Base
 	has_many :posts
 	has_many :discussions
 
+	has_many :followers
+	has_many :discussions, -> { uniq }, through: :followers
+
 	has_one :avatar, class_name: 'Image', foreign_key: :user_id
 
 	has_many :replies
 	has_many :retorts
-	has_many :discourses
 
 	has_many :user_roles
 	has_many :roles, through: :user_roles
@@ -198,7 +200,9 @@ class User < ActiveRecord::Base
 
 
 
-
+	def is_op?
+		#? :
+	end
 
 
 	def is_current_user?

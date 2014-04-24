@@ -1,36 +1,48 @@
 class RepliesController < ApplicationController
   before_action :set_forum, only: [:create]
-  before_action :set_discourse, only: [:create]
+  before_action :set_discussion, only: [:create]
   
   def create
 
-    @discourse.replies.build(discourse_params).user_id = current_user.id
+
+    @reply = @discussion.replies.build(reply_params)
+    @reply.user_id = current_user.id
 
     respond_to do |format|
-      if @discourse.save
-        format.html { redirect_to forum_discussion_path(@forum, @discourse), notice: "A reply to the discussion #{@discourse.title} was successfully created." }
-        format.json { render action: 'show', status: :created, location: @discourse }
+      if @reply.save
+
+        ap @discussion
+        ap @reply
+
+        @discussion.add_follower(current_user)
+
+        @discussion.notify_all_users(@reply, @discussion, @forum)
+
+        format.html { redirect_to forum_discussion_path(@forum, @discussion), notice: "Your the discussion #{@discussion.name} was successfully created." }
+        format.json { render action: 'show', status: :created, location: @discussion }
       else
-        format.html { redirect_to forum_discussion_path(@forum, @discourse), notice: 'Your reply must have both a title and content!' }
-        format.json { render json: @discourse.errors, status: :unprocessable_entity }
+        format.html { redirect_to forum_discussion_path(@forum, @discussion), notice: 'Your reply could not be saved' }
+        format.json { render json: @discussion.errors, status: :unprocessable_entity }
       end
     end
   end
 
   private
+
  
     def set_forum
       @forum = Forum.find(params[:forum_id])
     end
 
-    def set_discourse
-      @discourse = Discourse.find(params[:discourse_id])
+
+    def set_discussion
+      @discussion = Discussion.find(params[:discussion_id])
     end
 
 #    def set
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def discourse_params
-      params.require(:discourse).permit(:title, :body)
+    def reply_params
+      params.require(:reply).permit(:description)
     end
 end

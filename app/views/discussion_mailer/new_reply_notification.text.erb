@@ -1,0 +1,1 @@
+Hi, <%= @user %>! <%#= @reply_user.user_name %> has just replied to the discussion <%= @discussion.name %>. They have said: <%#= @reply.description %>. To reply to them, click here to view the whole discussion: <%= link_to 'path', forum_discussion_url(@forum.id, @discussion.id)%>
