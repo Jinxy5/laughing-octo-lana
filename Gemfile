@@ -33,6 +33,10 @@ gem 'draper'
 gem 'puma'
 gem 'state_machine'
 gem 'sidekiq'
+gem 'email_spec'
+
+gem 'rubocop'
+gem 'simplecov', '~> 0.7.1'
 #gem 'lazy_columns'
 
 group :doc do

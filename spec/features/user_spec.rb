@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe 'user spec', js: true do
+	# time
+	# time
+	# elap
+	# now + elap
 	Capybara.javascript_driver = :selenium
 
 
@@ -71,15 +75,42 @@ describe 'user spec', js: true do
 
 			click_button 'Edit Your Details' 
 
-			sleep 89898
+		end
+	end	
+
+	describe 'a user can be culminate themselves' do
+		before do
+
+			visit sign_up_path 
+		
+			fill_in 'user_first_name', with: user_1.first_name
+			fill_in 'user_last_name', with: user_1.last_name
+			fill_in 'user_user_name', with: user_1.user_name
+			fill_in 'user_email', with: user_1.email
+			fill_in 'user_password', with: user_1.password
+			fill_in 'user_password_confirmation', with: user_1.password_confirmation
+			fill_in 'user_nearest_town', with: user_1.nearest_town
+
+			click_button 'Create my Account'
+
+		end
+
+		context 'the instance' do
+			subject { user_1.reload }
+			its(:state) { should eq 'unregistered' }
+			its(:register_key) { should_not be_nil }
 		end
 
 
-		it {}
+
+		describe 'when visiting culminating' do
+			before do
+				visit_link
+			end
+		end
 
 
 
-	end	
 
-
+	end
 end

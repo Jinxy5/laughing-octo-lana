@@ -44,7 +44,7 @@ class UserDecorator < ApplicationDecorator
   def decorate_state
    contextual_empty_message( model.state, visitor_empty_message: "#{model.user_name} is unregistered",
                                           admin_empty_message: "#{model.user_name} is unregistered",
-                                          owner_empty_message: h.link_to("You haven't registered! Check your email for a registration email and follow the instructions enclosed, or click here to send another registration email", h.root_path),
+                                          owner_empty_message: h.link_to("You haven't registered! Check your email for a registration email and follow the instructions enclosed!", h.root_path),
                                           considered_empty: 'unregistered' )
   end
 

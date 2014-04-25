@@ -1,7 +1,7 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :send_registration_email]
+class CulminateController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  before_action :secure, only: [:edit, :update, :destroy, :send_registration_email]
+  before_action :secure, only: [:edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -33,12 +33,45 @@ class UsersController < ApplicationController
   def culminate
     register_key = params[:register_key]
 
-    @user = User.find_by(register_key: register_key)
-    @user.register
-  end
+    @user = User.find_by(register_key: params[:register_key])    
+    raise ActiveRecord::RecordNotFound if !@user 
+    
+#   if user == current_user
+#
+# could be a lot simpler:
+#
+# if not current user, redirect to root. 
+# if current user, and they are not culminated, culimate them. 
+# if not current user, and they are culminated already, redirect to root
+#
+#
+      if @user.culminated == false
 
-  def send_registration_email
-    @user.send_registration_email
+        if register_key == @user.register_key
+          @user.culminate
+          redirect_to root_url, notice: 'User was successfully culminated!'
+        
+        else          
+          redirect_to root_url, notice: 'Invalid: Key not the same!'
+        end
+
+      elsif @user.culminated
+        
+        redirect_to root_url, notice: 'Invalid: You\'ve already registered!' 
+      
+      end    
+      
+#    else
+#      redirect_to root_url, error: 'Invalid key! (it\'s another users key!)'
+#    end    
+
+
+
+ 
+    
+
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url, notice: 'Invalid: You\'ve already registered!' 
   end
 
   # POST /users
