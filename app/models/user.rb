@@ -33,10 +33,11 @@ class User < ActiveRecord::Base
 		end
 
 	end
-	
-	def send_register_email
-		UserMailer.delay.registration(self)
-	end
+
+
+#	def send_register_email
+#		UserMailer.registration(self).deliver
+#	end
 
 	def soft_delete_message
 		'widget' + self.first_name

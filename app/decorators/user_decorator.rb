@@ -24,6 +24,8 @@ class UserDecorator < ApplicationDecorator
 
 
   def decorate_public_email
+   ap 'kyzon'
+   ap model
    contextual_empty_message( model.public_email, visitor_empty_message: "#{model.user_name} has chosen to not enter a public email.",
                                                    admin_empty_message: h.link_to("#{model.user_name} has not entered a public email. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
                                                    owner_empty_message: h.link_to("You haven't entered a public email. Click here to enter it!", h.edit_user_path(model) ) )  

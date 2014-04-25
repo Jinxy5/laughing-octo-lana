@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    ap @user
   end
 
   # GET /users/new
@@ -31,14 +32,17 @@ class UsersController < ApplicationController
   end
 
   def culminate
-    register_key = params[:register_key]
+ #   register_key = params[:register_key]
 
-    @user = User.find_by(register_key: register_key)
-    @user.register
+ #   user = User.find_by(register_key: register_key)
+ #   user.register
+
+
+ #   redirect_to user, notice: 'Thanks for registering!'
   end
 
   def send_registration_email
-    @user.send_registration_email
+    @user.send_register_email
   end
 
   # POST /users
@@ -48,7 +52,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        
         sign_in @user
+        @user.send_register_email
+
+        
         format.html { redirect_to @user , notice: 'Welcome to ' + request.host_with_port + ', ' + @user.user_name + '!' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -107,6 +115,7 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id]).decorate
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

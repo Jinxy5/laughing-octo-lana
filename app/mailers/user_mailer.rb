@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     @user = user
 
     mail(to: user.email,
-         from: "thebloodbikeswalesrobot@gmail.com"
+         from: "thebloodbikeswalesrobot@gmail.com",
          subject: "Register to bloodbikeswales.com"
         )
 
