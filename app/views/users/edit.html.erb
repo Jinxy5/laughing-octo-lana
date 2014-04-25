@@ -25,6 +25,9 @@
     </div>
   <% end %>
 
+  <%= f.label 'User Name' %><br>
+  <%= f.text_field :first_name, class: 'form-control' %><br>
+
   <%= f.label 'First Name' %><br>
   <%= f.text_field :first_name, class: 'form-control' %><br>
 
@@ -33,6 +36,9 @@
 
   <%= f.label 'Public Email' %><br>
   <%= f.email_field :public_email, class: 'form-control' %><br>
+
+  <%= f.label 'Email' %><br>
+  <%= f.email_field :email, class: 'form-control' %><br>
 
   <%= f.label 'Address' %><br>
   <%= f.text_field :address, class: 'form-control' %><br>
@@ -70,7 +76,7 @@
     <%= render 'image_upload' %>
   <!-- partial end-->
 
-  
+  <% end %>  
 
 
 <p>&nbsp;</p>

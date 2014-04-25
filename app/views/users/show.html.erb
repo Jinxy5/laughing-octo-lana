@@ -20,6 +20,8 @@
 
   <p><strong>User Name:</strong>  <%= @user.decorate_user_name %></p>
   <p><strong>Public Email:</strong>  <%= @user.decorate_public_email %></p>
+  <p><strong>Registration State:</strong>  <%= @user.decorate_state %></p>
+
 <!--
   <p><strong>Number of Discussions:</strong>  <%#= @user.decorate_discussion_count %> </p>
 
@@ -69,7 +71,7 @@
   
 
 
-<%= link_to root_path do %>
+<%= link_to user_path(@user) do %>
 	<i class="fa fa-long-arrow-left"></i> Back to Blood Bikes Wales
 <% end %>
 

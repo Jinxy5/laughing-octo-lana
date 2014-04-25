@@ -11,11 +11,7 @@ class RepliesController < ApplicationController
     respond_to do |format|
       if @reply.save
 
-        ap @discussion
-        ap @reply
-
         @discussion.add_follower(current_user)
-
         @discussion.notify_all_users(@reply, @discussion, @forum)
 
         format.html { redirect_to forum_discussion_path(@forum, @discussion), notice: "Your the discussion #{@discussion.name} was successfully created." }

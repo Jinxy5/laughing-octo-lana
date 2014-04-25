@@ -153,6 +153,7 @@ class UsersController < ApplicationController
                                   :first_name,
                                   :last_name,
                                   :nearest_town,
+                                  :postcode,
                                   :user_name,
                                   :password,
                                   :password_confirmation,

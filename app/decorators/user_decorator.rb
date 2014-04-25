@@ -17,60 +17,100 @@ class UserDecorator < ApplicationDecorator
   end
 
   def decorate_user_name
-    contextual_empty_message( read_attribute(:user_name) )
+   contextual_empty_message( model.user_name, visitor_empty_message: "#{model.user_name} has chosen to not enter a public email.",
+                                                   admin_empty_message: h.link_to("#{model.user_name} has not entered a public email. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                   owner_empty_message: h.link_to("You haven't entered a public email. Click here to enter it!", h.edit_user_path(model) ) )    
   end
 
+
   def decorate_public_email
-    #ap model.email
-    contextual_empty_message( read_attribute(:user_name), visitor_empty_message: "@{model.user_name} has chosen not to share a public email." )
+   contextual_empty_message( model.public_email, visitor_empty_message: "#{model.user_name} has chosen to not enter a public email.",
+                                                   admin_empty_message: h.link_to("#{model.user_name} has not entered a public email. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                   owner_empty_message: h.link_to("You haven't entered a public email. Click here to enter it!", h.edit_user_path(model) ) )  
   end
 
   def decorate_discussion_count
     contextual_empty_message( model.discussions.count, visitor_empty_message: 'None!',
-                                                      admin_empty_message: 'None!',
-                                                      owner_empty_message: h.content_tag('aright') + h.link_to("You haven't started any discussions! Why not click here to start one now?", h.forums_path ),
-                                                      considered_empty: 0 )  
+                                                       admin_empty_message: 'None!',
+                                                       owner_empty_message: h.content_tag('aright') + h.link_to("You haven't started any discussions! Why not click here to start one now?", h.forums_path ) )  
   end
 
   def decorate_replies_count
     contextual_empty_message( model.discourses.count, visitor_empty_message: 'None!',
-                                                   admin_empty_message: 'None!',
-                                                   owner_empty_message: h.link_to("You haven't replied to any discussions! Why click here not reply to the most popular discussion relevent to your roles?", h.forum_discussion_path(model.most_popular_discussion.forum, model.most_popular_discussion) ),
-                                                   considered_empty: 'baba' )  
+                                                      admin_empty_message: 'None!',
+                                                      owner_empty_message: h.link_to("You haven't replied to any discussions! Why click here not reply to the most popular discussion relevent to your roles?", h.forum_discussion_path(model.most_popular_discussion.forum, model.most_popular_discussion) ) )  
   end
 
+  def decorate_state
+   contextual_empty_message( model.state, visitor_empty_message: "#{model.user_name} is unregistered",
+                                          admin_empty_message: "#{model.user_name} is unregistered",
+                                          owner_empty_message: h.link_to("You haven't registered! Check your email for a registration email and follow the instructions enclosed, or click here to send another registration email", h.root_path),
+                                          considered_empty: 'unregistered' )
+  end
+
+
+  # private information start
   def decorate_private_info
-    h.render 'private_info' unless is_visitor?
+    h.render 'private_info' if is_owner_or_admin?  #is_visitor?
   end
 
 
   def decorate_first_name     
+    contextual_empty_message( model.first_name, visitor_empty_message: 'None!',
+                                                       admin_empty_message: h.link_to("#{model.user_name} has not entered a first name. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                       owner_empty_message: h.link_to("You haven't entered a first name. Click here to enter it!", h.edit_user_path(model) ) )  
   end
 
 
-  def decorate_last_name 
+  def decorate_last_name
+    contextual_empty_message( model.last_name, visitor_empty_message: 'None!',
+                                                       admin_empty_message: h.link_to("#{model.user_name} has not entered a last name. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                       owner_empty_message: h.link_to("You haven't entered a last name. Click here to enter it!", h.edit_user_path(model) ) )
   end
 
   def decorate_email
+    contextual_empty_message( model.email, visitor_empty_message: 'None!',
+                                                       admin_empty_message: h.link_to("#{model.user_name} has not entered an email. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                       owner_empty_message: h.link_to("You haven't entered an email. Click here to enter it!", h.edit_user_path(model) ) )
   end
 
   def decorate_address 
+    contextual_empty_message( model.address, visitor_empty_message: 'None!',
+                                                       admin_empty_message: h.link_to("#{model.user_name} has not entered an email. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                       owner_empty_message: h.link_to("You haven't entered an email. Click here to enter it!", h.edit_user_path(model) ) )
   end
 
   def decorate_landline
+    contextual_empty_message( model.landline, visitor_empty_message: 'None!',
+                                                       admin_empty_message: h.link_to("#{model.user_name} has not entered a landline. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                       owner_empty_message: h.link_to("You haven't entered a landline. Click here to enter it!", h.edit_user_path(model) ) )
 
   end
 
-  def decorate_mobile 
+  def decorate_mobile
+    contextual_empty_message( model.mobile, visitor_empty_message: 'None!',
+                                                       admin_empty_message: h.link_to("#{model.user_name} has not entered a mobile. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                       owner_empty_message: h.link_to("You haven't entered an mobile. Click here to enter it!", h.edit_user_path(model) ) )
   end
+ 
+
+
 
   def decorate_nearest_town
-    "prepended string #{h.link_to('my_link', h.forums_path )}"
+    contextual_empty_message( model.nearest_town, visitor_empty_message: 'None!',
+                                                       admin_empty_message: h.link_to("#{model.user_name} has not entered a nearest town. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                       owner_empty_message: h.link_to("You haven't entered a nearest town. Click here to enter it!", h.edit_user_path(model) ) )
+
   end
 
+  def decorate_post_code
+    contextual_empty_message( model.postcode, visitor_empty_message: 'None!',
+                                                       admin_empty_message: h.link_to("#{model.user_name} has not entered a post code. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
+                                                       owner_empty_message: h.link_to("You haven't entered a postcode. Click here to enter it!", h.edit_user_path(model) ) )
 
+  end
+  # private information end
 
-#  private
 
 
     def is_admin?
@@ -107,27 +147,32 @@ class UserDecorator < ApplicationDecorator
       o = {
         auto_attribute: false,
         visitor_empty_message: model.user_name + ' has chosen not to share this information.',
-        owner_empty_message: h.link_to('Click here to update your info!', h.edit_user_path), 
+        owner_empty_message: h.link_to('Click here to update your info!', h.edit_user_path),
         admin_empty_message: h.link_to('Click here to update' + model.user_name + '\'s information', h.edit_user_path),
-        considered_empty: nil 
+        considered_empty: [nil,'', 0] 
       }.merge!(args)
 
-      if information == o[:considered_empty]
-        return information 
-      else
+      ap o[:considered_empty]
+
+      if o[:considered_empty].include?(information)        
         contextual_custom( o[:admin_empty_message], o[:owner_empty_message], o[:visitor_empty_message] )
+      else
+        
+     
+        return information
+
       end
 
     end
 
-    def contextual_custom(admin_message, owner_message, visitor_message)
+    def contextual_custom(admin_message, owner_message, visitor_messsage)
 
       case
       when is_owner?
         owner_message
       when is_admin?
         admin_message
-      when is_visitr?
+      when is_visitor?
         visitor_messsage
       end
 

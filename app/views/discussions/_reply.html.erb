@@ -7,13 +7,12 @@
 
         <% end %>
       
-	        <h4> <%#= reply.title %> <i> </i> </h4> 
 	         
-          <p> <%#= link_to reply.user.user_name, reply.user %> <%= @discussion.user.list_roles %> </p>
+          <p> <%= link_to reply.user.user_name, reply.user %> <%= @discussion.user.list_roles %> </p>
 	        <p> <%= reply.description %> </p>
 	        
     
-        <p><i class="fa fa-comment"></i> <%#= time_ago_in_words(reply.created_at) %> ago </p>
+        <p><i class="fa fa-comment"></i> <%= time_ago_in_words(reply.created_at) %> ago </p>
          <p>&nbsp;</p>
 
 
@@ -25,7 +24,7 @@
           
           <%#= f.submit "Reply to #{reply.user.user_name}\'s Reply", class: 'btn btn-success' %> 
            
-        <%#S end %>
+        <%# end %>
 
     </div>
 

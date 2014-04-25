@@ -22,8 +22,21 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
 	before_create { self.user_roles.build(role_id: Role.find_by(role: 'potential').id ) } # user the add_role method here
 
+	state_machine initial: :unregistered do 
+
+		event :register do
+			transition unregistered: :registered 
+		end
+
+		event :unregister do
+			transition registered: :unregistered
+		end
+
+	end
 	
-	#soft_delete
+	def send_register_email
+		UserMailer.delay.registration(self)
+	end
 
 	def soft_delete_message
 		'widget' + self.first_name
