@@ -115,21 +115,30 @@ class UserDecorator < ApplicationDecorator
 
 
 
+    def is_current_user?
+      h.current_user ? true : false
+    end
+
     def is_admin?
-      h.current_user.is_admin?
+      h.current_user.is_admin? if is_current_user?
     end
 
     def is_owner?
-      h.current_user === model
+      h.current_user === model if is_current_user?
     end
 
     def is_visitor?
-     !is_owner? || !is_admin? ? true : false
+     !is_owner? || !is_admin? ? true : false if is_current_user?
     end
 
     def is_owner_or_admin?
-      is_admin? || is_owner? ? true : false
+      is_admin? || is_owner? ? true : false if is_current_user?
     end
+    
+    def is_guest?
+      !is_current_user?
+    end
+
 
     def contextual_owner(owner_message, args={})
       o = {
@@ -167,7 +176,7 @@ class UserDecorator < ApplicationDecorator
 
     end
 
-    def contextual_custom(admin_message, owner_message, visitor_messsage)
+    def contextual_custom(admin_message, owner_message, visitor_message)
 
       case
       when is_owner?
@@ -175,7 +184,9 @@ class UserDecorator < ApplicationDecorator
       when is_admin?
         admin_message
       when is_visitor?
-        visitor_messsage
+        visitor_message
+      when is_guest?
+        visitor_message
       end
 
     end

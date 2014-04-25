@@ -7,7 +7,7 @@
 <div class="col-md-12">
 		
 
-	<h2> <%#= @user.contextual_owner('Your') %> Profile </h2>
+	<h2> <%= @user.contextual_owner('Your') %> Profile </h2>
 
 
 	
@@ -21,7 +21,7 @@
 
   <p><strong>User Name:</strong>  <%= @user.decorate_user_name %></p>
   <p><strong>Public Email:</strong>  <%= @user.decorate_public_email %></p>
-  <p><strong>Registration State:</strong>  <%#= @user.decorate_state %></p>
+  <p><strong>Registration State:</strong>  <%= @user.decorate_state %></p>
 
 <!--
   <p><strong>Number of Discussions:</strong>  <%#= @user.decorate_discussion_count %> </p>
@@ -32,7 +32,7 @@
 	<div class = 'clearfix'></div>
 	<%#= image_tag .file_name, class: 'mugshot', width: 200 %>
 
-<%#= @user.decorate_private_info %>
+<%= @user.decorate_private_info %>
 
 
 </div>
