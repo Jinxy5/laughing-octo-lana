@@ -1,0 +1,4 @@
+class ForumDecorator < ApplicationDecorator
+  
+
+end

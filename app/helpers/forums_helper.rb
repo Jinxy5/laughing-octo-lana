@@ -13,6 +13,10 @@ module ForumsHelper
 		number_of_posts
 	end
 
+	def helper_follow
+		'wazawoow'
+	end
+
 	def last_post_in(forum)
 		
 		# post where discussion belongs to forum

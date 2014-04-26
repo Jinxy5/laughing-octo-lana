@@ -41,11 +41,11 @@ class DiscussionsController < ApplicationController
     end
 
     def set_forum
-      @forum = Forum.find(params[:forum_id])
+      @forum = Forum.find(params[:forum_id]).decorate
     end
 
     def set_discussion
-      @discussion = Discussion.find(params[:id])
+      @discussion = Discussion.find(params[:id]).decorate
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

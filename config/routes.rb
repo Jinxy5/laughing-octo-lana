@@ -34,7 +34,7 @@ Bloodbikeswales::Application.routes.draw do
 
   get 'members_contact_list', to: 'contact_lists#show'
 
-  get 'send_registration_email', to: 'users#send_registration', as: :send_registration_email
+  get 'send_registration_email/:id', to: 'users#send_registration_email', as: :send_registration_email
   get 'culminate/:register_key', to: 'users#culminate', as: :culminate
 
   get 'signup', to: 'users#new', as: 'sign_up'

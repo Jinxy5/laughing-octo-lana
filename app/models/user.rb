@@ -35,9 +35,9 @@ class User < ActiveRecord::Base
 	end
 
 
-#	def send_register_email
-#		UserMailer.registration(self).deliver
-#	end
+	def send_register_email
+		UserMailer.registration(self).deliver
+	end
 
 	def soft_delete_message
 		'widget' + self.first_name

@@ -23,6 +23,8 @@
         
         
         <p><i class="fa fa-comment"></i> <%= time_ago_in_words(@discussion.created_at) %> ago </p>
+        <p><i class="fa fa-eye"></i> <%= @discussion.followers.count %> users are watching this discussion. <%= @discussion.decorate_follow_message %> </p>
+
         <p>&nbsp;</p>
 
         <%= form_for( @reply, url: "/forums/" + @forum.id.to_s + "/discussions/" + @discussion.id.to_s + "/replies" ) do |f| %>        

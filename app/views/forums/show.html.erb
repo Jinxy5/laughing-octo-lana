@@ -86,7 +86,7 @@
 						<% if discussion.last_reply %>
 							<dfn>Last reply </dfn>by 
 
-							<%= link_to discussion.last_reply.user.user_name %>
+							<%= link_to discussion.last_reply.user.user_name, discussion.last_reply.user %>
 
 							<br>
 

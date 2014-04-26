@@ -20,6 +20,7 @@ class Discussion < ActiveRecord::Base
 	
 	def notify_all_users(reply, discussion, forum)
 		self.users.each do |user|
+			ap "ya ya, sending email to #{user.user_name}"
 			DiscussionMailer.delay.new_reply_notification(user, reply, discussion, forum )#.deliver #unless follower.is_current_user?
 		end
 	end

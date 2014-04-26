@@ -32,17 +32,22 @@ class UsersController < ApplicationController
   end
 
   def culminate
- #   register_key = params[:register_key]
 
- #   user = User.find_by(register_key: register_key)
- #   user.register
+    @user = User.find_by(register_key: params[:register_key])
 
-
- #   redirect_to user, notice: 'Thanks for registering!'
+    if @user.registered?
+      redirect_to @user, notice: "This user has already confirmed their acount."
+    else
+      @user.register
+      redirect_to @user, notice: "Thanks for confirming this user's email address !"
+    end
+  
   end
 
   def send_registration_email
     @user.send_register_email
+
+    redirect_to @user, notice: "Email sent to #{@user.email}. If this is the wrong email, #{view_context.link_to 'click here to change your details!', edit_user_path(@user)}".html_safe
   end
 
   # POST /users
