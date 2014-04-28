@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :send_registration_email]
 
   before_action :secure, only: [:edit, :update, :destroy, :send_registration_email]
+
+  before_action :no_current_user, only: [:new, :create]
  # before_action :set_up_negative_captcha, only: [:new, :create]
   # GET /users
   # GET /users.json
@@ -129,15 +131,10 @@ class UsersController < ApplicationController
       :mobile]
     end
 
-    def set_up_negative_captcha
-      @captcha = NegativeCaptcha.new(
-        secret: '64e71bfa744c949556fd934d753c5f1a0c8139f05bbc62fe24c9e782f1750a02f79327eaa8460ee869328f1d3cab5ca9b7cab59752398df269c8df44089406f4',
-        spinner: request.remote_ip,
-        fields: permitted_attributes,
-        params: params
-      )
+    def no_current_user
+      redirect_to root_url if current_user 
     end
-    
+
     def secure
       redirect_to root_url unless current_user === @user || current_user.is_admin?
     end
