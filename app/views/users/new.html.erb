@@ -11,9 +11,8 @@
 
 				
 
-<%= raw negative_captcha(@captcha) %>
 
-<%= form_tag(@user) do %>
+<%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -29,15 +28,15 @@
 
     <%#= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %><br>
 
-    <%= negative_text_field_tag(@captcha, :first_name, class: 'form-control', placeholder: 'First Name') %> <br>
-    <%= negative_text_field_tag(@captcha, :last_name, class: 'form-control', placeholder: 'Last Name') %> <br>
-    <%= negative_text_field_tag(@captcha, :user_name, class: 'form-control', placeholder: 'User Name') %> <br>
-    <%= negative_text_field_tag(@captcha, :email, class: 'form-control', placeholder: 'Email') %> <br>
-    <%= negative_password_field_tag(@captcha, :password, class: 'form-control', placeholder: 'Create Password (must contain at least 8 characters)') %> <br>
-    <%= negative_password_field_tag(@captcha, :password_confirmation, class: 'form-control', placeholder: 'Confirm Password') %> <br>
-    <%= negative_text_field_tag(@captcha, :nearest_town, class: 'form-control', placeholder: 'Your Nearest Town') %> <br>
+    <%= f.text_field(:first_name, class: 'form-control', placeholder: 'First Name') %> <br>
+    <%= f.text_field(:last_name, class: 'form-control', placeholder: 'Last Name') %> <br>
+    <%= f.text_field(:user_name, class: 'form-control', placeholder: 'User Name') %> <br>
+    <%= f.text_field(:email, class: 'form-control', placeholder: 'Email') %> <br>
+    <%= f.password_field(:password, class: 'form-control', placeholder: 'Create Password (must contain at least 8 characters)') %> <br>
+    <%= f.password_field(:password_confirmation, class: 'form-control', placeholder: 'Confirm Password') %> <br>
+    <%= f.text_field(:nearest_town, class: 'form-control', placeholder: 'Your Nearest Town') %> <br>
 
-    <%= submit_tag 'Create my Account', class: 'btn btn-success', method: 'get' %>
+    <%= f.submit 'Create my Account', class: 'btn btn-success', method: 'get' %>
 
 <% end %>
 <br>

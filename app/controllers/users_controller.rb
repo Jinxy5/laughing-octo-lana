@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :send_registration_email]
 
   before_action :secure, only: [:edit, :update, :destroy, :send_registration_email]
-  before_action :set_up_negative_captcha, only: [:new, :create]
+ # before_action :set_up_negative_captcha, only: [:new, :create]
   # GET /users
   # GET /users.json
   def index
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
-      if @user.save && @captcha.valid?
+      if @user.save# && @captcha.valid?
         
         sign_in @user
         @user.send_register_email
