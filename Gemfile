@@ -39,7 +39,10 @@ gem 'rubocop'
 gem 'simplecov', '~> 0.7.1'
 gem 'will_paginate'
 gem 'negative_captcha'
+gem 'simple_captcha2', require: 'simple_captcha'
+
 #gem 'lazy_columns'
+#gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 
 group :doc do
   gem 'sdoc', require: false

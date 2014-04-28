@@ -59,21 +59,28 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
-      if @user.save# && @captcha.valid?
+
+#      if simple_captcha_valid?
+        if simple_captcha_valid? && @user.save
         
-        sign_in @user
-        @user.send_register_email
+          sign_in @user
+          @user.send_register_email
 
-        
-        format.html { redirect_to @user , notice: 'Welcome to ' + request.host_with_port + ', ' + @user.user_name + '!' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
+          
+          format.html { redirect_to @user , notice: 'Welcome to ' + request.host_with_port + ', ' + @user.user_name + '!' }
+          format.json { render action: 'show', status: :created, location: @user }
+        else
 
 
-
-        format.html { render action: 'new', notice: 'We could not create your account! Please try again.' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+          flash_message = 'We could not create your account. Please try again!'
+          
+#          flash_message << ' The recaptcha was wronge!' unless simple_captcha_valid?
+          
+          flash.now[:notice] = flash_message
+          format.html { render action: 'new' }
+  #        format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+ #     end
     end
   end
 

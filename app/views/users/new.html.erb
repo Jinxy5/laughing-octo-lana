@@ -35,6 +35,8 @@
     <%= f.password_field(:password, class: 'form-control', placeholder: 'Create Password (must contain at least 8 characters)') %> <br>
     <%= f.password_field(:password_confirmation, class: 'form-control', placeholder: 'Confirm Password') %> <br>
     <%= f.text_field(:nearest_town, class: 'form-control', placeholder: 'Your Nearest Town') %> <br>
+    <%= show_simple_captcha %>
+    
 
     <%= f.submit 'Create my Account', class: 'btn btn-success', method: 'get' %>
 
