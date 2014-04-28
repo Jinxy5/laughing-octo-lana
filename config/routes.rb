@@ -19,6 +19,10 @@ Bloodbikeswales::Application.routes.draw do
 
   resources :forums do
     resources :discussions do
+      member do
+        get 'followers', to: 'discussions#show_followers', as: :followers
+      end
+
       resources :replies
     end
   end

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :send_registration_email]
 
   before_action :secure, only: [:edit, :update, :destroy, :send_registration_email]
+  before_action :set_up_negative_captcha, only: [:new, :create]
   # GET /users
   # GET /users.json
   def index
@@ -56,7 +57,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
-      if @user.save
+      if @user.save && @captcha.valid?
         
         sign_in @user
         @user.send_register_email
@@ -66,7 +67,6 @@ class UsersController < ApplicationController
         format.json { render action: 'show', status: :created, location: @user }
       else
 
-        ap @user
 
 
         format.html { render action: 'new', notice: 'We could not create your account! Please try again.' }
@@ -113,6 +113,31 @@ class UsersController < ApplicationController
   end
 
   private
+    def permitted_attributes
+     [:user_name,
+      :email,
+      :first_name,
+      :last_name,
+      :nearest_town,
+      :postcode,
+      :user_name,
+      :password,
+      :password_confirmation,
+      :address,
+      :public_email,
+      :landline,
+      :mobile]
+    end
+
+    def set_up_negative_captcha
+      @captcha = NegativeCaptcha.new(
+        secret: '64e71bfa744c949556fd934d753c5f1a0c8139f05bbc62fe24c9e782f1750a02f79327eaa8460ee869328f1d3cab5ca9b7cab59752398df269c8df44089406f4',
+        spinner: request.remote_ip,
+        fields: permitted_attributes,
+        params: params
+      )
+    end
+    
     def secure
       redirect_to root_url unless current_user === @user || current_user.is_admin?
     end
@@ -123,24 +148,15 @@ class UsersController < ApplicationController
 
     end
 
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
+      ap params
       # "first_name", "last_name", "nearest_town"]
       # ["id", "user_name", "email", "password_digest", "created_at", "updated_at", "register_key", "culminated", "remember_token", "register_token_created_at", "profile_image", "licence_image", "first_name", "last_name", "nearest_town"] 
 
       # avatar: [:file_name]
-     params.require(:user).permit(:user_name,
-                                  :email,
-                                  :first_name,
-                                  :last_name,
-                                  :nearest_town,
-                                  :postcode,
-                                  :user_name,
-                                  :password,
-                                  :password_confirmation,
-                                  :address,
-                                  :public_email,
-                                  :landline,
-                                  :mobile)
+     params.require(:user).permit(permitted_attributes)
     end
 end

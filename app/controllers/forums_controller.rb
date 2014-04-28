@@ -11,7 +11,9 @@ class ForumsController < ApplicationController
   # GET /forums/1
   # GET /forums/1.json
   def show
-    @discussions = Discussion.where(forum_id: @forum)
+#    @discussion.replies.paginate(page: params[:page], per_page: 10)
+ 
+    @discussions = @forum.discussions.paginate(page: params[:page], per_page: 10)
     @discussion = Discussion.new
   end
 

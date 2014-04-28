@@ -13,9 +13,13 @@ module ForumsHelper
 		number_of_posts
 	end
 
-	def helper_follow
-		'wazawoow'
+	def helper_follow(user)
+		case 
+		when current_user.is_admin?
+			'all rights'
+		end
 	end
+
 
 	def last_post_in(forum)
 		

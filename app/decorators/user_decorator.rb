@@ -28,6 +28,20 @@ class UserDecorator < ApplicationDecorator
 
 
 
+
+
+
+
+
+
+
+
+
+      def decorate_cheese(yah)
+        yah
+      end
+
+
     def contextual_owner(owner_message, args={})
       o = {
         visitor_message: owner_message.assimilate(model.user_name) + '\'s'

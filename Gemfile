@@ -37,6 +37,8 @@ gem 'email_spec'
 
 gem 'rubocop'
 gem 'simplecov', '~> 0.7.1'
+gem 'will_paginate'
+gem 'negative_captcha'
 #gem 'lazy_columns'
 
 group :doc do

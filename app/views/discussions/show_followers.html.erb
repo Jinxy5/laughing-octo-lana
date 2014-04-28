@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<div class="fullwidthcontainer">
+  
+
+  <div class="container">
+
+<div class="row">
+<div class="col-md-12">
+    
+    
+
+    <h3> Who's watching <%= link_to "#{@discussion.user.user_name}'s", @discussion.user %> discussion: "<%= @discussion.name %>" </h3>
+
+    
+<table class="table">
+  <thead>   
+      <tr>
+        <td> User Name</td>
+
+      </tr>
+  </thead>
+  
+
+  <tbody>
+    <% @followers.each do |follower| %>
+      <tr>
+          <td> <%= link_to "#{follower.user.user_name} #{@discussion.decorate_follower_information(follower.user)}", follower.user.decorate %> </td>         
+          <td> 
+
+            <%= helper_follow(current_user)%>
+            <%#= button_to "#{follower.user.decorate.decorate_cheese(@discussion)}", root_url, class: 'btn btn-success btn-xs fleft' %>
+          </td> 
+      </tr> 
+      
+
+  <% end %>
+
+        
+    
+  </tbody>
+</table>
+
+
+
+</div>
+</div>
+</div>
+<div class="postdivider">
+
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<p>&nbsp;</p>
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+</div>

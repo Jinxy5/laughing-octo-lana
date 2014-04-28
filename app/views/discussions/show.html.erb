@@ -20,10 +20,12 @@
         <h4> <%= @discussion.name %> </h4>
         <p> <%= @discussion.user.user_name %> <%= @discussion.user.list_roles %> </p>
         <p> <%= @discussion.description %> </p>
+
+
         
-        
+
         <p><i class="fa fa-comment"></i> <%= time_ago_in_words(@discussion.created_at) %> ago </p>
-        <p><i class="fa fa-eye"></i> <%= @discussion.followers.count %> users are watching this discussion. <%= @discussion.decorate_follow_message %> </p>
+        <p><i class="fa fa-eye"></i> <%= link_to "#{@discussion.followers.count} users", followers_forum_discussion_path(@forum, @discussion) %> are watching this discussion. <%= @discussion.decorate_follow_message %> </p>
 
         <p>&nbsp;</p>
 
@@ -39,6 +41,9 @@
 </div>
 </div>
 </div>
+
+<%= will_paginate @replies %>
+        
 <div class="postdivider">
 <div class="container"><h4> <%= pluralize @discussion.replies.count, 'reply' %> </h4></div>
 
@@ -49,9 +54,11 @@
 <p>&nbsp;</p>
 
 
-  <% if @discussion.replies %>
-    <%= render partial: "reply", collection: @discussion.replies %>
-  <% end %>
+        
+
+  <%= render partial: 'reply', collection: @replies %>
+
+<%= will_paginate @replies %>
 
 
 

@@ -1,11 +1,11 @@
 class DiscussionsController < ApplicationController
-  before_action :set_forum, only: [:create, :show]
+  before_action :set_forum, only: [:create, :show, :show_followers]
   before_action :create_reply, only: [:show]
 
-  before_action :set_discussion, only: :show
+  before_action :set_discussion, only: [:show, :show_followers]
   
   def show
-    
+    @replies = @discussion.replies.paginate(page: params[:page], per_page: 10)
   end
 
   def create  
@@ -17,11 +17,16 @@ class DiscussionsController < ApplicationController
       redirect_to forum_path(@forum), notice: 'discussion successfully created!'
     else
 
-      @discussions = Discussion.where(forum_id: @forum)
+  #    @discussions = Discussion.where(forum_id: @forum)
+      @discussions = @forum.discussions.paginate(page: params[:page], per_page: 10, order: 'created_at desc')
 
       flash.now[:notice] = 'oopse' 
       render "forums/show" #forum_path(@forum), notice: 'sorry, your discussion could not be saved!'
     end    
+  end
+
+  def show_followers
+    @followers = @discussion.followers
   end
 
   def update
