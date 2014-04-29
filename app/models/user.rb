@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 	has_many :replies
 	has_many :retorts
 
+	has_many :stories
+
 	has_many :user_roles
 	has_many :roles, through: :user_roles
 

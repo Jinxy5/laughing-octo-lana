@@ -1,0 +1,24 @@
+<%= render partial: 'sidebar' %> 
+
+<div class="col-sm-10">
+				<h2>Edit News Story</h2>
+							
+<table class="table">
+	<thead>		
+		<tr>
+			<td><strong>TITLE</strong></td>
+			<td><strong>DATE RECIEVED</strong></td>
+			<td><strong>PUBLISHED</strong></td>
+			<td><strong>AUTHOR</strong></td>
+			<td>&nbsp;</td>
+		</tr>
+	</thead>
+<tbody>
+
+	<%= render partial: 'story', collection: @stories %>
+
+</tbody>
+</table>
+
+
+</div>

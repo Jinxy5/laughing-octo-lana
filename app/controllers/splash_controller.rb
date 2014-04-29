@@ -8,6 +8,7 @@ class SplashController < ApplicationController
 	end
 
 	def news
+		@stories = Story.all.paginate(page: params[:page], per_page: 10, order: 'created_at desc' )
 	end
 
 	def events

@@ -1,0 +1,13 @@
+<div class="row">
+		<span class="hidden-xs">
+		<div class="col-sm-3"> <a href="singlepage.php"> <%= image_tag 'cause.jpg', class: 'img-responsive newsthumbimage' %> </a>
+		</div>
+		</span>
+		<div class="col-sm-8">
+		<h4> <%= story.title %></h4>
+		<p> <%= story.description %></p>
+
+		<%= link_to 'read more', story_path(story) %>
+
+		</div>
+	</div>

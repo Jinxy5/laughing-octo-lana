@@ -88,7 +88,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
 
-    ap params
+#    ap params
 
     
 #    user_params.delete_blanks!

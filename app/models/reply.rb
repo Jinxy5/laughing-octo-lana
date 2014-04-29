@@ -4,4 +4,6 @@ class Reply < ActiveRecord::Base
 
 	validates :description, presence: true
 
+#	SoftDelete
+
 end

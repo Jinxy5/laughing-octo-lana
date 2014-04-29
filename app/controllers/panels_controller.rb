@@ -2,6 +2,9 @@ class PanelsController < ApplicationController
   before_action :secure
   
   before_action :set_all_users, only: [:user_delete, :users]
+  before_action :set_all_users, only: [:stories, :users]
+
+  before_action :set_all_stories, only: [:stories]
 
   before_action :set_user, only: [:user_delete, :user_update]
   before_action :protect_admin, only: [:user_delete, :user_update]
@@ -57,10 +60,19 @@ class PanelsController < ApplicationController
 
   end
 
+
+  def stories
+  end
+
+
   private
     
     def protect_admin
       redirect_to(panel_show_users_url, notice: 'You lack the privileges needed to alter an admin') if @user.is_admin? 
+    end
+
+    def set_all_stories
+      @stories = Story.all.paginate(page: params[:page], per_page: 10).decorate
     end
 
     def set_all_users
@@ -76,7 +88,11 @@ class PanelsController < ApplicationController
     end
 
     def user_params
-
      params.require(:user).permit(:coordinator, :midweek, :rider)
+    end
+
+    def story_params
+      ap params
+      params.require(:story).permit(:stuff)
     end
 end

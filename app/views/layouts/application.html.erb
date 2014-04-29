@@ -77,9 +77,15 @@
                     <li><a href="/forums">Forums</a></li>
 
                     <li><a href="/members_contact_list">Members Contact
-                    List</a></li><% if current_user.is_admin? %>
+                    List</a></li>
 
-                    <li><a href="/panels/users">Control Panel</a></li><% end %>
+                    <% unless current_user.is_only_potential?  %>
+                    <li> <%= link_to 'Submit Story', new_story_path %></li>
+                    <% end %>
+
+                    <% if current_user.is_admin? %>
+                    <li><a href="/panels/users">Control Panel</a></li>
+                    <% end %>
 
                     <li><span class="visible-xs"><a href="aboutus.php">About
                     Us</a></span></li>

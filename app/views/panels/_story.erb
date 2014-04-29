@@ -1,0 +1,13 @@
+<tr>
+	<td> <%= story.title %> </td>
+	<td> <%= story.created_at %> </td>
+	<td> <%= story.decorate_state %> </td>
+	<td> <%= link_to "#{story.user.user_name} - #{story.user.list_roles}", user_path(story.user) %> </td>
+	<td>
+		
+		<%= button_to 'Edit', edit_story_path(story), class: 'btn btn-success btn-xs', method: :get %>
+		<%= button_to 'Delete', story_path(story), class: 'btn btn-danger btn-xs', method: :delete, confirm: "Are you sure you want to delete the story, '#{story.title}'? It will be permanantly delted!" %> 
+		 
+	</td>
+
+</tr>
