@@ -16,7 +16,7 @@ gem 'database_cleaner'
 
 gem 'awesome_print'
 gem 'rails', '4.0.2'
-gem 'pg'
+gem 'pg'# sudo apt-get install libpq-dev
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -27,7 +27,7 @@ gem 'launchy'
 gem 'poltergeist'
 gem 'jquery-rails'
 
-gem 'rmagick'
+gem 'rmagick'# sudo apt-get install libmagickwand-dev
 gem 'carrierwave'
 gem 'draper'
 gem 'puma'
@@ -40,7 +40,6 @@ gem 'simplecov', '~> 0.7.1'
 gem 'will_paginate'
 #gem 'negative_captcha'
 gem 'simple_captcha2', require: 'simple_captcha'
-
 #gem 'lazy_columns'
 #gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 

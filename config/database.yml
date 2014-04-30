@@ -23,4 +23,4 @@ production:
   database: bbw_production
   host: localhost
   username: postgres
-  password: postgres
+  password: 
