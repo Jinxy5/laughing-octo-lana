@@ -20,7 +20,7 @@ class DiscussionsController < ApplicationController
   #    @discussions = Discussion.where(forum_id: @forum)
       @discussions = @forum.discussions.paginate(page: params[:page], per_page: 10, order: 'created_at desc')
 
-      flash.now[:notice] = 'oopse' 
+      flash.now[:notice] = 'Discussion could not be saved' 
       render "forums/show" #forum_path(@forum), notice: 'sorry, your discussion could not be saved!'
     end    
   end

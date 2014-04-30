@@ -64,6 +64,10 @@ class PanelsController < ApplicationController
   def stories
   end
 
+  def edit_story
+
+  end
+
 
   private
     

@@ -16,15 +16,24 @@
 
 
 
-    <%= f.label :title %><br>
-    <%= f.text_field :title %><br>
+    <%= f.text_field :title, placeholder: 'Create your story\'s title here' , class: 'form-control' %><br>
+  
+    <%= f.text_area :description, placeholder: 'Write your story here! Make sure it\'s no longer than 400 characters!', class: 'form-control', rows: 5 %><br>
   
 
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit Story', class: 'form-control btn btn-success' %>
   </div>
 <% end %>
+
+
+  <%#= form_for [@forum, @discussion] do |f| %>
+
+    <%#= f.text_field :name, class: 'form-control', placeholder: 'Create a new title here...' %><br>
+    <%#= f.text_area :description, class: 'form-control', placeholder: 'Expand on your title here...', rows: 5 %><br>
+    
+    <%#= f.submit 'Create Discussion', class: 'form-control btn btn-primary' %>
+
+  <%# end %>

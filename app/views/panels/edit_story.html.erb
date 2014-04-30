@@ -1,1 +1,55 @@
-Edit the storrry!!!!!!!!!!!!!!!!!!!!1
+<%= render partial: 'panels/sidebar' %> 
+
+
+<%= debug @story %> 
+
+
+<div class="col-sm-10">
+	<h2>Edit News Story</h2>
+
+<div class="col-sm-10">
+				<h2>News</h2>
+							<h4>EDIT STORY</h4>
+							
+				
+
+
+<%= form_for( @story ) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+  	<%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', placeholder: @story.title %><br>
+    
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control', placeholder: @story.description, rows: 4 %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit 'Publish', class: 'btn btn-success' %>
+    <p></p>
+    <%= button_to 'Delete', root_path, class: 'btn btn-danger' %>
+
+  </div>
+<% end %>
+
+
+
+
+<p>&nbsp;</p>
+
+</div>
+
+						
+</div>

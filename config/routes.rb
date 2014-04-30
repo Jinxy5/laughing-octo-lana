@@ -28,17 +28,24 @@ Bloodbikeswales::Application.routes.draw do
     end
   end
 
-#  resources :stor
-  scope '/panels' do
-      resources :stories
-      get '/stories/:id', to: 'panels_controller#stories', as: :panel_stories
+  resources :stories, except: [:edit]
 
-  end 
-  resources :stories
+  scope path: 'control_panel' do
+      get 'edit_story/:id', to: 'stories#edit', as: :edit_story
+      get 'stories', to: 'panels#stories', as: :panel_show_stories
 
-  get 'panels/users', to: 'panels#users', as: :panel_show_users
-  delete 'panels/user/:id', to: 'panels#user_delete', as: :delete_user
-  patch 'panels/user/:id', to: 'panels#user_update', as: :panel_update_user
+      get 'users', to: 'panels#users', as: :panel_show_users
+      delete 'user/:id', to: 'panels#user_delete', as: :delete_user
+      patch 'user/:id', to: 'panels#user_update', as: :panel_update_user
+
+    resources :stories
+  end
+
+#  resources :stories
+
+#  get 'panels/users', to: 'panels#users', as: :panel_show_users
+#  delete 'panels/user/:id', to: 'panels#user_delete', as: :delete_user
+#  patch 'panels/user/:id', to: 'panels#user_update', as: :panel_update_user
 
 #  get 'panels/stories', to: 'panels#stories', as: :panel_show_stories
  # delete 'panels/story/:id', to: 'panels#story_delete', as: :delete_story

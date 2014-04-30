@@ -84,7 +84,7 @@
                     <% end %>
 
                     <% if current_user.is_admin? %>
-                    <li><a href="/panels/users">Control Panel</a></li>
+                    <li> <%= link_to 'Control Panel', panel_show_users_path %></li>
                     <% end %>
 
                     <li><span class="visible-xs"><a href="aboutus.php">About

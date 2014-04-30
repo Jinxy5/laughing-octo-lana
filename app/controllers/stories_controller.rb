@@ -4,6 +4,7 @@ class StoriesController < ApplicationController
   before_action :only_admins, only: [:edit, :update]
   before_action :set_story, only: [:show, :destroy, :edit, :update]
   
+#  before_action :_story, only: [:edit]
   def index
     @stories = Story.approved.paginate(page: params[:page], per_page: 10)
   end
@@ -34,6 +35,16 @@ class StoriesController < ApplicationController
   end
 
   def edit
+    render template: 'panels/edit_story'
+  end
+
+  def update
+
+    if @story.update(story_params)
+      @story.approve
+      redirect_to splash_news_path, notice: "Successfully updated #{@story.title} " 
+    else
+    end
   end
 
 #  def update
