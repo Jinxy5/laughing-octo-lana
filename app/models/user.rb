@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
 	before_create { self.user_roles.build(role_id: Role.find_by(role: 'potential').id ) } # user the add_role method here
 
+	before_destroy { save_name_to_all_authored_discussions 
+					 save_name_to_all_authored_replies }
+
+
 	state_machine initial: :unregistered do 
 
 		event :register do
@@ -34,6 +38,19 @@ class User < ActiveRecord::Base
 			transition registered: :unregistered
 		end
 
+	end
+
+	def save_name_to_all_authored_discussions
+		self.discussions.each do |discussion|
+			ap discussion
+			discussion.update_attributes(author_name: user_name)
+		end
+	end
+
+	def save_name_to_all_authored_replies
+		self.replies.each do |reply|
+			reply.update_attributes(author_name: user_name)
+		end
 	end
 
 

@@ -4,7 +4,10 @@ class DiscussionsController < ApplicationController
 
   before_action :set_discussion, only: [:show, :show_followers]
   
+  before_action :no_guests
+  
   def show
+    @discussion.iterate_view(request.remote_ip, current_user)
     @replies = @discussion.replies.paginate(page: params[:page], per_page: 10)
   end
 
@@ -17,7 +20,7 @@ class DiscussionsController < ApplicationController
       redirect_to forum_path(@forum), notice: 'discussion successfully created!'
     else
 
-  #    @discussions = Discussion.where(forum_id: @forum)
+      @discussions = Discussion.where(forum_id: @forum)
       @discussions = @forum.discussions.paginate(page: params[:page], per_page: 10, order: 'created_at desc')
 
       flash.now[:notice] = 'Discussion could not be saved' 

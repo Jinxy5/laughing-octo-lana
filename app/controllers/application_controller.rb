@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
 			delete_if{ |k, v| v.empty? }
 		end
 	end
+
+
+
+	def no_guests
+		redirect_to root_url unless current_user
+	end
 end

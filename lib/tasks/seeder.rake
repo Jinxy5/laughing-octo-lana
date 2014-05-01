@@ -4,56 +4,34 @@ namespace :seeder do
 
 		task roles: :environment do
 
-#			Role.connection.execute('ALTER SEQUENCE roles_id_seq RESART WITH 1') if !Role.exists? 
+			Role.delete_all
+			Role.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 
 			roles = ['potential', 'admin', 'rider', 'midweek', 'coordinator']
 
-			puts '==================================='
-
-			puts 'Created: '
 
 			roles.each_with_index do |role, index|
-
-				User.create(user_name: Faker::Name.first_name, email: Faker::Internet.email, password: 'awesomepassword', password_confirmation: 'awesomepassword' )
-
-				puts '	' + index.to_s + ' ' + role
-
+				Role.create(role: role)
 			end
 
-			puts '==================================='
 		end
 
-		task create_forums: :environment do
+		task forums: :environment do
 
-			Role.delete_all
+			Forum.delete_all
+			Forum.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 
-			roles = ['potential', 'admin', 'blood', 'milk', 'organiser']
-
-			roles.each do |role|
-				Role.create( role: role )
-
-				puts 'created ' + role
-			end
-
-			puts '-----'
-
-			Forum.delete_all	
-
-			forums = [{name: 'rider', description: 'talk about blood', role: 'rider' }, 
-					  {name: 'midweek', description: 'talk about milk', role: 'midweek' },  
-					  {name: 'admin', description: 'talk about being an admin', role: 'admin' }, 
-					  {name: 'coordinator', description: 'talk about being an organiser', role: 'coordinator' }]
+			forums = [{name: 'Rider', description: 'talk about matters concerning being a rider', role: 'rider' }, 
+					  {name: 'Midweek', description: 'talk about matters concerning being a midweeker', role: 'midweek' },  
+					  {name: 'Admin', description: 'talk about matters concerning being an admin', role: 'admin' }, 
+					  {name: 'Coordinator', description: 'talk about being a coordinator', role: 'coordinator' }]
 
 			forums.each do |forum|
 
 				Forum.create( name: forum[:name], description: forum[:description] )
-
-				puts 'created ' + forum[:name]
 				
-				forum_instance = Forum.find_by(name: forum[:name])
-
-				forum_instance.allow_role( forum[:name] )
-				#forum.
+				forum_instance = Forum.last
+				forum_instance.allow_role( forum[:role] )
 
 			end
 		end

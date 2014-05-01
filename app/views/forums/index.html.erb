@@ -84,7 +84,7 @@
           <p>
               <% if forum.last_discourse %>
     
-                <dfn>Last Discussion</dfn> by <%= link_to forum.last_discourse.user.user_name, user_path(forum.last_discourse.user)  %> <%= link_to forum_discussion_path(forum, forum.last_discourse) do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
+                <dfn>Last Discussion</dfn> by <%#= link_to forum.last_discourse.user.user_name, user_path(forum.last_discourse.user)  %> <%= link_to forum_discussion_path(forum, forum.last_discourse) do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
 
                 <% last_discourse_time = forum.last_discourse.created_at %>
                 <%= last_discourse_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words( last_discourse_time ) %> ago ) 

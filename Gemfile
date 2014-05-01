@@ -33,6 +33,8 @@ gem 'draper'
 gem 'puma'
 gem 'state_machine'
 gem 'sidekiq'
+gem 'redis'
+gem 'redis-namespace'
 gem 'email_spec'
 
 gem 'rubocop'

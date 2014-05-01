@@ -1,6 +1,8 @@
 class ForumsController < ApplicationController
   before_action :set_forum, only: [:show, :edit, :update, :destroy]
   before_action :check_role, except: [:index]
+  
+  before_action :no_guests
 
   # GET /forums
   # GET /forums.json

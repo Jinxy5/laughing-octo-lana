@@ -2,6 +2,8 @@ class RepliesController < ApplicationController
   before_action :set_forum, only: [:create]
   before_action :set_discussion, only: [:create]
   
+  before_action :no_guests
+  
   def create
 
 
@@ -10,8 +12,12 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @reply.save
-
+        
+        @reply.discussion.iterate_reply_count
+    
+        ap 'whurt (from controller)?'
         @discussion.add_follower(current_user)
+
         @discussion.notify_all_users(@reply, @discussion, @forum)
 
         format.html { redirect_to forum_discussion_path(@forum, @discussion), notice: "Your the discussion #{@discussion.name} was successfully created." }
