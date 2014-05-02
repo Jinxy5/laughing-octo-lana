@@ -33,7 +33,7 @@ gem 'draper'
 gem 'puma'
 gem 'state_machine'
 gem 'sidekiq'
-gem 'redis'
+gem 'redis' # sudo apt-get install redis-server
 gem 'redis-namespace'
 gem 'email_spec'
 

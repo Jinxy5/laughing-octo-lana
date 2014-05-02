@@ -227,7 +227,9 @@ class User < ActiveRecord::Base
 	end
 
 
-
+	def as
+		
+	end
 
 
 

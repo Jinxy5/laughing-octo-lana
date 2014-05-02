@@ -5,12 +5,17 @@ class Forum < ActiveRecord::Base
 
 	has_many :discussions
 
-
 	has_many :posts, through: :discussions
 
 	has_many :allowed_roles
 	has_many :roles, through: :allowed_roles
 
+	after_create :set_counters_to_zero
+
+	def set_counters_to_zero
+		self.update_attributes(discussion_count: 0)
+		self.update_attributes(reply_count: 0)
+	end
 
 
 	def most_popular_discourse 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140501084713) do
+ActiveRecord::Schema.define(version: 20140502164841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20140501084713) do
     t.string   "author_name"
     t.integer  "reply_count"
     t.integer  "follower_count"
+    t.integer  "view_count"
+    t.integer  "last_reply_id"
   end
 
   create_table "events", force: true do |t|
@@ -94,6 +96,11 @@ ActiveRecord::Schema.define(version: 20140501084713) do
     t.datetime "updated_at"
     t.string   "description"
     t.string   "author_name"
+    t.integer  "discussion_count"
+    t.integer  "replies_count"
+    t.integer  "reply_count"
+    t.integer  "last_reply_id"
+    t.integer  "last_discussion_id"
   end
 
   create_table "images", force: true do |t|

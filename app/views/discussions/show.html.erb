@@ -5,9 +5,11 @@
 
   <div class="container">
 
+    yaya
 <div class="row">
 <div class="col-md-12">
     
+
 
         <h2><%= @forum.name %></h2>
               <p>&nbsp;</p>
@@ -26,7 +28,7 @@
 
         <p><i class="fa fa-comment"></i> This discussion was created <%= time_ago_in_words(@discussion.created_at) %> ago </p>
         <p><i class="fa fa-compass"></i> <%= pluralize @discussion.follower_count, 'users' %> are following this discussion. <%= link_to 'click here to see who they are', followers_forum_discussion_path(@forum, @discussion)%> <%#= @discussion.decorate_follow_message %> </p>
-        <p><i class="fa fa-eye"></i> <%= "#{@discussion.views} users have seen this discussion" %> </p>
+        <p><i class="fa fa-eye"></i> <%= "#{@discussion.view_count} users have seen this discussion" %> </p>
 
         <p>&nbsp;</p>
 

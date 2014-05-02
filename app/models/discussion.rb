@@ -14,11 +14,24 @@ class Discussion < ActiveRecord::Base
 	validates :name, presence: true
 	validates :description, presence: true
 
-	after_create { set_counters_to_zero 
-				 	add_follower(self.user) }
+	after_create { 
+				   set_counters_to_zero 
+				   add_follower(self.user)
+				   iterate_forum_discussion_count 
+				   set_as_last_discussion
+				}
+
+	def set_as_last_discussion
+		self.forum.update_attributes(last_discussion_id: self.id)
+	end
+
+
+	def iterate_forum_discussion_count
+		self.forum.update_attributes( discussion_count: self.forum.discussion_count + 1 )
+	end
 
 	def set_counters_to_zero
-		self.views = 0
+		self.view_count = 0
 		self.reply_count = 0
 		self.follower_count = 0
 	end
@@ -42,11 +55,10 @@ class Discussion < ActiveRecord::Base
 
 	def iterate_view(ip_address, user)
 
-
 		unless self.impressions.exists?(ip_address: ip_address, user_id: user.id) || user.id == op.id
 				
 			self.transaction do 
-				self.update_attributes(views: views + 1 )
+				self.update_attributes(view_count: view_count + 1 )
 				self.impressions.create(ip_address: ip_address, user_id: user.id) 
 			end
 
@@ -56,7 +68,6 @@ class Discussion < ActiveRecord::Base
 
 	def notify_all_users(reply, discussion, forum)
 		self.users.each do |user|
-			ap "ya ya, sending email to #{user.user_name}"
 			DiscussionMailer.delay.new_reply_notification(user, reply, discussion, forum )#.deliver #unless follower.is_current_user?
 		end
 	end

@@ -73,20 +73,22 @@
           </div>
     
           <div class="col-xs-3">
-          <p> <%= forum.discourses.count %> </p>
+          <p> <%= forum.discussion_count %> </p>
           </div>
           
           <div class="col-xs-3">
-          <p> <%= forum.replies.count %> </p>
+          <p> <%= forum.reply_count %> </p>
           </div>
         
           <div class="col-xs-3">
           <p>
-              <% if forum.last_discourse %>
-    
-                <dfn>Last Discussion</dfn> by <%#= link_to forum.last_discourse.user.user_name, user_path(forum.last_discourse.user)  %> <%= link_to forum_discussion_path(forum, forum.last_discourse) do %> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
 
-                <% last_discourse_time = forum.last_discourse.created_at %>
+              <% if forum.last_discussion_id %>
+    
+                <%= link_to forum_discussion_path(forum.id, forum.last_discussion_id) do %> <dfn>Last Discussion</dfn> <span class = 'fa fa-location-arrow'></span> <% end %> <br>
+
+
+                <% last_discourse_time = Discussion.find(forum.last_discussion_id).created_at %>
                 <%= last_discourse_time.strftime(' %d %B %Y ') %> ( <%= time_ago_in_words( last_discourse_time ) %> ago ) 
               <% else %>
 
