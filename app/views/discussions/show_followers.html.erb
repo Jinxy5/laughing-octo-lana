@@ -28,7 +28,7 @@
           <td> <%= link_to "#{follower.user.user_name} #{@discussion.decorate_follower_information(follower.user)}", follower.user.decorate %> </td>         
           <td> 
 
-            <%= helper_follow(current_user)%>
+            <%#= helper_follow(current_user)%>
             <%#= button_to "#{follower.user.decorate.decorate_cheese(@discussion)}", root_url, class: 'btn btn-success btn-xs fleft' %>
           </td> 
       </tr> 

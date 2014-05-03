@@ -96,6 +96,28 @@ class Discussion < ActiveRecord::Base
 
 	end
 
+	def delete_follower(user)
+
+	
+		if self.followers.exists?(user_id: user.id)
+
+			self.transaction do
+				self.update_attributes(follower_count: follower_count - 1)
+					
+
+
+				user = self.followers.find_by(user_id: user.id)
+
+				ap user
+
+				user.delete
+			end
+			
+		end
+
+
+	end
+
 	alias_method :author, :user
 
 	def author_exists?

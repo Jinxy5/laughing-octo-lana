@@ -7,7 +7,7 @@ class RepliesController < ApplicationController
   def create
 
 
-    @reply = @discussion.replies.build(reply_params)
+    @reply = @discussion.replies.new(reply_params)
     @reply.user_id = current_user.id
 
     respond_to do |format|
@@ -15,12 +15,11 @@ class RepliesController < ApplicationController
         
         @reply.discussion.iterate_reply_count
     
-        ap 'whurt (from controller)?'
         @discussion.add_follower(current_user)
 
-        @discussion.notify_all_users(@reply, @discussion, @forum)
+#        @discussion.notify_all_users(@reply, @discussion, @forum)
 
-        format.html { redirect_to forum_discussion_path(@forum, @discussion), notice: "Your the discussion #{@discussion.name} was successfully created." }
+        format.html { redirect_to forum_discussion_path(@forum, @discussion), notice: "Your reply to discussion #{@discussion.name} was successfully created." }
         format.json { render action: 'show', status: :created, location: @discussion }
       else
         format.html { redirect_to forum_discussion_path(@forum, @discussion), notice: 'Your reply could not be saved' }

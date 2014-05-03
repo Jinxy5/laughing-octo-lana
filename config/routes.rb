@@ -21,7 +21,9 @@ Bloodbikeswales::Application.routes.draw do
   resources :forums do
     resources :discussions do
       member do
-        get 'followers', to: 'discussions#show_followers', as: :followers
+        get 'followers', to: 'discussions#show_followers', as: :show_followers
+        get 'create_follower', to: 'discussions#create_follower', as: :create_follower
+        get 'delete_follower', to: 'discussions#delete_follower', as: :delete_follower
       end
 
       resources :replies
