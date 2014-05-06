@@ -1,0 +1,21 @@
+---
+pid: 27655
+config: !ruby/object:Puma::Configuration
+  options:
+    :min_threads: 0
+    :max_threads: 20
+    :quiet: false
+    :debug: false
+    :binds:
+    - unix:///home/julian/Desktop/bloodbikeswales/tmp/puma/socket/puma.sock
+    :workers: 0
+    :daemon: true
+    :worker_directory: /home/julian/Desktop/bloodbikeswales
+    :config_file: config/puma.rb
+    :state: /home/julian/Desktop/bloodbikeswales/tmp/puma/pid/puma.state
+    :mode: :http
+    :worker_timeout: 60
+    :environment: production
+    :drain_on_shutdown: true
+    :pidfile: /home/julian/Desktop/bloodbikeswales/tmp/puma/pid/puma.pid
+    :control_auth_token: b0ce1a9cfc94fadefe2c6a94b06f0

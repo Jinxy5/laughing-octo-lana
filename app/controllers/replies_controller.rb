@@ -17,7 +17,7 @@ class RepliesController < ApplicationController
     
         @discussion.add_follower(current_user)
 
-#        @discussion.notify_all_users(@reply, @discussion, @forum)
+        @discussion.notify_all_users(@reply, @discussion, @forum)
 
         format.html { redirect_to forum_discussion_path(@forum, @discussion), notice: "Your reply to discussion #{@discussion.name} was successfully created." }
         format.json { render action: 'show', status: :created, location: @discussion }

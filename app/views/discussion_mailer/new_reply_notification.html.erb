@@ -1,0 +1,5 @@
+Hi, <%= @user.user_name %>! <%= @reply_user.user_name %> has just replied to the discussion <br>
+	<b> <%= @discussion.name %> </b> <br>
+They have said: <br>
+	<b> <%= @reply.description %> </b> <br>
+<%= link_to 'To reply to them, click here to view the whole discussion!', forum_discussion_url(@forum.id, @discussion.id)%>

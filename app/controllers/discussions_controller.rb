@@ -6,6 +6,7 @@ class DiscussionsController < ApplicationController
   
   before_action :no_guests
   
+  before_action :check_role
   def show
     @discussion.iterate_view(request.remote_ip, current_user)
     @replies = @discussion.replies.paginate(page: params[:page], per_page: 10)
@@ -54,6 +55,14 @@ class DiscussionsController < ApplicationController
 
   private
     
+    def check_role
+     
+      unless @forum.user_allowed?(current_user) || current_user.is_admin?
+        redirect_to forums_path, notice: 'Sorry! You cannot enter this discussion! This forum is for users with a type of: ' + @forum.list_roles + ' and your roles are: ' + current_user.list_roles
+      end
+
+    end
+
     def create_reply
       @reply = Reply.new  
     end

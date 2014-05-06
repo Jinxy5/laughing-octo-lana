@@ -10,8 +10,8 @@
 <p><a href="#"><i class="fa fa-file fa-fw"></i> PAGES</a></p>
 <p><a href="#"><i class="fa fa-gift fa-fw"></i> DONATIONS</a></p>
 <p><a href="#"><i class="fa fa-camera-retro fa-fw"></i> MEDIA</a></p>
-<p><a href="cp-users.html"><i class="fa fa-user fa-fw"></i> USERS</a></p>
-<p><a href="#"><i class="fa fa-sign-out fa-fw"></i>  SIGN OUT</a></p>
+<p> <%= link_to panel_show_users_path do %> <i class="fa fa-user fa-fw"></i> USERS</a> <% end %> </p>
+<p> <%= link_to sign_out_path, method: :delete do %> <i class="fa fa-sign-out fa-fw"></i>  SIGN OUT</a> <% end %> </p>
 <p>&nbsp;</p>
 
 <span class="hidden-xs"><div class="controlsidebarhidden">

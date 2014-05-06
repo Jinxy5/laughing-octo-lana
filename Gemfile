@@ -34,9 +34,8 @@ gem 'puma'
 gem 'state_machine'
 gem 'sidekiq'
 gem 'redis' # sudo apt-get install redis-server
-gem 'redis-namespace'
 gem 'email_spec'
-
+gem 'cancan'
 gem 'rubocop'
 gem 'simplecov', '~> 0.7.1'
 gem 'will_paginate'

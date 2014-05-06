@@ -9,6 +9,7 @@ class DiscussionMailer < ActionMailer::Base
   def new_reply_notification(user, reply, discussion, forum)
     @user = user
     @reply = reply
+    @reply_user = @reply.user
     @forum = forum
     @discussion = discussion
 

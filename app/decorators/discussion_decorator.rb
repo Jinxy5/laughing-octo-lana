@@ -35,6 +35,7 @@ class DiscussionDecorator < ApplicationDecorator
 
   def decorate_follow_message
    	contextual_custom(
+                      owner_message: 'You are following your own discussion',
                       visitor_message: is_follower? ? h.link_to('Stop following this discussion', h.delete_follower_forum_discussion_path(model.forum, model)) : h.link_to('Follow this discussion', h.create_follower_forum_discussion_path(model.forum, model)),
                       admin_message: is_follower? ? h.link_to('Stop following this discussion', h.delete_follower_forum_discussion_path(model.forum, model)) : h.link_to('Follow this discussion', h.create_follower_forum_discussion_path(model.forum, model))
                       )
