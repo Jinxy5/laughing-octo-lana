@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     respond_to do |format|
 
 #      if simple_captcha_valid?
-        if simple_captcha_valid? && @user.save
+        if @user.save
         
           sign_in @user
           @user.send_register_email
