@@ -31,9 +31,37 @@ gem 'rmagick'# sudo apt-get install libmagickwand-dev
 gem 'carrierwave'
 gem 'draper'
 gem 'puma'
+	# start 
+	# pumactl -F config/puma.rb start
+	# stop
+	# pumactl -F config/puma.rb stop
 gem 'state_machine'
+
 gem 'sidekiq'
-gem 'redis' # sudo apt-get install redis-server
+	# start sidekiq as a deamon: 
+	# 	sidekiq -dl log/sidekiq.log
+	# stop sidekiq:
+	#   ! Not actually sure how to stop the damn thing. However, something along these lines:
+	# 	ps -ef | grep sidekiq
+	#   sidekiqctl stop <pid>
+
+gem 'redis' 
+	# install:
+	# 	sudo apt-get install redis-server
+	#
+	#
+	# start
+	# 	sudo redis-server config/redis.conf
+    #
+    # stop
+    # 	redis-ctl shutdown 
+    #
+    #
+    # log
+    # 	redis-ctl monitor 
+    # 	sudo tail -f /var/log/redis/redis-server.log
+
+
 gem 'email_spec'
 gem 'cancan'
 gem 'rubocop'
@@ -41,6 +69,8 @@ gem 'simplecov', '~> 0.7.1'
 gem 'will_paginate'
 #gem 'negative_captcha'
 gem 'simple_captcha2', require: 'simple_captcha'
+
+
 #gem 'lazy_columns'
 #gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 

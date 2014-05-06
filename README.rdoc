@@ -1,28 +1,24 @@
-== README
+== Start
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+sidekiq -dl log/sidekiq.log
+sudo redis-server config/redis.conf
+pumactl -F config/puma.rb start
 
-Things you may want to cover:
+== Stop
 
-* Ruby version
+sidekiq - don't really know. need to search for the pid. Pretty damn annoying to be honest. 
+redis-ctl shutdown
+pumactl -F config/puma.rb start
 
-* System dependencies
+== Debug
 
-* Configuration
+tail -f the following:
 
-* Database creation
+log/production.development
+log/production.log
+log/sidekiq.log
 
-* Database initialization
+/var/log/redis/redis-server.log
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+-
+redis-ctl monitor 
