@@ -1,5 +1,5 @@
 ---
-pid: 27655
+pid: 37697
 config: !ruby/object:Puma::Configuration
   options:
     :min_threads: 0
@@ -18,4 +18,4 @@ config: !ruby/object:Puma::Configuration
     :environment: production
     :drain_on_shutdown: true
     :pidfile: /home/julian/Desktop/bloodbikeswales/tmp/puma/pid/puma.pid
-    :control_auth_token: b0ce1a9cfc94fadefe2c6a94b06f0
+    :control_auth_token: 80217f17f26ec8ba6a9821c51b322fa

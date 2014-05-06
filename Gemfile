@@ -38,6 +38,7 @@ gem 'puma'
 gem 'state_machine'
 
 gem 'sidekiq'
+	# sidekiq -C config/sidekiq.yml
 	# start sidekiq as a deamon: 
 	# 	sidekiq -dl log/sidekiq.log
 	# stop sidekiq:
@@ -46,6 +47,7 @@ gem 'sidekiq'
 	#   sidekiqctl stop <pid>
 
 gem 'redis' 
+
 	# install:
 	# 	sudo apt-get install redis-server
 	#
