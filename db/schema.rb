@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502164841) do
+ActiveRecord::Schema.define(version: 20140506200328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140502164841) do
     t.integer  "forum_id"
     t.integer  "user_id"
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "views"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 20140502164841) do
     t.integer  "user_id"
     t.integer  "discussion_id"
     t.boolean  "deleted"
-    t.string   "description"
+    t.text     "description"
     t.integer  "views"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 20140502164841) do
 
   create_table "stories", force: true do |t|
     t.integer  "user_id"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
