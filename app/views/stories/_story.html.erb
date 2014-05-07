@@ -5,7 +5,7 @@
 		</span>
 		<div class="col-sm-8">
 		<h4> <%= story.title %></h4>
-		<p> <%= story.description %></p>
+		<p> <%= truncate story.description, length: 300 %></p>
 
 		<%= link_to 'read more', story_path(story) %>
 

@@ -8,6 +8,7 @@ Bloodbikeswales::Application.routes.draw do
   get 'sponsors', to: 'splash#sponsors', as: :splash_sponsors
   get 'contact_list', to: 'splash#contact', as: :splash_contact
   get 'links', to: 'splash#links', as: :splash_links
+  get 'fundraising', to: 'splash#fundraising', as: :splash_fundraising
 
   post 'user/:user_id/avatar', to: 'images#create', as: :user_avatar_create
 

@@ -56,8 +56,15 @@
           <div class="container">
             <div class="navbar-header">
                 <button class="navbar-toggle" data-target=".navbar-collapse"
-                data-toggle="collapse" type="button"><span class=
-                "sr-only">Toggle navigation</span></button> 
+                data-toggle="collapse" type="button">
+
+                    <span class="sr-only">Toggle navigation</span>
+                    
+                    <span class = 'icon-bar'></span>
+                    <span class = 'icon-bar'></span>
+                    <span class = 'icon-bar'></span>        
+                
+                </button> 
 
                 <%= link_to user_path(current_user), class: 'navbar-brand' do %>
                     <%= show_uploaded_image(current_user.avatar, width: 50, height: 50, class: '') %>
@@ -87,26 +94,33 @@
                     <li> <%= link_to 'Control Panel', panel_show_users_path %></li>
                     <% end %>
 
-                    <li><span class="visible-xs"><a href="aboutus.php">About
-                    Us</a></span></li>
+                    <li class = 'visible-xs'>
+                        <%= link_to 'About Us', splash_about_path %>
+                    </li>
 
-                    <li><span class="visible-xs"><a href=
-                    "singlepage.php">News</a></span></li>
+                    <li class = 'visible-xs'>
+                        <%= link_to 'News', splash_news_path %>
+                    </li>
+<%
+=begin %>
+                    <li class = 'visible-xs'>
+                        <a href="underconstruction.php">Events</a>
+                    </li>
 
-                    <li><span class="visible-xs"><a href=
-                    "underconstruction.php">Events</a></span></li>
+                    <li class = 'visible-xs'>
+                        <a href="underconstruction.php">Sponsors</a>
+                    </li>
 
-                    <li><span class="visible-xs"><a href=
-                    "underconstruction.php">Sponsors</a></span></li>
 
-                    <li><span class="visible-xs"><a href=
-                    "underconstruction.php">Calendar</a></span></li>
+                    <li class = 'visible-xs'>
+                        <a href="underconstruction.php">Contact us</a>
+                    </li>
 
-                    <li><span class="visible-xs"><a href=
-                    "underconstruction.php">Contact us</a></span></li>
-
-                    <li><span class="visible-xs"><a href=
-                    "links.php">Links</a></span></li>
+<% 
+=end %>         
+                    <li class = 'visible-xs'>
+                        <%= link_to 'Links', splash_links_path %>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
