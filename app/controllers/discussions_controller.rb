@@ -1,5 +1,5 @@
 class DiscussionsController < ApplicationController
-  before_action :set_forum, only: [:create, :show, :show_followers]
+  before_action :set_forum, only: [:create, :show, :show_followers, :create_follower, :delete_follower]
   before_action :create_reply, only: [:show]
 
   before_action :set_discussion, only: [:show, :show_followers, :create_follower, :delete_follower]

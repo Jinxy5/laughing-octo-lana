@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20140506200328) do
     t.datetime "updated_at"
   end
 
+  create_table "cal_events", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "startdate"
+    t.datetime "enddate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "causes", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -138,6 +147,14 @@ ActiveRecord::Schema.define(version: 20140506200328) do
     t.string   "title"
     t.text     "content"
     t.string   "image_path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "records", force: true do |t|
+    t.integer  "user_id"
+    t.text     "title"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
