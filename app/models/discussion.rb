@@ -68,19 +68,9 @@ class Discussion < ActiveRecord::Base
 
 	def notify_all_users(reply, discussion, forum)
 		self.users.each do |user|
-#			ap "sent email to #{user.user_name}, #{user.email}"
-#			ap "reply owner is #{reply.user.user_name}"
 
-#			logger.info "sent email to #{user.user_name}, #{user.email}"
-			ap 'user:'
-			ap user.inspect
-			ap '---'
 
-			ap 'reply:'
-			ap reply.user.inspect 
-			ap '---'
-
-			DiscussionMailer.delay.new_reply_notification(user, reply, discussion, forum ) unless reply.user == user #.deliver 
+#			DiscussionMailer.delay.new_reply_notification(user, reply, discussion, forum ) unless reply.user == user #.deliver 
 
 			#unless follower.is_current_user?
 		end
