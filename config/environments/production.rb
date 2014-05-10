@@ -1,6 +1,6 @@
 Bloodbikeswales::Application.configure do
   # mailgun
-  config.action_mailer.default_url_options = { host: 'localhost:3000'}
+  config.action_mailer.default_url_options = { host: 'http://www.bloodbikeswales.org.uk/links' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
