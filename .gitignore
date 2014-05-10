@@ -9,6 +9,7 @@
 dump.rdb
 Gemfile.lock
 /private/
+/public/
 /public/assets/
 /public/private/
 /public/uploads/
