@@ -10,7 +10,10 @@ module Bloodbikeswales
   class Application < Rails::Application
 
     config.assets.digest = true
-    config.force_ssl = true
+    config.force_ssl = false
+    # results in redirect loop if set to true and nginx isn't configured properly!
+
+    
     I18n.enforce_available_locales = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
