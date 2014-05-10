@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   pool: 5
   encoding: UTF-8
-  database: bbw_development # should be bbw_development
+  database: bbw_development
   host: localhost
   username: postgres
   password: postgres

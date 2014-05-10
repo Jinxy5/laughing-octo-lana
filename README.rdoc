@@ -1,7 +1,9 @@
 == Start
 
-sidekiq -dl log/sidekiq.log
 sudo redis-server config/redis.conf
+
+sidekiq -dl log/sidekiq.log -e production
+
 pumactl -F config/puma.rb start
 
 == Stop
