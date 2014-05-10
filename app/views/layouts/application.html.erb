@@ -55,7 +55,13 @@
 
 
         <% if signed_in? %>
-            <div class="navbar navbar-default navbar-fixed-top">
+
+      
+
+
+
+
+            <div class="navbar navbar-inverse navbar-fixed-top">
 
           <div class="container">
             <div class="navbar-header">
@@ -82,13 +88,12 @@
                 <ul class="nav navbar-nav">
                     <li><a href="indexloggedin.php"><span class=
                     "visible-xs">Home</span></a></li>
-
-                    <li><a href="/users/<%= current_user.id %>">Your Details</a></li>
+<!--
+                    <li><a href="/users/<%#= current_user.id %>">Your Details</a></li> -->
 
                     <li><a href="/forums">Forums</a></li>
 
-                    <li><a href="/members_contact_list">Members Contact
-                    List</a></li>
+                    <li><a href="/members_contact_list">Members Contact</a></li>
 
                     <% unless current_user.is_only_potential?  %>
                     <li> <%= link_to 'Submit Story', new_story_path %></li>
@@ -194,14 +199,27 @@
 
             <% end %>
 
-            <div class="mainnav">
-                <ul class="list-inline hidden-xs navlist">
-                    <li> <%= link_to 'HOME', root_path %> </li>
 
-                    <li> <%= link_to 'ABOUT US', splash_about_path %> </a></li>
 
-                    <li> <%= link_to 'NEWS', splash_news_path %> </a></li>
+<div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+        <button class="navbar-toggle" data-target=".navbar-collapse"
+                data-toggle="collapse" type="button">
 
+                    <span class="sr-only">Toggle navigation</span>
+                    
+                    <span class = 'icon-bar'></span>
+                    <span class = 'icon-bar'></span>
+                    <span class = 'icon-bar'></span>        
+                
+                </button> 
+
+                </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li> <%= link_to 'HOME', root_path %> </li>
+                <li> <%= link_to 'ABOUT US', splash_about_path %> </li>
+                <li> <%= link_to 'NEWS', splash_news_path %> </li>
 <!--
                     <li> <%#= link_to 'EVENTS', splash_events_path %></li>
 
@@ -209,10 +227,44 @@
 
                     <li> <%#= link_to 'CONTACT', splash_contact_path %></li>
 -->
-                    <li> <%= link_to 'Links', splash_links_path %></li>
+                <li> <%= link_to 'LINKS', splash_links_path %></li>
+               
+               
+                
+            </ul>
+            
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--            <div class="mainnav">
+                <ul class="list-inline hidden-xs navlist">
+                    <li> <%= link_to 'HOME', root_path %> </li>
+
+                    <li> <%= link_to 'ABOUT US', splash_about_path %> </a></li>
+
+                    <li> <%= link_to 'NEWS', splash_news_path %> </a></li>
+
+
+                    <li> <%#= link_to 'EVENTS', splash_events_path %></li>
+
+                    <li> <%#= link_to 'SPONSORS', splash_sponsors_path %></li>
+
+                    <li> <%#= link_to 'CONTACT', splash_contact_path %></li>
+
+                    <li> <%= link_to 'LINKS', splash_links_path %></li>
 
                 </ul>
-            </div>
+            </div>-->
 
         </div>
 
