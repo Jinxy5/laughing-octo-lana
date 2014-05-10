@@ -19,6 +19,7 @@
 dump.rdb
 
 tmp/cache/*
+tmp/puma/pid/*
 
 Gemfile.lock
 
