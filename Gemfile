@@ -85,7 +85,7 @@ gem 'ruby'
 gem 'bcrypt-ruby'
 
 
-gem 'therubyracer', platforms: :ruby 
+# gem 'therubyracer', platforms: :ruby 
 
 # Use unicorn as the app server
 # gem 'unicorn'

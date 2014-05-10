@@ -215,12 +215,14 @@ a:focus {
 /*	background-image: url(); */
 	height: 500px;
 	margin-bottom: 20px;
+	position: relative;
+
 }
 .ghostedbox {
 	padding-left: 20px;
-	padding-right: 0px;
-	position: relative;
-	top: 339px;
+	padding-right: 20px;
+	position: absolute;
+	bottom: 0px;
 	padding-top: 14px;
 	padding-bottom: 16px;
 	background-image: url(<%= asset_path '80white.png' %>);
