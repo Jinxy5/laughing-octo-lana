@@ -86,7 +86,14 @@
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+<<<<<<< HEAD
+                    <li><a href="indexloggedin.php"><span class=
+                    "visible-xs">Home</span></a></li>
+<!--
+                    <li><a href="/users/<%#= current_user.id %>">Your Details</a></li> -->
+=======
                     <li> <%= link_to 'Home', root_path %> </li>
+>>>>>>> cb09f78b175f7d70271c7b333800135e9015b3bb
 
                     <li><a href="/forums">Forums</a></li>
 
