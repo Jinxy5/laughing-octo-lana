@@ -87,7 +87,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                    <li><%= link_to 'Home', root_path %></li>
+                    <li class ='visible-xs'><%= link_to 'Home', root_path %></li>
 
                     <li><a href="/forums">Forums</a></li>
 
@@ -171,28 +171,36 @@
                     <% if !signed_in? %>
 
                         <div class="col-xs-12 col-sm-4 col-md-3">
-                            <div class="btn-group btn-group-justified">
-                                <div class="btn-group">
+                                <div class="btn-block">
                                     
-                                    <%= button_to 'Join Today', sign_up_path, class: 'btn btn-success' , method: :get %>
+                                    <%= button_to 'Join Today', sign_up_path, class: 'btn btn-success btn-block' , method: :get %>
 
                                 </div>
 
-                                <div class="btn-group">
+                                <div class="btn-block">
 
-                                      <%= button_to 'Log In', sign_in_path, class: 'btn btn-warning' , method: :get %>
+                                      <%= button_to 'Log In', sign_in_path, class: 'btn btn-danger btn-block' , method: :get %>
 
                                 </div>
 
+                                <div class="btn-block">
 
 
+                                    <%= button_to 'Donate Now!', 'https://mydonate.bt.com/charities/bloodbikeswales', class: 'btn btn-warning btn-block' , method: :get %>
+                                </div>
 
-                            </div>
                         </div>
-                    <% end %>
+                   
+ <% end %>
+                    <% if signed_in? %>
 
-                    <%= button_to 'Donate Now!', 'https://mydonate.bt.com/charities/bloodbikeswales', class: 'btn btn-info' , method: :get %>
 
+<div class="col-xs-4 col-sm-4 col-md-3">
+                                    <%= button_to 'Donate Now!', 'https://mydonate.bt.com/charities/bloodbikeswales', class: 'btn btn-warning left' , method: :get %>
+
+</div>
+ 
+                        <% end %>
                 </div>
 
 
@@ -244,10 +252,18 @@
 -->
                 <li> <%= link_to 'LINKS', splash_links_path %></li>
             
-                <li class = 'social'>
-                    <a class="fb show-xs" href="https://www.facebook.com/bloodbikeswales"></a>
-                    <a class="tw show-xs" href="https://twitter.com/bloodbikeswales"></a>
-                </li>     
+                <li class = 'social hidden-xs'>
+                    <a class="fb" href="https://www.facebook.com/bloodbikeswales"></a>
+                    <a class="tw" href="https://twitter.com/bloodbikeswales"></a>
+                </li>  
+
+                <li class = 'visible-xs'>
+                        <%= link_to 'FACEBOOK', 'https://www.facebook.com/bloodbikeswales' %>
+                    </li>
+
+                    <li class = 'visible-xs'>
+                        <%= link_to 'TWITTER', 'https://twitter.com/bloodbikeswales' %>
+                    </li>   
                
                
                 

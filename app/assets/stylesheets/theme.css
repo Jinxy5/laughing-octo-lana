@@ -127,12 +127,12 @@
 }
 .btn-danger {
 
-  border-color: #bc101c ;
-  background-color: #bc101c;
+  border-color: #d9534f ;
+  background-color: #d9534f;
 }
 .btn-danger:hover,
 .btn-danger:focus {
-  background-color: #bc101c;
+  background-color: #d2322d;
   background-position: 0 -15px;
 }
 .btn-danger:active,
