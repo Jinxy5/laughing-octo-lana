@@ -8,13 +8,12 @@
 *.sock
 dump.rdb
 Gemfile.lock
-/private/
-/public/
-/public/assets/
-/public/private/
-/public/uploads/
-/tmp/cache/
 
-/tmp/cache/assets/development/sprockets/
 
-/tmp/puma/pid/
+public/assets/*
+public/private/*
+public/uploads/*
+
+tmp/cache/*
+
+/tmp/puma/pid/*
