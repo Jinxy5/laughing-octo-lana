@@ -32,10 +32,22 @@
     <link href=
     "http://fnt.webink.com/wfs/webink.css/?project=FA61E485-DDEF-449C-9AF0-309FF0ED3370&amp;fonts=58DEFEBD-4A55-477B-3C13-525C6AEBDD7A:f=ProximaNova-Regular,C88A28DF-0112-63D9-25D2-A4EA08DAF75B:f=ProximaNova-Light,D8F30418-0E92-EBB4-6408-D220574EF53E:f=ProximaNova-Extrabld,382B4521-6228-4C38-41BC-3DE66C7C910A:f=ProximaNova-Bold"
     rel="stylesheet" type="text/css">
-        <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %><%= javascript_include_tag "application", "data-turbolinks-track" => true %><%= csrf_meta_tags %>
+
+
+
+
+        <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
+        <%= javascript_include_tag "application", "data-turbolinks-track" => true %><%= csrf_meta_tags %>
         
   <meta name = 'viewport' content = 'width=device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable= no'>
 
+<!-- flexslider -->
+<script type="text/javascript" charset="utf-8">
+  $(window).load(function() {
+    $('.flexslider').flexslider({"controlNav": false, "prevText":"", "nextText":""});
+  });
+</script>
 </head>
 
 <body>

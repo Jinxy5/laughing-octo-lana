@@ -37,26 +37,41 @@
 </div>
 
 
+
+
 <div class="row">
 	<div class="col-md-8">
 
-		<div class="flex-slider" style=' background-image: url(<%= asset_path 'RSCN0524.jpg' %>)  '>
+		<div class="flexslider"> 
 			<div class="titlebox">
-				<h2><span class="left">Notable News</span> 
+				<h2>Latest News <span class="right"><small><%= link_to 'See all Stories', stories_path %></small></span> </h2>
+				</div>
 <!--
 				<span class="right">
 					<leftarrow><i class="fa fa-chevron-left"></i></leftarrow>
 					<rightarrow><i class="fa fa-chevron-right"></i></rightarrow>
 				</span>
 -->
-				</h2>
-				</div>
-				<div class="ghostedbox">
-					<h4> Blood Bikes Wales volunteer hospital missions may spread </h4>
-					<p> Volunteer bikers who deliver emergency blood, donor milk and medical equipment for a Welsh health board could extend their work to other parts of Wales. </p>
+				
 
-					<%= link_to 'See all Stories', stories_path %>
-				</div>
+				<ul class="slides">
+    <li>
+      <%= image_tag "kitchen_adventurer_lemon.jpg" %>
+      <p class="flex-caption">Blood Bikes Wales volunteer hospital missions may spread
+      	Volunteer bikers who deliver emergency blood, donor milk and medical equipment for a Welsh health board could extend their work to other parts of Wales. </p>
+    </li>
+    <li>
+      <%= image_tag "kitchen_adventurer_donut.jpg" %>
+      <p class="flex-caption">This is another caption a longer caption even Volunteer bikers who deliver emergency blood, donor milk and medical equipment for a Welsh health board
+      	Volunteer bikers who deliver emergency blood, donor milk and medical equipment for a Welsh health board could extend their work to other parts of Wales. </p>
+    </li>
+    <li>
+      <%= image_tag "kitchen_adventurer_caramel.jpg" %>
+      <p class="flex-caption">This is another caption 
+      	Volunteer bikers who deliver emergency blood, donor milk and medical equipment for a Welsh health board could extend their work to other parts of Wales. </p>
+    </li>
+  </ul>
+				
 	
 			</div>
 
