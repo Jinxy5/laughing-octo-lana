@@ -6,7 +6,7 @@ class AvatarUploader < BaseUploader
   
   storage :file
 
-  process resize_to_fit: [75, 75]
+  process resize_to_fill: [200, 200]
   process convert: 'gif'
      
 
