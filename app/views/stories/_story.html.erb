@@ -1,20 +1,22 @@
+
 <div class="row">
+ 	
 		<span class="hidden-xs">
+			<div class="col-sm-3"> 
+				<%= show_uploaded_image(story.photo, width: 800, height: 504, class: 'img-responsive newsthumbimage', for: :story ) %> 
 
-
-		<div class="col-sm-3"> 
-		</div>
+			</div>
 		</span>
+
 		<div class="col-sm-8">
-		<h4> <%= story.title %></h4>
+
+			<h4> <%= story.title %></h4>
+
+			<p> <%= truncate story.description, length: 300 %></p>
 
 
-		<p> <%= truncate story.description, length: 300 %></p>
-
-		<%= show_uploaded_image(story.photo, width: 800, height: 504, class: 'img-responsive newsthumbimage', for: :story ) %> 
-
-
-		<%= link_to 'read more', story_path(story) %>
+			<%= link_to 'read more', story_path(story) %>
 
 		</div>
-	</div>
+
+</div>
