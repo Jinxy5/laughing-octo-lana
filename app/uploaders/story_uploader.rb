@@ -4,7 +4,17 @@ class StoryUploader < BaseUploader
   
   storage :file
 
-  process resize_to_fit: [800, 504]
+ # version :thumb do
+#  scope :approved, -> { where( state: 'approved') }
+ 
+  process resize_to_fill: [800, 504]
+ # end
+
+ # version :full do
+    
+ # end
+
+  
   process convert: 'jpg'
      
 
@@ -15,6 +25,9 @@ class StoryUploader < BaseUploader
 
 
 
+  def default_url
+    '/awdaw.jpg'
+  end
 
   def filename
     random_string + '.jpg'

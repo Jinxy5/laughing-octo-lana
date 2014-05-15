@@ -15,8 +15,8 @@
 
 
 <li>
-	<a href="/news">
-		<%= image_tag story.photo %>
+	<%= link_to story_path(story) do %>
+		<%= image_tag story.photo.file_name %>
 		<p class="flex-caption"> <%= story.title %> </p>
-	</a>
+	<% end %>
 </li>

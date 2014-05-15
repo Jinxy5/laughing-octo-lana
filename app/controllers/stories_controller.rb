@@ -28,10 +28,11 @@ class StoriesController < ApplicationController
     @story = Story.new(new_params)
     @story.user_id = current_user.id
 
-    ap "-----------------------------------------------------"
-    ap story_params[:file_name] #<ActionDispatch::Http::UploadedFile:0x00000003c10630 @tempfile=#<Tempfile:/tmp/RackMultipart20140515-14377-1prg2zp>, @original_filename="Screenshot from 2014-02-09 08:12:19.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"story[photo]\"; filename=\"Screenshot from 2014-02-09 08:12:19.png\"\r\nContent-Type: image/png\r\n">
-    ap "-----------------------------------------------------"
-
+    if story_params[:file_name]
+      ap true
+    else
+      ap false
+    end
 
     @story.create_photo(file_name: story_params[:file_name] ) #story_params[:file_name])
 

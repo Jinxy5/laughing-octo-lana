@@ -1,7 +1,7 @@
 class SplashController < ApplicationController
 	def index
-		@stories = Story.recent
-		@causes = Cause.recent
+		@stories = Story.recent.approved
+		@causes = Cause.recent#.merge(approved)
 		@events = Event.recent
 	end
 

@@ -14,8 +14,9 @@ class Story < ActiveRecord::Base
 
 
 	scope :recent, -> { order('stories.approve_date ASC').limit(5) }
+	scope :approved, -> { where( state: 'approved') }#{ state: 'approved' }
 
-	scope :approved, -> { where( state: 'approved') }#{ state: 'approved' } 
+	 
 	scope :disapproved, -> { where( state: 'disapproved') }
 
 	state_machine initial: :disapproved do

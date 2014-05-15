@@ -7,7 +7,7 @@
 						<P><strong> <%= @story.user.user_name %> </strong> <%= @story.user.list_roles %> &#8226; <%= @story.created_at.strftime(' %d/%m/%Y') %></p>
 						
 						<%= @story.description %>
-						<%= image_tag 'cause.jpg', class: 'img-responsive newsimage' %>
+						<%= image_tag @story.photo.file_name, class: 'img-responsive newsimage' %>
 					</div>
 <p>&nbsp;</p>
 <!-- AddThis Button BEGIN -->
