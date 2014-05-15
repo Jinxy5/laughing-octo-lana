@@ -1,4 +1,6 @@
 class StoryDecorator < ApplicationDecorator
+ 
+
   def decorate_state
   	ap model
   	case model.state
