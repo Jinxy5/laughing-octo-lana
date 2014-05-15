@@ -11,6 +11,8 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 private/**
+tmp/cache/**
+
 public/uploads/**
 public/assets/**
 **/_notes/**
