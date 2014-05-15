@@ -1,8 +1,8 @@
 <div class="row">
 		<span class="hidden-xs">
+<!--, class: 'img-responsive newsthumbimage' -->
 
-
-		<div class="col-sm-3"> <a href="singlepage.php"> <%= image_tag story.photo.file_name, class: 'img-responsive newsthumbimage' %> </a>
+		<div class="col-sm-3"> <a href="singlepage.php"> <%= show_uploaded_image(story.photo, width: 50, height: 50, class: '', for: :story ) %> </a>
 		</div>
 		</span>
 		<div class="col-sm-8">

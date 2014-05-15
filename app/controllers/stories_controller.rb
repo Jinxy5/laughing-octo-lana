@@ -29,12 +29,12 @@ class StoriesController < ApplicationController
     @story.user_id = current_user.id
 
     if story_params[:file_name]
-      ap true
-    else
-      ap false
+      @story.create_photo(file_name: story_params[:file_name] ) 
+  #  else
+   #   @story.create_photo(file_name: 'fallback.jpg' ) 
     end
 
-    @story.create_photo(file_name: story_params[:file_name] ) #story_params[:file_name])
+    #story_params[:file_name])
 
     if @story.save
       redirect_to root_path, notice: "Thanks! Your story, '#{@story.title}' has been submitted and may be published by an administrator!"

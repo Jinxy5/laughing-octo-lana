@@ -26,7 +26,7 @@ class StoryUploader < BaseUploader
 
 
   def default_url
-    '/awdaw.jpg'
+    '/test.jpg'
   end
 
   def filename
