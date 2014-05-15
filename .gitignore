@@ -10,6 +10,7 @@ Gemfile.lock
 db/*.sqlite3
 log/*.log
 tmp/**/*
+private/**
 public/uploads/**
 public/assets/**
 **/_notes/**
