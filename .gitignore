@@ -13,6 +13,7 @@ tmp/**/*
 private/**
 tmp/cache/**
 
+uploads/**
 public/uploads/**
 public/assets/**
 **/_notes/**
