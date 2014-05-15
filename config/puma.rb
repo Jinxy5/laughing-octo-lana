@@ -9,7 +9,7 @@ pidfile path + "pid/puma.pid"
 state_path path + "pid/puma.state"
 
 stdout_redirect
-"#{path}/log/puma-#{railsenv}.stdout.log"
-"#{path}/log/puma-#{railsenv}.stderr.log"
+"#{path}/log/puma-#{RAILS.env}.stdout.log"
+"#{path}/log/puma-#{RAILS.env}.stderr.log"
 
 bind  "unix://" + path + "socket/puma.sock" # bind needs to be set at the end for logging reasons?
