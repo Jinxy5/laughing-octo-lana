@@ -1,5 +1,6 @@
 class SplashController < ApplicationController
 	def index
+		@stories = Story.recent
 		@causes = Cause.recent
 		@events = Event.recent
 	end

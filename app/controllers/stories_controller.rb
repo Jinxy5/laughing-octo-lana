@@ -17,9 +17,23 @@ class StoriesController < ApplicationController
     @story = Story.new
   end
 
+ 
   def create
-    @story = Story.new(story_params)
+
+    
+  #  photo_params = story_params[:file_name]
+
+    new_params = story_params.except("file_name")
+
+    @story = Story.new(new_params)
     @story.user_id = current_user.id
+
+    ap "-----------------------------------------------------"
+    ap story_params[:file_name] #<ActionDispatch::Http::UploadedFile:0x00000003c10630 @tempfile=#<Tempfile:/tmp/RackMultipart20140515-14377-1prg2zp>, @original_filename="Screenshot from 2014-02-09 08:12:19.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"story[photo]\"; filename=\"Screenshot from 2014-02-09 08:12:19.png\"\r\nContent-Type: image/png\r\n">
+    ap "-----------------------------------------------------"
+
+
+    @story.create_photo(file_name: story_params[:file_name] ) #story_params[:file_name])
 
     if @story.save
       redirect_to root_path, notice: "Thanks! Your story, '#{@story.title}' has been submitted and may be published by an administrator!"
@@ -72,7 +86,7 @@ class StoriesController < ApplicationController
     end
 
     def story_params
-      params.require(:story).permit(:title, :description)
+      params.require(:story).permit(:title, :description, :file_name)
     end
 
     def secure

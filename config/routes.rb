@@ -11,6 +11,7 @@ Bloodbikeswales::Application.routes.draw do
   get 'fundraising', to: 'splash#fundraising', as: :splash_fundraising
 
   post 'user/:user_id/avatar', to: 'images#create', as: :user_avatar_create
+#  post 'story/:story_id/image', to: 'images#story_create', as: :story_image_create
 
 
   resources :users, except: :index do
@@ -64,7 +65,9 @@ Bloodbikeswales::Application.routes.draw do
   # use a member route here
   post 'create', to: 'create_reply/:forum_id/:discourse_id', to: 'replies#create'
   post 'create_retort/:forum_id/:discourse_id/:reply_id', to: 'retorts#create', as: :create_reply_retort
-  get 'uploads/:file_name.:extension', to: 'images#show'
+
+  private_dir = 'private'
+  get "#{private_dir}/:file_name.:extension", to: 'images#show', as: :private_image
 
   get 'members_contact_list', to: 'contact_lists#show'
 

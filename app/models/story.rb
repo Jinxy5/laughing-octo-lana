@@ -1,8 +1,19 @@
 class Story < ActiveRecord::Base
 	belongs_to :user
 
+	has_one :photo, class_name: 'Image', foreign_key: :story_id
+
 	validates :title, presence: true
-	validates :description, presence: true	
+	validates :description, presence: true		
+
+
+
+
+
+#	scope :recent, order('events.created_at ASC').limit(8)
+
+
+	scope :recent, -> { order('stories.approve_date ASC').limit(5) }
 
 	scope :approved, -> { where( state: 'approved') }#{ state: 'approved' } 
 	scope :disapproved, -> { where( state: 'disapproved') }

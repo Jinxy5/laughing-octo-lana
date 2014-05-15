@@ -1,4 +1,4 @@
-<%= form_for( @story ) do |f| %>
+<%= form_for( @story, html: { multipart: true } ) do |f| %>
 
   <% if @story.errors.any? %>
     <div id="error_explanation">
@@ -17,9 +17,20 @@
 
 
     <%= f.text_field :title, placeholder: 'Create your story\'s title here' , class: 'form-control' %><br>
-  
     <%= f.text_area :description, placeholder: 'Write your story here! Make sure it\'s no longer than 400 characters!', class: 'form-control', rows: 5 %><br>
+
+          <h4> Upload new story pic: </h4>
+          
+    <%= f.file_field :file_name %>
+          <%#= form_for( url: story_image_create_path(@story), method: :post ) do |f| %>
+                  <%#= f.file_field :file_name %>
+                  <%#= f.submit 'Upload Image' %>
+            <!--      <p class="help-block">Please make sure your image is a jpeg and no bigger than 2MB</p>   -->
+          <%# end %>    
+
+
   
+
 
   </div>
 
