@@ -2,12 +2,17 @@
 		<span class="hidden-xs">
 
 
-		<div class="col-sm-3"> <a href="singlepage.php"> <%= show_uploaded_image(story.photo, width: 800, height: 504, class: 'img-responsive newsthumbimage', for: :story ) %> </a>
+		<div class="col-sm-3"> 
 		</div>
 		</span>
 		<div class="col-sm-8">
 		<h4> <%= story.title %></h4>
+
+
 		<p> <%= truncate story.description, length: 300 %></p>
+
+		<%= show_uploaded_image(story.photo, width: 800, height: 504, class: 'img-responsive newsthumbimage', for: :story ) %> 
+
 
 		<%= link_to 'read more', story_path(story) %>
 

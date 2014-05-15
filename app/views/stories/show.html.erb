@@ -1,3 +1,19 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="fullwidthcontainer">
 		<div class="container">
 				<div class="row">
@@ -5,9 +21,11 @@
 
 						<h1> <%= @story.title %> </h1>
 						<P><strong> <%= @story.user.user_name %> </strong> <%= @story.user.list_roles %> &#8226; <%= @story.created_at.strftime(' %d/%m/%Y') %></p>
+
+						<%= show_uploaded_image @story.photo, width: 800, height: 504, class: 'img-responsive newsimage', for: :story %>
 						
 						<%= @story.description %>
-						<%= image_tag @story.photo.file_name, class: 'img-responsive newsimage' %>
+						<%#= image_tag @story.photo.file_name, class: 'img-responsive newsimage' %>
 					</div>
 <p>&nbsp;</p>
 <!-- AddThis Button BEGIN -->
