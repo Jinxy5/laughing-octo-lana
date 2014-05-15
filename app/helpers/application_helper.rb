@@ -15,11 +15,13 @@ module ApplicationHelper
         }.merge!(a)
 
   		if image.nil?
-  			image_tag 'fallbackmugshot.gif', class: o[:class], width: o[:width], height: o[:height] if o[:for] == :user
-        image_tag 'fallbackmugshot2.gif', class: o[:class], width: o[:width], height: o[:height] if o[:for] == :story
+  			return image_tag 'fallbackmugshot.gif', class: o[:class], width: o[:width], height: o[:height] if o[:for] == :user
+        return image_tag '7.jpg', class: o[:class], width: 800, height: 504 if o[:for] == :story
   
       else       
-        image_tag "#{image.file_name}", class: o[:class], width: o[:width], height: o[:height]
+        return image_tag "#{image.file_name}", class: o[:class], width: o[:width], height: o[:height] == :user
+
+      #  return image_tag "#{image.file_name}", class: o[:class], width: 800, height: 504 if 0[:for] == :story
   		end
   	end
   

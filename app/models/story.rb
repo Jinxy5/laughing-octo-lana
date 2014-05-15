@@ -13,7 +13,7 @@ class Story < ActiveRecord::Base
 #	scope :recent, order('events.created_at ASC').limit(8)
 
 
-	scope :recent, -> { order('stories.approve_date ASC').limit(5) }
+	scope :recent, -> { order('stories.approve_date DESC').limit(5) }
 	scope :approved, -> { where( state: 'approved') }#{ state: 'approved' }
 
 	 

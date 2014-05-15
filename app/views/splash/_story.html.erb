@@ -16,7 +16,7 @@
 
 <li>
 	<%= link_to story_path(story) do %>
-		<%= image_tag story.photo.file_name %>
+		<%= show_uploaded_image(story.photo, width: 50, height: 50, class: 'img-responsive newsthumbimage', for: :story ) %>
 		<p class="flex-caption"> <%= story.title %> </p>
 	<% end %>
 </li>
