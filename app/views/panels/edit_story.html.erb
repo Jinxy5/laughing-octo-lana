@@ -7,8 +7,8 @@
 	<h2>Edit News Story</h2>
 
 <div class="col-sm-10">
-				<h2>News</h2>
-							<h4>EDIT STORY</h4>
+	<h2>News</h2>
+	<h4>EDIT STORY</h4>
 							
 				
 
@@ -33,15 +33,21 @@
     
     <%= f.label :description %>
     <%= f.text_area :description, class: 'form-control', placeholder: @story.description, rows: 4 %>
+
+    <%= f.label :image %><br>
+    <%= show_uploaded_image(@story.photo, width: 800, height: 504, for: :story) %><br>
+    <div class = 'clearfix'></div>
+    <%= f.file_field :file_name %>
+
   </div>
   <br>
   <div class="actions">
     <%= f.submit 'Publish', class: 'btn btn-success' %>
     <p></p>
-    <%= button_to 'Delete', root_path, class: 'btn btn-danger' %>
-
+    
   </div>
 <% end %>
+<%= button_to 'Delete', story_path(@story), class: 'btn btn-danger', method: :delete, confirm: "Are you sure you want to delete the story, '#{@story.title}'? It will be permanantly delted!" %> 
 
 
 

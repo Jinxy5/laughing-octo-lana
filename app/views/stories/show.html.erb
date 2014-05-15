@@ -8,7 +8,7 @@
 
 						<%= show_uploaded_image @story.photo, width: 800, height: 504, class: 'img-responsive newsimage', for: :story %>
 						
-						<%= @story.description %>
+						<%= simple_format(@story.description) %>
 						<%#= image_tag @story.photo.file_name, class: 'img-responsive newsimage' %>
 					</div>
 <p>&nbsp;</p>

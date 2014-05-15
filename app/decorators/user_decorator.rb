@@ -188,7 +188,7 @@ class UserDecorator < ApplicationDecorator
   def decorate_mobile
     contextual_empty_message( model.mobile, visitor_empty_message: 'None!',
                                                        admin_empty_message: h.link_to("#{model.user_name} has not entered a mobile. If you know this information, you can click here to enter it yourself.", h.edit_user_path(model) ),
-                                                       owner_empty_message: h.link_to("You haven't entered an mobile. Click here to enter it!", h.edit_user_path(model) ) )
+                                                       owner_empty_message: h.link_to("You haven't entered a mobile. Click here to enter it!", h.edit_user_path(model) ) )
   end
  
 

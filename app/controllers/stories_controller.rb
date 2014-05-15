@@ -19,10 +19,6 @@ class StoriesController < ApplicationController
 
  
   def create
-
-    
-  #  photo_params = story_params[:file_name]
-
     new_params = story_params.except("file_name")
 
     @story = Story.new(new_params)
@@ -30,11 +26,7 @@ class StoriesController < ApplicationController
 
     if story_params[:file_name]
       @story.create_photo(file_name: story_params[:file_name] ) 
-  #  else
-   #   @story.create_photo(file_name: 'fallback.jpg' ) 
     end
-
-    #story_params[:file_name])
 
     if @story.save
       redirect_to root_path, notice: "Thanks! Your story, '#{@story.title}' has been submitted and may be published by an administrator!"
@@ -55,7 +47,17 @@ class StoriesController < ApplicationController
 
   def update
 
-    if @story.update(story_params)
+
+
+
+    new_params = story_params.except("file_name")
+
+    if story_params[:file_name]
+      @story.create_photo(file_name: story_params[:file_name] ) 
+    end
+
+
+    if @story.update(new_params)
       @story.approve
       redirect_to splash_news_path, notice: "Successfully updated #{@story.title} " 
     else
