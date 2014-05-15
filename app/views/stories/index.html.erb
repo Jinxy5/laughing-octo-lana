@@ -1,38 +1,22 @@
 
 
-
 <div class="fullwidthcontainer">
-		<div class="container">
-				<p>&nbsp;</p>
-				<div class="row">
-						<div class="col-md-12">
-		</div>
-			<div class="col-md-4">
-			<h2>News</h2>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
 			</div>
+		<div class="col-md-4">
+			<h2>News</h2>
+		</div>
 
-			<%= will_paginate @stories %>
-			<!--
-			<div class="col-md-4">
-		<p>&nbsp;</p>
-			<p>15364 News Stories • Page 1 of 35 
-			</p></div>
-			
-			<div class="col-md-4">
-<ul class="pagination pagination-sm">
-  <li><a href="#">«</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">»</a></li>
-</ul>
+		<%= will_paginate @stories %>
+
+		</div>	
+			<%= render partial: 'story', collection: @stories %>
+
+	</div>		
+
+
 </div>
-				-->
-			</div>	
-		</div>		
-	</div>
 
 
-<%= render partial: 'story', collection: @stories %>
