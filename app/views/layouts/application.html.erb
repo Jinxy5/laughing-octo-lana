@@ -48,6 +48,19 @@
     $('.flexslider').flexslider({"controlNav": false, "prevText":"", "nextText":""});
   });
 </script>
+<!-- flexslider carousel-->
+<script type="text/javascript">
+$(window).load(function() {
+  $('.flexslider2').flexslider({
+    animation: "slide",
+    animationLoop: true,
+    itemWidth: 210,
+    itemMargin: 4,
+    "controlNav": false,  "prevText":"", "nextText":""
+  });
+});
+  </script>
+
 </head>
 
 <body>
@@ -291,29 +304,6 @@
 
 
 
-
-
-
-<!--            <div class="mainnav">
-                <ul class="list-inline hidden-xs navlist">
-                    <li> <%= link_to 'HOME', root_path %> </li>
-
-                    <li> <%= link_to 'ABOUT US', splash_about_path %> </a></li>
-
-                    <li> <%= link_to 'NEWS', splash_news_path %> </a></li>
-
-
-                    <li> <%#= link_to 'EVENTS', splash_events_path %></li>
-
-                    <li> <%#= link_to 'SPONSORS', splash_sponsors_path %></li>
-
-                    <li> <%#= link_to 'CONTACT', splash_contact_path %></li>
-
-                    <li> <%= link_to 'LINKS', splash_links_path %></li>
-
-                </ul>
-            </div>-->
-
         </div>
 
         <div class="clearfix"></div>
@@ -322,10 +312,6 @@
 
 
 
-            <div class="row">
-
-                   
-            </div>        
 
 
     </div><!--end container-->
@@ -337,35 +323,95 @@
             <%= yield %>
         </div>
 
+
+        <div class="clearfix">
+<p>&nbsp;</p>
+        </div>
+
         <div id="footer">
             <div class="container">
-                <p>Our Sponsors</p>
+                <h4>Our Sponsors</h4>
+<hr>
 
-                <div class="row">
+<div class="flexslider2 carousel">
+<ul class="slides" >
+                <li>
+                <%= link_to 'http://www.poundstretcher.co.uk/' do %><%= image_tag 'poundstretcher.jpg', width: 210,  alt: 'pound stretcher logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.santander.co.uk/' do %><%= image_tag 'santander.jpg', width: 210, alt: 'santander logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.thunderroad.co.uk/' do %><%= image_tag 'thunderroad.jpg', width: 210, alt: 'thunder road logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.mountmotorcycles.co.uk/' do %><%= image_tag 'mounts.jpg', width: 210, alt: 'mount motorcycles logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.ridersmotorcycles.com/' do %><%= image_tag 'riders.jpg', width: 210,  alt: 'riders logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.ladiescircle.co.uk/' do %><%= image_tag 'ladiescircle.jpg', width: 210, alt: 'ladies circle logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.gocompare.com/' do %><%= image_tag 'gocompare.jpg', width: 210, alt: 'go compare logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.websitesforrestaurants.co.uk/theeagle/Home/' do %><%= image_tag 'eagle.jpg', width: 210, alt: 'eagle logo' %><% end %>
+                </li>                
+               <li>
+                <%= link_to 'http://www.asda.com/' do %><%= image_tag 'asda.jpg', width: 210,  alt: 'asda logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.abertawemotorcycleservicesltd.co.uk/' do %><%= image_tag 'abertawemotocycle.jpg', width: 210, alt: 'abertawe motocycles logo' %><% end %>
+                </li>
+               <li>
+                <%= link_to 'http://www.aberdare-park-road-races.co.uk' do %><%= image_tag 'aberdarepark.jpg', width: 210, alt: 'aberdare park logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.mountmotorcycles.co.uk/' do %><%= image_tag 'wwms.jpg', width: 210, alt: 'wwms logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.thewi.org.uk/' do %><%= image_tag 'wi.jpg', width: 210, alt: 'wi logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://sigbi.org/' do %><%= image_tag 'soroptomists.jpg', width: 210, alt: 'soroptomists logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.securitas.com/uk/en-gb' do %><%= image_tag 'securitas.jpg', width: 210, alt: 'securitas logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.roundtable.co.uk' do %><%= image_tag 'roundtable.jpg', width: 210, alt: 'roundtable logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'www.mandp.co.uk' do %><%= image_tag 'mandp.jpg', width: 210, alt: 'M and P logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.ribi.org' do %><%= image_tag 'rotary.jpg', width: 210, alt: 'rotary logo' %><% end %>
+                </li>
+                <li>
+                <%= link_to 'http://www.sainsburys.co.uk' do %><%= image_tag 'sainsburys.jpg', width: 210, alt: 'sainsburys logo' %><% end %>
+                </li>
+          </ul>
+
     
-                    <div class = 'col-md-3'>
-                        <%= link_to 'http://www.poundstretcher.co.uk/' do %><%= image_tag 'psgrey.jpg', width: 136, height: 67, alt: 'pound stretcher logo' %><% end %>        
-                    </div>
+  </ul>
+</div>
 
-                    <div class = 'col-md-3'>
-                       <%= link_to 'http://www.santander.co.uk/' do %><%= image_tag 'sandtander_09.jpg', width: 218, height: 67, alt: 'pound stretcher logo' %><% end %>
-                    </div>
 
-                    <div class = 'col-md-3'>
-                        <%= link_to 'http://www.thunderroad.co.uk/' do %><%= image_tag 'thunderroad_11.jpg', width: 212, height: 67, alt: 'pound stretcher logo' %><% end %>
-                    </div>
 
-                    <div class = 'col-md-3'>
-                        <%= link_to 'http://www.mountmotorcycles.co.uk/' do %><%= image_tag 'mounts_13.jpg', width: 173, height: 67, alt: 'pound stretcher logo' %><% end %>
-                    </div>
 
-                </div>
 
-                <p>© 2014 Blood Bikes Wales. Registered with the UK Charity
-                Commission, Charity Number 1143352.</p>
 
-                <p>Design:
-                    <%= link_to 'JHurleyDesign.com', "http://www.jhurleydesign.com/" %>
+
+
+
+<hr>
+                <p><span class = 'small'>© 2014 Blood Bikes Wales. Registered with the UK Charity
+                Commission, Charity Number 1143352.</span></p>
+
+                <p><p><span class = 'small'>Design:
+                    <%= link_to 'JHurleyDesign.com', "http://www.jhurleydesign.com/" %></span>
                 </p>
             </div>
         </div>
