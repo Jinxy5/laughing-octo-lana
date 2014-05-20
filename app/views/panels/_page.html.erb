@@ -1,0 +1,21 @@
+<h3> <%= page.name %> </h3> 
+
+<table class="table">
+        <thead>
+          <tr>
+            <th>Field Description</th>
+            <th>Content</th>
+            <th>Last Updated By</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <%= render partial: 'field', collection: page.fields %>
+
+        </tbody>
+
+
+	
+</table>
+

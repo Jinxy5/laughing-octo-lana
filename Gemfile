@@ -63,7 +63,7 @@ gem 'redis'
     # 	redis-ctl monitor 
     # 	sudo tail -f /var/log/redis/redis-server.log
 
-
+gem 'redcarpet'
 gem 'email_spec'
 gem 'cancan'
 gem 'rubocop'

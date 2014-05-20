@@ -24,7 +24,14 @@ module ApplicationHelper
       #  return image_tag "#{image.file_name}", class: o[:class], width: 800, height: 504 if 0[:for] == :story
   		end
   	end
-  
+    
+    def find_fields(name)
+      @fields = Page.find_by(name: name.to_s).fields 
+    end
+
+    def dynamic_content(name)
+      @fields.find { |field| field[:name] == name.to_s }.content
+    end
 
    def context_tag(model, string, args={})
     o = {
