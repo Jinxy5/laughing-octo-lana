@@ -30,7 +30,7 @@ module ApplicationHelper
     end
 
     def dynamic_content(name)
-      @fields.find { |field| field[:name] == name.to_s }.content
+      simple_format(@fields.find { |field| field[:name] == name.to_s }.content)
     end
 
    def context_tag(model, string, args={})
