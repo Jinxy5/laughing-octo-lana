@@ -27,7 +27,9 @@ gem 'launchy'
 gem 'poltergeist'
 gem 'jquery-rails'
 
-gem 'rmagick'# sudo apt-get install libmagickwand-dev
+gem 'rmagick', require: "RMagick"
+
+# sudo apt-get install libmagickwand-dev
 gem 'carrierwave'
 gem 'draper'
 gem 'puma'
