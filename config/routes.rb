@@ -46,6 +46,10 @@ Bloodbikeswales::Application.routes.draw do
       delete 'user/:id', to: 'panels#user_delete', as: :delete_user
       patch 'user/:id', to: 'panels#user_update', as: :panel_update_user
 
+      get 'media', to: 'panels#media', as: :panel_show_media
+      delete 'media/:id', to: 'panels#media_delete', as: :panel_delete_media
+      patch 'media/id', to: 'panels#media_update', as: :panel_update_meda
+      
     resources :stories
   end
 

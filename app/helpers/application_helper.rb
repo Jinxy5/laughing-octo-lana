@@ -29,6 +29,30 @@ module ApplicationHelper
       @fields = Page.find_by(name: name.to_s).fields 
     end
 
+
+    def markdown(text)
+      options = {
+        prettify:        false,
+        filter_html:     true,
+        hard_wrap:       true, 
+        link_attributes: { rel: 'nofollow', target: "_blank" },
+        space_after_headers: true, 
+        fenced_code_blocks: true
+      }
+
+      extensions = {
+        autolink:           true,
+        superscript:        true,
+        disable_indented_code_blocks: true
+      }
+
+      renderer = Redcarpet::Render::HTML.new(options)
+      markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+      markdown.render(text).html_safe
+    end
+
+
     def dynamic_content(name)
       simple_format(@fields.find { |field| field[:name] == name.to_s }.content)
     end

@@ -72,6 +72,12 @@ class PanelsController < ApplicationController
 
   end
 
+  def media
+  end
+
+  def asd
+  end
+
 
   private
     

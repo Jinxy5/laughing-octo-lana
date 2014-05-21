@@ -22,6 +22,137 @@
 
 $(document).ready(function() {
 
+//////////////
+
+
+/*
+$('textarea').bind("click", function(e){
+    insert_character()
+     
+    var start = $(this).prop('selectionStart'),
+        end = $(this).prop('selectionEnd')
+    
+    console.log( $(this).prop('selectionStart') );
+    console.log( $(this).prop('selectionEnd') );
+    
+    var content = $(this).val();
+    var insertion = "ax";
+    
+    console.log('*')    
+    console.log( insertion.length )
+    console.log(content.substr(0,3));
+    console.log( insertion )
+    console.log(content.substr(insertion.length));
+
+    var newContent = content.substr(0,1) + insertion + content.substr(2,content.length);
+    $(this).val(newContent);
+    // if startposition = a markdown symbol and endposition = the same markdown symbol, remove the characters at the startposition and the end position
+});
+*/
+
+var start_position,
+    end_position,
+    last_start_position = null,
+    last_end_position = null;
+
+$('#insert').bind('click', function(){
+  insert_character(2, 'carrot')
+});
+
+$('#remove').bind('click', function(){
+  remove_character(2)
+});
+
+$('#insert_bold').bind('click', function(){
+  var start_position = $('textarea').prop('selectionStart'),
+      end_position = $('textarea').prop('selectionEnd') + 1;
+
+      insert_character(start_position, '*')
+      insert_character(end_position, '*')
+
+});
+
+$('#remove_bold').bind('click', function(){
+      
+      start_position = $('textarea').prop('selectionStart'),
+      end_position = $('textarea').prop('selectionEnd');
+
+      original_content = $('textarea').val()
+
+ //     if(start_position !== last_start_position && end_position !== last_end_position && original_content[start_position] !== '*' && original_content[end_position] !== '*'){
+       
+
+        remove_character(start_position)
+
+        end_position = end_position - 2
+        
+        remove_character(end_position)
+
+        last_start_position = start_position
+        last_end_position = end_position
+
+ //     }
+
+ //     console.log('no change')
+});
+
+function start_and_end_position(){
+
+}
+
+
+function replace_character(position, characters, a){
+    o = { 
+      'position_modifier' : 0
+    }
+    
+    $.extend(o, a);
+
+    
+    var original_content = $('textarea').val(),
+        new_content = original_content.substr(0, position) + characters + original_content.substr(position + o['position_modifier'], original_content.length);
+
+    $('textarea').val(new_content)
+
+    
+};
+
+function insert_character(position, character){
+  
+  var original_content = $('textarea').val(),
+      current_character = original_content[position]
+
+
+      if(character !== current_character){
+        replace_character(position, character);      
+      }
+
+      
+}
+
+function remove_character(position){
+
+
+  var original_content = $('textarea').val(),
+    current_character = original_content[position] 
+
+
+    console.log('-------------------------------------------')
+    console.log(original_content)
+    console.log('attempting to remove ' + position + ' which is a ' + original_content[position])
+    console.log('-------------------------------------------')
+    
+    if('*' == current_character){
+      replace_character(position, '', { 'position_modifier' : 1 })    
+    } else {
+  //    console.log('not a star,' + original_content[position] );
+    }
+}
+
+
+
+
+/////////////
   function getBreakpoint(){
     // also cleans the breakpoint (some browsers add inverted commas)
     return $('#viewport').css('font-size').replace(/.*(1|2|3|4).*/g, '$1');
