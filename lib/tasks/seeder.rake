@@ -2,6 +2,50 @@ namespace :seeder do
 
 	namespace :initial_seed do
 
+		task page: :environment do
+			Page.delete_all
+		#	Page.connection.execute('ALTER SEQUENCE pages_seq RESTART WITH 1')
+			puts 'deleted and reset pages table'
+
+			page = Page.create(name: 'home')
+			puts "created #{page.inspect}"
+
+			Field.delete_all
+
+=begin
+Welcome to Blood Bikes Wales
+Dear All
+
+Welcome to Blood Bikes Wales' new website and thanks must go to Jonathan Hurley Design for doing such a great job. Thanks also to our volunteers that have worked alongside to help create this site. I'm sure you'll find it easier to navigate and there's a lot more information at your fingertips. It's easier to communicate through our contact buttons as well, ensuring you get the answers you need from the best person to help you. We're continually seeking ways to improve our organisation, be it the service we provide, the way to fund-raise or how we look after our members. Any suggestions you may have are always welcomed.
+
+The last year has seen significant growth in our workload, with three health boards being serviced by us and a fourth health board nearly ready to go live. From the Severn Bridge all the way past Swansea, we are providing a first class service to these health boards. Often our riders comment on how appreciative the healthcare professionals are of the work we do and always sing our praises.
+
+Our aim by the end of the year is to provide our service to all the health boards in Wales. A tall order some may say but between us and our sister group in North Wales I believe we can achieve it. It is because we provide such a valuable and high quality service that we feel it is our moral obligation to serve all our health boards with equal commitment.
+
+For us to provide and maintain this service we need you. Whatever you do for a living, whatever your talents are, whether you ride a bike or not, you are welcome to join us and be part of something really special. So click on the link and email us, take a look at our calendar and come see us, follow us on Facebook and Twitter, keep an eye out for us on the road. Join us.
+
+Andy Walters, Chairman
+=end
+
+			field = page.fields.find_or_create_by(name: 'headerone', content: 'Welcome to Blood Bikes Wales', last_updated_by: 'system')
+			puts "created #{field.inspect}"
+
+		 	field = page.fields.create(name: 'chairmanmessage', content: "Dear All
+
+Welcome to Blood Bikes Wales' new website and thanks must go to Jonathan Hurley Design for doing such a great job. Thanks also to our volunteers that have worked alongside to help create this site. I'm sure you'll find it easier to navigate and there's a lot more information at your fingertips. It's easier to communicate through our contact buttons as well, ensuring you get the answers you need from the best person to help you. We're continually seeking ways to improve our organisation, be it the service we provide, the way to fund-raise or how we look after our members. Any suggestions you may have are always welcomed.
+
+The last year has seen significant growth in our workload, with three health boards being serviced by us and a fourth health board nearly ready to go live. From the Severn Bridge all the way past Swansea, we are providing a first class service to these health boards. Often our riders comment on how appreciative the healthcare professionals are of the work we do and always sing our praises.
+
+Our aim by the end of the year is to provide our service to all the health boards in Wales. A tall order some may say but between us and our sister group in North Wales I believe we can achieve it. It is because we provide such a valuable and high quality service that we feel it is our moral obligation to serve all our health boards with equal commitment.
+
+For us to provide and maintain this service we need you. Whatever you do for a living, whatever your talents are, whether you ride a bike or not, you are welcome to join us and be part of something really special. So click on the link and email us, take a look at our calendar and come see us, follow us on Facebook and Twitter, keep an eye out for us on the road. Join us.
+
+Andy Walters, Chairman", last_updated_by: 'system')
+			puts "created #{field.inspect}"
+
+		end
+
+
 		task roles: :environment do
 
 			Role.delete_all

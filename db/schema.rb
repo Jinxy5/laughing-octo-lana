@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514225057) do
+ActiveRecord::Schema.define(version: 20140516215434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(version: 20140514225057) do
     t.datetime "updated_at"
   end
 
+  create_table "fields", force: true do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "page_id"
+    t.text     "name"
+    t.string   "last_updated_by"
+  end
+
   create_table "followers", force: true do |t|
     t.integer  "user_id"
     t.integer  "discussion_id"
@@ -117,6 +126,12 @@ ActiveRecord::Schema.define(version: 20140514225057) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
+  end
+
+  create_table "pages", force: true do |t|
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|

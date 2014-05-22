@@ -37,6 +37,8 @@ Bloodbikeswales::Application.routes.draw do
   resources :stories, except: [:edit]
 
   scope path: 'control_panel' do
+      get 'pages', to: 'panels#pages', as: :panel_show_pages
+
       get 'edit_story/:id', to: 'stories#edit', as: :edit_story
       get 'stories', to: 'panels#stories', as: :panel_show_stories
 
