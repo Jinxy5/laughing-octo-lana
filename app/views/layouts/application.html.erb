@@ -56,7 +56,10 @@ $(window).load(function() {
     animation: "slide",
     animationLoop: true,
     itemWidth: 210,
-    itemMargin: 4,
+    itemMargin: 30,
+    minItems: 0,
+    maxItems: 222,
+    slideshowSpeed: 4000,
     "controlNav": false,  "prevText":"", "nextText":""
   });
 });
@@ -212,7 +215,7 @@ $(window).load(function() {
                                 <div class="btn-block">
 
 
-                                    <%= button_to 'Donate Now!', 'https://mydonate.bt.com/charities/bloodbikeswales', class: 'btn btn-warning btn-block' , method: :get %>
+                                    <%= button_to 'Donate Now!', splash_fundraising_path, class: 'btn btn-warning btn-block' , method: :get %>
                                 </div>
 
                         </div>
@@ -388,11 +391,17 @@ $(window).load(function() {
                 <%= link_to 'www.mandp.co.uk' do %><%= image_tag 'mandp.jpg', width: 210, alt: 'M and P logo' %><% end %>
                 </li>
                 <li>
-                <%= link_to 'http://www.ribi.org' do %><%= image_tag 'rotary.jpg', width: 210, alt: 'rotary logo' %><% end %>
-                </li>
-                <li>
                 <%= link_to 'http://www.sainsburys.co.uk' do %><%= image_tag 'sainsburys.jpg', width: 210, alt: 'sainsburys logo' %><% end %>
                 </li>
+                <li>
+                <%= link_to 'http://www.ribi.org' do %><%= image_tag 'rotary.jpg', width: 210, alt: 'rotary logo' %><% end %>
+                </li>
+
+
+
+
+
+
           </ul>
 
     
