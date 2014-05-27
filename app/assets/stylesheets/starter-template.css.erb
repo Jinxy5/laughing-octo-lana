@@ -35,7 +35,7 @@ body {
 	text-align: left;
 	text-shadow: 0px 0px;
 }
-
+a
 /* NAVBAR */
 
 .navbar-inverse {
@@ -617,14 +617,20 @@ padding: 10px;
   background-color: #000;
 }
 
-.navbar-collapse {
-  overflow-y: scroll;
-  max-height: 500px;
-  }
+
 
 .navbar-inverse .navbar-toggle {
   border-color: #FFFFFF;
 }
+
+.container-scrollable {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow-y: scroll !important;
+  max-height: 400px;
+  }
 
 hr {
   margin-top: 20px;
@@ -634,14 +640,21 @@ hr {
 }
 
 .well2 {
- background-color: #fff;
+ 	background-color: #fff;
 	border: 1px solid #CCCCCC;
-	padding-bottom: 25px;
+	padding: 15px;
 }
 
 
-.center-block {
-    display: block;
+.centre-block {
+    /*display: block;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;*/
+    background-color: #fff;
+	border: 1px solid #CCCCCC;
+	padding: 15px;
  }
+
+ .img-centred {
+    margin: 0 auto;
+}

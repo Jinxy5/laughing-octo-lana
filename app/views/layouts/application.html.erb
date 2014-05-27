@@ -92,10 +92,15 @@ $(window).load(function() {
 
             <div class="navbar navbar-inverse navbar-fixed-top">
 
-          <div class="container">
+          <div class="container-scrollable">
             <div class="navbar-header">
-                <button class="navbar-toggle" data-target=".navbar-collapse"
-                data-toggle="collapse" type="button">
+
+        <!-- <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button"> -->
+
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#loggedin-nav">
+
+
 
                     <span class="sr-only">Toggle navigation</span>
                     
@@ -113,8 +118,16 @@ $(window).load(function() {
 
             </div>
 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+
+
+               <!-- <div class="navbar-collapse collapse"> -->
+
+
+
+                <div class="collapse navbar-collapse " id="loggedin-nav">
+
+
+                            <ul class="nav navbar-nav">
 
                     <li class ='visible-xs'><%= link_to 'Home', root_path %></li>
 
