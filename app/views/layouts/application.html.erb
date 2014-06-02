@@ -20,6 +20,7 @@
 <![endif]-->
 <!--
 </head>
+**
 -->
 
 <head>
@@ -55,7 +56,10 @@ $(window).load(function() {
     animation: "slide",
     animationLoop: true,
     itemWidth: 210,
-    itemMargin: 4,
+    itemMargin: 30,
+    minItems: 0,
+    maxItems: 222,
+    slideshowSpeed: 4000,
     "controlNav": false,  "prevText":"", "nextText":""
   });
 });
@@ -88,10 +92,15 @@ $(window).load(function() {
 
             <div class="navbar navbar-inverse navbar-fixed-top">
 
-          <div class="container">
+          <div class="container-scrollable">
             <div class="navbar-header">
-                <button class="navbar-toggle" data-target=".navbar-collapse"
-                data-toggle="collapse" type="button">
+
+        <!-- <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button"> -->
+
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#loggedin-nav">
+
+
 
                     <span class="sr-only">Toggle navigation</span>
                     
@@ -109,8 +118,16 @@ $(window).load(function() {
 
             </div>
 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+
+
+               <!-- <div class="navbar-collapse collapse"> -->
+
+
+
+                <div class="collapse navbar-collapse " id="loggedin-nav">
+
+
+                            <ul class="nav navbar-nav">
 
                     <li class ='visible-xs'><%= link_to 'Home', root_path %></li>
 
@@ -132,6 +149,10 @@ $(window).load(function() {
 
                     <li class = 'visible-xs'>
                         <%= link_to 'News', splash_news_path %>
+                    </li>
+
+                    <li class = 'visible-xs'>
+                        <%= link_to 'Fundraising', splash_fundraising_path %>
                     </li>
 <%
 =begin %>
@@ -211,7 +232,7 @@ $(window).load(function() {
                                 <div class="btn-block">
 
 
-                                    <%= button_to 'Donate Now!', 'https://mydonate.bt.com/charities/bloodbikeswales', class: 'btn btn-warning btn-block' , method: :get %>
+                                    <%= button_to 'Donate Now!', splash_fundraising_path, class: 'btn btn-warning btn-block' , method: :get %>
                                 </div>
 
                         </div>
@@ -221,7 +242,7 @@ $(window).load(function() {
 
 
 <div class="col-xs-4 col-sm-4 col-md-3">
-                                    <%= button_to 'Donate Now!', 'https://mydonate.bt.com/charities/bloodbikeswales', class: 'btn btn-warning left' , method: :get %>
+                                    <%= button_to 'Donate Now!', splash_fundraising_path, class: 'btn btn-warning left' , method: :get %>
 
 </div>
  
@@ -275,7 +296,10 @@ $(window).load(function() {
 
                     <li> <%#= link_to 'CONTACT', splash_contact_path %></li>
 -->
+
                 <li> <%= link_to 'LINKS', splash_links_path %></li>
+                <li> <%= link_to 'FUNDRAISING', splash_fundraising_path %></li>
+
             
                 <li class = 'social hidden-xs'>
                     <a class="fb" href="https://www.facebook.com/bloodbikeswales"></a>
@@ -387,11 +411,17 @@ $(window).load(function() {
                 <%= link_to 'www.mandp.co.uk' do %><%= image_tag 'mandp.jpg', width: 210, alt: 'M and P logo' %><% end %>
                 </li>
                 <li>
-                <%= link_to 'http://www.ribi.org' do %><%= image_tag 'rotary.jpg', width: 210, alt: 'rotary logo' %><% end %>
-                </li>
-                <li>
                 <%= link_to 'http://www.sainsburys.co.uk' do %><%= image_tag 'sainsburys.jpg', width: 210, alt: 'sainsburys logo' %><% end %>
                 </li>
+                <li>
+                <%= link_to 'http://www.ribi.org' do %><%= image_tag 'rotary.jpg', width: 210, alt: 'rotary logo' %><% end %>
+                </li>
+
+
+
+
+
+
           </ul>
 
     

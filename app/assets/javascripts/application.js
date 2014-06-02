@@ -53,7 +53,9 @@ $('textarea').bind("click", function(e){
 var start_position,
     end_position,
     last_start_position = null,
-    last_end_position = null;
+    last_end_position = null,
+    last_command = { command : null, last_start_position : null, last_end_position : null }
+ //     }
 
 $('#insert').bind('click', function(){
   insert_character(2, 'carrot')
@@ -63,41 +65,126 @@ $('#remove').bind('click', function(){
   remove_character(2)
 });
 
+
+
+$('#insert_link').bind('click', function(){
+  generic_command('add_link', function(start_position, end_position, original_content){ 
+    link = "[linkey]("
+    end_position = end_position + link.length
+
+    if(end_position !== start_position + 1){ // stops empty bold markdown from being created
+      if(get_original()[start_position] !== '['){
+        if(get_original()[end_position - 2] !== ')'){ // why -2? I don't even know anymore 
+
+          insert_character(start_position, link)
+          insert_character(end_position, ')')
+
+        }
+      }      
+    }
+
+  });
+});
+
+// regex 
+
+// /(\*[^*]\*)/g
+
+
+$('#remove_link').bind('click', function(){
+  generic_command('remove_link', function(start_position, end_position, original_content){ 
+    
+
+    end_position = end_position - 1
+
+    console.log( get_original()[start_position] + get_original()[end_position] )
+
+
+    if(get_original()[start_position] == '['){
+      console.log('passed this!')
+      if(get_original()[end_position] == ')'){
+
+        console.log('and this!')
+        console.log(start_position)
+        console.log(end_position)
+
+      length = end_position - start_position
+
+      replace_character(start_position, '', { position_modifier: length + 1})
+      // insert_generic(start_position, end_position, 'x')
+      // remove_character(start_position); 
+      // remove_character(end_position - 1); // - 1 because that's the length of the character we've just taken away (the first *) 
+      } 
+    }
+
+  });
+});
+
 $('#insert_bold').bind('click', function(){
-  var start_position = $('textarea').prop('selectionStart'),
-      end_position = $('textarea').prop('selectionEnd') + 1;
-
-      insert_character(start_position, '*')
-      insert_character(end_position, '*')
-
+  generic_command('add_bold', function(start_position, end_position, original_content){ 
+    insert_generic(start_position, end_position, '*')  
+  });
 });
 
 $('#remove_bold').bind('click', function(){
-      
-      start_position = $('textarea').prop('selectionStart'),
-      end_position = $('textarea').prop('selectionEnd');
-
-      original_content = $('textarea').val()
-
- //     if(start_position !== last_start_position && end_position !== last_end_position && original_content[start_position] !== '*' && original_content[end_position] !== '*'){
-       
-
-        remove_character(start_position)
-
-        end_position = end_position - 2
-        
-        remove_character(end_position)
-
-        last_start_position = start_position
-        last_end_position = end_position
-
- //     }
-
- //     console.log('no change')
+  generic_command('remove_bold', function(start_position, end_position, original_content){ 
+    remove_generic(start_position, end_position, '*')
+  });
 });
 
-function start_and_end_position(){
 
+
+function insert_generic(start_position, end_position, character){
+
+    end_position = end_position + 1
+
+    if(end_position !== start_position + 1){ // stops empty bold markdown from being created
+      if(get_original()[start_position] !== character){
+        if(get_original()[end_position - 2] !== character){ // why -2? I don't even know anymore 
+
+          insert_character(start_position, character)
+          insert_character(end_position, character)
+
+        }
+      }      
+    }
+}
+
+function remove_generic(start_position, end_position, character){
+  end_position = end_position - 1
+
+  if(get_original()[start_position] == character){
+    if(get_original()[end_position] == character){
+      remove_character(start_position); 
+      remove_character(end_position - 1); // - 1 because that's the length of the character we've just taken away (the first *) 
+    } 
+  }
+}
+
+function get_original(){
+  return $('textarea').val()
+}
+
+
+function generic_command(name, run){
+  var start_position = $('textarea').prop('selectionStart'),
+      end_position = $('textarea').prop('selectionEnd'),
+      current_command = { command : name, last_start_position : start_position, last_end_position : end_position },
+      original_content = $('textarea').val()
+
+  if(current_command !== last_command ){
+
+
+    run(start_position, end_position, original_content)
+
+    last_command = current_command
+  }
+  
+}
+
+
+
+function start_and_end_position(){
 }
 
 
@@ -108,6 +195,9 @@ function replace_character(position, characters, a){
     
     $.extend(o, a);
 
+    console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+    console.log(position)
+    console.log(position + o['position_modifier'])
     
     var original_content = $('textarea').val(),
         new_content = original_content.substr(0, position) + characters + original_content.substr(position + o['position_modifier'], original_content.length);
@@ -137,10 +227,6 @@ function remove_character(position){
     current_character = original_content[position] 
 
 
-    console.log('-------------------------------------------')
-    console.log(original_content)
-    console.log('attempting to remove ' + position + ' which is a ' + original_content[position])
-    console.log('-------------------------------------------')
     
     if('*' == current_character){
       replace_character(position, '', { 'position_modifier' : 1 })    
