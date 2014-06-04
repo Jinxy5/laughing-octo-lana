@@ -1,7 +1,9 @@
+<% find_fields(:Fundraising) %>        
+
 <div class="row">
     
     <div class="col-md-12">
-        <h1>Fundraising</h1>
+        <h1><%= dynamic_content(:title) %></h1>
     </div>
 
 
@@ -64,22 +66,8 @@
    
     <div class="col-md-8 col-md-pull-4">
 
+        <%= dynamic_content(:description) %>
 
-
-
-
-        <p>Fundraising is the lifeblood of any charity and it is no less so for Blood Bikes Wales. We have a dedicated enthusiastic team who all try and do as much fundraising as they are able to do.</p>
-        <p>Most of our members work on a full-time basis and give up some of their spare time in the interest of a worthwhile charity that is intent on making a difference.</p>
-        <p>We are very proud of our members and grateful for all their hard work.</p>
-        <p>There is normally a&nbsp;fundraising&nbsp;event on at least once a week (please see the&nbsp;check our <a href="https://www.facebook.com/bloodbikeswales">Facebook Page</a> for details).</p>
-        <p>The supermarkets have been very generous in allowing us to collect at their stores and the customers of these stores are very generous and inquisitive about our cause.</p>
-        <p>We have support from a number of people and companies, details of which will follow in future updates.</p>
-
-        <h3>Poundstretcher donates £23,750 to Blood Bikes Wales</h3>
-        <p>It is with great pleasure, and not a little surprise,&nbsp;that we announce a donation to Blood Bikes Wales from Poundstretcher Limited.</p>
-        <p>Poundstretcher have over&nbsp;<a title="Poundstretcher UK store map" href="http://www.poundstretcher.co.uk/store-finder.php" target="_blank">400 stores in the UK</a>, of which 36 are in Wales, and it is to these 36 Welsh stores and their customers that we are endebted, because&nbsp;Poundstretcher decided that they liked our cause so much, they would donate the procedes of carrier bag sales in Wales to us.</p>
-        <p>We're not talking a small sum here though. Five pence per bag is a small amount, but over those 36 stores the total soon rises. We are extremely grateful to have received a cheque from Poundstretcher for £23,750.98. That is no misprint - the figure is correct: twenty-three thousand, seven hundred and fifty pounds and&nbsp;98p!</p>
-        <p>We, the members of Blood Bikes Wales, extend our utmost gratitude to Poundstretcher, their staff across the whole of the UK, in Wales and in their head office in Huddersfield and to their customers across the Principality.</p>
         <h3>We win the customer charity</h3>
 
         <%= image_tag 'cause.jpg', class: 'img-responsive newsimage' %>
