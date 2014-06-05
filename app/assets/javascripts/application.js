@@ -18,7 +18,9 @@
 //= require_tree .
 //= require bootstrap.min
 //= require my_flex
-//
+//= require bootstrap-datetimepicker.min.js
+//= require moment
+//= require bootstrap-datetimepicker
 
 $(document).ready(function() {
 
@@ -577,5 +579,11 @@ function remove_character(position){
         // above is run every 1/4 of a second! 
       }, 250)
     });
-  
+
+
+
+
+
+
+
 });

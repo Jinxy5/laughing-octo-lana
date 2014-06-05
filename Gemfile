@@ -74,6 +74,8 @@ gem 'will_paginate'
 #gem 'negative_captcha'
 gem 'simple_captcha2', require: 'simple_captcha'
 
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0.1'
 
 #gem 'lazy_columns'
 #gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
