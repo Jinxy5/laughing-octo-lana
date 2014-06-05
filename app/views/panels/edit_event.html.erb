@@ -1,71 +1,72 @@
 <%= render partial: 'sidebar' %> 
+<div class="container">
+	<div class="col-sm-9">
+		<h2>Add a Calendar Event</h2>
+		<form role="form">
+		  	<div class="form-group">
+			    <label for="Nameofevent">Name of Event</label>
+			    <input type="text" class="form-control" id="NameofEvent" placeholder="Enter name of event">
+			    <p>&nbsp;<p>
+			    <label for="Descriptionofevent">Description</label>
+			    <textarea class="form-control" rows="3"></textarea>
+		    	<p>&nbsp;<p>
 
-<div class="col-sm-9">
-	<h2>Add a Calendar Event</h2>
-	<form role="form">
-	  	<div class="form-group">
-		    <label for="Nameofevent">Name of Event</label>
-		    <input type="text" class="form-control" id="NameofEvent" placeholder="Enter name of event">
-		    <p>&nbsp;<p>
-		    <label for="Descriptionofevent">Description</label>
-		    <textarea class="form-control" rows="3"></textarea>
-	    	<p>&nbsp;<p>
+		    	<div class="col-sm-9">
 
-	    	<div class="col-sm-9">
+			       <div class='col-sm-6'>
+			        	<span class="bold">Stop Date / Time   </span>
+			            <div class="form-group">
+			                <div class='input-group date' id='datetimepicker8'>
+			 					<input type='text' class="form-control" />
+			                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+			                </div>
+			            </div>
+			        </div>
 
-		       <div class='col-sm-6'>
-		        	<span class="bold">Stop Date / Time   </span>
-		            <div class="form-group">
-		                <div class='input-group date' id='datetimepicker8'>
-		 					<input type='text' class="form-control" />
-		                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-		                </div>
-		            </div>
-		        </div>
+			        <div class='col-sm-6'>
+			            <span class="bold">Stop Date / Time   </span>
+			            <div class="form-group">
+			                <div class='input-group date' id='datetimepicker9'>
+			                    <input type='text' class="form-control" />
+			                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+			                </div>
+			            </div>
+			        </div>
+			    </div> 
 
-		        <div class='col-sm-6'>
-		            <span class="bold">Stop Date / Time   </span>
-		            <div class="form-group">
-		                <div class='input-group date' id='datetimepicker9'>
-		                    <input type='text' class="form-control" />
-		                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-		                </div>
-		            </div>
-		        </div>
-		    </div> 
+			    <div class = "clearfix"></div>
 
-		    <div class = "clearfix"></div>
-		    
-		    <script type="text/javascript">
-		        $(function () {
-		            
-		            $('#datetimepicker8').datetimepicker();
-		            $('#datetimepicker9').datetimepicker();
-		            
-		            $("#datetimepicker8").on("dp.change",function (e) {
-		               $('#datetimepicker9').data("DateTimePicker").setMinDate(e.date);
-		            });
-		            $("#datetimepicker9").on("dp.change",function (e) {
-		               $('#datetimepicker8').data("DateTimePicker").setMaxDate(e.date);
-		            });
-					
-		        });
-		    </script>
+			    <script type="text/javascript">
+			        $(function () {
+			            
+			            $('#datetimepicker8').datetimepicker();
+			            $('#datetimepicker9').datetimepicker();
+			            
+			            $("#datetimepicker8").on("dp.change",function (e) {
+			               $('#datetimepicker9').data("DateTimePicker").setMinDate(e.date);
+			            });
+			            $("#datetimepicker9").on("dp.change",function (e) {
+			               $('#datetimepicker8').data("DateTimePicker").setMaxDate(e.date);
+			            });
+						
+			        });
+			    </script>
 
 
-			<span class="bold">Choose Calendar to add this Event to</span>
-			<select multiple class="form-control">
-				<option>Public Calendar</option>
-				<option>Admin Calendar</option>
-				<option>Rider Calendar</option>
-				<option>Midweek Calendar</option>
-				<option>Coordinator Calendar</option>
-			</select>
+				<span class="bold">Choose Calendar to add this Event to</span>
+				<select multiple class="form-control">
+					<option>Public Calendar</option>
+					<option>Admin Calendar</option>
+					<option>Rider Calendar</option>
+					<option>Midweek Calendar</option>
+					<option>Coordinator Calendar</option>
+				</select>
+		    	<p>&nbsp;<p>
 
-			<button type="button" class="btn btn-success"><i class="fa fa-thumb-tack"></i> Add Event to this Calendar</button>
-    	</div>
-	</form>
+				<button type="button" class="btn btn-success"><i class="fa fa-thumb-tack"></i> Add Event to this Calendar</button>
+	    	</div>
+		</form>
+	</div>
 </div>
-
 
 
