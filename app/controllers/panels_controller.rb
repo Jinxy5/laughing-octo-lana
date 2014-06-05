@@ -122,6 +122,13 @@ respond_to do |format|
   end
 
 
+  def edit_event
+  end
+
+  def update_event
+  end
+
+
   private
     
     def protect_admin

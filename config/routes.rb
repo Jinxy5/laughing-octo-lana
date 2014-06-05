@@ -50,10 +50,11 @@ Bloodbikeswales::Application.routes.draw do
       get 'media', to: 'panels#media', as: :panel_show_media
 
       get 'edit_media/:id', to: 'panels#media_edit', as: :panel_edit_media
-      
       delete 'media/:id', to: 'panels#media_delete', as: :panel_delete_media
-      
       patch 'media/:id', to: 'panels#media_update', as: :panel_update_media
+
+      get 'events/:id', to: 'panels#edit_event', as: :panel_edit_event
+    #  delete 'events/:id'
       
     resources :stories
   end
