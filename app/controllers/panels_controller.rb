@@ -78,6 +78,49 @@ class PanelsController < ApplicationController
   def asd
   end
 
+  def media_update
+    
+    ap params
+
+    @field = Field.find(params[:id])
+=begin
+respond_to do |format|
+      if @reservation.save
+        format.html do
+          redirect_to '/'
+        end
+        format.json { render json: @reservation.to_json }
+        else
+        format.html { render 'new'} ## Specify the format in which you are rendering "new" page
+        format.json { render json: @reservation.errors } ## You might want to specify a json format as well
+        end
+      end
+     end
+=end
+    respond_to do |format|
+      if @field.update(field_params)
+        format.html { redirect_to panel_show_pages_url, notice: "#{@field.name} was successfully updated." }
+  #      format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+   #     format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+
+  #  @field = Field.find(field_params)
+
+  #  if @field.update(field_params)
+  #    redirect_to panel_show_field_url, notice: "Updated #{@field.name}"
+  #  else
+  #    redirect_to panel_show_field_url, notice: "Could not update #{@field.name}"
+  #  end
+  end
+
+  def media_edit
+    @field = Field.find(params[:id])
+    #render 'panels/media_edit'
+  end
+
 
   private
     
@@ -103,6 +146,10 @@ class PanelsController < ApplicationController
 
     def user_params
      params.require(:user).permit(:coordinator, :midweek, :rider)
+    end
+
+    def field_params
+      params.require(:field).permit(:content)
     end
 
     def story_params

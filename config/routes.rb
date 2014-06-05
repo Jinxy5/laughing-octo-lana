@@ -38,6 +38,7 @@ Bloodbikeswales::Application.routes.draw do
 
   scope path: 'control_panel' do
       get 'pages', to: 'panels#pages', as: :panel_show_pages
+      get 'pages/:id', to: 'panels#pages', as: :panel_edit_pages
 
       get 'edit_story/:id', to: 'stories#edit', as: :edit_story
       get 'stories', to: 'panels#stories', as: :panel_show_stories
@@ -47,8 +48,12 @@ Bloodbikeswales::Application.routes.draw do
       patch 'user/:id', to: 'panels#user_update', as: :panel_update_user
 
       get 'media', to: 'panels#media', as: :panel_show_media
+
+      get 'edit_media/:id', to: 'panels#media_edit', as: :panel_edit_media
+      
       delete 'media/:id', to: 'panels#media_delete', as: :panel_delete_media
-      patch 'media/id', to: 'panels#media_update', as: :panel_update_meda
+      
+      patch 'media/:id', to: 'panels#media_update', as: :panel_update_media
       
     resources :stories
   end

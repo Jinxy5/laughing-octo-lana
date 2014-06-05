@@ -50,7 +50,7 @@ class StoriesController < ApplicationController
 
 
 
-    new_params = story_params.except("file_name")
+#    new_params = story_params.except("file_name")
 
     if story_params[:file_name]
       @story.create_photo(file_name: story_params[:file_name] ) 

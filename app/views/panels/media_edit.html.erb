@@ -1,0 +1,13 @@
+<%#= debug @field %>
+<h2> Editing <%= @field.name %> </h2>
+<!-- panel_update_media -->
+
+
+
+<%= form_for( @field, url: panel_update_media_path(@field) ) do |f| %>
+	<%= f.text_area :content, class: 'form-control', rows: 20 %>
+	<br>
+	<%= f.submit class: 'form-control btn btn-success' %>
+<% end %>
+
+

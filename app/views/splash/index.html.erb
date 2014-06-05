@@ -7,7 +7,7 @@
 <% renderer = Redcarpet::Render::HTML.new(render_options = {}) %>
 <% markdown = Redcarpet::Markdown.new(renderer, extensions = {}) %>
  
-<%= markdown " **Getting Started**  and all that  ```` function(){ console.log('hello') } ```` [I'm an inline-style link](https://www.google.com)" %>
+<%#= markdown " **Getting Started**  and all that  ```` function(){ console.log('hello') } ```` [I'm an inline-style link](https://www.google.com)" %>
 
 
 
@@ -52,12 +52,14 @@
 
 
 			
-
-				<h2><span class="left">January 2014</span> <span class="right">
+<!--
+				<h2><span class="left">June 2014</span> <span class="right">
 							<leftarrow><i class="fa fa-chevron-left"></i></leftarrow>
 							<rightarrow><i class="fa fa-chevron-right"></i></rightarrow>
 							</span></h2>
+
 							<table class="table table-bordered"></h2>
+
 	<tr class="active">
 		<th scope="col">M</th>
 		<th scope="col">T</th>
@@ -68,24 +70,92 @@
 		<th scope="col">S</th>
 	</tr>
 	<tr>
-		<td class="date-light">28</td> <!-- these dates not in month so light -->
+		<td class="date-light">28</td> 
 		<td class="date-light">29</td>
-		<td class="date-light">30</td>
-		<td class="date-active">1</td> <!-- this date active -->
+		<td class="date-light">30</td> -->
+		<!--
+		<td class="">1</td> --> <!-- this date active -->
+		<!--
 		<td>2</td>
 		<td>3</td>
 		<td>4</td>
 	</tr>
 	
 	<tr>
-		<td>5</td>
-		<td>6</td>
-		<td class="date-event"  data-toggle="modal" data-target="#myModal"><a href='#'>7<br>
-			<i class="fa fa-thumb-tack"></i></a></td> <!-- An event icon. There is an event this day -->
-		<td>8</td>
-		<td>9</td>
-		<td>10</td>
-		<td>11</td>
+		<td>
+
+			<a href='#'>5<br>
+-->
+<!--			<i class="fa fa-thumb-tack"></i> -->
+				
+				
+				
+				<!--
+			</a>
+
+		</td>
+		
+		<td>
+			<a href='#'>6<br>
+				
+				
+				
+				
+				
+			</a>	
+		</td>
+
+		<td class="date-event"  data-toggle="modal" data-target="#myModal">
+			<a href='#'>7<br>
+				
+				
+				
+				
+				
+
+			</a>
+
+		</td> 
+		<td>
+			<a href='#'>8<br>
+				
+				
+				
+				
+				
+
+			</a>
+		</td>
+		<td>
+			<a href='#'>8<br>
+				
+				
+				
+				
+				
+
+			</a>
+		</td>
+		<td>
+			<a href='#'>10<br>
+				
+				
+				
+				
+				
+
+			</a>
+		</td>
+		<td>
+			<a href='#'>11<br>
+				
+				
+				
+				
+				
+
+			</a>
+		</td>
 	</tr>
 	<tr>
 		<td>12</td>
@@ -111,7 +181,8 @@
 		<td>28</td>
 		<td>29</td>
 		<td>30</td>
-		<td class="date-light">1</td> <!-- these dates not in month so light -->
+		<td class="date-light">1</td>  
+		
 		<td class="date-light">2</td>
 	</tr>
 	<tr>
@@ -124,7 +195,7 @@
 		<td>&nbsp;</td>
 	</tr>
 </table>
-
+-->
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

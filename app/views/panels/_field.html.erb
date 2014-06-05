@@ -2,7 +2,8 @@
 	<td> <%= field.name %> </td>
 	<td> <%= field.content %></td>
 	<td> <%= field.last_updated_by %></td>
-	<td> update </td>
+	<td> <%= button_to 'update', panel_edit_media_path(field), class: 'btn btn-success btn-xs form-control', method: :get %> </td>
 
+<%#= button_to 'update', panel_edit_media_path(field), class: 'btn btn-success btn-xs', method: :get %>
 
 </tr>
