@@ -13,6 +13,7 @@
  *= require font-awesome
  * require bootstrap_overrides.css
  *= require my-flexslider.css
- *= require starter-template.css
  *= require bootstrap-datetimepicker.css
+  *= require starter-template.css
+
  */

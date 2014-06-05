@@ -1,95 +1,71 @@
 <%= render partial: 'sidebar' %> 
 
-<div class="col-sm-10">
-	<h2>Calendars</h2>
+<div class="col-sm-9">
+	<h2>Add a Calendar Event</h2>
+	<form role="form">
+	  	<div class="form-group">
+		    <label for="Nameofevent">Name of Event</label>
+		    <input type="text" class="form-control" id="NameofEvent" placeholder="Enter name of event">
+		    <p>&nbsp;<p>
+		    <label for="Descriptionofevent">Description</label>
+		    <textarea class="form-control" rows="3"></textarea>
+	    	<p>&nbsp;<p>
+
+	    	<div class="col-sm-9">
+
+		       <div class='col-sm-6'>
+		        	<span class="bold">Stop Date / Time   </span>
+		            <div class="form-group">
+		                <div class='input-group date' id='datetimepicker8'>
+		 					<input type='text' class="form-control" />
+		                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+		                </div>
+		            </div>
+		        </div>
+
+		        <div class='col-sm-6'>
+		            <span class="bold">Stop Date / Time   </span>
+		            <div class="form-group">
+		                <div class='input-group date' id='datetimepicker9'>
+		                    <input type='text' class="form-control" />
+		                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+		                </div>
+		            </div>
+		        </div>
+		    </div> 
+
+		    <div class = "clearfix"></div>
+		    
+		    <script type="text/javascript">
+		        $(function () {
+		            
+		            $('#datetimepicker8').datetimepicker();
+		            $('#datetimepicker9').datetimepicker();
+		            
+		            $("#datetimepicker8").on("dp.change",function (e) {
+		               $('#datetimepicker9').data("DateTimePicker").setMinDate(e.date);
+		            });
+		            $("#datetimepicker9").on("dp.change",function (e) {
+		               $('#datetimepicker8').data("DateTimePicker").setMaxDate(e.date);
+		            });
+					
+		        });
+		    </script>
 
 
- 
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-</div>
+			<span class="bold">Choose Calendar to add this Event to</span>
+			<select multiple class="form-control">
+				<option>Public Calendar</option>
+				<option>Admin Calendar</option>
+				<option>Rider Calendar</option>
+				<option>Midweek Calendar</option>
+				<option>Coordinator Calendar</option>
+			</select>
 
-
-						
-
-
-		<table width="100%" border="1" cellspacing="10" cellpadding="10">
-			<tr>
-				<th scope="row">Public Calendar</th>
-				<td><button type="button" class="btn btn-primary"><i class="fa fa-thumb-tack"></i> Add Event</button></td>
-			</tr>
-			<tr>
-				<th scope="row">Admin Calendar</th>
-				<td><button type="button" class="btn btn-success"><i class="fa fa-thumb-tack"></i> Add Event</button></td>
-			</tr>
-			<tr>
-				<th scope="row">Rider Calendar</th>
-				<td><button type="button" class="btn btn-info"><i class="fa fa-thumb-tack"></i> Add Event</button></td>
-			</tr>
-			<tr>
-				<th scope="row">Midweek Calendar</th>
-				<td><button type="button" class="btn btn-warning"><i class="fa fa-thumb-tack"></i> Add Event</button></td>
-			</tr>
-			<tr>
-				<th scope="row">Coordinator Calendar</th>
-				<td><button type="button" class="btn btn-danger"><i class="fa fa-thumb-tack"></i> Add Event</button></td>
-			</tr>
-	</table>
-
-
-  <div class="container">
-    <div class="col-sm-6" style="height:75px;">
-       <div class='col-md-5'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker8'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class='col-md-5'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker9'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        $(function () {
-            
-            $('#datetimepicker8').datetimepicker();
-            $('#datetimepicker9').datetimepicker();
-            
-            $("#datetimepicker8").on("dp.change",function (e) {
-               $('#datetimepicker9').data("DateTimePicker").setMinDate(e.date);
-            });
-            $("#datetimepicker9").on("dp.change",function (e) {
-               $('#datetimepicker8').data("DateTimePicker").setMaxDate(e.date);
-            });
-			
-        });
-    </script>
+			<button type="button" class="btn btn-success"><i class="fa fa-thumb-tack"></i> Add Event to this Calendar</button>
+    	</div>
+	</form>
 </div>
 
 
 
-</div>
