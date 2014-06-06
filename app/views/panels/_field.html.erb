@@ -1,6 +1,6 @@
 <tr>
 	<td> <%= field.name %> </td>
-	<td> <%= field.content %></td>
+	<td> <%= field.content.truncate(100) %></td>
 	<td> <%= field.last_updated_by %></td>
 	<td> <%= button_to 'update', panel_edit_media_path(field), class: 'btn btn-success btn-xs form-control', method: :get %> </td>
 

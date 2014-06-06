@@ -14,7 +14,7 @@
 		    	<div class="col-sm-9">
 
 			       <div class='col-sm-6'>
-			        	<span class="bold">Stop Date / Time   </span>
+			        	<span class="bold">Start Date/Time   </span>
 			            <div class="form-group">
 			                <div class='input-group date' id='datetimepicker8'>
 			 					<input type='text' class="form-control" />
@@ -24,7 +24,7 @@
 			        </div>
 
 			        <div class='col-sm-6'>
-			            <span class="bold">Stop Date / Time   </span>
+			            <span class="bold">Finish Date/Time   </span>
 			            <div class="form-group">
 			                <div class='input-group date' id='datetimepicker9'>
 			                    <input type='text' class="form-control" />
@@ -52,17 +52,43 @@
 			        });
 			    </script>
 
-
 				<span class="bold">Choose Calendar to add this Event to</span>
-				<select multiple class="form-control">
-					<option>Public Calendar</option>
-					<option>Admin Calendar</option>
-					<option>Rider Calendar</option>
-					<option>Midweek Calendar</option>
-					<option>Coordinator Calendar</option>
-				</select>
-		    	<p>&nbsp;<p>
 
+			    <div class="radio">
+  					<label>
+    				<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+   					Public Calendar
+  					</label>
+				</div>
+				<div class="radio">
+  					<label>
+    					<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    					Admin Calendar
+  					</label>
+				</div>
+				<div class="radio">
+  					<label>
+    					<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    					Rider Calendar
+  					</label>
+				</div>
+				<div class="radio">
+  					<label>
+    					<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    					Midweek Calendar
+  					</label>
+				</div>
+				<div class="radio">
+  					<label>
+    					<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    					Coordinator Calendar
+  					</label>
+				</div>
+
+
+				
+		    	<p>&nbsp;<p>
+ 
 				<button type="button" class="btn btn-success"><i class="fa fa-thumb-tack"></i> Add Event to this Calendar</button>
 	    	</div>
 		</form>
