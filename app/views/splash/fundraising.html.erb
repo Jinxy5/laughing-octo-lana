@@ -23,21 +23,27 @@
                
             </div>
              <hr>
+           
+
+            <div class="row text-center">
+                <%= image_tag 'mydonate-logo.png', class: 'img-responsive center-block'  %>
+            </div>
+             <div class="btn-block">
+                <%= button_to 'Donate via MyDonate', 'https://mydonate.bt.com/charities/bloodbikeswales', class: 'btn btn-warning btn-block' , method: :get %>
+                <p>&nbsp;</p> 
+            </div>
+
             <div class="row text-center">
                 <%= image_tag 'charitablegiving.png', class: 'img-responsive center-block' %>
             </div>
+
             <div class="btn-block">
                 <%= button_to 'Donate via Charitable Giving', 'https://www.charitablegiving.co.uk/payroll/employer-search.aspx', class: 'btn btn-warning btn-block' , method: :get %>
                 <p>&nbsp;</p>     
             </div>
 
-            <div class="row text-center">
-                <%= image_tag 'mydonate-logo.png', class: 'img-responsive center-block'  %>
-            </div>
-            <div class="btn-block">
-                <%= button_to 'Donate via MyDonate', 'https://mydonate.bt.com/charities/bloodbikeswales', class: 'btn btn-warning btn-block' , method: :get %>
-                <p>&nbsp;</p> 
-            </div>
+           
+           
             
 
             <div class="row text-center" >
