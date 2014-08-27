@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
   def create
     new_params = story_params.except("file_name")
 
-    @story = Story.new(new_params)
+    @story = Story.new(story_params)
     @story.user_id = current_user.id
 
     if story_params[:file_name]
@@ -57,7 +57,7 @@ class StoriesController < ApplicationController
     end
 
 
-    if @story.update(new_params)
+    if @story.update(story_params)
       @story.approve
       redirect_to splash_news_path, notice: "Successfully updated #{@story.title} " 
     else
