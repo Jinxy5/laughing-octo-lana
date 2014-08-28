@@ -4,7 +4,7 @@ class Notification < ActionMailer::Base
   def new_user_notification(user)
     @user = user
 
-    mail(to: 'jon@jhurleydesign.com',
+    mail(to: 'membership@bloodbikeswales.org.uk',
          from: "thebloodbikeswalesrobot@gmail.com",
          subject: "New User has signed up!"
         )
