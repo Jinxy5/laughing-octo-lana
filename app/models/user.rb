@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+	after_create :send_tracy_email
+
+	def send_tracy_email
+		Notification.new_user_notification(self).deliver
+	end
+
 	include SoftDelete
 
 	has_many :posts

@@ -1,1 +1,12 @@
-new_user_notification
+Hi Tracey. A new member has just signed up. Here are their details: </br>
+
+user_name: <%= @user.user_name %> </br>
+email:  <%= @user.email %> </br>
+created_at:  <%= @user.created_at %> </br>
+first_name:  <%= @user.first_name %> </br>
+last_name:  <%= @user.last_name %> </br>
+nearest_town:  <%= @user.nearest_town %> </br>
+
+Click here for more informaion: </br>
+
+<%= user_url @user %>
